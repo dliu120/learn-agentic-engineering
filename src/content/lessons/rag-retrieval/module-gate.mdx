@@ -1,0 +1,91 @@
+---
+{
+  "moduleId": "rag-retrieval",
+  "lessonId": "module-gate",
+  "title": "Module Gate: RAG & Retrieval",
+  "order": 99,
+  "topicNumbers": [
+    14,
+    15,
+    16
+  ],
+  "objectives": [
+    "Synthesize the end-to-end retrieval funnel from chunking through grounded generation",
+    "Apply the right fix when dense, sparse, freshness, or metric failures appear",
+    "Distinguish retrieval quality from generation quality across the pipeline"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "g1",
+      "type": "ordering",
+      "question": "Order the stages of a two-stage hybrid retrieval pipeline at query time, from first to last.",
+      "options": [
+        "Retrieve candidates with dense + BM25 search",
+        "Fuse the ranked lists with RRF",
+        "Rerank survivors with a cross-encoder",
+        "Pass the top 5–10 passages to the LLM"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "Hybrid first stage retrieves a wide candidate set, RRF fuses the dense and sparse rankings, the cross-encoder reranks for precision, and only the top few passages are handed to the generator."
+    },
+    {
+      "id": "g2",
+      "type": "matching",
+      "question": "Match each retrieval component or metric to its defining property.",
+      "pairs": [
+        {
+          "left": "Dense (bi-encoder) search",
+          "right": "Captures meaning but under-weights exact tokens"
+        },
+        {
+          "left": "BM25 sparse search",
+          "right": "Matches exact and rare terms but misses paraphrase"
+        },
+        {
+          "left": "Cross-encoder rerank",
+          "right": "Joint encoding, high precision, can't precompute vectors"
+        },
+        {
+          "left": "recall@k",
+          "right": "The system ceiling the generator cannot exceed"
+        }
+      ],
+      "explanation": "Dense and sparse fail on opposite query types; the cross-encoder reorders candidates with a per-candidate forward pass; recall@k bounds everything downstream because the model can only use what was retrieved."
+    },
+    {
+      "id": "g3",
+      "type": "mcq",
+      "question": "You upgrade your embedding model but only re-embed incoming queries, leaving the existing index built with the old model. Retrieval quality collapses. Why?",
+      "options": [
+        "Version skew: query and document vectors now live in different spaces, so nearness is meaningless — the index must be fully re-indexed with the new model",
+        "The new model has too few dimensions to match the old index",
+        "RRF fusion stops working when the model changes",
+        "Precision@k is unaffected but recall@k always drops after any upgrade"
+      ],
+      "correct": 0,
+      "explanation": "Embeddings are only comparable within the same model and version. Mixing a new query encoder with an old index produces incomparable vectors — a silent, catastrophic failure. Treat the index as a versioned artifact tied to its model and re-index fully on a swap."
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+RAG is a funnel, not a magic box: chunk and embed the corpus, pull semantic and keyword matches, fuse and rerank a small set, and only a handful of passages reach the model. Prove you can connect each stage to its failure mode and its fix.
+
+<KeyInsightCallout>
+The model can only reason over what retrieval handed it — recall sets the ceiling for the whole system, everything downstream is precision and ordering, and grounded, correct, and well-cited remain three separate questions.
+</KeyInsightCallout>

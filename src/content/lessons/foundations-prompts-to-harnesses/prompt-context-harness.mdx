@@ -1,0 +1,106 @@
+---
+moduleId: foundations-prompts-to-harnesses
+lessonId: prompt-context-harness
+title: "Prompt ⊂ Context ⊂ Harness"
+order: 1
+topicNumbers: [1]
+objectives:
+  - "Distinguish prompt vs context vs harness engineering by scope"
+  - "Explain why a better harness can beat any amount of prompt rewriting"
+  - "Use the LLM-as-OS mental model (CPU / RAM / OS)"
+hasAudio: true
+narration: >
+  Here's the reframe that changes how you build with LLMs. The model is not the product —
+  it's a component, like a CPU. A CPU does nothing useful on its own; it needs an operating
+  system to decide what to load into memory and when to call devices. Same with a language
+  model. The prompt is the wording of a single instruction — the smallest lever you have.
+  The context is everything in the window on a given step: system prompt, tool definitions,
+  retrieved documents, conversation history, memory. And the harness is the program around
+  the model — the loop, the tool execution, the parsing, the verification, the budgets, the
+  recovery. Karpathy's analogy: the model is the CPU, the context window is RAM, and the
+  harness is the OS. At production scale, the harness and the curated context dominate
+  end-to-end quality. Hold the model fixed, add a loop that runs tests and feeds failures
+  back, and you can beat any prompt rewrite. Your job shifts from writing a clever string to
+  engineering the loop and the information the model sees each step.
+visualizations:
+  - { title: "Anatomy of an agent harness loop", summary: "A six-node ring — invoke, parse, execute in a sandbox, observe, verify, then check the stop/budget condition — with a token packet traveling the loop and the active stage highlighted." }
+quiz:
+  - id: q1
+    type: mcq
+    question: "Team A ships a single well-worded prompt. Team B wraps the SAME model in a loop that runs tests and feeds failures back for a retry. Team B scores far higher. What does this show?"
+    options:
+      - "The harness can dominate end-to-end performance with the model held fixed"
+      - "Team B must be using a bigger or fine-tuned model"
+      - "Prompt wording is the primary performance lever"
+      - "The benchmark results are essentially random"
+    correct: 0
+    explanation: "Same model, different harness. Tools + feedback + verification + retries turn a stateless predictor into a task-completer — independent of prompt wording."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+
+Most people start with **prompt engineering** — tweaking the wording of one instruction. That's
+the smallest lever in the system. The leverage lives one and two layers out.
+
+<ConceptCard title="Three nested scopes" tag="topic 1">
+
+- **Prompt** — the wording of a single instruction.
+- **Context** — the *entire token set* in the window on a given step: system prompt, tool
+  definitions, retrieved data, conversation history, memory.
+- **Harness** — the code and control flow *around* the model: the loop, tool execution, output
+  parsing, verification, state, recovery, and budgets.
+
+Karpathy's framing — **LLM-as-OS**: the model is the **CPU**, the context window is **RAM**, and
+the harness is the **OS** that decides what to load and when to call tools.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+The prompt is the smallest lever; the model is a component, not the product — you ship a
+**system**, not a string.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="harness-loop"
+  title="Anatomy of an agent harness loop"
+  summary="A ring of six stages — Invoke, Parse, Execute (sandbox), Observe, Verify, and Check Budget/Stop. A token packet travels the loop and each active stage glows. The loop must terminate on success, exhaustion, or failure — never run forever."
+  height={360}
+/>
+
+## Harness engineering
+
+The harness is the program that turns a stateless next-token predictor into a *task-completer*.
+The same model scores very differently depending on the loop you wrap around it — add test
+execution and failure feedback, and capability jumps without touching the weights.
+
+<KeyInsightCallout>
+Hold the model fixed and a better loop — tools, feedback, verification, budget control — can
+outperform any amount of prompt rewriting.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"An agent is just the model in a while-loop."}
+  correction={"A real harness adds parsing, sandboxed execution, verification, recovery, and budgets — the while-loop is the least of it."}
+/>
+<MisconceptionFlip
+  claim={"Prompt wording is the main performance lever."}
+  correction={"Wording is the smallest scope. Context curation and the harness dominate at production scale."}
+/>
+
+<FailureModeList
+  items={[
+    "Runaway loop with no budget cap (the loop never decides to stop).",
+    "Silent context truncation that drops the system prompt mid-session.",
+    "Brittle output parsing that cascades one bad parse into total failure.",
+    "Non-deterministic debugging because there is no per-step logging.",
+  ]}
+/>
+
+> **Accuracy note.** Context-window sizes vary (~200K is common; some models offer ~1M modes) —
+> treat them as ranges. "Roughly quadratic" attention cost refers to *standard* attention;
+> FlashAttention cuts memory I/O (not asymptotic compute) and sub-quadratic architectures exist.

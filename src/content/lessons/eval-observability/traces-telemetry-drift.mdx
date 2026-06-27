@@ -1,0 +1,109 @@
+---
+{
+  "moduleId": "eval-observability",
+  "lessonId": "traces-telemetry-drift",
+  "title": "Traces, Telemetry, Drift, and the Closed Loop",
+  "order": 2,
+  "topicNumbers": [
+    18
+  ],
+  "objectives": [
+    "Read a trace as a span tree and attribute a bad/slow/expensive response to a specific step",
+    "Treat LLM-specific signals (output tokens, TTFT/tail latency, schema failures, refusals) as first-class",
+    "Distinguish data, concept, and model drift and explain why pinning snapshots matters",
+    "Wire the closed loop: traces to sampled failures to golden set to regression gate to release"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "The Eval Feedback Loop",
+      "summary": "A circular flow where production traces surface sampled failures that grow the golden set, which gates releases through a regression check before deploying back to production."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Your prompt is pinned, temperature is 0, and you deployed nothing — yet eval scores drop overnight. Most likely cause?",
+      "options": [
+        "The hosted model endpoint was silently updated (model drift)",
+        "The judge spontaneously developed bias on its own",
+        "Temperature 0 makes any score change impossible, so it's a logging bug",
+        "The provider raised prices, which lowered accuracy"
+      ],
+      "correct": 0,
+      "explanation": "A floating endpoint behind a stable alias can be upgraded without notice. Pin model snapshots and alert on drift so you catch the regression you never deployed."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Why is reading a trace as a span tree better than scanning structured logs for debugging an LLM request?",
+      "options": [
+        "Spans are causal and hierarchical, so you can attribute a bad/slow/expensive result to a specific step",
+        "Logs cannot record token counts at all",
+        "Traces are always cheaper to store than logs",
+        "Span trees eliminate the need for any sampling or redaction"
+      ],
+      "correct": 0,
+      "explanation": "A trace decomposes one request into nested timed spans, letting you isolate whether retrieval, the prompt, or the model caused the problem — something flat logs can't show."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Classic monitoring assumes failures show up as 5xx errors. LLM failures hide inside 200s — valid HTTP, but bad JSON, a refusal, a hallucination, a truncated answer. So observability becomes your sensor for silent failures, and the unit of debugging is the trace, not the log line. Picture a trace as a waterfall: one request, decomposed into nested spans — retrieval took 220 milliseconds, the LLM call took 1.4 seconds and 850 output tokens. Without that span structure you can't tell whether a bad answer came from retrieval, the prompt, or the model. And the signals that matter aren't CPU and memory — they're output token count, time to first token, the p99 tail hiding behind a healthy median, and the rate of unparseable output. Then there's drift: the scariest regression is one you never deployed. You pinned the prompt, pinned temperature zero, changed nothing — and scores drop overnight because the hosted endpoint was silently upgraded. That's why you pin model snapshots and alert on distribution shift. Tie it together and evals and observability are one loop: traces feed the golden set, the golden set gates the next release."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="A trace is a tree of spans" tag="topic 18">
+
+In OpenTelemetry-style terms, a **trace** is one request end-to-end; a **span** is one timed unit — an LLM call, a retrieval, a tool invocation — nesting into a tree. GenAI semantic conventions standardize attributes like model, token counts, and latency. (These conventions were still **experimental in early 2026** — verify attribute names against the current spec.)
+
+</ConceptCard>
+
+<KeyInsightCallout>
+The unit of debugging is the trace, not the log line — without span structure you can't tell whether a bad answer came from retrieval, prompt, or model.
+</KeyInsightCallout>
+
+## LLM-specific telemetry
+
+Classic monitoring watches HTTP status, CPU, memory. LLM apps fail — and bleed money — elsewhere:
+
+<TradeoffTable headers={["Signal","Why it's first-class"]} rows={[["Output tokens","Pricier than input and dominate latency (autoregressive)"],["TTFT / ITL / tail","p99 can be terrible behind a healthy p50"],["Semantic errors","Invalid JSON, schema violations, refusals, truncation, tool-call failures — all inside a 200"]]} />
+
+<KeyInsightCallout>
+LLM observability must treat "valid JSON?", output-token count, and refusals as first-class signals — that's where LLM apps fail and bleed money.
+</KeyInsightCallout>
+
+## Drift and closing the loop
+
+**Data drift** (input distribution shifts), **concept drift** (the right answer changes), and **model drift** (a silent provider upgrade) all degrade quality quietly. Detect via input/output/score distribution monitoring — PSI, KL, KS — plus online sampled judge evals. PSI thresholds (~0.1 / ~0.25) are a borrowed heuristic, not a law.
+
+<KeyInsightCallout>
+Pin model snapshots and alert on drift — the scariest regression is the one you never deployed.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="eval-loop"
+  title="The closed eval loop"
+  summary="Traces surface sampled failures that grow the golden set; the golden set gates the next release through regression checks before deploying back to production."
+  height={340}
+/>
+
+<MisconceptionFlip claim={"Tracing is just structured logging."} correction={"Traces are causal and hierarchical — a span tree shows which step caused a bad/slow/expensive result; flat logs can't."} />
+<MisconceptionFlip claim={"No HTTP errors means the system is healthy."} correction={"LLM failures hide inside 200s: bad JSON, refusals, hallucinations, truncation. Watch semantic signals, not just status codes."} />
+
+<FailureModeList
+  items={[
+    "Silent provider upgrade: pinned prompt, temp 0, nothing deployed — scores drop overnight.",
+    "Counting unparsed output as success because the HTTP call returned 200.",
+    "A p99 tail pager-storm hiding behind a healthy p50 dashboard.",
+    "Cost blowup from an output-token explosion no one was watching.",
+    "Unredacted PII sitting plaintext in traces."
+  ]}
+/>

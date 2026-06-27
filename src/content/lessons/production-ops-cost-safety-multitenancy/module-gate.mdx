@@ -1,0 +1,90 @@
+---
+{
+  "moduleId": "production-ops-cost-safety-multitenancy",
+  "lessonId": "module-gate",
+  "title": "Module Gate: Cost, Safety & Multi-Tenancy",
+  "order": 99,
+  "topicNumbers": [
+    19,
+    20,
+    21
+  ],
+  "objectives": [
+    "Synthesize cost attribution, injection/authorization, and tenant isolation into one operating principle",
+    "Apply the right deterministic control to each production failure mode"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "g1",
+      "type": "matching",
+      "question": "Match each production failure mode to the control that addresses it.",
+      "pairs": [
+        {
+          "left": "Indirect prompt injection drives exfiltration",
+          "right": "Remove a lethal-trifecta leg (e.g., close the outbound channel or require approval)"
+        },
+        {
+          "left": "Semantic cache returns another tenant's answer",
+          "right": "Partition the cache key by tenant / user / permission and invalidate on change"
+        },
+        {
+          "left": "Spend triples after an agentic feature ships",
+          "right": "Propagate tags through the fan-out and measure cost-per-successful-outcome"
+        },
+        {
+          "left": "Agent uses its own broad credentials on a user's behalf",
+          "right": "Enforce authZ at the tool/retrieval edge with the end-user's identity"
+        }
+      ],
+      "explanation": "Each failure is fixed by a deterministic control at an edge, not by instructing the model: cut a trifecta leg for injection, identity-partition the cache for cross-tenant leaks, tag the fan-out for cost, and scope credentials per user for the confused deputy."
+    },
+    {
+      "id": "g2",
+      "type": "mcq",
+      "question": "What single principle ties cost, safety, and isolation together in this module?",
+      "options": [
+        "Never let the probabilistic model be the boundary for cost, authorization, or tenant isolation — use deterministic code at the edges",
+        "Always choose the largest available model",
+        "Disable caching entirely to avoid all leaks",
+        "Trust a well-written system prompt to enforce the rules"
+      ],
+      "correct": 0,
+      "explanation": "Cost (tags across the call graph), authorization (deterministic checks with user identity), and isolation (identity-keyed cache/state) all require boundaries in deterministic code — the model is never the boundary."
+    },
+    {
+      "id": "g3",
+      "type": "ordering",
+      "question": "Order the steps to compute cost-per-successful-outcome for an agentic feature.",
+      "options": [
+        "Tag the inbound request with tenant_id, feature, and journey_id",
+        "Propagate the tags through every planner, tool, retry, and retrieval call",
+        "Sum token usage and cost across the whole fan-out per journey",
+        "Divide total cost by the number of successful outcomes"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "You must tag first, carry the tags through the fan-out, aggregate cost per journey, then divide by successful outcomes — the denominator is only meaningful once tags ride every hop."
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+You've now seen the three forces that collide once an LLM goes to production: Money (cost hides in the call graph), Trust (the model can't tell instructions from data), and Isolation (one shared system, many tenants). One principle ties them together.
+
+<KeyInsightCallout>
+Never let the probabilistic model be the boundary for cost, authorization, or tenant isolation — those belong to deterministic code at the edges: tags across the whole fan-out, authZ at the tool/retrieval edge with the user's identity, and cache/state keyed by full identity.
+</KeyInsightCallout>

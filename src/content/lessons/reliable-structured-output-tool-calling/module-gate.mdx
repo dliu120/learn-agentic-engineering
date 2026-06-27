@@ -1,0 +1,90 @@
+---
+{
+  "moduleId": "reliable-structured-output-tool-calling",
+  "lessonId": "module-gate",
+  "title": "Module Gate: Structured Output & Tool Calling",
+  "order": 99,
+  "topicNumbers": [
+    8,
+    9
+  ],
+  "objectives": [
+    "Synthesize the guarantee ladder, validation/repair loop, and idempotent tool calling into reliable design decisions"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "g1",
+      "type": "mcq",
+      "question": "An LLM extraction pipeline uses JSON mode and a downstream consumer expects a strict schema with specific enum fields. Outputs are syntactically valid JSON but enum values keep drifting. What's the most accurate diagnosis?",
+      "options": [
+        "JSON mode guarantees syntax, not your schema — move up to schema-constrained decoding and validate enums",
+        "JSON mode is broken; switch back to prompt-only",
+        "Enum drift means the model executed the wrong tool",
+        "Constrained decoding caused the drift; remove the schema"
+      ],
+      "correct": 0,
+      "explanation": "JSON mode is the middle rung: valid JSON syntax, not your schema. Enum/type drift is expected there. Schema-constrained decoding plus a typed validator encoding the allowed enums is the fix."
+    },
+    {
+      "id": "g2",
+      "type": "ordering",
+      "question": "Order a robust structured-output handling path from first attempt to last resort (cheapest/strictest-first to terminal fallback).",
+      "options": [
+        "Schema-constrained (strict) generation",
+        "Typed validator gate on the output",
+        "Deterministic repair (json_repair, no LLM call)",
+        "Bounded LLM re-ask with the verbatim validator error",
+        "Terminal safe typed default / partial / human review"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explanation": "Generate with the strongest rung, validate as the gate, then repair cheapest-first (deterministic before paying for an LLM re-ask fed the exact error), capping retries, and finally degrade to a known-safe default or escalation. Never crash, never silently pass bad data."
+    },
+    {
+      "id": "g3",
+      "type": "matching",
+      "question": "Match each reliability problem to its correct mitigation.",
+      "explanation": "Forced tool_choice guarantees extraction; idempotency keys make at-least-once delivery yield exactly-once effects; tool retrieval/namespacing counters selection-accuracy decay past ~10-20 tools; server-side argument validation treats generated args as untrusted input against injection.",
+      "pairs": [
+        {
+          "left": "Extraction breaks under tool_choice='auto'",
+          "right": "Force tool_choice to a single tool"
+        },
+        {
+          "left": "Retries double-charge a customer",
+          "right": "Idempotency key deduped server-side"
+        },
+        {
+          "left": "Selection accuracy decays past ~10-20 tools",
+          "right": "Tool retrieval / namespacing / sub-agents"
+        },
+        {
+          "left": "Tool arg carries an injection payload",
+          "right": "Re-validate args server-side as untrusted input"
+        }
+      ]
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+You've walked the ladder and the loop. The throughline: a schema-valid output is just a well-typed claim from an unreliable, retry-prone producer of untrusted input — so the real reliability work lives in validation, bounded repair, safe fallbacks, and idempotent side effects.
+
+<KeyInsightCallout>
+Structure is not the same as truth — guarantee shape with the right rung, but win reliability in the loop: validate as the gate, repair cheap-first and bounded, fall back to a safe typed default, and make every side effect idempotent because the retry WILL happen.
+</KeyInsightCallout>

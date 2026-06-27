@@ -1,0 +1,112 @@
+---
+{
+  "moduleId": "reliable-structured-output-tool-calling",
+  "lessonId": "guarantee-ladder-constrained-decoding",
+  "title": "The Guarantee Ladder: Structure Is Not Truth",
+  "order": 1,
+  "topicNumbers": [
+    8
+  ],
+  "objectives": [
+    "Distinguish the three guarantee rungs (prompt-only / JSON mode / schema-constrained) and name what each does NOT guarantee",
+    "Explain how constrained decoding works (schema to grammar/FSM to per-token logit masking) and where it forces wrong or empty values",
+    "Justify treating a typed validator as the gate, since schema validity is not the same as correctness",
+    "Design a bounded, cheap-first, error-fed repair loop that always degrades to a safe typed default"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "The Guarantee Ladder",
+      "summary": "Three rungs (prompt-only, JSON mode, schema-constrained) shown against a JSON object building token-by-token along an FSM track, where a logit bar chart slams grammar-breaking tokens to the floor while legal tokens stay lit."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "OpenAI Structured Outputs with strict:true guarantees that the output...",
+      "options": [
+        "Conforms to the schema's structure and types",
+        "Is semantically correct for your task",
+        "Is never truncated by max_tokens",
+        "Always triggers a tool call"
+      ],
+      "correct": 0,
+      "explanation": "strict:true is the top rung: it constrains decoding to your schema's structure and types. It says nothing about semantic correctness, truncation, or tool calls — those are separate concerns handled by validation and the loop."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "A required string field is schema-constrained, but the model has no valid value for it. What happens?",
+      "options": [
+        "Constrained decoding still forces a syntactically valid (possibly hallucinated or empty) string — structure is guaranteed, not truthfulness",
+        "The API returns an error because no value exists",
+        "The field is silently omitted from the output",
+        "The model emits the literal token \"unknown\""
+      ],
+      "correct": 0,
+      "explanation": "The grammar only permits a valid string at that position, so the decoder must emit one. Structure is guaranteed, truthfulness is not — give the model an escape hatch (nullable union, an 'unknown' enum, or a confidence/refusal field)."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Here's the one line to remember: structure is not the same as truth. Picture a guarantee ladder. The bottom rung is prompt-only, where you politely ask for JSON and guarantee nothing. The middle rung is JSON mode, which guarantees valid JSON syntax but not your schema. The top rung is schema-constrained decoding, which guarantees the shape and the types. How? Your schema compiles into a grammar, and at every single token the decoder masks out any token that would break that grammar. It's like a railway switch that physically can't send the train onto a broken track. But here's the contrarian catch people miss: forcing the train down a valid track doesn't make the destination correct. A required string field with no real answer still gets a syntactically valid, possibly hallucinated value, because the model literally cannot say I don't know unless your schema gives it a way. So the real work lives after the rung. Validate every output as the gate. Repair cheap-first and bounded. And when all rungs fail, fall back to a known-safe default. Strict mode did not solve it; it just moved the problem."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Three rungs, three different guarantees" tag="topic 8">
+
+Reliability is a ladder, and each rung promises something *stronger about shape* — never about truth.
+
+- **Prompt-only** ("reply in JSON") — guarantees **nothing**; you may get prose, fences, or invalid JSON.
+- **JSON mode** — guarantees **syntactically valid JSON**, *not* your schema (fields, enums, types can all be wrong).
+- **Schema-constrained decoding** (OpenAI Structured Outputs `strict:true`, server-side at Google; Outlines / XGrammar / GBNF / lm-format-enforcer locally) — guarantees **structure + types**.
+
+Anthropic's reliable pattern is tool-use with a forced `tool_choice` (often plus prefill); check current docs for a native `json_schema` response format rather than assuming.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Each rung guarantees a stronger property about shape, never about truth.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="guarantee-ladder"
+  title="The Guarantee Ladder"
+  summary="A JSON object builds token-by-token along an FSM track; at each step a logit bar chart slams grammar-breaking tokens to the floor while legal tokens stay lit. A side rail shows the three rungs and what each does — and does not — guarantee."
+  height={340}
+/>
+
+## How constrained decoding works (and bites)
+
+Your schema compiles to a grammar/FSM; at each step a **logit mask zeroes every token that would break the grammar**, so only legal tokens can be sampled. The first complex schema pays a one-time compile latency (then cached).
+
+<KeyInsightCallout>
+Forcing structure can degrade quality — the model can't say "I don't know" unless your schema gives it a way (a nullable union, an "unknown" enum, or a refusal/confidence field).
+</KeyInsightCallout>
+
+<MisconceptionFlip claim={"strict mode guarantees correct data."} correction={"It guarantees shape and types only — a required field with no real answer is still filled with a valid, possibly hallucinated value."} />
+<MisconceptionFlip claim={"JSON mode equals Structured Outputs."} correction={"JSON mode guarantees syntax; Structured Outputs guarantees your schema. Different rungs."} />
+
+## Validation is the gate; repair is cheap-first and bounded
+
+Run a typed validator (Pydantic / zod / jsonschema; Instructor wraps + validates) on **every** output. Then repair cheapest-first: deterministic `json_repair` (zero LLM calls) → re-ask with the **verbatim validator error** at lower temperature → cap at 2–3 retries → terminal **safe typed default / partial with low-confidence flag / human review**.
+
+<FailureModeList
+  items={[
+    "Truncation at max_tokens (finish_reason='length') yields a valid prefix but invalid JSON — silently corrupts data if ignored.",
+    "Enum/type drift and semantically-wrong-but-valid data passing because validation lacked business rules.",
+    "Unbounded repair loops burning paid round-trips.",
+    "Schema drift across the cached prompt, the grammar, and the downstream consumer.",
+  ]}
+/>
+
+<KeyInsightCallout>
+Schema validity ≠ correctness — validation must encode business rules (ranges, referential existence, authorization).
+</KeyInsightCallout>

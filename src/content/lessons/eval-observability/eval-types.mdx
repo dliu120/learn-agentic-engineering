@@ -1,0 +1,113 @@
+---
+{
+  "moduleId": "eval-observability",
+  "lessonId": "eval-types",
+  "title": "Four Eval Types You Layer, Not Pick",
+  "order": 1,
+  "topicNumbers": [
+    17
+  ],
+  "objectives": [
+    "Distinguish golden, regression, adversarial, LLM-judge, and human evals by the question each answers",
+    "Design regression evals that survive nondeterminism using tolerant scorers and aggregate gates",
+    "Name three LLM-judge biases and the mitigations that bring it closer to human labels",
+    "Explain the method triangle: where to spend cheap automated, judge, and scarce human labels"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "The Eval Feedback Loop",
+      "summary": "A circular flow from Production to Traces to Sampled Failures to Golden Set to Regression Gate and back to Production, showing how each eval type plugs into the closed loop."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "An exact-match grader marks a correct reply wrong because it said \"Sure!\" where the reference said \"Of course!\". Best fix?",
+      "options": [
+        "Switch to tolerant scorers (semantic similarity or an LLM judge) and gate on aggregate thresholds",
+        "Raise the temperature so outputs match the reference more often",
+        "Accept that CI can't reliably call model APIs and drop the check",
+        "Trim the golden set down to only exact-match-friendly examples"
+      ],
+      "correct": 0,
+      "explanation": "Exact match can't handle wording variance or nondeterminism. Tolerant scorers plus aggregate gates judge meaning, not surface strings."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "In a pairwise LLM-judge eval, answer A wins 70% when shown first but only 45% when shown second. What should you do?",
+      "options": [
+        "Run both orderings and average so the positional preference cancels out",
+        "Use a larger judge model, which removes position bias entirely",
+        "Raise max_tokens so the judge can reason longer",
+        "Switch the metric to ROUGE to avoid the bias"
+      ],
+      "correct": 0,
+      "explanation": "This is position bias. Randomizing/mirroring the order and averaging cancels the positional preference; a bigger model does not guarantee it away."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Think of evals not as a checklist but as a control loop's measuring instruments. Classic software testing assumes determinism: same input, same output, assert equality. LLMs break that pillar — even at temperature zero you get variance from batching, hardware, and provider updates. So exact-match grading is a trap. Instead you layer five eval types, each answering a different question. A golden set is your curated, version-controlled suite — treat it like code, grow it from real production failures. Regression tests re-run that set on every prompt or model change, but with tolerant scorers and aggregate thresholds, not string equality. Adversarial tests probe injection and jailbreaks — and here's the catch: a perfect golden-set score tells you nothing about injection resistance. They're orthogonal questions. LLM-as-judge scales grading cheaply, but it carries position, verbosity, and self-preference biases — an unvalidated judge is just a second untested model, so calibrate it against human labels first. And humans sit at the top: slow, expensive, noisy, but ground truth for the subjective calls. The trick is the pyramid — cheap automated checks on every run, judge on samples, humans on the small high-value subset where graders disagree."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Five eval types, five questions" tag="topic 17">
+
+You don't choose one eval type — you **layer** them, because each answers a different question:
+
+- **Golden set** — curated, version-controlled inputs + reference outputs. *Is this representative behavior correct?*
+- **Regression** — re-run the golden set on every prompt/model/retrieval change as a CI gate. *Did this change make things worse?*
+- **Adversarial / red-team** — injection, jailbreaks, OOD, edge cases. *Is it safe under attack?*
+- **LLM-as-judge** — pointwise or pairwise scoring at scale. *How good, cheaply, at volume?*
+- **Human** — slow, expensive ground truth for subjective/high-stakes calls.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+A golden set is code — version it, review it in PRs, and grow it from real production failures.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="eval-loop"
+  title="Where each eval type plugs into the loop"
+  summary="Production traces feed sampled failures into the golden set; the golden set powers the regression gate that guards the next release. Adversarial, judge, and human evals layer on top."
+  height={340}
+/>
+
+## Regression under nondeterminism
+
+Never assert exact string equality. Even at **temperature 0**, output varies via batching, hardware, MoE routing, and silent provider updates. Use **tolerant scorers** — schema/regex checks, semantic similarity, or an LLM judge — and gate on **aggregate score deltas**, not single examples.
+
+<KeyInsightCallout>
+Temperature=0 reduces but never guarantees determinism — assert on tolerant scorers, gate on score deltas.
+</KeyInsightCallout>
+
+## The method triangle
+
+<ConceptCard title="Spend scarce human labels to calibrate cheaper graders">
+
+A pyramid: **cheap automated** checks on *every* run, **LLM-judge** on samples, **human** review on a small high-value or judge-disagreement subset. You layer methods so scarce human labels calibrate the cheaper ones (track inter-annotator agreement). Well-built judges reach roughly **80% agreement with humans on some tasks** (Zheng et al., 2023) — task-dependent, so validate before trusting.
+
+</ConceptCard>
+
+<MisconceptionFlip claim={"A high golden-set score means the system is safe."} correction={"Typical-case and adversarial evals answer different questions — a high golden score says nothing about injection resistance."} />
+<MisconceptionFlip claim={"An LLM judge gives objective ground truth."} correction={"An unvalidated judge is just a second untested model — calibrate it against human labels and average mirrored positions first."} />
+
+<FailureModeList
+  items={[
+    "Golden-set leakage/overfitting: examples seen in training inflate scores.",
+    "Stale golden set: green evals while real users complain.",
+    "Judge position/verbosity bias letting a worse-but-longer answer win.",
+    "Self-preference inflation: a judge favoring outputs from its own model family.",
+    "Tiny non-representative set making the CI gate noisy and untrustworthy."
+  ]}
+/>

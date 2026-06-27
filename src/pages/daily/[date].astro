@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DailyDay from '@/components/ui/DailyDay.astro';
+import { withBase } from '@/lib/paths';
+
+export async function getStaticPaths() {
+  const days = await getCollection('daily');
+  return days.map((d) => ({ params: { date: d.data.date }, props: { entry: d.data } }));
+}
+const { entry } = Astro.props;
+---
+
+<BaseLayout title={`Briefing ${entry.date} — ALLM Academy`}>
+  <div class="mb-4 flex items-center justify-between">
+    <a href={withBase('/archive')} class="text-sm text-text-muted no-underline hover:text-text">← Archive</a>
+    <a href={withBase('/calendar')} class="text-sm">Calendar →</a>
+  </div>
+  <DailyDay entry={entry} />
+</BaseLayout>

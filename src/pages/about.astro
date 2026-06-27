@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — ALLM Academy">
+  <article class="mx-auto max-w-prose">
+    <h1 class="text-fluid-xl font-bold text-text">About ALLM Academy</h1>
+    <div class="prose-tight mt-4 space-y-4">
+      <p>
+        A free, open course on <strong>production-LLM engineering</strong> — the systems work around the model: harness
+        design, inference internals, model efficiency, structured output, agent control, RAG, evals, observability, cost,
+        and safety. Twenty-two topics, taught with animated 2D diagrams, interactive widgets, quizzes, and optional audio.
+      </p>
+
+      <h2 class="text-lg font-semibold text-text">How the daily briefing works</h2>
+      <p>
+        This is a fully static site, so there is no server fetching news at runtime. Instead a scheduled CI job runs a
+        pipeline that <strong>fetches</strong> from public sources (Hacker News, arXiv, and several blogs via RSS),
+        <strong>dedupes / filters / ranks</strong> by relevance and recency, then <strong>curates</strong> the top items
+        into short teachable lessons mapped back to the nine modules. With an LLM key it writes a polished summary + a
+        micro-quiz; without one it falls back to a deterministic templated summary (flagged <em>auto-summary</em>). The
+        result is committed and the site redeploys.
+      </p>
+
+      <h2 class="text-lg font-semibold text-text">Honest limits</h2>
+      <ul>
+        <li>Numbers, prices, and benchmarks in lessons are illustrative ranges — verify against primary sources.</li>
+        <li>Some feeds (e.g. Reddit) block automated requests and may be skipped; the pipeline degrades gracefully.</li>
+        <li>X/Twitter has no stable keyless feed; it is intentionally omitted (optional enrichment is a stretch goal).</li>
+        <li>"Quiet day" cards appear when nothing clears the relevance bar — that is by design, not a bug.</li>
+      </ul>
+
+      <h2 class="text-lg font-semibold text-text">Your data</h2>
+      <p>
+        Progress (completed lessons, quiz scores, streak) lives only in your browser's <code>localStorage</code>. No
+        account, no tracking. Export it for safekeeping or move it between browsers.
+      </p>
+    </div>
+
+    <div class="card mt-4 flex flex-wrap gap-3 p-4">
+      <button id="export-btn" class="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-bg">Export progress</button>
+      <label class="cursor-pointer rounded-lg border border-border px-4 py-2 text-sm text-text hover:bg-surface-2">
+        Import progress
+        <input id="import-input" type="file" accept="application/json" class="hidden" />
+      </label>
+      <button id="reset-btn" class="rounded-lg border border-signal-bad/40 px-4 py-2 text-sm text-signal-bad hover:bg-signal-bad/10">
+        Reset
+      </button>
+      <span id="data-status" class="self-center text-sm text-text-faint" aria-live="polite"></span>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  import { exportJSON, importJSON, reset } from '@/lib/progress';
+  const status = document.getElementById('data-status');
+  const say = (m: string) => status && (status.textContent = m);
+
+  document.getElementById('export-btn')?.addEventListener('click', () => {
+    const blob = new Blob([exportJSON()], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'allm-academy-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    say('Exported.');
+  });
+
+  document.getElementById('import-input')?.addEventListener('change', async (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    const ok = importJSON(await file.text());
+    say(ok ? 'Imported — progress restored.' : 'Import failed: invalid file.');
+  });
+
+  document.getElementById('reset-btn')?.addEventListener('click', () => {
+    if (confirm('Reset all local progress? This cannot be undone.')) {
+      reset();
+      say('Progress reset.');
+    }
+  });
+</script>

@@ -1,0 +1,104 @@
+---
+{
+  "moduleId": "agent-control-routing-degradation",
+  "lessonId": "retry-fallback-degradation",
+  "title": "Retry, Fallback, Breakers, and the Degradation Ladder",
+  "order": 4,
+  "topicNumbers": [
+    13
+  ],
+  "objectives": [
+    "Distinguish retry (same model, transient error) from fallback (different model/provider) and apply each correctly",
+    "Explain why exponential backoff + jitter and a circuit breaker make retries safe during an outage",
+    "Identify capability-mismatch failures after a cross-provider fallback",
+    "Design a degraded-mode ladder that communicates reduced state and uses idempotency keys"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Fallback Cascade and Circuit Breaker",
+      "summary": "A request hits model A, retries loop back with widening backoff gaps after a 429, and after N failures a breaker flips from closed to open and reroutes to model B — shown beside a naive immediate-retry storm that spikes load."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Your primary model returns a 429. What is the correct first response?",
+      "options": [
+        "Retry the same model with exponential backoff and jitter; fall back only if exhausted or non-transient",
+        "Immediately escalate to a pricier, more capable model",
+        "Return an error to the user right away",
+        "Increase your request rate to push through the limit"
+      ],
+      "correct": 0,
+      "explanation": "429 is a transient rate-limit error — the right move is to retry the same model with backoff+jitter. Fallback to a different model is reserved for exhausted retries or non-transient errors."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "After a cross-provider failover from model A to model B, your tool-calling output starts coming back silently malformed. Most likely cause?",
+      "options": [
+        "Capability mismatch — B's tool-calling/JSON contract differs or isn't enabled",
+        "Model B is simply slower than A",
+        "Model A has already recovered",
+        "The circuit breaker tripped open"
+      ],
+      "correct": 0,
+      "explanation": "Fallback is not a drop-in. If B doesn't support or enable the same function-calling/JSON contract, output goes malformed without an explicit error — a capability mismatch, not latency or breaker behavior."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "When a model call fails, your instinct is to try again — and that instinct, applied naively, can take down the very service you depend on. Picture an outage: thousands of clients all retrying immediately, in lockstep, hammering a struggling backend the moment it tries to recover. That's a thundering herd, and it turns a blip into a sustained outage. So you retry, but politely: exponential backoff so each attempt waits longer, plus jitter so clients don't synchronize. First, separate two things people conflate. Retry is for transient errors — a 429 rate limit, an overload, a timeout — same model, just wait and try again. Fallback is different: when retries are exhausted or the error isn't transient, you switch to a different model or provider. But fallback is not a drop-in. The backup might not support function calling, JSON mode, or vision the same way, and your output goes silently malformed. A circuit breaker watches the failure rate and trips open to fail fast instead of retrying into the void, then half-opens to test recovery. And when all else fails, degrade down a ladder — full model, then smaller, then cached, then a plain rule-based answer, then an honest failure — and tell the user. The worst degradation is the invisible kind."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Retry ≠ fallback" tag="topic 13">
+
+- **Retry** the *same* model on **transient** errors — 429 (rate limit), provider overload (Anthropic returns **529**), standard **5xx**, timeouts — using **exponential backoff + jitter**. (Confirm exact status semantics against current provider docs.)
+- **Fallback** to a *different* model/provider only once retries are **exhausted** or the error is **non-transient**.
+- A **circuit breaker** trips **open** after repeated failures (fail fast, stop hammering), then **half-opens** to test recovery.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Naive immediate retry during an outage is a thundering-herd amplifier — backoff+jitter+breaker is what makes retries safe.
+</KeyInsightCallout>
+
+## Fallback is not a drop-in
+
+The backup model may not honor the same contract: function calling, strict JSON mode, or vision may be absent or differently enabled. The result is output that goes **silently malformed** rather than erroring — a capability mismatch, not a transport failure.
+
+<MisconceptionFlip
+  claim={"Retry handles failures, so fallback is unnecessary."}
+  correction={"Retry only fixes transient errors on the same model; a non-transient or exhausted failure needs a different model — that is fallback."}
+/>
+<MisconceptionFlip
+  claim={"A fallback model is a drop-in replacement."}
+  correction={"It may lack the same function-calling/JSON/vision contract, producing silently malformed output — a capability mismatch."}
+/>
+
+## The degradation ladder
+
+Degraded mode is a **ladder of rungs**, not an error message: **full model → smaller/faster → cached/templated → deterministic rule-based → honest failure**. Communicate the reduced state (a "fast mode" badge, partial results, disabled features) and use **idempotency keys** so cross-rung retries don't double-execute.
+
+<KeyInsightCallout>
+The worst degradation is invisible — users tolerate a labeled "reduced mode" far better than silently worse answers.
+</KeyInsightCallout>
+
+<FailureModeList
+  items={[
+    "Retry storm / thundering herd from immediate, synchronized retries during an outage.",
+    "Cascading fallback saturating the backup model into its own outage.",
+    "Capability-mismatch fallback producing silently malformed function-calling output.",
+    "Breaker stuck open (never recovers) or never tripping (retries into the void).",
+    "Non-idempotent retry/fallback causing double effects (e.g. duplicate orders)."
+  ]}
+/>

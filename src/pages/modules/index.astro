@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ModuleCard from '@/components/ui/ModuleCard.astro';
+import { MODULES } from '@/content/modules';
+import { buildManifest } from '@/lib/manifest';
+
+const lessons = await getCollection('lessons');
+const countFor = (id: string) => lessons.filter((l) => l.data.moduleId === id && !l.data.isModuleGate).length;
+const manifest = buildManifest(lessons);
+---
+
+<BaseLayout title="Modules — ALLM Academy">
+  <header class="max-w-2xl">
+    <h1 class="text-fluid-xl font-bold text-text">The learning path</h1>
+    <p class="mt-2 text-text-muted">
+      Nine modules, twenty-two topics — ordered so each builds on the last. Pass a module’s gate quiz to unlock the
+      next. You can roam freely; the lock is a suggestion, not a wall.
+    </p>
+  </header>
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {MODULES.map((m) => <ModuleCard module={m} lessonCount={countFor(m.id)} />)}
+  </div>
+
+  <script id="lesson-manifest" type="application/json" is:inline set:html={JSON.stringify(manifest)} />
+</BaseLayout>
+
+<script>
+  import { hydrateModuleCards } from '@/lib/progress-ui';
+  hydrateModuleCards();
+  window.addEventListener('allm:progress', hydrateModuleCards);
+</script>

@@ -1,0 +1,84 @@
+---
+{
+  "moduleId": "model-efficiency-compression",
+  "lessonId": "module-gate",
+  "title": "Module Gate: Efficiency by Bottleneck",
+  "order": 99,
+  "topicNumbers": [
+    5,
+    6,
+    7
+  ],
+  "objectives": [
+    "Synthesize speculative decoding, quantization, and distillation by the bottleneck each attacks and its quality risk"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "matching",
+      "question": "Match each technique (or fact) to its defining tradeoff.",
+      "pairs": [
+        {
+          "left": "Speculative decoding (exact-verification)",
+          "right": "Lossless; cuts latency but adds memory"
+        },
+        {
+          "left": "Quantization (e.g., INT4 W4A16)",
+          "right": "Lossy but cheap to apply; cuts memory and bandwidth"
+        },
+        {
+          "left": "Knowledge distillation",
+          "right": "Lossy; high upfront cost, permanently fewer parameters"
+        },
+        {
+          "left": "Decode bottleneck at low batch",
+          "right": "Memory bandwidth, not FLOPs"
+        }
+      ],
+      "explanation": "Speculative decoding trades extra memory for lower latency with no quality change; quantization cheaply cuts bytes per weight at some quality risk; distillation pays a large training cost to bake in a permanently smaller model; and all three exist because low-batch decode is bandwidth-bound, not compute-bound."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "At low batch size, what is the primary bottleneck during autoregressive decoding?",
+      "options": [
+        "Memory bandwidth — each token streams the entire weight matrix from HBM for a thin matrix-vector multiply",
+        "Raw FLOPs — the arithmetic dominates",
+        "Network latency between GPUs",
+        "Tokenizer overhead"
+      ],
+      "correct": 0,
+      "explanation": "With batch size near one, the matmul is a thin matrix-vector product, so the GPU spends most of its time hauling weights from HBM rather than computing. Almost every decode-time efficiency win comes from moving fewer bytes per token."
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "question": "You need lower tail latency with zero tolerance for any change in output quality. Which technique fits?",
+      "options": [
+        "Exact-verification speculative decoding — it is lossless and targets latency",
+        "INT4 quantization — it is lossless",
+        "Distillation — it is lossless and cheap",
+        "Aggressive KV-cache quantization"
+      ],
+      "correct": 0,
+      "explanation": "Only exact-verification speculative decoding is provably lossless while cutting latency. Quantization and distillation are lossy, and aggressive KV-cache quantization can silently degrade long-context quality."
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+All three techniques answer the same fact — at low batch, decode is bottlenecked by **memory bandwidth, not FLOPs**, because each token streams the whole weight matrix from HBM. They differ in *what* they move less of and *what* they cost: speculative decoding (one haul → several tokens, lossless, adds memory), quantization (fewer bytes per weight, lossy, cheap), distillation (fewer weights, lossy, expensive upfront).
+
+<KeyInsightCallout>
+Pick by bottleneck, not hype — latency vs memory vs permanent param count are different problems, and only exact-verification speculative decoding is free of quality risk (Medusa-style typical-acceptance trades a little quality for speed).
+</KeyInsightCallout>

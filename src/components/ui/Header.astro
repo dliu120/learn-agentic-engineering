@@ -1,0 +1,85 @@
+---
+import { withBase } from '@/lib/paths';
+const nav = [
+  { href: withBase('/'), label: 'Dashboard' },
+  { href: withBase('/modules'), label: 'Modules' },
+  { href: withBase('/today'), label: 'Today' },
+  { href: withBase('/glossary'), label: 'Glossary' },
+  { href: withBase('/about'), label: 'About' },
+];
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === withBase('/') ? path === href : path.startsWith(href));
+---
+
+<header class="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3">
+    <a href={withBase('/')} class="group flex items-center gap-2 no-underline">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-accent/15 font-mono text-accent">∑</span>
+      <span class="font-mono text-sm font-semibold text-text">ALLM&nbsp;Academy</span>
+    </a>
+
+    <nav aria-label="Primary" class="ml-2 hidden items-center gap-1 md:flex">
+      {
+        nav.map((n) => (
+          <a
+            href={n.href}
+            aria-current={isActive(n.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-md px-3 py-1.5 text-sm no-underline transition-colors',
+              isActive(n.href) ? 'bg-surface-2 text-text' : 'text-text-muted hover:bg-surface hover:text-text',
+            ]}
+          >
+            {n.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="ml-auto flex items-center gap-2">
+      <button
+        id="search-trigger"
+        class="hidden items-center gap-2 rounded-md border border-border bg-surface px-2.5 py-1.5 text-xs text-text-muted hover:text-text sm:flex"
+        aria-label="Open search (Command or Control K)"
+      >
+        <span>Search</span><kbd class="kbd">⌘K</kbd>
+      </button>
+      <button
+        id="theme-toggle"
+        class="grid h-8 w-8 place-items-center rounded-md border border-border bg-surface text-text-muted hover:text-text"
+        aria-label="Toggle color theme"
+        title="Toggle theme (system → light → dark)"
+      >
+        <span id="theme-icon" aria-hidden="true">◐</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Theme cycle: system → light → dark → system. Resolution also runs pre-hydration in BaseLayout.
+  const KEY = 'allm:theme';
+  const order = ['system', 'light', 'dark'] as const;
+  type Theme = (typeof order)[number];
+  const icon: Record<Theme, string> = { system: '◐', light: '☀', dark: '☾' };
+
+  function resolve(t: Theme) {
+    return t === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : t;
+  }
+  function apply(t: Theme) {
+    document.documentElement.dataset.theme = resolve(t);
+    const el = document.getElementById('theme-icon');
+    if (el) el.textContent = icon[t];
+  }
+  const current = (): Theme => ((localStorage.getItem(KEY) as Theme) ?? 'system');
+  apply(current());
+
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const next = order[(order.indexOf(current()) + 1) % order.length];
+    localStorage.setItem(KEY, next);
+    apply(next);
+  });
+
+  document.getElementById('search-trigger')?.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('allm:open-search'));
+  });
+</script>

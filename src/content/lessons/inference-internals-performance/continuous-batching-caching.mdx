@@ -1,0 +1,117 @@
+---
+{
+  "moduleId": "inference-internals-performance",
+  "lessonId": "continuous-batching-caching",
+  "title": "Continuous Batching and the Two Kinds of Caching",
+  "order": 2,
+  "topicNumbers": [
+    4
+  ],
+  "objectives": [
+    "Explain how continuous (iteration-level) batching eliminates idle bubbles and its dependence on dynamic KV allocation",
+    "Articulate the throughput vs P99 tail-latency tradeoff and why gains flatten at the compute/KV ceiling",
+    "Distinguish prefix (prompt) caching from semantic caching by match type, output guarantee, and correctness risk",
+    "Diagnose prefix-order cache busting and semantic-cache false hits"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Dynamic KV blocks feeding continuous batching",
+      "summary": "A paged KV memory strip shows blocks being freed as sequences finish and immediately reallocated to newly admitted requests each step, illustrating the dynamic per-step allocation continuous batching depends on."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "You prepend a per-request session ID to an 8K system prompt and enable prefix (prompt) caching, but you see no cache savings. Why?",
+      "options": [
+        "Prefix matching breaks at the first differing token, so the changing session ID invalidates the cache for the entire prompt — put static content first, dynamic last",
+        "Only the tail of the prompt is ever cacheable, so a leading ID has no effect",
+        "Prefix caching falls back to a partial embedding match that still applies",
+        "Session IDs cannot be tokenized, so caching is skipped"
+      ],
+      "correct": 0,
+      "explanation": "Prefix caching reuses KV only for an exact token-for-token matching prefix. One differing leading token (the session ID) makes everything downstream a cache miss. Keep the stable prefix first and volatile fields last."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "What is the defining change of continuous batching compared to static batching?",
+      "options": [
+        "It schedules at each decoding iteration, evicting finished sequences and admitting waiting ones without waiting for the whole batch to complete",
+        "It pads all sequences to equal length before running them together",
+        "It places each sequence on a separate GPU",
+        "It compresses the KV cache to fit more sequences"
+      ],
+      "correct": 0,
+      "explanation": "Continuous (iteration-level / in-flight) batching, from Orca, reschedules after every decoding step rather than waiting for the slowest sequence. This kills idle bubbles and depends on dynamic, per-step KV allocation."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Picture a bus that only leaves when every seat empties at the same stop. That's static batching: the whole batch waits for its slowest sequence to finish before refilling, so early finishers leave empty seats burning fuel. Continuous batching, introduced by Orca, rethinks the schedule. After every single decoding step it kicks out anyone who's done and lets a waiting request hop into the freed seat. No idle bubbles, throughput jumps several-fold. But there's a catch you trade against: pack the bus tighter and your tail latency, the P99, creeps up, and the gains flatten once you hit the compute or KV ceiling. Now, two kinds of caching that people constantly confuse. Prefix caching, also called prompt caching, reuses the computed KV for an exact token-for-token matching prefix. It skips prefill, returns the identical answer, and only discounts input. It's pure speed, no correctness risk. Semantic caching is a different animal: it embeds your query, finds a similar past query, and hands back the stored response without calling the model at all. Bigger savings, but if your similarity threshold is loose it'll happily return the wrong answer on a negation or a changed number. One is exact and safe; the other is fuzzy and gambles on correctness."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Static vs continuous batching" tag="topic 4">
+
+**Static batching** waits for every sequence in a batch to finish before refilling — early finishers leave idle "bubbles" and utilization sags. **Continuous** (iteration-level / in-flight) batching, introduced by **Orca**, reschedules after each decoding step: evict finished sequences, admit waiting ones, keep every slot lit. Throughput climbs **several-fold** (present it as a range, not a fixed multiplier). The lever you trade is **throughput vs tail (P99) latency**, and gains **flatten at the compute/KV ceiling**.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Continuous batching needs dynamic, per-step KV allocation, and PagedAttention is the now-standard way to provide it — but they are separable: Orca introduced iteration-level (continuous) batching before paging existed.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="kv-cache"
+  title="Dynamic KV blocks make continuous batching possible"
+  summary="As sequences finish, their paged KV blocks free up and are immediately reallocated to newly admitted requests each step — the per-step allocation continuous batching relies on."
+  height={340}
+/>
+
+## Two kinds of caching
+
+<ConceptCard title="Prefix (prompt) cache vs semantic cache">
+
+**Prefix caching** reuses the computed KV for an **exact, token-for-token matching prefix**, skips that prefill work, and returns the **identical** answer — it discounts **input/prefill only** and carries **no correctness risk**. **Semantic caching** embeds the incoming query, **vector-matches** a prior query→response, and if similarity clears a threshold returns the **stored response**, skipping the whole call — bigger savings, but a **real correctness risk**. They are often **layered**.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Prompt caching is exact-prefix and returns the identical answer (pure compute optimization); semantic caching is fuzzy and can return the wrong answer — they trade off on correctness, not just savings, and are often layered.
+</KeyInsightCallout>
+
+<TradeoffTable
+  headers={["Prefix (prompt) cache", "Semantic cache"]}
+  rows={[
+    ["Exact token-prefix match", "Fuzzy embedding similarity"],
+    ["Returns identical output (safe)", "Returns stored response (can be wrong)"],
+    ["Skips prefill; discounts input only", "Skips the entire call; largest savings"],
+  ]}
+/>
+
+<MisconceptionFlip
+  claim={"Prompt caching caches the response, so it saves on output tokens too."}
+  correction={"It caches the prefix KV and still decodes fresh — the discount is on input/prefill only, never output."}
+/>
+<MisconceptionFlip
+  claim={"Semantic caching is basically free and safe."}
+  correction={"A loose similarity threshold produces false hits — wrong answers on negations, numbers, and dates — because it never re-runs the model."}
+/>
+
+<FailureModeList
+  items={[
+    "Prefix-order cache busting: a leading timestamp or request-id invalidates the whole prompt (put static first, dynamic last).",
+    "Semantic-cache false positives from an over-loose threshold.",
+    "Latency cliff when batch size saturates the compute/KV ceiling.",
+    "Monitoring only average latency, hiding a blown P99 tail.",
+  ]}
+/>

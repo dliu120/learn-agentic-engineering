@@ -1,0 +1,123 @@
+---
+{
+  "moduleId": "inference-internals-performance",
+  "lessonId": "prefill-decode-kv-paged",
+  "title": "Prefill vs Decode, the KV Cache, and PagedAttention",
+  "order": 1,
+  "topicNumbers": [
+    3
+  ],
+  "objectives": [
+    "Explain why prefill is compute-bound (sets TTFT) while decode is bandwidth-bound (sets TPOT/ITL)",
+    "Estimate KV-cache memory growth and explain why it, not weights, caps serving concurrency",
+    "Describe how GQA/MQA and KV quantization shrink the KV footprint",
+    "Explain how PagedAttention turns KV memory into a schedulable, fragmentation-free resource"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Prefill compute-bound vs decode bandwidth-bound",
+      "summary": "Scene one shows the whole prompt entering as one block with the compute meter pegged and a TTFT stopwatch; scene two shows tokens emitted one at a time with the bandwidth meter pegged and a TPOT gap meter."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Why is the decode phase memory-bandwidth-bound rather than compute-bound?",
+      "options": [
+        "Each step reads the full weights + KV from HBM but performs only a single-token matrix-vector multiply (low arithmetic intensity)",
+        "It recomputes the entire KV cache from scratch on every token",
+        "It runs at higher numerical precision than prefill",
+        "It falls back to the CPU between tokens"
+      ],
+      "correct": 0,
+      "explanation": "Decode emits one token per step, hauling the whole weight matrix plus the growing KV cache out of HBM for a thin matrix-vector multiply. The memory bus is the bottleneck while the compute units sit idle."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "At serving time, what most directly limits how many concurrent sequences a GPU can hold?",
+      "options": [
+        "The aggregate KV cache, which grows with length × batch and can rival the weights",
+        "The size of the model weights alone, which dominate all memory",
+        "The number of attention heads in the architecture",
+        "The tokenizer vocabulary size"
+      ],
+      "correct": 0,
+      "explanation": "Weights are fixed; the KV cache is the dynamic memory that scales with sequence length and batch. It is what runs out first, so it sets concurrency and the real throughput ceiling. GQA/MQA and KV quantization buy headroom."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Here's the mental shift: one request is really two different jobs running on the same chip. First comes prefill. The model reads your entire prompt in a single parallel pass, and that pass pegs the compute units. Think of it like a chef reading the whole recipe at once before touching a pan. Prefill decides how fast your first token shows up. Then comes decode, and it feels completely different. The model emits one token, then another, then another, and on every single step it has to drag the full set of weights plus the growing KV cache out of high-bandwidth memory just to do one tiny multiply. The math units sit half idle while the memory bus screams. Decode decides how fast tokens stream after that. So the punchline is simple: prefill starves on compute, decode starves on bandwidth, and no single knob fixes both. And quietly underneath all this, the KV cache is the thing that actually limits how many users you can serve at once. It grows with every token and every concurrent request, and at long context it can rival the model weights themselves. PagedAttention is the trick that tamed it, by treating KV memory like paged virtual memory instead of one big contiguous block."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="One request, two workloads" tag="topic 3">
+
+A single generation runs in two phases on the same chip:
+
+- **Prefill** processes the whole prompt in one parallel pass. It is **compute-bound** and sets **TTFT** (time to first token).
+- **Decode** emits one token per step, re-reading the full weights *plus* the growing KV cache from HBM for a single-token matrix-vector multiply. That low arithmetic intensity makes it **bandwidth-bound**, and it sets **TPOT/ITL** (the inter-token gap — the terms are used interchangeably).
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Same model and hardware, but prefill starves on compute while decode starves on bandwidth — one knob can't optimize both.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="prefill-decode"
+  title="Prefill pegs compute; decode pegs bandwidth"
+  summary="The prompt slides in as one block (compute meter ~100%, TTFT stopwatch), then tokens emit one-by-one with a looping read-from-HBM arrow (bandwidth meter ~100%, TPOT gap)."
+  height={340}
+/>
+
+## The KV cache is the real ceiling
+
+<ConceptCard title="Why KV memory caps concurrency">
+
+Per-token KV size ≈ `2 × layers × kv_heads × head_dim × precision_bytes` (the 2 is keys + values). It grows **linearly with sequence length and batch size**, and the aggregate often **rivals or exceeds the weights** at long context. Levers to shrink it: **GQA** shares one KV head across a group of query heads (~4–8× typical reduction), **MQA** collapses to a single shared KV head (largest reduction), and **KV quantization** trades a little quality for headroom.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+At serving time the KV cache, not the weights, is the dynamic memory bottleneck — it sets concurrency, the real throughput ceiling.
+</KeyInsightCallout>
+
+## PagedAttention
+
+<ConceptCard title="KV memory as paged virtual memory">
+
+PagedAttention stores KV in **fixed-size, non-contiguous blocks** addressed by a per-sequence **block table**, cutting reservation waste from a directional ~60–80% to a few percent. **Copy-on-write** prefix sharing lets sequences reuse identical prefix blocks (the mechanism behind automatic prefix caching), and under pressure it **preempts** via recompute or CPU-swap with LRU eviction.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Treating the KV cache like paged virtual memory turned KV memory from a fragmentation nightmare into a schedulable resource.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"Decode is slow because it does heavy compute per token."}
+  correction={"Decode is bandwidth-bound — it re-reads weights+KV from HBM for one matrix-vector multiply, leaving the FLOPs idle."}
+/>
+<MisconceptionFlip
+  claim={"The KV cache is tiny next to the model weights."}
+  correction={"At long context × batch the aggregate KV cache rivals or exceeds the weights, which is why it caps concurrency."}
+/>
+
+<FailureModeList
+  items={[
+    "KV OOM under load triggering preemption and recompute storms.",
+    "Head-of-line blocking when a long prefill stalls everyone behind it.",
+    "A non-GQA model at long context blowing the memory budget.",
+    "Naive contiguous KV reservation fragmenting memory and rejecting new requests.",
+  ]}
+/>

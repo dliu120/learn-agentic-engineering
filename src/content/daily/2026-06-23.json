@@ -1,0 +1,24 @@
+{
+  "date": "2026-06-23",
+  "generatedAt": "2026-06-23T13:17:00.000Z",
+  "curationFlag": "quiet-day",
+  "sourcesUsed": [],
+  "audio": { "available": false },
+  "lessons": [
+    {
+      "id": "quiet-day-evergreen",
+      "headline": "A quiet day — revisit a fundamental",
+      "sourceLinks": [{ "title": "Browse the curriculum", "url": "/modules", "source": "ALLM Academy" }],
+      "summaryBullets": [
+        "No fresh items cleared the relevance + recency bar today.",
+        "Use the slack to re-derive a core idea instead of skimming news."
+      ],
+      "whyItMatters": "Staying current is necessary but not sufficient — fundamentals are what let you judge the news.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Evergreen fallback card.",
+      "tags": ["quiet-day"],
+      "meta": { "difficulty": "beginner", "readingTimeMin": 1 }
+    }
+  ]
+}

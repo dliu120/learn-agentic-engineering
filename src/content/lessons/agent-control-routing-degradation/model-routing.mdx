@@ -1,0 +1,104 @@
+---
+{
+  "moduleId": "agent-control-routing-degradation",
+  "lessonId": "model-routing",
+  "title": "Model Routing: Cheapest Sufficient Model, Measured Honestly",
+  "order": 3,
+  "topicNumbers": [
+    12
+  ],
+  "objectives": [
+    "Describe a routing strategy combining hard capability rules, complexity classification, and latency/cost policies",
+    "Quantify the order-of-magnitude price gap between frontier and small models and when down-routing pays off",
+    "Reason about the router's own added latency and failure as part of the cost equation",
+    "Explain why quality regression on down-routed queries is silent and must be measured"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Routing Lanes",
+      "summary": "A complexity-colored request stream hits a central router gate set by a threshold; simple requests deflect into a cheap lane and complex ones into an expensive lane, while cost counters fall and a quality gauge dips whenever a high-complexity request is sent cheap."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "You add a cost-saving router. Token spend drops, no new errors appear, but users report worse answers on harder tasks. What happened?",
+      "options": [
+        "Hard queries were down-routed to a weaker model and quietly answered worse — a silent quality regression",
+        "The router added too much latency to every request",
+        "The cheap model started throwing errors on hard queries",
+        "Prompt caching was disabled by the router"
+      ],
+      "correct": 0,
+      "explanation": "Down-routing a hard query rarely errors; the weak model just answers worse. This regression is silent unless you explicitly measure quality on down-routed traffic."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "When does adding a model router actually pay off?",
+      "options": [
+        "When the router's added latency plus mis-route error cost stays below the token savings",
+        "Always, because smaller models are cheaper per token",
+        "Only when every request can use the cheapest model",
+        "Whenever the frontier model is more than 2× the price of the small one"
+      ],
+      "correct": 0,
+      "explanation": "The router itself adds latency and can fail or mis-route. Routing is a net win only when those costs net out below the savings — raw per-token price gaps alone don't guarantee it."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Not every request deserves your most expensive model. A 'what's two plus two' and a 'refactor this legacy module' don't need the same horsepower, yet teams route everything to the frontier tier out of habit. Model routing fixes that: send each request to the cheapest model that's still sufficient. Sometimes that's a hard rule — this task needs vision, or function calling, so route by capability. Sometimes it's a complexity classifier deciding 'easy, send it cheap; hard, send it strong.' The savings are real because frontier and small models can differ by something like ten to thirty times per token. But routing isn't free, and this is where people get burned. The router itself adds latency and can fail, so it only pays off when those costs stay under what you save. And the subtler trap: when you down-route a hard query to a weak model, the answer doesn't error — it just quietly gets worse. That regression is invisible unless you deliberately measure quality on down-routed traffic. Think of the router as a triage nurse: brilliant when calibrated, dangerous when it sends a serious case to the wrong room and nobody checks. Route aggressively, but watch the queries you sent cheap."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Cheapest sufficient model" tag="topic 12">
+
+Routing sends each request to the **cheapest model that still meets the bar**, decided by three stacked mechanisms:
+
+- **Hard capability rules** — needs vision / function calling / a long context → must go to a model that has it.
+- **Complexity classification** — a lightweight classifier (e.g. RouteLLM, NotDiamond, Martian) sorts easy vs hard.
+- **Latency / cost policies** — pick the tier that fits the SLA and budget.
+
+The prize: frontier and small models differ on the order of **~10–30× per token** (an order-of-magnitude estimate, not a fixed price), so steering easy traffic cheap compounds fast.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Routing pays off only when the router's added latency + error cost stay below savings — and only if you measure the quality hit on down-routed queries, since that regression is silent.
+</KeyInsightCallout>
+
+## The router has its own cost
+
+A classifier in front of every request adds latency and is itself a failure point. If it adds 200ms and occasionally mis-routes, that overhead and error must net out below the token savings — otherwise routing is a loss disguised as an optimization.
+
+## The silent regression
+
+Down-route a hard query and the cheap model rarely errors; it just answers a little worse. Without an explicit quality measurement on down-routed traffic, that degradation never surfaces.
+
+<MisconceptionFlip
+  claim={"Routing always saves money."}
+  correction={"Router latency, router failures, and the cost of mis-routed hard queries can erase the per-token savings — and the quality hit is invisible unless measured."}
+/>
+
+<TradeoffTable
+  headers={["Aggressive down-routing", "Conservative routing"]}
+  rows={[["Large token-cost savings", "Higher spend"],["Higher risk of silent quality loss on hard queries", "Lower quality risk, more reliable"]]}
+/>
+
+<FailureModeList
+  items={[
+    "Silent quality degradation on hard queries sent to a weak model.",
+    "Router latency + failure overhead exceeding the savings it produces.",
+    "Mis-route of a capability-dependent request (e.g. needs vision) to a model that lacks it.",
+    "No measurement of down-routed accuracy, so the regression is never noticed."
+  ]}
+/>

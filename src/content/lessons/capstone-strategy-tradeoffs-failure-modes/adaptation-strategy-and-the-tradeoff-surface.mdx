@@ -1,0 +1,118 @@
+---
+{
+  "moduleId": "capstone-strategy-tradeoffs-failure-modes",
+  "lessonId": "adaptation-strategy-and-the-tradeoff-surface",
+  "title": "Strategy, Tradeoffs & Silent Regressions",
+  "order": 1,
+  "topicNumbers": [
+    22
+  ],
+  "objectives": [
+    "Choose correctly among ICL, RAG, fine-tuning, and distillation by separating the knowledge axis from the behavior axis, and name when each is the wrong tool",
+    "Map the inference stack to two latency numbers (TTFT from prefill, per-token from decode) and identify the biggest real cost levers",
+    "Reason about the latency/cost/quality/reliability tradeoff surface and explain why no operating point maxes all four",
+    "Diagnose silent, confident production failures (stale retrieval, runaway agents, silent eval regressions) and name the matching guardrail"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "The Tradeoff Radar You Can't Max Out",
+      "summary": "A four-spoke radar (latency, cost, quality, reliability) where dragging a model-tier or batch-size control morphs the achievable polygon, which can never fill the fixed dashed 'ideal' shape."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "A model fine-tuned on a weekly-changing product catalog keeps returning stale answers. Best fix?",
+      "options": [
+        "Move the volatile catalog into RAG so it's retrieved fresh at inference",
+        "Nightly retrain with a higher learning rate",
+        "Switch to a bigger base model",
+        "Raise the sampling temperature"
+      ],
+      "correct": 0,
+      "explanation": "Fine-tuning bakes facts into weights at a point in time, so volatile knowledge goes stale and forces costly retrains. Volatile, citable knowledge belongs in RAG, where it's fetched fresh each request."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Basic JSON mode is on; the output is syntactically valid JSON, yet a required field is missing and parsing breaks downstream. What happened?",
+      "options": [
+        "JSON mode guarantees only valid syntax, not schema conformance — validate against the schema or use strict structured outputs",
+        "JSON mode is malfunctioning",
+        "The context window was too small",
+        "The HTTP client corrupted the body"
+      ],
+      "correct": 0,
+      "explanation": "Syntactic validity, schema conformance, and semantic correctness are three distinct guarantees. Basic JSON mode covers only syntax; enforce the schema separately."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Here's the jump that separates 'I can call an LLM' from 'I run an LLM system in production.' It's a meta-skill in two halves. First half: match the tool to the problem's axis. RAG and in-context learning change what the model KNOWS at inference time, without touching weights. Fine-tuning and distillation change how it BEHAVES, by changing the weights. Almost every adaptation mistake starts by confusing those two. The classic one: fine-tuning a model to memorize a catalog that changes every week. The facts go stale the moment training ends, and now you're paying to retrain. Put volatile, citable knowledge in RAG; use fine-tuning for consistent style, format, and narrow skills. Second half: think of your system as a radar chart with four spokes, latency, cost, quality, reliability. Every lever, bigger model, bigger batch, more agent autonomy, pulls some spokes out and retracts others. You never fill all four. And the scariest part? The worst failures are silent and confident. Stale retrieval, an agent looping forever, a quality regression after a provider quietly swaps the model behind a stable alias, none of them throw an error. They look exactly like success. So guardrails and continuous evals matter more than any single model choice."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Two axes: what it KNOWS vs how it BEHAVES" tag="topic 22">
+
+Adaptation methods split on two orthogonal axes, not a single ladder:
+
+- **Knowledge, injected at inference (no weight change)** — *ICL* (examples in the prompt) and *RAG* (retrieve fresh, citable facts).
+- **Behavior/form, baked into weights** — *fine-tuning* (SFT/LoRA/PEFT) for consistent style, format, or a narrow skill; *distillation* to compress a validated pipeline into a cheaper student.
+
+Most production systems combine both. The most common mistake is fine-tuning to inject *facts*.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+As a tendency (not a clean identity), fine-tuning is most reliable for behavior, format, and style and is a brittle vehicle for knowledge — it CAN encode facts, but they go stale, require a retrain, risk catastrophic forgetting, and can even raise hallucination; RAG is the better path for volatile, citable knowledge. Most production systems need both; the most common mistake is fine-tuning to inject facts.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"RAG and fine-tuning are competitors — pick one."}
+  correction={"They sit on orthogonal axes (knowledge vs behavior) and are usually combined: RAG for fresh facts, fine-tuning for stable form."}
+/>
+<MisconceptionFlip
+  claim={"Latency is one number."}
+  correction={"It's two: TTFT from the compute-bound prefill, and per-token (decode) latency that is bandwidth-bound. The biggest cost lever is usually model choice + caching + output-length control, not kernel micro-optimization."}
+/>
+
+## The tradeoff surface
+
+Every inference lever trades among four properties. You optimize a point on the surface; you never max all four.
+
+<TradeoffTable
+  headers={["Lever", "What it buys", "What it costs"]}
+  rows={[["Large continuous batches", "Throughput / lower $-per-token", "Higher per-request TTFT under load"],["Quantization / distillation", "Speed + memory headroom", "Some accuracy (eval-gate it)"],["Bigger / reasoning model", "Quality", "Latency and cost (resolve via routing)"],["More agent autonomy", "Capability on open-ended tasks", "Unpredictable cost/runtime without hard caps"]]}
+/>
+
+<VizWrapper
+  name="tradeoff-radar"
+  title="The Tradeoff Radar You Can't Max Out"
+  summary="Four spokes — latency, cost, quality, reliability. Dragging model-tier or batch-size morphs the achievable polygon; raising quality retracts the latency and cost spokes. A dashed 'ideal' polygon never fills."
+  height={340}
+/>
+
+## Silent, confident failures
+
+The dangerous production failures throw no errors and pass green infra checks.
+
+<KeyInsightCallout>
+"No errors" is not "no regression" — the most dangerous regressions look exactly like success.
+</KeyInsightCallout>
+
+<FailureModeList
+  items={[
+    "Stale retrieval: index lag or embedding-version skew → confident wrong answers. Fix: freshness SLAs/TTL, incremental re-index, parity checks.",
+    "Runaway agents: loops, repeated calls, fan-out. Fix: max-step/token/cost caps, no-progress detection, timeouts, circuit breakers.",
+    "Silent eval regression: a prompt edit, dependency bump, or unannounced provider model swap behind a stable alias degrades quality with zero errors. Fix: version prompts + pin model IDs together, golden/regression suites in CI, canary, monitor proxy signals.",
+    "JSON mode is syntax-only: valid JSON can still miss required fields — validate against the schema or use strict structured outputs.",
+  ]}
+/>

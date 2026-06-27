@@ -1,0 +1,122 @@
+---
+moduleId: foundations-prompts-to-harnesses
+lessonId: context-engineering
+title: "Context Engineering: Curate, Don't Accumulate"
+order: 2
+topicNumbers: [2]
+objectives:
+  - "Apply write / select / compress / isolate under a fixed token budget"
+  - "Explain why more tokens is not better (lost-in-the-middle, context rot, cost)"
+  - "Name the four context failure modes and their matching fixes"
+hasAudio: true
+narration: >
+  Context is not something you write once — it's something you assemble fresh on every single
+  step. There are four moves. Write: persist important state to a scratchpad or memory so it
+  survives. Select: retrieve only the documents, tools, and examples this step actually needs.
+  Compress: summarize history so it stays small without losing the thread. Isolate: push side
+  quests into sub-agents with their own windows so they don't pollute the main one. Why bother?
+  Because a bigger window is a budget, not a dumping ground. Standard attention cost grows
+  roughly with the square of length, models get lost in the middle of long contexts, and quality
+  rots well before the hard limit. And prompt caching only saves money if your prefix stays
+  token-stable — put stable content first, volatile content last. When an agent seems to get
+  dumber over a session, it's usually one of four context failures you introduced: poisoning,
+  distraction, confusion, or clash. Name the mode and the fix is obvious.
+visualizations:
+  - { title: "The context window as RAM", summary: "A fixed-width bar represents the window. Dumping raw history and documents buries the signal; selecting, compressing, and isolating reclaim space and raise signal density." }
+quiz:
+  - id: q1
+    type: mcq
+    question: "You move from an 8K to a 200K window and stuff in every document. Mid-context accuracy drops. Best fix?"
+    options:
+      - "Rerank and curate so key facts sit near the edges, and prune the rest"
+      - "Add even more tokens so the model has more to work with"
+      - "You've hit a hard 8K limit in the model"
+      - "Tokenizer drift is corrupting the middle"
+    correct: 0
+    explanation: "This is 'lost in the middle': models attend most to the start and end. Curate for signal density and place key info at the edges."
+  - id: q2
+    type: mcq
+    question: "You prepend a fresh timestamp and a reshuffled tool list to every request. Prompt caching is on, but cost stays high. Why?"
+    options:
+      - "Changing the prefix invalidates the KV/prompt cache — put stable content first, volatile last"
+      - "Prompt caching only ever discounts output tokens"
+      - "Timestamps can't be tokenized"
+      - "Tool lists are never cacheable"
+    correct: 0
+    explanation: "Prefix caching matches on a token-stable prefix. One early differing token (the timestamp) invalidates everything downstream."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+
+<ConceptCard title="The four moves of context engineering" tag="topic 2">
+
+Context is assembled **fresh each turn**. Four levers:
+
+- **Write** — persist to a scratchpad / memory so state survives the step.
+- **Select** — retrieve only the relevant docs, tools, and examples.
+- **Compress** — summarize or compact history to stay small.
+- **Isolate** — give side-quests their own windows (sub-agents).
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Context is a dynamic, per-step **assembly** problem, not a one-time writing task — curate, don't
+accumulate.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="context-budget"
+  title="The context window as a finite budget"
+  summary="A fixed window bar. Step 1 dumps raw history and documents — signal is buried. Selecting, then compressing, then isolating reclaim space and push the signal-density meter up."
+  height={300}
+/>
+
+## Why more tokens ≠ better
+
+Standard self-attention compute grows **~quadratically** with length; models get **lost in the
+middle** of long inputs (Liu et al., 2023); quality **rots** before the hard limit; and KV/prompt
+caching is ~an order of magnitude cheaper on cached input **only if the prefix is token-stable**.
+
+<KeyInsightCallout>
+A larger context window is a **budget, not a dumping ground** — signal density and a cache-stable
+layout beat raw token count.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"Bigger window = just dump everything in."}
+  correction={"You still pay quadratic cost and suffer lost-in-the-middle, rot, and distraction."}
+/>
+<MisconceptionFlip
+  claim={"Prompt caching always saves money."}
+  correction={"Only token-stable prefixes hit the cache. Volatile content (timestamps, shuffled tools) early in the prompt busts it."}
+/>
+
+## The four context failure modes (Breunig)
+
+<ConceptCard title="Name the mode → know the fix">
+
+- **Poisoning** — a wrong fact enters context and gets repeated. *Fix: prune it.*
+- **Distraction** — history grows until it drowns the instructions. *Fix: compact.*
+- **Confusion** — too many tools/options muddy tool choice. *Fix: scope the tools.*
+- **Clash** — contradictory retrieved chunks collide. *Fix: rerank / dedupe.*
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Most "the agent got dumber over the session" bugs are **context failures you introduced** —
+naming the mode points straight at the fix.
+</KeyInsightCallout>
+
+<FailureModeList
+  items={[
+    "KV/prompt-cache invalidation from a volatile prefix (timestamps, reshuffled tools).",
+    "Context poisoning: a hallucinated fact recirculates and compounds.",
+    "Tool confusion from too many registered tools.",
+    "Stale or contradictory RAG chunks producing a clash.",
+  ]}
+/>

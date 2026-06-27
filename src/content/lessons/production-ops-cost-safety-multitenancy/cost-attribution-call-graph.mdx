@@ -1,0 +1,112 @@
+---
+{
+  "moduleId": "production-ops-cost-safety-multitenancy",
+  "lessonId": "cost-attribution-call-graph",
+  "title": "Cost Lives in the Call Graph, Not the Invoice",
+  "order": 1,
+  "topicNumbers": [
+    19
+  ],
+  "objectives": [
+    "Propagate tenant / feature / journey tags through every hop of a multi-call fan-out and sum token usage",
+    "Compute cost-per-successful-outcome instead of cost-per-call",
+    "Explain token asymmetry, billed reasoning tokens, and prompt-cache pricing without hardcoding vendor numbers",
+    "Identify whale tenants in heavy-tailed usage and why they invert margin"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Cost Flows Through the Call Graph",
+      "summary": "A left-to-right directed graph from one user action into planner, tool, retrieval, and retry calls, with a tenant tag propagating node-to-node while a flat cost-per-call meter and a far-higher cost-per-task meter diverge."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Your per-call LLM cost is flat, but total spend tripled the month you shipped an agentic feature. Most likely cause?",
+      "options": [
+        "The feature fans each request into many chained calls plus billed reasoning tokens; attribute cost at the task/feature level",
+        "Output tokens suddenly became cheaper than input tokens",
+        "Prompt caching raised your input cost",
+        "Embedding calls now dominate the bill"
+      ],
+      "correct": 0,
+      "explanation": "Agentic features multiply the number of calls per task (planner, tools, retries, reflection) and add reasoning tokens. Flat per-call cost hides this; the right denominator is cost-per-task/outcome."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Why is cost-per-successful-outcome the right unit-economics denominator?",
+      "options": [
+        "It captures retries and multi-step fan-out that flat per-call cost hides — but only if tags propagate through every hop",
+        "It ignores failed attempts, which are free",
+        "Providers bill per outcome rather than per token",
+        "It is identical to cost-per-call once caching is enabled"
+      ],
+      "correct": 0,
+      "explanation": "Failed and retried attempts still burn tokens. Summing cost across the tagged fan-out and dividing by successful outcomes is the only view that reflects real margin."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Here's the trap with LLM cost: the bill you stare at is per-call, but the money is spent per-task. One user click quietly fans out — a planner, a few tool calls, a retry, a reflection pass — and each of those is a separately billed call. Think of it like a restaurant tab where every refill, every side, every redo lands on its own line, but you only ever glance at the price of a single drink. To see the real number you have to tag the order — tenant, feature, journey — and let that tag ride every hop, then add it all up. And the expensive parts hide off the headline price: output tokens cost several times more than input, hidden reasoning tokens get billed even though you never see them, and a handful of whale tenants quietly eat your margin while the average looks perfectly fine. The fix is boring and powerful: attribute cost across the whole call graph, and measure cost per successful outcome — not cost per call."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="One action, many calls" tag="topic 19">
+
+A single user request rarely maps to a single model call. A planner step, several tool calls, retries, a reflection pass, and per-chunk retrieval calls all **fan out** from one click. Cost lives in that call graph, not in any one request.
+
+The fix is propagation: attach a tag set — `tenant_id`, `feature`, `journey_id` — and carry it through **every hop** (OpenTelemetry GenAI conventions plus provider request-metadata), then sum token usage across the whole fan-out.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+per-call cost can stay flat while per-task cost explodes — the correct denominator is cost-per-successful-outcome, computable only if tags ride the whole fan-out.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="cost-call-graph"
+  title="Cost Flows Through the Call Graph"
+  summary="One user action fans out into planner, tool, retrieval, and retry calls. A tenant tag rides node-to-node; a flat 'cost per call' meter holds steady while a 'cost per task' meter climbs far higher and splits away."
+  height={340}
+/>
+
+## Unit economics: where the money actually hides
+
+Three facts reshape the bill (re-verify current vendor ratios — they drift):
+
+- **Token asymmetry** — output tokens cost several times more than input tokens.
+- **Reasoning tokens** — hidden "thinking" tokens are still billed, usually at output rates, even though you never see them. (Billing and visibility differ by provider.)
+- **Prompt caching** — cached input is far cheaper than fresh input, with a small write premium — *only* if your prefix stays token-stable.
+
+Usage is **heavy-tailed**: a few whale tenants drive most spend and can invert margin while average cost-per-call looks healthy.
+
+<KeyInsightCallout>
+the expensive parts aren't on the invoice line — output tokens, hidden reasoning tokens, the long-tail whale — attribution + budgets surface them before they eat margin.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"Per-request cost is the cost of the feature."}
+  correction={"An agentic feature fans each request into many chained calls plus reasoning tokens — measure at the task/feature level."}
+/>
+<MisconceptionFlip
+  claim={"Input and output tokens cost the same, and reasoning tokens are free."}
+  correction={"Output costs several× input, and hidden reasoning tokens are billed (usually as output)."}
+/>
+
+<FailureModeList
+  items={[
+    "A reasoning model 5–10×'s cost through hidden tokens nobody attributed.",
+    "A runaway agent/tool loop with no per-tenant budget cap.",
+    "A whale tenant inverts margin while blended cost-per-call looks fine.",
+    "Attribution too coarse to find which feature or tenant caused a spend spike.",
+  ]}
+/>

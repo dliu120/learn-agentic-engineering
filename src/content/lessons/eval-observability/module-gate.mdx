@@ -1,0 +1,91 @@
+---
+{
+  "moduleId": "eval-observability",
+  "lessonId": "module-gate",
+  "title": "Module Gate: Evaluation & Observability",
+  "order": 99,
+  "topicNumbers": [
+    17,
+    18
+  ],
+  "objectives": [
+    "Synthesize eval types, tracing, telemetry, and drift into the single closed loop",
+    "Demonstrate readiness to apply these concepts to a nondeterministic production system"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "g1",
+      "type": "mcq",
+      "question": "An exact-match grader keeps failing correct answers that differ only in wording, and your CI gate is flaky. What's the right fix?",
+      "options": [
+        "Use tolerant scorers (semantic similarity, schema checks, or an LLM judge) and gate on aggregate score deltas",
+        "Raise the temperature until outputs converge on the reference text",
+        "Disable the regression gate since LLMs are nondeterministic anyway",
+        "Replace the golden set with BLEU/ROUGE on every example"
+      ],
+      "correct": 0,
+      "explanation": "Exact match can't handle wording variance or temp-0 nondeterminism. Tolerant scorers plus aggregate thresholds judge meaning and stabilize the gate; n-gram metrics like BLEU/ROUGE miss semantics on open-ended output."
+    },
+    {
+      "id": "g2",
+      "type": "matching",
+      "question": "Match each eval type or signal to the question it answers.",
+      "explanation": "Each layer answers a distinct question: golden sets check representative correctness, adversarial checks safety under attack, LLM-judge scales cheap grading, and semantic-error monitoring catches silent failures hiding inside HTTP 200s.",
+      "pairs": [
+        {
+          "left": "Golden set",
+          "right": "Is representative behavior correct on a curated suite?"
+        },
+        {
+          "left": "Adversarial / red-team",
+          "right": "Does it resist injection and jailbreaks under attack?"
+        },
+        {
+          "left": "LLM-as-judge",
+          "right": "How good is output, scored cheaply at volume?"
+        },
+        {
+          "left": "Schema/refusal monitoring",
+          "right": "Is the system failing silently inside a 200 response?"
+        }
+      ]
+    },
+    {
+      "id": "g3",
+      "type": "ordering",
+      "question": "Order the stages of the mature closed eval loop, starting from live traffic.",
+      "options": [
+        "Capture production traces",
+        "Sample and flag failures",
+        "Add failures to the golden set",
+        "Run the regression gate",
+        "Release the next version"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explanation": "The loop runs traces, then sampled failures, then golden-set growth, then a regression gate, then release — so real-world failures continuously harden the suite that guards each deploy."
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+You've covered the two halves of running LLMs in production: evals as your test suite for nondeterministic behavior, and observability as your sensor for silent failures. This gate checks that you can connect them into one loop.
+
+<KeyInsightCallout>
+Evals and observability are one control loop — traces feed the golden set, the golden set gates the next release, and the most dangerous regression is the one you never deployed.
+</KeyInsightCallout>

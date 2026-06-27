@@ -1,0 +1,111 @@
+---
+{
+  "moduleId": "reliable-structured-output-tool-calling",
+  "lessonId": "tool-calling-reliability-idempotency",
+  "title": "The Model Plans, Your Code Executes: Tool Calls & Idempotency",
+  "order": 2,
+  "topicNumbers": [
+    9
+  ],
+  "objectives": [
+    "Describe the function-calling loop and explain why the model is a planner, not an executor",
+    "Enumerate function-calling failure modes (hallucinated args, accuracy decay past ~10-20 tools, missing/over-eager calls, parallel races) and their mitigations",
+    "Treat every generated tool argument as untrusted input requiring schema shape, business rules, and injection defense",
+    "Apply idempotency so an at-least-once loop produces exactly-once side effects"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Agent Tool Loop with Idempotency Guard",
+      "summary": "Two columns (Model | Your System): a tool_call card slides into a validate-args gate then an execute node incrementing a charges counter; on replay, key OFF doubles the counter (red) while key ON hits a dedup cache (green, unchanged)."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Why must write tools be idempotent in an agent loop?",
+      "options": [
+        "The loop is at-least-once: timeouts, retries, and re-issued calls duplicate side effects",
+        "Constrained decoding requires idempotent tools to compile the grammar",
+        "Idempotency saves output tokens on each call",
+        "Idempotency is needed to generate valid arguments"
+      ],
+      "correct": 0,
+      "explanation": "Agent loops deliver at-least-once, so the same write can fire more than once via timeouts and retries. An idempotency key deduped server-side turns the inevitable duplicate into a no-op, giving exactly-once effects."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Your code receives tool arguments that pass JSON-schema validation. What's the right next step before executing a write?",
+      "options": [
+        "Apply business rules, authorization checks, and injection defense — treat the args as untrusted input",
+        "Execute immediately; schema validity proves the args are safe",
+        "Re-ask the model to confirm the arguments",
+        "Disable the schema since validation already passed"
+      ],
+      "correct": 0,
+      "explanation": "Schema shape only proves the arguments are well-formed, not safe or authorized. Generated args are untrusted input: enforce business rules, authz, and injection defense (SQLi, command, path traversal, SSRF) server-side before any side effect."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Think of the model as a dispatcher on a radio, not the driver of the truck. You declare your tools with names, descriptions, and typed parameters. The model emits a call — but it executes nothing. Your code runs the tool and feeds the result back, and the loop continues. That separation is the whole game, because reliability is won in the loop, not in the model. Want guaranteed extraction? Force tool_choice to a single tool. Drowning in tools? Past roughly ten to twenty overlapping ones, selection accuracy decays, so retrieve or namespace them. And here's the part that bites people in production: those generated arguments are untrusted input. Validate them server-side as if a hostile user typed them — shape, business rules, and injection defense. Finally, the unglamorous hero: idempotency. Your loop is at-least-once. Timeouts and retries mean the same charge-the-card call can fire twice. The fix doesn't live in hoping it won't happen — it lives in the tool. An idempotency key, deduped server-side, turns a double-fire into a no-op. Design for exactly-once effects on top of at-least-once delivery, because the retry will happen."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="The function-calling loop" tag="topic 9">
+
+You **declare** tools (name, description, JSON-schema params). The model **emits a call** — and runs nothing. **Your code** executes it and returns the result; the loop continues.
+
+Levers that buy reliability:
+- **`tool_choice`** — `auto` / `required` / `none` / forced. Forcing one tool is the canonical reliable-extraction trick.
+- **Tool count** — accuracy decays past ~10–20 overlapping tools (a model-dependent heuristic); buy it back with **tool retrieval, namespacing, or sub-agents**.
+- **Parallelism** — disable parallel calls for dependent operations to avoid races (`parallel_tool_calls`).
+
+</ConceptCard>
+
+<KeyInsightCallout>
+The model is a planner, not an executor — reliability is won in the loop (forcing tool_choice, capping/retrieving tools, disabling parallel for dependent ops).
+</KeyInsightCallout>
+
+## Tool contracts and arguments as untrusted input
+
+Tool **descriptions are read by the model** — they are prompt engineering, so use clear names, examples, enums, and typed/required fields. But the arguments the model returns must be **re-validated server-side as if a hostile user typed them**.
+
+<KeyInsightCallout>
+Tool descriptions have outsized impact on selection accuracy, yet args must be re-validated server-side as if a hostile user typed them.
+</KeyInsightCallout>
+
+<MisconceptionFlip claim={"If the arguments validate against the schema, it's safe to execute."} correction={"Schema shape is not enough — you still need business rules, authorization, and injection defense (SQLi, command, path traversal, SSRF)."} />
+<MisconceptionFlip claim={"More tools make the agent more capable."} correction={"Selection accuracy decays as overlapping tools pile up; scope or retrieve tools instead."} />
+
+## Idempotency: exactly-once effects on at-least-once delivery
+
+Agent loops are **at-least-once**: timeouts, retries, and re-issued calls duplicate side effects. Make writes idempotent (client idempotency keys deduped server-side; PUT/DELETE/upserts; dedup windows), split read vs write tools, and add timeouts / bounded retries / circuit breakers.
+
+<KeyInsightCallout>
+Design for exactly-once effects on top of at-least-once delivery — the retry WILL happen, so the guard lives in the tool.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="guarantee-ladder"
+  title="At-least-once vs exactly-once"
+  summary="A duplicate tool call replays through the loop: with the idempotency key OFF the side-effect counter doubles (red); with the key ON the server hits a dedup cache and the counter is unchanged (green)."
+  height={340}
+/>
+
+<FailureModeList
+  items={[
+    "Duplicate side effects from non-idempotent writes plus retries (double charges, double sends).",
+    "Hallucinated or missing arguments passed straight to execution.",
+    "Extraction breaking under tool_choice='auto' when a call was required.",
+    "Injection through tool args; parallel calls racing dependent operations.",
+  ]}
+/>

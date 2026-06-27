@@ -1,0 +1,17 @@
+---
+interface Props {
+  claim: string;
+  correction: string;
+}
+const { claim, correction } = Astro.props;
+---
+
+<div class="my-4 grid gap-2 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+  <p class="rounded-lg border border-signal-bad/40 bg-signal-bad/5 px-3 py-2 text-sm text-text-muted">
+    <span class="mr-1 font-semibold text-signal-bad">✗ Myth</span>{claim}
+  </p>
+  <span class="hidden text-text-faint sm:block" aria-hidden="true">→</span>
+  <p class="rounded-lg border border-signal-good/40 bg-signal-good/5 px-3 py-2 text-sm text-text">
+    <span class="mr-1 font-semibold text-signal-good">✓ Reality</span>{correction}
+  </p>
+</div>

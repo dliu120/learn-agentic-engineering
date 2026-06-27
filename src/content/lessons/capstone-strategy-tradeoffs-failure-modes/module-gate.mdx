@@ -1,0 +1,87 @@
+---
+{
+  "moduleId": "capstone-strategy-tradeoffs-failure-modes",
+  "lessonId": "module-gate",
+  "title": "Module Gate: Strategy, Tradeoffs & Failure Modes",
+  "order": 99,
+  "topicNumbers": [
+    22
+  ],
+  "objectives": [
+    "Synthesize adaptation selection, the inference tradeoff surface, and silent failure modes into production decisions"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "g1",
+      "type": "mcq",
+      "question": "Which statement best describes a 'silent eval regression'?",
+      "options": [
+        "Output quality drifts with no error raised — often after an unannounced model or prompt change — slipping by because no regression eval gates it",
+        "The eval script throws an exception and the CI job turns red",
+        "p99 latency spikes and pages on-call",
+        "The service returns HTTP 500s under load"
+      ],
+      "correct": 0,
+      "explanation": "Silent regressions are dangerous precisely because infra stays green and no errors fire; quality degrades invisibly. The defense is a regression/golden eval suite plus pinned model IDs and prompt versions."
+    },
+    {
+      "id": "g2",
+      "type": "matching",
+      "question": "Match each adaptation method to what it primarily changes or is best used for.",
+      "pairs": [
+        {
+          "left": "RAG",
+          "right": "Inject large, volatile, citable knowledge at inference (no weight change)"
+        },
+        {
+          "left": "Fine-tuning (SFT/LoRA)",
+          "right": "Shape consistent behavior, format, or a narrow skill in the weights"
+        },
+        {
+          "left": "In-context learning",
+          "right": "Steer with examples in the prompt, no training"
+        },
+        {
+          "left": "Distillation",
+          "right": "Compress a validated pipeline into a cheaper student model"
+        }
+      ],
+      "explanation": "RAG and ICL change what the model knows at inference; fine-tuning and distillation change how it behaves by changing weights. Confusing the two axes is the most common adaptation mistake."
+    },
+    {
+      "id": "g3",
+      "type": "ordering",
+      "question": "An agent is making repeated, near-identical tool calls and the cost meter is climbing with no final answer. Order the guardrails you'd reach for, from the most immediate hard ceiling to the longer-term defense.",
+      "options": [
+        "Enforce a max-step / token / cost cap to bound the blast radius now",
+        "Add loop / no-progress detection so the agent stops repeating itself",
+        "Add timeouts and a circuit breaker around flaky tools/dependencies",
+        "Add a regression eval + monitoring (proxy signals) to catch recurrence"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "Hard ceilings (step/token/cost caps) stop the bleeding immediately; loop detection prevents the specific repetition; timeouts/circuit breakers contain dependency failures; and continuous evals plus proxy-signal monitoring catch the problem before it recurs."
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+You've separated the knowledge axis from the behavior axis, mapped the four-spoke tradeoff surface, and learned why the scariest failures throw no errors. This gate checks that you can put it together under production pressure.
+
+<KeyInsightCallout>
+Production LLM engineering is a meta-skill in two halves: match the tool to the problem's axis (RAG/ICL change what it KNOWS, fine-tune/distill change how it BEHAVES), then accept that every lever trades latency/cost/quality/reliability — and the deadliest failures are the silent, confident ones that look exactly like success.
+</KeyInsightCallout>

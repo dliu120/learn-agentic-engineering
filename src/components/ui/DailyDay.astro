@@ -1,0 +1,36 @@
+---
+import CurationFlagBadge from '@/components/ui/CurationFlagBadge.astro';
+import DailyLessonCard from '@/components/ui/DailyLessonCard.astro';
+import AudioPlayer from '@/components/islands/AudioPlayer.tsx';
+import { prettyDate } from '@/lib/daily';
+import { withBase } from '@/lib/paths';
+import type { DailyEntry } from '@/content/schemas/daily';
+
+interface Props {
+  entry: DailyEntry;
+}
+const { entry } = Astro.props;
+const audioSrc = entry.audio.mp3 ? withBase(entry.audio.mp3) : undefined;
+const audioVtt = entry.audio.vtt ? withBase(entry.audio.vtt) : undefined;
+const hasAudioBlock = entry.audio.available || !!entry.audio.transcript;
+---
+
+<header class="rounded-2xl border border-border bg-surface/40 p-6">
+  <div class="flex flex-wrap items-center gap-3">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent">Daily briefing</p>
+    <CurationFlagBadge flag={entry.curationFlag} />
+  </div>
+  <h1 class="mt-2 text-fluid-xl font-bold text-text">{prettyDate(entry.date)}</h1>
+  <p class="mt-1 text-sm text-text-muted">
+    {entry.lessons.length} item{entry.lessons.length === 1 ? '' : 's'}
+    {entry.sourcesUsed.length > 0 && <> · sources: {entry.sourcesUsed.join(', ')}</>}
+  </p>
+</header>
+
+{hasAudioBlock && (
+  <AudioPlayer client:visible src={audioSrc} vtt={audioVtt} transcript={entry.audio.transcript} title="Daily audio digest" />
+)}
+
+<div class="mt-6 grid gap-4 lg:grid-cols-2">
+  {entry.lessons.map((l) => <DailyLessonCard lesson={l} />)}
+</div>

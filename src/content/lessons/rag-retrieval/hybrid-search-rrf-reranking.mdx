@@ -1,0 +1,119 @@
+---
+{
+  "moduleId": "rag-retrieval",
+  "lessonId": "hybrid-search-rrf-reranking",
+  "title": "Hybrid Search, RRF Fusion & Cross-Encoder Reranking",
+  "order": 2,
+  "topicNumbers": [
+    15
+  ],
+  "objectives": [
+    "Explain why dense and sparse retrieval fail on opposite query types and why hybrid is the default",
+    "Describe Reciprocal Rank Fusion and why it fuses on ranks instead of normalizing scores",
+    "Distinguish bi-encoder first-stage retrieval from cross-encoder reranking",
+    "Reason about the K / latency / precision tradeoff in a two-stage pipeline"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "The two-stage retrieval funnel",
+      "summary": "The query splits into BM25 and dense pipes, RRF interleaves their ranked lists, survivors pass through a cross-encoder that scores each candidate in one pass, and the top 5–10 reach the LLM."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Users search for the exact error code 'ERR_2049' and pure dense retrieval keeps missing the doc that contains it. Best fix?",
+      "options": [
+        "Add a sparse/lexical retriever (BM25) and fuse the results with RRF",
+        "Increase the embedding dimensionality",
+        "Use much smaller chunks",
+        "Add a cross-encoder reranker over the current dense results"
+      ],
+      "correct": 0,
+      "explanation": "Dense embeddings under-weight exact tokens. BM25 matches the literal string; fusing it with the dense list via RRF surfaces the doc. A reranker can't help because it only reorders what the first stage already retrieved."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Why can't a cross-encoder serve as the first-stage retriever over a 1M-document corpus?",
+      "options": [
+        "It jointly encodes query + document, so vectors can't be precomputed — it needs a forward pass per document at query time",
+        "It produces lower-quality relevance scores than a bi-encoder",
+        "It is hard-capped at 512 tokens",
+        "It requires a GPU that ANN search does not"
+      ],
+      "correct": 0,
+      "explanation": "Joint encoding is what makes the cross-encoder accurate, but it also means you can't precompute and index document vectors. Scoring a million docs per query is infeasible, so it only reranks a small candidate set."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Picture two scouts searching a library. One understands meaning but is fuzzy on exact words; the other matches exact words but is blind to paraphrase. That's dense versus sparse retrieval. Dense embeddings nail 'how do I reset my password' even when the doc says 'credential recovery.' But ask for error code ERR underscore 2049, or a SKU, or a person's name, and dense search shrugs while good old BM25 keyword matching finds it instantly. They fail on opposite kinds of queries, which is why you run both and fuse the results. The fusion trick is Reciprocal Rank Fusion. Don't average the two scores — they're on totally different scales and that just adds noise. Instead, fuse on rank position: a document near the top of either list gets credit, and the lists combine cleanly without any score normalization. Then comes the precision stage. You hand the top fifty to two hundred survivors to a cross-encoder, which reads the query and each candidate together in one pass and re-sorts them, keeping maybe five to ten. That joint reading is exactly what the bi-encoder couldn't do — but it costs a forward pass per candidate, so it can only ever reorder what the first stage already retrieved. Retrieval sets the ceiling; reranking just makes the top sharper."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Dense and sparse cover each other's blind spots" tag="topic 15">
+
+**Dense** (bi-encoder) search captures meaning but under-weights exact tokens — IDs, error codes, SKUs, rare names. **BM25** sparse/lexical search is the inverse: great on exact and rare terms, weak on paraphrase. Run both and fuse them; that's **hybrid search**, the modern default. (SPLADE-style learned sparse models blur the line.)
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Dense and sparse fail on opposite query types — fusion is near-strictly better; RRF works on ranks, side-stepping score normalization.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="retrieval-funnel"
+  title="BM25 + dense → RRF → cross-encoder → top-K"
+  summary="The query fans into BM25 and dense pipes; RRF interleaves the ranked lists; the cross-encoder scores each survivor in one pass and the top 5–10 narrow into the LLM."
+  height={340}
+/>
+
+## Fusing with RRF
+
+Reciprocal Rank Fusion scores each document as the sum over lists of `1 / (k + rank)`, with `k ≈ 60` a common (tunable) default. Because it uses **rank position**, not raw similarity, it never has to reconcile a cosine score with a BM25 score.
+
+<MisconceptionFlip
+  claim={"Just average the dense and BM25 scores."}
+  correction={"They live on different scales, so averaging is dominated by whichever scale is larger — fuse on ranks with RRF instead."}
+/>
+<MisconceptionFlip
+  claim={"BM25 is obsolete now that embeddings exist."}
+  correction={"BM25 still wins on exact and rare terms; hybrid (dense + BM25) is the default, not a fallback."}
+/>
+
+## The cross-encoder rerank stage
+
+<ConceptCard title="Two stages: cheap recall, then expensive precision">
+
+The first stage (ANN, often hybrid) fetches a wide top-K (~50–200). A **cross-encoder** then jointly encodes query + candidate, scores each, and keeps the best 5–10 — one forward pass per candidate, so its vectors can't be precomputed.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Reranking buys precision with latency and undoes the bi-encoder's independence limitation — but only over candidates the first stage retrieved.
+</KeyInsightCallout>
+
+<TradeoffTable
+  headers={["Raise K into the reranker", "Effect"]}
+  rows={[
+    ["Larger K (e.g. 200)", "Higher recall ceiling, but more cross-encoder passes → latency climbs"],
+    ["Smaller K (e.g. 50)", "Faster reranking, but misses relevant docs the first stage ranked low"]
+  ]}
+/>
+
+<FailureModeList
+  items={[
+    "Semantic-only retrieval silently missing exact identifiers like ERR_2049.",
+    "Reranker latency blowup forcing K down until recall suffers.",
+    "Expecting the reranker to surface a doc the first stage never retrieved."
+  ]}
+/>
