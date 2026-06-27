@@ -1,0 +1,204 @@
+{
+  "date": "2026-06-27",
+  "generatedAt": "2026-06-27T13:58:41.780Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-06-27.mp3",
+    "vtt": "/audio/daily/2026-06-27.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Ornith-1.0: A family of open-source LLMs specialized for agentic coding. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Ask HN: Running local LLMs? What's your model and hardware. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Why LLMs Will Not Have Your Next Big Idea. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: BlueBookOS: An LLM microkernel and language for specifying apps. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: It's 11:00 pm. Do you know where your AI agent is?. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: Nirnam – a browser-native message bus and AI agent framework for MFEs. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "ornith-1-0-a-family-of-open-source-llms-speciali-0",
+      "headline": "Ornith-1.0: A family of open-source LLMs specialized for agentic coding",
+      "sourceLinks": [
+        {
+          "title": "Ornith-1.0: A family of open-source LLMs specialized for agentic coding",
+          "url": "https://twitter.com/ornith_/status/2070148887067963854",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 6,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "ask-hn-running-local-llms-what-s-your-model-and--1",
+      "headline": "Ask HN: Running local LLMs? What's your model and hardware",
+      "sourceLinks": [
+        {
+          "title": "Ask HN: Running local LLMs? What's your model and hardware",
+          "url": "https://news.ycombinator.com/item?id=48698057",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "why-llms-will-not-have-your-next-big-idea-2",
+      "headline": "Why LLMs Will Not Have Your Next Big Idea",
+      "sourceLinks": [
+        {
+          "title": "Why LLMs Will Not Have Your Next Big Idea",
+          "url": "https://albertsikkema.com/ai/opinion/research/2026/06/24/why-llms-will-not-have-your-next-big-idea.html",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "bluebookos-an-llm-microkernel-and-language-for-s-3",
+      "headline": "BlueBookOS: An LLM microkernel and language for specifying apps",
+      "sourceLinks": [
+        {
+          "title": "BlueBookOS: An LLM microkernel and language for specifying apps",
+          "url": "https://bluebookos.com/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "it-s-11-00-pm-do-you-know-where-your-ai-agent-is-4",
+      "headline": "It's 11:00 pm. Do you know where your AI agent is?",
+      "sourceLinks": [
+        {
+          "title": "It's 11:00 pm. Do you know where your AI agent is?",
+          "url": "https://www.aiweirdness.com/its-11-00-pm-do-you-know-where-your-ai-agent-is/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-nirnam-a-browser-native-message-bus-and--5",
+      "headline": "Show HN: Nirnam – a browser-native message bus and AI agent framework for MFEs",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Nirnam – a browser-native message bus and AI agent framework for MFEs",
+          "url": "https://github.com/shaurcasm/nirnam",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
