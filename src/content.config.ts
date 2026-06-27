@@ -1,9 +1,11 @@
-import { defineCollection, z } from 'astro:content';
-import { moduleEnum, dailyEntrySchema } from './schemas/daily';
-import { quizQuestion } from './schemas/quiz';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'zod';
+import { moduleEnum, dailyEntrySchema } from './content/schemas/daily';
+import { quizQuestion } from './content/schemas/quiz';
 
 const lessons = defineCollection({
-  type: 'content', // MDX
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/lessons' }),
   schema: z.object({
     moduleId: moduleEnum,
     lessonId: z.string(),
@@ -19,10 +21,13 @@ const lessons = defineCollection({
   }),
 });
 
-const daily = defineCollection({ type: 'data', schema: dailyEntrySchema });
+const daily = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/daily' }),
+  schema: dailyEntrySchema,
+});
 
 const glossary = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/glossary' }),
   schema: z.object({
     term: z.string(),
     aliases: z.array(z.string()).default([]),
