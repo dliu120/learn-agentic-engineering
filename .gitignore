@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.cache/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+public/audio/core/*.mp3
+public/audio/core/*.vtt
+public/audio/daily/*.mp3
+public/audio/daily/*.vtt
+scripts/.audio-manifest.json
+.tmp/

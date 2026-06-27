@@ -1,0 +1,86 @@
+---
+{
+  "moduleId": "model-efficiency-compression",
+  "lessonId": "knowledge-distillation",
+  "title": "Knowledge Distillation: Fewer Weights, Forever",
+  "order": 3,
+  "topicNumbers": [
+    7
+  ],
+  "objectives": [
+    "Explain distillation as a student matching the teacher's soft logit distribution (dark knowledge), often plus intermediate/sequence matching",
+    "Characterize its cost profile: high upfront training, lowest steady-state cost, permanently fewer parameters",
+    "Distinguish distillation from fine-tuning a small model on the teacher's generated text",
+    "Place distillation among the three techniques and explain why it is lossy with a capability gap"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Soft targets transfer dark knowledge",
+      "summary": "A teacher emits a full softened probability distribution over classes (not just the top token), and the student is trained to match that whole shape — capturing the relative plausibility the teacher assigns to alternatives."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "How does knowledge distillation differ from fine-tuning a small model on the teacher's generated text?",
+      "options": [
+        "Distillation trains the student to match the teacher's full soft logit distribution (dark knowledge), not just hard output tokens",
+        "Distillation is just fine-tuning on teacher outputs by another name",
+        "Distillation quantizes the teacher's weights to fewer bits",
+        "Distillation requires no training, only a calibration set"
+      ],
+      "correct": 0,
+      "explanation": "Distillation's defining feature is the soft-target signal: the student learns the teacher's full probability distribution over outputs, including the relative plausibility of non-chosen tokens, which carries information that hard labels (plain teacher text) do not."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Among speculative decoding, quantization, and distillation, which uniquely reduces the model's parameter count, and what is its cost profile?",
+      "options": [
+        "Distillation — highest upfront training cost, but lowest steady-state cost because fewer parameters are permanently baked in",
+        "Quantization — it permanently removes parameters at near-zero cost",
+        "Speculative decoding — it shrinks the target model over time",
+        "All three reduce parameter count equally"
+      ],
+      "correct": 0,
+      "explanation": "Only distillation produces a genuinely smaller network. That requires expensive upfront training, but every subsequent inference is cheaper, giving the lowest steady-state cost. Quantization cuts precision and speculative decoding cuts latency — neither removes parameters."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Quantization rounds the weights; distillation throws some of them away, permanently. You train a smaller student to imitate a bigger teacher, but here's the subtlety: the student doesn't just copy the teacher's final answers. It learns the teacher's full probability distribution, how confident it was, which wrong answers it considered plausible. That's the dark knowledge, and it teaches far more than hard labels alone. Think of an apprentice who watches not just what the master decides, but where the master hesitates. The payoff is a genuinely smaller network, the lowest steady-state cost of any technique, because the savings are baked into the architecture forever. The price is paid up front: distillation is expensive to train, and the student is lossy, with a capability gap that shows up on rare or hard inputs. DistilBERT is the classic example, much smaller and faster while keeping most of BERT's language understanding. It's the only one of the three that shrinks the model itself."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Learning from soft targets" tag="topic 7">
+
+In distillation a small **student** is trained to mimic a large **teacher's** softened logit distribution — not just the single hard output token. That richer signal, the relative probabilities the teacher assigns to *all* options, is the **dark knowledge**. Methods often add **intermediate-layer** or **sequence-level** matching on top. The result is a network with permanently fewer parameters.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Distillation is the only one that shrinks the model itself — highest upfront, bakes savings permanently into a smaller network.
+</KeyInsightCallout>
+
+<MisconceptionFlip claim={"Distillation is just fine-tuning a small model on the teacher's generated text."} correction={"True distillation trains the student to match the teacher's full soft probability distribution, not only its hard output tokens — that distribution carries information plain text labels don't."} />
+<MisconceptionFlip claim={"Quantization and distillation are interchangeable."} correction={"Quantization cuts precision (bytes per weight); distillation cuts parameter count. They attack different costs and are usually composed, not swapped."} />
+
+## Cost profile and limits
+
+Distillation is **expensive to train** but yields the **lowest steady-state cost**, because every inference forever runs a smaller model. It is **lossy**: a smaller student has a **capability gap** versus its teacher that surfaces on rare or hard inputs. **DistilBERT** is the canonical result — about **40% smaller and ~60% faster** while retaining roughly **97%** of BERT's language understanding (as cited). Modern examples include Gemma 2 and Llama 3.2's small 1B/3B prune-plus-distill variants.
+
+<TradeoffTable headers={["Technique","Defining tradeoff"]} rows={[["Speculative decoding","Lossless; cuts latency, adds memory, shines at low batch"],["Quantization","Lossy but cheap; cuts memory/bandwidth"],["Distillation","Lossy; high upfront cost, permanently fewer params"]]} />
+
+<KeyInsightCallout>
+Pick by bottleneck, not hype — latency vs memory vs permanent param count are different problems, and only exact-verification speculative decoding is free of quality risk (Medusa-style typical-acceptance trades a little quality for speed).
+</KeyInsightCallout>
+
+<FailureModeList items={["A distilled student with capability gaps failing on rare or hard inputs.","Assuming compression savings from stacked techniques multiply cleanly.","Treating distillation as a cheap drop-in despite its heavy upfront training cost."]} />

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { allDays } from '@/lib/daily';
+import { withBase } from '@/lib/paths';
+
+const days = await allDays();
+const dateSet = new Set(days.map((d) => d.data.date));
+
+// Show the month of the most recent entry (fallback: a fixed recent month).
+const anchor = days[0]?.data.date ?? '2026-06-01';
+const [y, mo] = anchor.split('-').map(Number);
+const first = new Date(Date.UTC(y, mo - 1, 1));
+const daysInMonth = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+const leading = first.getUTCDay(); // 0=Sun
+const monthName = first.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+const pad = (n: number) => String(n).padStart(2, '0');
+const cells: ({ day: number; iso: string; has: boolean } | null)[] = [];
+for (let i = 0; i < leading; i++) cells.push(null);
+for (let d = 1; d <= daysInMonth; d++) {
+  const iso = `${y}-${pad(mo)}-${pad(d)}`;
+  cells.push({ day: d, iso, has: dateSet.has(iso) });
+}
+const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+---
+
+<BaseLayout title="Calendar — ALLM Academy">
+  <h1 class="text-fluid-xl font-bold text-text">Briefing calendar</h1>
+  <p class="mt-1 text-text-muted">{monthName} — days with a briefing are linked.</p>
+
+  <div class="mt-6 grid grid-cols-7 gap-1.5">
+    {weekdays.map((w) => <div class="py-1 text-center font-mono text-xs text-text-faint">{w}</div>)}
+    {
+      cells.map((c) =>
+        c === null ? (
+          <div />
+        ) : c.has ? (
+          <a
+            href={withBase(`/daily/${c.iso}`)}
+            class="grid aspect-square place-items-center rounded-lg border border-accent/40 bg-accent/10 text-text no-underline hover:bg-accent/20"
+          >
+            {c.day}
+          </a>
+        ) : (
+          <div class="grid aspect-square place-items-center rounded-lg border border-border/50 text-text-faint">{c.day}</div>
+        ),
+      )
+    }
+  </div>
+</BaseLayout>

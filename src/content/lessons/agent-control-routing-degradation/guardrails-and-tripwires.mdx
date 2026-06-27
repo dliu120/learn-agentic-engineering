@@ -1,0 +1,105 @@
+---
+{
+  "moduleId": "agent-control-routing-degradation",
+  "lessonId": "guardrails-and-tripwires",
+  "title": "Guardrails and Tripwires: Real Vetoes, Not Polite Prompts",
+  "order": 2,
+  "topicNumbers": [
+    11
+  ],
+  "objectives": [
+    "Distinguish a guardrail (separate validation layer) from a system-prompt instruction",
+    "Place input guardrails (injection/PII/policy) before the model and output guardrails (schema/moderation/grounding) before downstream consumers",
+    "Explain how a tripwire aborts a run and why guardrails run as cheap parallel classifiers",
+    "Reason about the strictness tradeoff: abuse blocked versus false positives and added latency"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Guardrail sandwich",
+      "summary": "A request passes through an input guardrail layer (injection/PII/policy) before reaching the model, and the model's output passes through an output guardrail layer (schema/moderation/grounding) before any downstream consumer, with a tripwire that aborts the run on a hard failure."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Your system prompt says \"never output a user's email address.\" A crafted request still extracts one. What is the actual fix?",
+      "options": [
+        "Add an output guardrail layer that scans and blocks PII before the response is returned",
+        "Reword the system-prompt instruction more emphatically",
+        "Raise the model temperature to make leaks less likely",
+        "Add the rule to the user message instead of the system message"
+      ],
+      "correct": 0,
+      "explanation": "A prompt instruction is a suggestion the model can be talked out of. Only a separate output guardrail that can veto the response is a real boundary — wording and temperature changes are not."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Why are input/output guardrails typically run as cheap classifiers in parallel rather than as a single careful LLM prompt?",
+      "options": [
+        "A separate layer can veto a run independent of the model, and parallel classifiers add minimal latency",
+        "Parallel classifiers are required by the OpenAI Agents SDK",
+        "LLM prompts cannot detect PII at all",
+        "Classifiers are always more accurate than the main model"
+      ],
+      "correct": 0,
+      "explanation": "The value of a guardrail is an independent veto the model cannot override; running the checks as cheap parallel classifiers keeps that veto without serially inflating latency."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Here's a mistake that feels safe and isn't: writing 'never reveal secrets' or 'always return valid JSON' in your system prompt and calling it a guardrail. It isn't one. A rule that lives only in the prompt is a suggestion — and prompt injection, jailbreaks, or just an off day can talk the model right out of it. A real guardrail is a separate layer that sits outside the model and can veto. Think of it like a bouncer at the door, not a sign asking people to behave. You want guardrails on both sides. On the way in, you screen for prompt injection, PII, and policy violations before the model ever sees the request. On the way out, you check schema, moderation, and grounding before that output reaches a database, a user, or another tool. When a check fails hard, a tripwire aborts the whole run rather than letting tainted output flow downstream. Run these as cheap classifiers in parallel so they barely add latency. And tune the strictness deliberately: too loose and abuse slips through; too tight and you block legitimate users and pay for false positives. The point is architectural — safety is something a separate layer enforces, not something you ask the model nicely to do."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="A guardrail is a layer, not a sentence" tag="topic 11">
+
+Guardrails are **separate validation layers** that wrap the model, distinct from anything written in the prompt:
+
+- **Input guardrails** run *before* the model: prompt-injection detection, PII screening, policy checks.
+- **Output guardrails** run *before downstream consumers*: schema validation, moderation, grounding/faithfulness checks.
+
+When a check fails hard, a **tripwire** aborts the run so tainted output never propagates. ("Tripwire" is the OpenAI Agents SDK's term for exactly this abort mechanism.) Implement them as cheap classifiers that run in **parallel** so they add minimal latency.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+A rule enforced only in the system prompt is a suggestion the model can be talked out of — a guardrail is real only when a separate layer can veto.
+</KeyInsightCallout>
+
+## Why the prompt is not a boundary
+
+A system-prompt instruction shares the same token stream as user and tool content; an injection or jailbreak can override it. A guardrail living in separate code cannot be argued with — it either passes the payload or trips. This is the same principle behind input/output separation: trust is enforced by structure, not by wording.
+
+<MisconceptionFlip
+  claim={"Guardrails are just careful prompt wording."}
+  correction={"A guardrail is a separate veto layer (classifier/validator) outside the model; prompt wording is a suggestion the model can be overridden out of."}
+/>
+
+## The strictness tradeoff
+
+<TradeoffTable
+  headers={["Tighter guardrails", "Looser guardrails"]}
+  rows={[["More abuse and bad output blocked", "Fewer false positives, less friction"],["More false positives + added latency/cost", "More injection/PII/policy leakage slips through"]]}
+/>
+
+Tune the threshold to the blast radius of a miss: an outbound-email tool warrants stricter screening than a read-only summarizer.
+
+<FailureModeList
+  items={[
+    "Guardrail false negatives: an injection or PII leak passes an under-tuned classifier.",
+    "Guardrail false positives: legitimate requests blocked, frustrating users and adding cost.",
+    "Output guardrail missing: malformed or ungrounded output reaches a downstream tool or DB.",
+    "Guardrails run serially in the critical path, adding avoidable latency per hop."
+  ]}
+/>
+
+Product names in this space (Llama Guard, NeMo Guardrails, Guardrails AI) are illustrative — the pattern matters more than the vendor.

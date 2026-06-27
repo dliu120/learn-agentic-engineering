@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { MODULE_BY_ID } from '@/content/modules';
+import { moduleHref, hue } from '@/lib/paths';
+
+const entries = (await getCollection('glossary')).sort((a, b) => a.data.term.localeCompare(b.data.term));
+const rendered = await Promise.all(
+  entries.map(async (e) => ({ data: e.data, slug: e.slug, Content: (await e.render()).Content })),
+);
+---
+
+<BaseLayout title="Glossary — ALLM Academy">
+  <h1 class="text-fluid-xl font-bold text-text">Glossary</h1>
+  <p class="mt-1 text-text-muted">The vocabulary of production-LLM engineering.</p>
+
+  <input
+    id="glossary-filter"
+    type="search"
+    placeholder="Filter terms…"
+    aria-label="Filter glossary terms"
+    class="mt-5 w-full max-w-sm rounded-md border border-border bg-surface px-3 py-2 text-text outline-none placeholder:text-text-faint"
+  />
+
+  <dl class="mt-6 space-y-4">
+    {
+      rendered.map(({ data, slug, Content }) => {
+        const m = data.module ? MODULE_BY_ID[data.module] : undefined;
+        return (
+          <div class="card p-4" data-term id={slug} data-keywords={[data.term, ...data.aliases].join(' ').toLowerCase()}>
+            <dt class="flex flex-wrap items-baseline gap-2">
+              <span class="text-lg font-semibold text-text">{data.term}</span>
+              {data.aliases.length > 0 && <span class="text-xs text-text-faint">({data.aliases.join(', ')})</span>}
+              {m && (
+                <a href={moduleHref(m.id)} class="ml-auto text-xs no-underline" style={`color:${hue(m.colorHue, 70, 62)}`}>
+                  {m.num} →
+                </a>
+              )}
+            </dt>
+            <dd class="prose-tight mt-2 text-sm">
+              <Content />
+            </dd>
+          </div>
+        );
+      })
+    }
+  </dl>
+  <p id="glossary-empty" class="mt-4 hidden text-sm text-text-faint">No terms match.</p>
+</BaseLayout>
+
+<script>
+  const input = document.getElementById('glossary-filter') as HTMLInputElement | null;
+  const empty = document.getElementById('glossary-empty');
+  input?.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('[data-term]').forEach((el) => {
+      const show = !q || (el.dataset.keywords ?? '').includes(q);
+      el.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    empty?.classList.toggle('hidden', shown > 0);
+  });
+</script>

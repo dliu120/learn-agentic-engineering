@@ -1,0 +1,204 @@
+{
+  "date": "2026-06-25",
+  "generatedAt": "2026-06-25T18:48:36.410Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "transcript": "Today's AI engineering briefing. Item 1: I Started with 12 Names. An LLM Sieve Found the Rest. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: The Weaver Stack: one contract layer for safe LLM agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: Most of an agent codebase is not the agent. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: ParallelKernelBench: Can LLMs write fast multi-GPU kernels?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: General Intuition's $2.3B bet that video games can train AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: The Agent Is Not the Scanner: Making AI Security Agents Better. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": false
+  },
+  "lessons": [
+    {
+      "id": "i-started-with-12-names-an-llm-sieve-found-the-r-0",
+      "headline": "I Started with 12 Names. An LLM Sieve Found the Rest",
+      "sourceLinks": [
+        {
+          "title": "I Started with 12 Names. An LLM Sieve Found the Rest",
+          "url": "https://zamechek.com/blog/the-sieve-growing-from-a-seed/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "the-weaver-stack-one-contract-layer-for-safe-llm-1",
+      "headline": "The Weaver Stack: one contract layer for safe LLM agents",
+      "sourceLinks": [
+        {
+          "title": "The Weaver Stack: one contract layer for safe LLM agents",
+          "url": "https://pub.towardsai.net/the-weaver-stack-one-contract-layer-for-safe-llm-agents-7f733cad5eac?sharedUserId=diogofcul",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "most-of-an-agent-codebase-is-not-the-agent-2",
+      "headline": "Most of an agent codebase is not the agent",
+      "sourceLinks": [
+        {
+          "title": "Most of an agent codebase is not the agent",
+          "url": "https://blogs.jaseci.org/blog/posts/building-agentic-ai-with-jac",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 6,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "parallelkernelbench-can-llms-write-fast-multi-gp-3",
+      "headline": "ParallelKernelBench: Can LLMs write fast multi-GPU kernels?",
+      "sourceLinks": [
+        {
+          "title": "ParallelKernelBench: Can LLMs write fast multi-GPU kernels?",
+          "url": "https://github.com/togethercomputer/ParallelKernelBench",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "general-intuition-s-2-3b-bet-that-video-games-ca-4",
+      "headline": "General Intuition's $2.3B bet that video games can train AI agents",
+      "sourceLinks": [
+        {
+          "title": "General Intuition's $2.3B bet that video games can train AI agents",
+          "url": "https://techcrunch.com/2026/06/25/general-intuitions-2-3b-bet-that-video-games-can-train-ai-agents-for-the-real-world/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "the-agent-is-not-the-scanner-making-ai-security--5",
+      "headline": "The Agent Is Not the Scanner: Making AI Security Agents Better",
+      "sourceLinks": [
+        {
+          "title": "The Agent Is Not the Scanner: Making AI Security Agents Better",
+          "url": "https://shad0wmazt3r.github.io/ai-security",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}

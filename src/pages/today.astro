@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DailyDay from '@/components/ui/DailyDay.astro';
+import { latestDay } from '@/lib/daily';
+import { withBase } from '@/lib/paths';
+
+const day = await latestDay();
+---
+
+<BaseLayout title="Today's Briefing — ALLM Academy">
+  {
+    day ? (
+      <>
+        <div class="mb-4 flex items-center justify-between">
+          <p class="text-sm text-text-faint">Auto-curated from AI news, papers, and blogs.</p>
+          <a href={withBase('/archive')} class="text-sm">All briefings →</a>
+        </div>
+        <DailyDay entry={day.data} />
+      </>
+    ) : (
+      <div class="card p-6">
+        <h1 class="text-xl font-semibold text-text">No briefings yet</h1>
+        <p class="mt-2 text-text-muted">
+          Run <code class="rounded bg-surface-2 px-1">npm run daily</code> to generate today's feed, or see the
+          <a href={withBase('/about')}> about page</a> for how curation works.
+        </p>
+      </div>
+    )
+  }
+</BaseLayout>

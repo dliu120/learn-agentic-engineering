@@ -1,0 +1,93 @@
+---
+{
+  "moduleId": "agent-control-routing-degradation",
+  "lessonId": "module-gate",
+  "title": "Module Gate: Control, Routing and Degradation",
+  "order": 99,
+  "topicNumbers": [
+    10,
+    11,
+    12,
+    13
+  ],
+  "objectives": [
+    "Synthesize bounded loops, guardrails, routing, and graceful degradation into a single reliability mindset",
+    "Match each production failure mode to its correct control or exit"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "A ReAct agent calls the same tool with identical arguments over and over and never finishes. Which control directly addresses this?",
+      "options": [
+        "No-progress / loop detection that halts on repeated identical tool calls",
+        "A larger context window",
+        "A more capable model",
+        "More registered tools"
+      ],
+      "correct": 0,
+      "explanation": "Identical repeated calls signal stagnation. Detect it by hashing tool-name+args and halting on repeats — capacity (bigger model/window/more tools) doesn't stop a loop."
+    },
+    {
+      "id": "q2",
+      "type": "matching",
+      "question": "Match each production symptom to the control or exit that addresses it.",
+      "pairs": [
+        {
+          "left": "Primary model returns a 429 rate-limit error",
+          "right": "Retry same model with exponential backoff + jitter"
+        },
+        {
+          "left": "Output silently malformed after cross-provider failover",
+          "right": "Capability mismatch — verify B's tool-calling/JSON contract"
+        },
+        {
+          "left": "System-prompt rule against leaking PII gets bypassed",
+          "right": "Separate output guardrail layer that can veto"
+        },
+        {
+          "left": "Hard queries answered worse after adding a router",
+          "right": "Measure quality on down-routed traffic"
+        }
+      ],
+      "explanation": "Transient errors call for retry-with-backoff; a malformed post-fallback output points to a capability mismatch; a bypassed prompt rule needs a real veto layer; and a router's silent quality loss is only caught by measuring down-routed accuracy."
+    },
+    {
+      "id": "q3",
+      "type": "ordering",
+      "question": "Order the rungs of a degradation ladder from most capable to honest failure.",
+      "options": [
+        "Full model",
+        "Smaller / faster model",
+        "Cached or templated response",
+        "Deterministic rule-based response",
+        "Honest failure message"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "explanation": "Degraded mode is a ladder, not a single error: full model → smaller/faster → cached/templated → deterministic rule-based → honest failure, with the reduced state communicated at each rung."
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+You've now seen the full picture: an autonomous agent is a while-loop holding an API key and a credit card, and reliability is mostly the art of drawing limits and exits around a system that won't draw them for itself. Bound the loop with five budgets and three exits, enforce real guardrails that can veto, route to the cheapest sufficient model while watching for silent quality loss, and degrade gracefully through retry, fallback, breakers, and an honest ladder.
+
+<KeyInsightCallout>
+Production agents are defined less by the happy path and more by how they bound themselves and how gracefully — and how visibly — they degrade.
+</KeyInsightCallout>

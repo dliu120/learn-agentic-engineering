@@ -1,0 +1,88 @@
+---
+{
+  "moduleId": "inference-internals-performance",
+  "lessonId": "module-gate",
+  "title": "Module Gate: Inference Internals & Performance",
+  "order": 99,
+  "topicNumbers": [
+    3,
+    4
+  ],
+  "objectives": [
+    "Synthesize prefill/decode, the KV cache, PagedAttention, continuous batching, and the two caching strategies"
+  ],
+  "hasAudio": false,
+  "visualizations": [],
+  "quiz": [
+    {
+      "id": "g1",
+      "type": "mcq",
+      "question": "A single request streams tokens slowly after a fast first token, yet GPU compute utilization is low during streaming. Which phase and bottleneck explains this?",
+      "options": [
+        "Decode, which is memory-bandwidth-bound (re-reading weights + KV from HBM per token)",
+        "Prefill, which is memory-bandwidth-bound",
+        "Decode, which is compute-bound on heavy per-token math",
+        "Prefill, which is bandwidth-bound on the KV cache"
+      ],
+      "correct": 0,
+      "explanation": "Fast first token then slow streaming with idle compute is the decode signature: each step is a single-token matrix-vector multiply gated by reading the full weights and KV cache from HBM. Prefill (compute-bound) sets the first-token speed."
+    },
+    {
+      "id": "g2",
+      "type": "matching",
+      "question": "Match each serving concept to its defining property.",
+      "pairs": [
+        {
+          "left": "Prefill phase",
+          "right": "Compute-bound; sets TTFT"
+        },
+        {
+          "left": "Decode phase",
+          "right": "Bandwidth-bound; sets TPOT/ITL"
+        },
+        {
+          "left": "PagedAttention",
+          "right": "Non-contiguous KV blocks + copy-on-write prefix sharing"
+        },
+        {
+          "left": "Semantic caching",
+          "right": "Fuzzy embedding match; can return a wrong answer"
+        }
+      ],
+      "explanation": "Prefill processes the prompt in one compute-heavy pass (TTFT); decode emits tokens one at a time gated by HBM bandwidth (TPOT/ITL). PagedAttention pages KV into blocks with COW sharing. Semantic caching is the fuzzy, correctness-risky strategy — distinct from exact-prefix prompt caching."
+    },
+    {
+      "id": "g3",
+      "type": "ordering",
+      "question": "Order the lifecycle of a request that gets a prefix (prompt) cache hit.",
+      "options": [
+        "Tokenize the incoming prompt",
+        "Match the longest exact token prefix against cached KV",
+        "Run prefill only on the uncached suffix tokens",
+        "Decode output tokens one at a time"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "The prompt is tokenized, its longest exact token prefix is matched against cached KV (skipping that prefill), prefill runs only on the remaining suffix, and then decode emits tokens one by one. The cache discounts input/prefill, never the fresh decode."
+    }
+  ],
+  "isModuleGate": true
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+You've seen how one request splits into a compute-bound prefill and a bandwidth-bound decode, why the KV cache (not the weights) caps concurrency, and how PagedAttention, continuous batching, and the two caching strategies all exploit that structure. Lock it in below.
+
+<KeyInsightCallout>
+Nearly every production serving technique exploits one split: prefill skips redundant work via prompt caching, continuous batching fills decode's idle cycles, and PagedAttention makes the KV cache a schedulable resource.
+</KeyInsightCallout>

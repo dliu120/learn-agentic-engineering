@@ -1,0 +1,67 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CurationFlagBadge from '@/components/ui/CurationFlagBadge.astro';
+import { allDays, prettyDate } from '@/lib/daily';
+import { withBase } from '@/lib/paths';
+
+const days = await allDays();
+const allTags = [...new Set(days.flatMap((d) => d.data.lessons.flatMap((l) => l.tags)))].sort();
+---
+
+<BaseLayout title="Archive — ALLM Academy">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h1 class="text-fluid-xl font-bold text-text">Briefing archive</h1>
+      <p class="mt-1 text-text-muted">{days.length} day{days.length === 1 ? '' : 's'} of curated AI-engineering news.</p>
+    </div>
+    <label class="flex items-center gap-2 text-sm text-text-faint">
+      Filter by tag
+      <select id="tag-filter" class="rounded-md border border-border bg-surface px-2 py-1 text-text">
+        <option value="">all</option>
+        {allTags.map((t) => <option value={t}>{t}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <div class="mt-6 grid gap-3">
+    {
+      days.map((d) => {
+        const tags = [...new Set(d.data.lessons.flatMap((l) => l.tags))];
+        return (
+          <a
+            href={withBase(`/daily/${d.data.date}`)}
+            class="card flex flex-wrap items-center gap-3 p-4 no-underline hover:bg-surface-2"
+            data-day
+            data-tags={tags.join(' ')}
+          >
+            <span class="font-mono text-sm text-text">{prettyDate(d.data.date)}</span>
+            <CurationFlagBadge flag={d.data.curationFlag} />
+            <span class="text-sm text-text-muted">{d.data.lessons.length} items</span>
+            <span class="ml-auto flex flex-wrap gap-1">
+              {tags.slice(0, 5).map((t) => (
+                <span class="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-text-faint">#{t}</span>
+              ))}
+            </span>
+          </a>
+        );
+      })
+    }
+  </div>
+  <p id="archive-empty" class="mt-4 hidden text-sm text-text-faint">No briefings match that tag.</p>
+</BaseLayout>
+
+<script>
+  const sel = document.getElementById('tag-filter') as HTMLSelectElement | null;
+  const empty = document.getElementById('archive-empty');
+  sel?.addEventListener('change', () => {
+    const v = sel.value;
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('[data-day]').forEach((row) => {
+      const tags = (row.dataset.tags ?? '').split(' ');
+      const show = !v || tags.includes(v);
+      row.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    if (empty) empty.classList.toggle('hidden', shown > 0);
+  });
+</script>

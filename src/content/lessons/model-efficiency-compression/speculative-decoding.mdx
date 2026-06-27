@@ -1,0 +1,86 @@
+---
+{
+  "moduleId": "model-efficiency-compression",
+  "lessonId": "speculative-decoding",
+  "title": "Speculative Decoding: Draft, Then Verify",
+  "order": 2,
+  "topicNumbers": [
+    5
+  ],
+  "objectives": [
+    "Describe the draft-then-verify loop: a small draft proposes K tokens, the target verifies all K in one parallel pass, accepting the longest correct prefix",
+    "Explain why modified rejection sampling makes exact-verification speculative decoding lossless",
+    "Predict where speedup collapses: weak draft / low acceptance, high concurrency, or sampling/tokenizer mismatch",
+    "Recognize that speculative decoding adds memory and that EAGLE/Medusa variants differ in approach and guarantees"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Draft-then-verify loop",
+      "summary": "Two race tracks: the draft hops out K tokens fast, the target sweeps all K in one pass flipping chips green up to the first mismatch (red) where one corrected token is emitted, and an acceptance-rate slider rewires the speedup live."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Why is exact-verification speculative decoding lossless?",
+      "options": [
+        "A rejection-sampling verification step provably reproduces the target model's exact output distribution; the draft only affects speed",
+        "The draft and target produce identical logits",
+        "The draft is a quantized copy of the target",
+        "It compresses the KV cache without losing information"
+      ],
+      "correct": 0,
+      "explanation": "The modified rejection-sampling acceptance rule (accept with prob min(1, p_target/p_draft), else resample from the normalized positive difference) is constructed so the emitted tokens follow the target's distribution exactly. The draft's quality changes only the acceptance rate, hence speed."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Your speculative-decoding setup gives almost no speedup under heavy concurrent load. Why?",
+      "options": [
+        "At high batch the target is already compute-bound, so verifying K tokens in parallel no longer rides a 'free' memory haul (and spec-dec adds memory)",
+        "Speculative decoding reduces memory, starving the batch",
+        "The rejection-sampling step becomes lossy at high batch",
+        "High batch forces the draft to run at INT4"
+      ],
+      "correct": 0,
+      "explanation": "Speculative decoding exploits the fact that low-batch decode is memory-bandwidth-bound: one weight load can verify many tokens. At high batch the GPU is already compute-bound, so the extra verification work no longer comes nearly free — and the draft adds memory pressure."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Generating text one token at a time, a big model spends most of its time just waiting, dragging its entire weight matrix out of memory for a single token. Speculative decoding hires a fast intern. A small draft model guesses the next several tokens cheaply, then the big model checks all of those guesses in one parallel pass, the same memory haul, but now it covers many tokens instead of one. Here's the beautiful part: a rejection-sampling check decides which guesses to keep, and it's built so the kept output is statistically identical to what the big model would have produced alone. The draft only changes speed, never the answer. So a smart draft means long accepted runs and a big speedup; a weak draft means rejections and sometimes a net slowdown. Two cautions. It costs extra memory, not less. And the gains shrink when you're already serving at high batch, because then the big model is busy doing real math anyway."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="The draft-then-verify loop" tag="topic 5">
+
+A small **draft** model proposes K tokens autoregressively (cheap). The large **target** model then verifies all K in a **single parallel forward pass** — the same expensive weight load it would have spent on one token now covers many. You accept the **longest correct prefix** and emit one corrected token at the first divergence, then repeat. Typical speedups are ~**2–3×**, and more with methods like EAGLE/EAGLE-2/3 or Medusa.
+
+</ConceptCard>
+
+## Why it's lossless
+
+Acceptance uses **modified rejection sampling**: accept each drafted token with probability min(1, p_target/p_draft), otherwise resample from the normalized positive difference of the two distributions. This provably reconstructs the target's exact output distribution.
+
+<KeyInsightCallout>
+Exact-verification speculative decoding (vanilla speculative sampling, EAGLE/EAGLE-2/3) is lossless — output is statistically identical to the target alone; the draft only affects speed (acceptance rate), never correctness. Caveat: Medusa's default typical-acceptance and lossy n-gram/lookahead drafts relax exact verification and can shift the output distribution.
+</KeyInsightCallout>
+
+<MisconceptionFlip claim={"Speculative decoding degrades output quality."} correction={"Exact-verification speculative decoding is lossless — it changes latency via the acceptance rate, not the distribution the model samples from."} />
+<MisconceptionFlip claim={"Speculative decoding saves memory."} correction={"It costs extra memory — you run a draft model (or extra heads) alongside the target; it buys latency, not footprint."} />
+
+<VizWrapper name="draft-verify-race" title="Draft-then-verify loop" summary="Draft hops out K tokens fast; the target verifies all K at once, accepting up to the first mismatch; an acceptance-rate slider stretches or shrinks the speedup bar." height={320} />
+
+## Where the speedup collapses
+
+The whole win rides on the target being **memory-bound**. At **high concurrency/batch** the target is already compute-bound, so verifying K tokens in parallel no longer rides a free memory haul. A **weak draft** with low acceptance means constant rejections — sometimes a net slowdown. And the lossless guarantee assumes the draft and target share the **same sampling parameters and tokenizer**.
+
+<FailureModeList items={["Speculative decoding at high concurrency wasting FLOPs for little gain.","A weak draft → low acceptance → net slowdown.","Sampling-parameter or tokenizer mismatch breaking the lossless guarantee or acceptance.","Forgetting it adds memory when planning VRAM budgets."]} />

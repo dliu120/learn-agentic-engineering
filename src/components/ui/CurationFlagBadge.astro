@@ -1,0 +1,16 @@
+---
+interface Props {
+  flag: 'curated' | 'uncurated-fallback' | 'quiet-day';
+}
+const { flag } = Astro.props;
+const map = {
+  curated: { label: 'curated', cls: 'text-signal-good border-signal-good/40 bg-signal-good/10' },
+  'uncurated-fallback': { label: 'auto-summary', cls: 'text-signal-warn border-signal-warn/40 bg-signal-warn/10' },
+  'quiet-day': { label: 'quiet day', cls: 'text-text-faint border-border bg-surface-2' },
+} as const;
+const f = map[flag];
+---
+
+<span class={`inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${f.cls}`}>
+  {f.label}
+</span>

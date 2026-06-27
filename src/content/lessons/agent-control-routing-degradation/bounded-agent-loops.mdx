@@ -1,0 +1,120 @@
+---
+{
+  "moduleId": "agent-control-routing-degradation",
+  "lessonId": "bounded-agent-loops",
+  "title": "Bounded Agent Loops: Five Budgets and Three Exits",
+  "order": 1,
+  "topicNumbers": [
+    10
+  ],
+  "objectives": [
+    "Explain why an agent loop is unbounded by default and where the external stop authority lives",
+    "Enumerate the five layered budgets (iteration, tool, token, cost, time) and match each to the failure it catches first",
+    "Distinguish the three termination states — success, exhaustion, failure — and why they must be reported separately",
+    "Detect a no-progress loop by hashing tool-name+args or spotting state stagnation"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "The Agent Loop on a Budget",
+      "summary": "A Reason-Act-Observe ring runs laps while four side bars (iterations, tokens, cost, time) drain; the lap where any bar hits zero freezes and lights one of three outcome chips — done, exhausted, or failed."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "A ReAct agent keeps calling the same search tool with identical arguments and never finishes. What is the right fix?",
+      "options": [
+        "Add no-progress / loop detection that halts on repeated identical tool calls",
+        "Raise max_iterations so it has more room to converge",
+        "Swap in a larger, more capable model",
+        "Register more tools so it has other options"
+      ],
+      "correct": 0,
+      "explanation": "Identical repeated calls are stagnation, not under-capacity. Hash tool-name+args and halt on repeats; raising the iteration cap or model size just lets it loop longer."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Why enforce five separate budgets (iteration/tool/token/cost/time) instead of just one large iteration cap?",
+      "options": [
+        "Because different failures breach different limits first, so any single cap leaves gaps",
+        "Because frameworks require all five fields to be set",
+        "Because token budgets are deprecated in favor of iteration caps",
+        "Because one combined budget is impossible to compute"
+      ],
+      "correct": 0,
+      "explanation": "Budgets are an OR of independent limits: a hung tool blows the timeout, a long crawl blows the token cap, oscillation blows the iteration cap. The cheapest-to-breach fires first, so you need all of them."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Picture an autonomous agent as a while-loop holding an API key and a credit card. It reasons, calls a tool, reads the result, and loops again — and here's the unsettling part: by default the model, not your code, decides when to stop. That's fine on the happy path and catastrophic on a bad day, when it gets stuck calling the same search with the same arguments forever. So you wrap the loop in an external authority that can pull the plug. Not one limit — five, layered like circuit breakers, because the cheapest one to breach should fire first. An iteration cap catches oscillation. A tool cap catches fan-out. A token cap catches a long-context crawl. A cost cap protects the invoice. A timeout catches a hung tool. They form an OR: whichever trips first wins, which is why you need all of them. And when the loop ends, say why. 'Out of budget' and 'finished the task' are completely different outcomes — collapse them and you'll ship an exhausted agent's half-answer as if it succeeded. Three exits: done, exhausted, failed. The dangerous middle is neither done nor progressing — catch it by hashing each tool call and halting on repeats."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="The loop the model controls" tag="topic 10">
+
+An agent is a control loop: the model **reasons → emits a tool call → the runtime executes it → the observation is fed back → repeat** until the model signals it is done. The catch: *the model decides when to stop*. Your code must wrap that loop with an external step cap it cannot talk its way past.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+By default the model, not your code, controls how many iterations run — every loop needs an external authority that can stop it.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="agent-budgets"
+  title="The agent loop on a budget"
+  summary="A Reason-Act-Observe ring runs laps while four bars (iterations, tokens, cost, time) drain; the lap where any bar empties freezes and lights one of three outcomes — done, exhausted, or failed."
+  height={340}
+/>
+
+## Five layered budgets
+
+Different failures bind on different limits, so you enforce all of them in the orchestrator:
+
+- **Iteration cap** — stops oscillation / runaway loops.
+- **Tool-call cap** — stops fan-out across too many calls.
+- **Token budget** — stops a context-overflowing long crawl.
+- **Cost budget** — protects the bill directly.
+- **Wall-clock timeout** — stops a hung or slow tool.
+
+<KeyInsightCallout>
+Budgets are an OR of independent limits — the cheapest-to-breach fires first, so you need all of them.
+</KeyInsightCallout>
+
+## Three exits, not one
+
+Report **success**, **exhaustion**, or **failure** as distinct states. The dangerous middle case is neither-done-nor-progressing: detect it by **hashing tool-name + args** (halt on repeated identical calls) or watching for state stagnation.
+
+<KeyInsightCallout>
+"Out of budget" and "finished successfully" must be different return states.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"A high max_iterations makes the agent safe."}
+  correction={"Iteration count is only one budget; an agent can exhaust tokens, cost, or time long before it hits the step cap — you need all five."}
+/>
+<MisconceptionFlip
+  claim={"The model knows when to stop."}
+  correction={"Stopping needs an explicit stop/done tool plus external no-progress detection — the model will happily repeat itself forever."}
+/>
+
+<FailureModeList
+  items={[
+    "Oscillating / infinite tool loop calling the same tool with identical args.",
+    "Context-window overflow mid-loop silently dropping earlier instructions.",
+    "Premature 'looks done' termination returning a half-finished answer as success.",
+    "Exhaustion reported as success because there is only one return state."
+  ]}
+/>
+
+Framework defaults vary and drift between versions — for example LangChain's `max_iterations`, the OpenAI Agents SDK's `max_turns`, and LangGraph's `recursion_limit` are different knobs with different defaults. Confirm them against your installed versions rather than trusting a remembered number.

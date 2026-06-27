@@ -1,0 +1,30 @@
+---
+interface Props {
+  headers?: [string, string];
+  rows: [string, string][];
+  caption?: string;
+}
+const { headers = ['This', 'vs. that'], rows, caption } = Astro.props;
+---
+
+<div class="my-6 overflow-x-auto">
+  {caption && <p class="mb-2 text-sm text-text-faint">{caption}</p>}
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr>
+        <th class="border-b border-border px-3 py-2 text-left font-semibold text-text">{headers[0]}</th>
+        <th class="border-b border-border px-3 py-2 text-left font-semibold text-text">{headers[1]}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map(([a, b]) => (
+          <tr class="align-top">
+            <td class="border-b border-border/60 px-3 py-2 text-text-muted">{a}</td>
+            <td class="border-b border-border/60 px-3 py-2 text-text-muted">{b}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

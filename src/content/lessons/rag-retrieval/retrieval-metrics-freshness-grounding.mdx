@@ -1,0 +1,116 @@
+---
+{
+  "moduleId": "rag-retrieval",
+  "lessonId": "retrieval-metrics-freshness-grounding",
+  "title": "Retrieval Metrics, Index Freshness & Grounding Quality",
+  "order": 3,
+  "topicNumbers": [
+    16
+  ],
+  "objectives": [
+    "Compute recall@k, precision@k, MRR, and nDCG and explain why recall@k is the system ceiling",
+    "Diagnose freshness failures: stale vectors, version skew, missing deletions, recency",
+    "Evaluate grounding/faithfulness and citation precision vs. recall",
+    "Explain why grounded, correct, and well-cited are three independent failure axes"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Recall vs. precision as k expands",
+      "summary": "A grid of document tiles with relevant ones starred; a top-k ring widens with a slider while recall@k climbs toward 1.0 and precision@k erodes, illustrating the recall/precision tradeoff."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "A fact exists in the corpus but the answer never states it. You measure precision@5 = 0.8 and recall@5 = 0.2. Which is the binding problem?",
+      "options": [
+        "Recall: the relevant docs aren't being retrieved, so the generator can't use them",
+        "Precision: too many irrelevant docs are crowding the context",
+        "Embedding dimensionality is too low",
+        "Grounding: the model ignored retrieved context"
+      ],
+      "correct": 0,
+      "explanation": "Recall@5 = 0.2 means most relevant docs never reached the top-5. Recall is the system ceiling — the generator cannot use what retrieval never handed it, regardless of precision."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "An answer is factually correct, but a faithfulness check flags it as ungrounded. How is that possible?",
+      "options": [
+        "The model produced the right fact from parametric memory, not from the retrieved context — grounded and correct are independent",
+        "Faithfulness scoring is unreliable and should be ignored",
+        "Correct answers are always grounded by definition",
+        "The citation precision metric overrode the correctness check"
+      ],
+      "correct": 0,
+      "explanation": "Grounding asks whether each claim is entailed by the retrieved context, independent of truth. A model can recall a correct fact from its weights while the supporting passage was never retrieved — correct yet ungrounded."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Here's the emotional core of RAG: the model can only reason over what retrieval handed it. So recall sets the ceiling for the entire system, and everything downstream is just precision and ordering. That's why you measure retrieval on its own, separate from the generator. Recall at k asks: of the documents that should have been found, how many made it into the top k? If recall is low, no prompt trick saves you — the fact simply isn't in the context. Precision at k asks how much of what you retrieved was actually relevant; raise k and recall goes up but precision and signal density go down. Now, your index is a cache, and caches drift. New docs need embedding, edits need re-embedding, deletions need tombstoning, and the silent killer is version skew — if you change the embedding model but only re-embed half your corpus, the vectors stop being comparable and quality quietly collapses. Treat the index as a versioned artifact tied to a specific model. Finally, separate three questions that people constantly conflate. Is the answer grounded — every claim entailed by the retrieved context? Is it correct? And is it well-cited — do the citations actually support the claims? Those are three independent axes. An answer can be correct from the model's memory yet completely ungrounded."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Measure retrieval separately" tag="topic 16">
+
+Four core metrics, computed against labeled relevant docs:
+
+- **recall@k** — fraction of all relevant docs that appear in the top-k.
+- **precision@k** — fraction of the top-k that is actually relevant (noise / budget).
+- **MRR** — reciprocal rank of the first relevant hit.
+- **nDCG** — graded relevance, log-discounted by position, normalized to [0,1].
+
+Raising k trades precision down for recall up.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Measure retrieval separately and treat recall@k as a hard ceiling.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"A correct answer proves retrieval and grounding are good."}
+  correction={"The model may be answering from parametric memory — the relevant doc may never have been retrieved at all."}
+/>
+
+## The index is a cache that drifts
+
+<ConceptCard title="Treat the index as a versioned artifact">
+
+Incrementally embed new docs, re-embed edits, and tombstone deletions. Add recency via time-decay or date filters. Watch ANN params (e.g. HNSW `ef`) — set too low they silently drop neighbors and quietly lower recall. Swapping the embedding model forces a **full** re-index.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Embedding-model version skew between index and query path is a silent catastrophic failure — treat the index as a versioned artifact tied to a model.
+</KeyInsightCallout>
+
+## Grounding, correctness, and citation quality
+
+<ConceptCard title="Three independent questions">
+
+**Grounding / faithfulness**: is each claim entailed by the retrieved context (independent of whether it's true)? Score by decomposing the answer into atomic claims and judging each with NLI or an LLM judge (RAGAS, TruLens RAG triad). **Citation recall**: are supported statements cited? **Citation precision**: do the cited passages actually support the claim (ALCE)?
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Grounded, correct, and well-cited are three independent failure axes — measure each on its own.
+</KeyInsightCallout>
+
+<FailureModeList
+  items={[
+    "Recall ceiling hit → the generator confidently hallucinates a missing fact.",
+    "Deleted or updated docs still served because tombstoning lagged.",
+    "Citation hallucination: a passage is cited but doesn't actually support the claim (precision failure).",
+    "Eval run on non-representative synthetic questions, hiding real gaps."
+  ]}
+/>

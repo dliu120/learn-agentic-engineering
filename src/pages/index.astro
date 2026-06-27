@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ModuleCard from '@/components/ui/ModuleCard.astro';
+import { MODULES } from '@/content/modules';
+import { withBase } from '@/lib/paths';
+import { buildManifest } from '@/lib/manifest';
+import { latestDay, prettyDate } from '@/lib/daily';
+import CurationFlagBadge from '@/components/ui/CurationFlagBadge.astro';
+
+const lessons = await getCollection('lessons');
+const countFor = (id: string) => lessons.filter((l) => l.data.moduleId === id && !l.data.isModuleGate).length;
+const totalTopics = 22;
+const manifest = buildManifest(lessons);
+const today = await latestDay();
+---
+
+<BaseLayout title="ALLM Academy — Production-LLM Engineering">
+  <section class="relative overflow-hidden rounded-2xl border border-border bg-surface/40 px-6 py-12 sm:px-10">
+    <div class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl"></div>
+    <p class="font-mono text-xs uppercase tracking-widest text-accent">Production-LLM Engineering</p>
+    <h1 class="mt-3 max-w-3xl text-fluid-2xl font-bold leading-tight text-text">
+      Go from <span class="text-text-muted">prompt engineering</span> to
+      <span class="text-accent">harness engineering</span>.
+    </h1>
+    <p class="mt-4 max-w-2xl text-fluid text-text-muted">
+      {totalTopics} hard topics — KV caches, speculative decoding, RAG, evals, prompt-injection defense — taught with
+      animated diagrams, interactive widgets, quizzes, and audio. Plus a daily, auto-curated feed so you stay current.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a
+        href={withBase('/modules')}
+        class="rounded-lg bg-accent px-5 py-2.5 font-medium text-bg no-underline hover:opacity-90"
+        data-resume-target
+      >
+        Start the course
+      </a>
+      <a
+        href={withBase('/today')}
+        class="rounded-lg border border-border bg-surface px-5 py-2.5 font-medium text-text no-underline hover:bg-surface-2"
+      >
+        Today’s briefing
+      </a>
+    </div>
+  </section>
+
+  <!-- Progress summary (hydrated client-side from localStorage in Phase 2) -->
+  <section
+    id="overall-summary"
+    class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4"
+    aria-label="Your progress"
+    data-overall-summary
+  >
+    {
+      [
+        { k: 'overall', label: 'Overall' },
+        { k: 'lessons', label: 'Lessons done' },
+        { k: 'quizzes', label: 'Quizzes passed' },
+        { k: 'streak', label: 'Day streak' },
+      ].map((s) => (
+        <div class="card p-4">
+          <div class="text-2xl font-semibold text-text" data-summary={s.k}>—</div>
+          <div class="text-xs text-text-faint">{s.label}</div>
+        </div>
+      ))
+    }
+  </section>
+
+  {
+    today && (
+      <section class="mt-8">
+        <a href={withBase('/today')} class="card block p-5 no-underline transition-colors hover:bg-surface-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-xs uppercase tracking-widest text-accent">Today · {prettyDate(today.data.date)}</span>
+            <CurationFlagBadge flag={today.data.curationFlag} />
+            <span class="ml-auto text-sm text-accent">Open briefing →</span>
+          </div>
+          <ul class="mt-3 grid gap-1.5 sm:grid-cols-2">
+            {today.data.lessons.slice(0, 4).map((l) => (
+              <li class="flex items-start gap-2 text-sm text-text-muted">
+                <span class="mt-1 text-text-faint" aria-hidden="true">·</span>
+                <span class="line-clamp-1">{l.headline}</span>
+              </li>
+            ))}
+          </ul>
+        </a>
+      </section>
+    )
+  }
+
+  <section class="mt-10">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-xl font-semibold text-text">Learning path</h2>
+      <span class="text-sm text-text-faint">9 modules · 22 topics</span>
+    </div>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {MODULES.map((m) => <ModuleCard module={m} lessonCount={countFor(m.id)} />)}
+    </div>
+  </section>
+  <script id="lesson-manifest" type="application/json" is:inline set:html={JSON.stringify(manifest)} />
+</BaseLayout>
+
+<script>
+  import { hydrateDashboard } from '@/lib/progress-ui';
+  hydrateDashboard();
+</script>

@@ -1,0 +1,62 @@
+---
+// Thin wrapper: renders a figure + always-present text equivalent, lazy-mounts the named viz.
+interface Props {
+  name: string;
+  title: string;
+  summary: string;
+  height?: number;
+}
+const { name, title, summary, height = 360 } = Astro.props;
+---
+
+<figure class="card my-8 overflow-hidden">
+  <figcaption class="flex items-center justify-between border-b border-border px-4 py-2.5">
+    <span class="text-sm font-semibold text-text">{title}</span>
+    <span class="font-mono text-[10px] uppercase tracking-wider text-text-faint">interactive · 2D</span>
+  </figcaption>
+  <div class="viz-mount relative grid place-items-center p-4" data-viz={name} style={`min-height:${height}px`}>
+    <p class="sr-only">{summary}</p>
+    <noscript><p class="p-4 text-sm text-text-muted">{summary}</p></noscript>
+    <div class="viz-fallback text-sm text-text-faint">Loading diagram…</div>
+  </div>
+  <details class="border-t border-border px-4 py-2.5 text-sm">
+    <summary class="cursor-pointer text-text-faint">Text description</summary>
+    <p class="mt-2 text-text-muted">{summary}</p>
+  </details>
+</figure>
+
+<script>
+  import { vizRegistry } from '@/components/viz/registry';
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const load = (el: HTMLElement) => {
+    const name = el.dataset.viz!;
+    const loader = vizRegistry[name];
+    el.querySelector('.viz-fallback')?.remove();
+    if (!loader) return; // unknown viz → text equivalent stays
+    loader()
+      .then((m) => m.init(el, { reduced }))
+      .catch((e) => console.error('[viz]', name, e));
+  };
+
+  const mounts = Array.from(document.querySelectorAll<HTMLElement>('.viz-mount[data-viz]')).filter(
+    (m) => !m.dataset.vizMounted,
+  );
+  mounts.forEach((m) => (m.dataset.vizMounted = '1'));
+
+  if (reduced) {
+    mounts.forEach(load);
+  } else {
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            load(e.target as HTMLElement);
+            io.unobserve(e.target);
+          }
+        }),
+      { rootMargin: '200px' },
+    );
+    mounts.forEach((m) => io.observe(m));
+  }
+</script>

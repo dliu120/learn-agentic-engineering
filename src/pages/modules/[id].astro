@@ -1,0 +1,138 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { MODULES, type ModuleMeta } from '@/content/modules';
+import { lessonHref, withBase, hue } from '@/lib/paths';
+import { newsForModule, prettyDate } from '@/lib/daily';
+
+export function getStaticPaths() {
+  return MODULES.map((m) => ({ params: { id: m.id }, props: { module: m } }));
+}
+
+interface Props {
+  module: ModuleMeta;
+}
+const { module: m } = Astro.props;
+
+const all = await getCollection('lessons', (e) => e.data.moduleId === m.id);
+const topicLessons = all.filter((l) => !l.data.isModuleGate).sort((a, b) => a.data.order - b.data.order);
+const gate = all.find((l) => l.data.isModuleGate);
+const related = (await newsForModule(m.id)).slice(0, 3);
+const linkUrl = (u: string) => (u.startsWith('http') ? u : withBase(u));
+---
+
+<BaseLayout title={`${m.name} — ALLM Academy`}>
+  <a href={withBase('/modules')} class="text-sm text-text-muted no-underline hover:text-text">← All modules</a>
+
+  <header class="mt-3 border-l-4 pl-4" style={`border-color:${hue(m.colorHue)}`}>
+    <p class="font-mono text-xs font-semibold" style={`color:${hue(m.colorHue, 70, 62)}`}>
+      {m.num} · Topics {m.topicNumbers.join(', ')}
+    </p>
+    <h1 class="mt-1 text-fluid-xl font-bold text-text">{m.name}</h1>
+    <p class="mt-2 max-w-2xl text-text-muted">{m.short}</p>
+  </header>
+
+  <section class="mt-8 grid gap-8 lg:grid-cols-[1fr_18rem]">
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-text-faint">What you’ll be able to do</h2>
+      <ul class="mt-3 space-y-2">
+        {
+          m.objectives.map((o) => (
+            <li class="flex gap-2 text-text-muted">
+              <span style={`color:${hue(m.colorHue)}`}>▹</span>
+              {o}
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2 class="mt-8 text-sm font-semibold uppercase tracking-wide text-text-faint">Lessons</h2>
+      {
+        topicLessons.length === 0 ? (
+          <p class="mt-3 rounded-lg border border-dashed border-border p-4 text-sm text-text-faint">
+            Lessons for this module are being authored.
+          </p>
+        ) : (
+          <ol class="mt-3 space-y-2">
+            {topicLessons.map((l, i) => (
+              <li>
+                <a
+                  href={lessonHref(m.id, l.data.lessonId)}
+                  class="card flex items-center gap-3 p-3 no-underline hover:bg-surface-2"
+                  data-lesson-key={`${m.id}/${l.data.lessonId}`}
+                >
+                  <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-surface-2 font-mono text-xs text-text-muted">
+                    {i + 1}
+                  </span>
+                  <span class="flex-1 text-text">{l.data.title}</span>
+                  <span class="lesson-check text-signal-good" aria-hidden="true" hidden>
+                    ✓
+                  </span>
+                </a>
+              </li>
+            ))}
+            {gate && (
+              <li>
+                <a
+                  href={lessonHref(m.id, gate.data.lessonId)}
+                  class="card flex items-center gap-3 border-dashed p-3 no-underline hover:bg-surface-2"
+                >
+                  <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full font-mono text-xs" style={`background:${hue(m.colorHue, 70, 30)};color:${hue(m.colorHue, 80, 75)}`}>
+                    ★
+                  </span>
+                  <span class="flex-1 font-medium text-text">{gate.data.title}</span>
+                  <span class="text-xs text-text-faint">gate</span>
+                </a>
+              </li>
+            )}
+          </ol>
+        )
+      }
+    </div>
+
+    <aside>
+      <div class="card p-4">
+        <h3 class="text-sm font-semibold text-text">Related news</h3>
+        {
+          related.length === 0 ? (
+            <p class="mt-1 text-xs text-text-faint">Daily items the curator tags to this module will appear here.</p>
+          ) : (
+            <ul class="mt-3 space-y-3">
+              {related.map(({ date, lesson }) => (
+                <li>
+                  <a
+                    href={linkUrl(lesson.sourceLinks[0].url)}
+                    class="text-sm leading-snug text-text-muted no-underline hover:text-text"
+                    rel="noopener"
+                    target={lesson.sourceLinks[0].url.startsWith('http') ? '_blank' : undefined}
+                  >
+                    {lesson.headline}
+                  </a>
+                  <span class="mt-0.5 block text-[11px] text-text-faint">{prettyDate(date)} · {lesson.sourceLinks[0].source}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        <a href={withBase(`/modules/${m.id}/news`)} class="mt-4 inline-block text-sm" style={`color:${hue(m.colorHue, 70, 62)}`}>
+          View all module news →
+        </a>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>
+
+<script>
+  // Mark completed lessons with a check from localStorage.
+  import { getState } from '@/lib/progress';
+  const paint = () => {
+    const done = getState().lessons;
+    document.querySelectorAll<HTMLElement>('[data-lesson-key]').forEach((a) => {
+      const key = a.dataset.lessonKey!;
+      const check = a.querySelector<HTMLElement>('.lesson-check');
+      if (check) check.hidden = !done[key]?.completed;
+    });
+  };
+  paint();
+  window.addEventListener('allm:progress', paint);
+</script>

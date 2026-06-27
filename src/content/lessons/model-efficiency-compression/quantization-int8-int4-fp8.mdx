@@ -1,0 +1,96 @@
+---
+{
+  "moduleId": "model-efficiency-compression",
+  "lessonId": "quantization-int8-int4-fp8",
+  "title": "Quantization: Fewer Bytes per Weight",
+  "order": 1,
+  "topicNumbers": [
+    6
+  ],
+  "objectives": [
+    "Estimate FP16/INT8/INT4/FP8 memory footprints and add KV cache + overhead to VRAM planning",
+    "Distinguish weight-only (W4A16) from weight+activation (W8A8/FP8) and which serving regime each accelerates",
+    "Contrast GPTQ (Hessian-guided error feedback) with AWQ (activation-salient scaling), both post-training",
+    "Predict when quantization hurts (bit-width, model size, outliers, granularity, task) and choose evals that surface it"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Bits-vs-quality cliff by model size",
+      "summary": "A line chart with bits on the X axis (16 down to 2) and downstream accuracy on Y: the large-model curve stays flat through 8- and 4-bit then bends, the small-model curve plummets at 4-bit, and a faint flat perplexity line dramatizes the blind spot."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "What distinguishes AWQ from GPTQ?",
+      "options": [
+        "AWQ scales activation-salient channels to protect them (no error-feedback reconstruction); GPTQ does Hessian-guided layer-wise reconstruction, pushing rounding error onto the remaining weights",
+        "AWQ is quantization-aware training while GPTQ is post-training",
+        "AWQ supports only 8-bit while GPTQ supports 4-bit",
+        "AWQ needs no calibration data while GPTQ does"
+      ],
+      "correct": 0,
+      "explanation": "Both are PTQ methods using a small calibration set. GPTQ minimizes reconstruction error via Hessian-guided error feedback onto not-yet-quantized weights; AWQ instead preserves the few activation-salient channels via per-channel scaling, then quantizes uniformly."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "You quantize a 7B model to INT4 (weight-only). Perplexity is essentially unchanged, but GSM8K accuracy drops sharply. Best explanation?",
+      "options": [
+        "Perplexity is a weak proxy that misses the localized errors that derail multi-step reasoning — use downstream task evals",
+        "INT4 increased the model's memory footprint",
+        "Weight-only quantization corrupted the KV cache",
+        "The draft model's acceptance rate collapsed"
+      ],
+      "correct": 0,
+      "explanation": "Quality loss from quantization is nonlinear and task-localized. Perplexity averages over tokens and can stay flat while the rare errors that break multi-step reasoning accumulate — so you must measure with downstream task evals."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Picture a model's weights as millions of numbers, each written to many decimal places. Quantization is rounding them to a coarser grid, fewer bytes per number, so you haul far less data out of memory for every token you generate. The catch: rounding is fine until it isn't. Eight-bit is almost free; you barely notice. Four-bit saves more but can shove key weights off a cliff, and small models feel it hardest. Two post-training recipes fight that. GPTQ rounds weights one column at a time and hands its error to the weights it hasn't touched yet. AWQ spots the handful of channels that matter most and scales them so they survive the rounding. And here's the trap that bites teams in production: perplexity can look perfectly flat while math, code, and multi-step reasoning quietly fall apart. So never bless a quantized model on perplexity alone. Run the downstream evals that match what you actually ship."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Counting bytes per weight" tag="topic 6">
+
+Precision sets how many bytes each parameter costs: **FP16 ≈ 2 bytes**, **INT8 ≈ 1**, **INT4 ≈ 0.5** (plus group scales, so an *effective* ~4.25–4.5 bits at group size 128), **FP8 ≈ 1**. A 70B model is therefore roughly **140 GB in FP16, ~70 GB INT8, ~35 GB INT4** — before you add the KV cache and runtime overhead, which any real VRAM estimate must include.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+"Quantized" is underspecified — say bit-width, whether activations/KV are quantized, and granularity.
+</KeyInsightCallout>
+
+## Weight-only vs weight+activation
+
+**W4A16** (weight-only; dequantize to FP16 for the matmul) shrinks bytes moved, speeding **memory-bound decode** at low batch — but gives little prefill gain. **W8A8 / FP8** quantizes activations too, running the matmul on INT8/FP8 tensor cores to accelerate **compute-bound prefill and high-batch serving**. Same bit-count is not the same behavior: FP8 trades dense-region precision for dynamic range and tolerates outliers better than INT8.
+
+<TradeoffTable headers={["W4A16 (weight-only)","W8A8 / FP8 (weight+activation)"]} rows={[["Quantizes weights only; dequant to FP16 for matmul","Quantizes weights and activations; matmul on low-precision cores"],["Speeds memory-bound decode (low batch)","Speeds compute-bound prefill and high batch"],["Little to no prefill speedup","Needs native cores (FP8 on Hopper/Ada/Blackwell)"]]} />
+
+## GPTQ vs AWQ (both PTQ)
+
+<ConceptCard title="Two cures for the same outlier disease">
+
+**GPTQ** quantizes column-by-column with Hessian-guided reconstruction, pushing each rounding error onto the not-yet-quantized weights. **AWQ** identifies the few *activation-salient* channels and protects them via per-channel scaling, then quantizes uniformly. Both use a small calibration set — neither is QAT or retraining. Which wins is setting-dependent.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Quality loss is nonlinear and task-localized — a quantized model can look fine on perplexity and be broken on the reasoning that matters.
+</KeyInsightCallout>
+
+<MisconceptionFlip claim={"INT4 is just half the quality of INT8."} correction={"Loss is nonlinear: INT8 is near-lossless, while INT4 — especially on small models — can fall off a cliff."} />
+<MisconceptionFlip claim={"Quantization always makes inference faster."} correction={"Speedup is regime- and kernel-dependent: W4A16 helps low-batch decode, not prefill, and FP8 needs native tensor cores."} />
+
+<VizWrapper name="quant-cliff" title="Bits-vs-quality cliff by model size" summary="Accuracy vs bit-width: large models stay flat through 8/4-bit then bend; small models plummet at 4-bit; a flat perplexity line shows the blind spot." height={340} />
+
+<FailureModeList items={["Shipping after only a perplexity check — reasoning, math, and code silently regress.","INT4 on a ~7B model hitting a quality cliff.","Aggressive KV-cache quantization degrading long-context quality silently.","Calibration-set mismatch with production traffic.","Expecting W4A16 to speed up prefill (it won't), or running FP8 without native tensor cores."]} />

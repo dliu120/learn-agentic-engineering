@@ -1,0 +1,52 @@
+---
+moduleId: foundations-prompts-to-harnesses
+lessonId: module-gate
+title: "Gate: Foundations & Mindset"
+order: 99
+topicNumbers: [1, 2]
+objectives:
+  - "Prove you can reason about harness, context curation, and failure modes"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: g1
+    type: ordering
+    question: "Put the stages of a harness loop in execution order."
+    options:
+      - "Invoke the model"
+      - "Parse the output"
+      - "Execute the tool in a sandbox"
+      - "Observe the result"
+      - "Verify against the goal"
+      - "Check budget / stop condition"
+    correct: [0, 1, 2, 3, 4, 5]
+    explanation: "Invoke → Parse → Execute → Observe → Verify → Check budget. The final stage is what prevents a runaway loop."
+  - id: g2
+    type: matching
+    question: "Match each context failure mode to its fix."
+    pairs:
+      - { left: "Poisoning", right: "Prune the bad fact" }
+      - { left: "Distraction", right: "Compact the history" }
+      - { left: "Confusion", right: "Scope the tool set" }
+      - { left: "Clash", right: "Rerank / dedupe retrieval" }
+    explanation: "Each failure mode has a context-engineering fix — not a prompt reword."
+  - id: g3
+    type: mcq
+    question: "Which statement best reflects the production mindset of this module?"
+    options:
+      - "You ship a system — the harness and curated context dominate; the prompt is the smallest lever"
+      - "Pick the biggest context window and paste everything in"
+      - "The model is the product; better wording is the main job"
+      - "Caching always makes requests cheaper regardless of prompt layout"
+    correct: 0
+    explanation: "Prompt ⊂ context ⊂ harness. Engineer the loop and the information the model sees each step."
+isModuleGate: true
+---
+
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+
+Pass this gate to mark **Module 1** complete and unlock **Module 2**.
+
+<KeyInsightCallout>
+You don't write a clever string — you engineer the loop and the information it sees each step.
+</KeyInsightCallout>

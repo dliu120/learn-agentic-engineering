@@ -1,0 +1,17 @@
+---
+import { withBase } from '@/lib/paths';
+---
+
+<footer class="mt-20 border-t border-border">
+  <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-text-faint sm:flex-row sm:items-center sm:justify-between">
+    <p>
+      ALLM Academy — an open course on production-LLM engineering.
+      <span class="text-text-muted">Built as a static site; daily lessons refresh via CI.</span>
+    </p>
+    <nav aria-label="Footer" class="flex gap-4">
+      <a href={withBase('/about')} class="text-text-muted no-underline hover:text-text">About</a>
+      <a href={withBase('/archive')} class="text-text-muted no-underline hover:text-text">Archive</a>
+      <a href={withBase('/feed.xml')} class="text-text-muted no-underline hover:text-text">Feed</a>
+    </nav>
+  </div>
+</footer>

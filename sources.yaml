@@ -1,0 +1,58 @@
+# Daily-pipeline config. Tune feeds/weights/thresholds here; no code change needed.
+# All feeds are public + keyless. The LLM curation step is optional (needs ANTHROPIC_API_KEY);
+# without it the pipeline falls back to deterministic templated curation.
+
+window_hours: 48 # only consider items published within this window
+candidate_cap: 24 # max items carried into curation after ranking
+per_source_cap: 8 # max items kept from any single source
+min_relevance: 1 # min number of allowlist-term hits to keep an item
+recency_half_life_hours: 24 # ranking: score halves every N hours of age
+max_lessons: 6 # max curated lessons per day
+model: claude-sonnet-4-6 # LLM used for curation (if key present)
+voice: en-US-AriaNeural # edge-tts voice for the daily audio digest
+
+feeds:
+  - { name: 'Hacker News', type: hn, query: 'LLM', weight: 1.0 }
+  - { name: 'Hacker News (agents)', type: hn, query: 'AI agents', weight: 0.9 }
+  - { name: 'arXiv cs.CL', type: arxiv, query: 'cat:cs.CL', weight: 0.85 }
+  - { name: 'arXiv cs.LG', type: arxiv, query: 'cat:cs.LG', weight: 0.7 }
+  # Anthropic has no stable public blog RSS; proxy company news via Google News search.
+  - { name: 'Anthropic (news)', type: rss, url: 'https://news.google.com/rss/search?q=%22Anthropic%22+(Claude+OR+LLM)&hl=en-US&gl=US&ceid=US:en', weight: 0.8 }
+  - { name: 'OpenAI', type: rss, url: 'https://openai.com/blog/rss.xml', weight: 1.0 }
+  - { name: 'Hugging Face', type: rss, url: 'https://huggingface.co/blog/feed.xml', weight: 0.8 }
+  - { name: 'Simon Willison', type: rss, url: 'https://simonwillison.net/atom/everything/', weight: 0.85 }
+  - { name: 'Sebastian Raschka', type: rss, url: 'https://magazine.sebastianraschka.com/feed', weight: 0.8 }
+  # Reddit often returns 403 from cloud IPs; kept as best-effort (pipeline degrades gracefully).
+  - { name: 'r/LocalLLaMA', type: rss, url: 'https://www.reddit.com/r/LocalLLaMA/.rss', weight: 0.6 }
+
+# Items must mention at least `min_relevance` of these (case-insensitive) to survive filtering.
+allowlist:
+  - llm
+  - gpt
+  - claude
+  - gemini
+  - llama
+  - mistral
+  - rag
+  - retrieval
+  - embedding
+  - rerank
+  - inference
+  - quantization
+  - quantized
+  - agent
+  - eval
+  - fine-tun
+  - vllm
+  - kv cache
+  - context window
+  - prompt
+  - distill
+  - speculative
+  - tool call
+  - function call
+  - mixture of experts
+  - moe
+  - transformer
+  - attention
+  - tokenizer

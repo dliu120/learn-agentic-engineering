@@ -1,0 +1,48 @@
+name: daily-lessons
+on:
+  schedule:
+    - cron: '17 13 * * *' # 13:17 UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-lessons
+  cancel-in-progress: false
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install edge-tts
+      - run: npm ci
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: http-cache-${{ github.run_id }}
+          restore-keys: http-cache-
+      - name: Curate today's briefing
+        run: npm run daily
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} # optional; falls back to templated curation
+          USER_AGENT: 'allm-academy-bot/1.0 (+https://github.com/${{ github.repository }})'
+      - name: Generate daily audio (best-effort)
+        run: npm run gen:audio || true
+      - name: Commit new briefing
+        run: |
+          git config user.name "allm-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add src/content/daily public/audio/daily public/audio/core scripts/.audio-manifest.json 2>/dev/null || true
+          git commit -m "daily: $(date -u +%F)" || echo "no changes to commit"
+          git push
+      # Pushing to main triggers deploy.yml, which rebuilds and publishes.

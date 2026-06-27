@@ -1,0 +1,99 @@
+{
+  "date": "2026-06-24",
+  "generatedAt": "2026-06-24T13:17:00.000Z",
+  "curationFlag": "curated",
+  "sourcesUsed": ["Hacker News", "arXiv cs.CL", "Hugging Face"],
+  "audio": {
+    "available": false,
+    "transcript": "Today's AI engineering briefing. Item 1: a new speculative-decoding variant. Item 2: a long-context retrieval study. Item 3: a prompt-injection disclosure."
+  },
+  "lessons": [
+    {
+      "id": "example-eagle3-spec-decode",
+      "headline": "A faster exact-verification speculative decoder lands in a popular serving stack",
+      "sourceLinks": [
+        { "title": "Speculative decoding update (example link)", "url": "https://github.com/vllm-project/vllm", "source": "Hacker News" }
+      ],
+      "summaryBullets": [
+        "A new draft-model scheme raises the token acceptance rate, so more tokens are verified per target pass.",
+        "It uses exact verification, so output stays distributionally identical to the target model.",
+        "Reported speedups are largest at low batch sizes, where decode is most bandwidth-bound."
+      ],
+      "whyItMatters": "Speculative decoding cuts latency without touching quality when verification is exact — but the win shrinks as batch size grows and spare FLOPs disappear. Know your serving regime before adopting it.",
+      "module": "model-efficiency-compression",
+      "secondaryModules": ["inference-internals-performance"],
+      "moduleRationale": "Directly about speculative decoding (topic 5) and the decode-bandwidth lens (topic 3).",
+      "microQuiz": {
+        "question": "Why does exact-verification speculative decoding not change output quality?",
+        "options": [
+          "A rejection-sampling verification step provably reproduces the target model's distribution",
+          "The draft model is quantized to match the target",
+          "It only runs when the prompt is cached",
+          "It averages the draft and target logits"
+        ],
+        "correct": 0,
+        "explanation": "Exact methods accept/reject draft tokens so the final distribution equals the target's; the draft only affects speed via acceptance rate."
+      },
+      "tags": ["speculative decoding", "inference", "latency"],
+      "meta": { "difficulty": "advanced", "readingTimeMin": 3, "signals": { "points": 214, "comments": 88 } }
+    },
+    {
+      "id": "example-longctx-retrieval-study",
+      "headline": "Study: long context does not replace retrieval for large corpora",
+      "sourceLinks": [
+        { "title": "Long-context vs retrieval (example link)", "url": "https://arxiv.org/list/cs.CL/recent", "source": "arXiv cs.CL" }
+      ],
+      "summaryBullets": [
+        "Stuffing more documents into a long window still suffers lost-in-the-middle degradation.",
+        "Selective retrieval with reranking beat naive long-context stuffing on grounded QA.",
+        "Cost scaled roughly with context length, eroding the convenience argument."
+      ],
+      "whyItMatters": "Reinforces a core RAG lesson: a bigger window is a budget, not a dumping ground. Curate and rerank rather than paste everything.",
+      "module": "rag-retrieval",
+      "secondaryModules": ["foundations-prompts-to-harnesses"],
+      "moduleRationale": "Retrieval quality and reranking (topics 15-16) plus context curation (topic 2).",
+      "microQuiz": {
+        "question": "What is the most likely cause of mid-document accuracy loss when stuffing a long window?",
+        "options": [
+          "Lost-in-the-middle: models attend most to the start and end",
+          "The tokenizer corrupts the middle tokens",
+          "A hard context limit truncates the middle",
+          "Reranking always removes the middle"
+        ],
+        "correct": 0,
+        "explanation": "Position bias means key facts buried mid-context are under-attended; rerank to place them at the edges."
+      },
+      "tags": ["rag", "retrieval", "long context"],
+      "meta": { "difficulty": "intermediate", "readingTimeMin": 3 }
+    },
+    {
+      "id": "example-injection-disclosure",
+      "headline": "Prompt-injection disclosure: a tool-enabled assistant leaked data via the lethal trifecta",
+      "sourceLinks": [
+        { "title": "Injection write-up (example link)", "url": "https://simonwillison.net/tags/prompt-injection/", "source": "Simon Willison" }
+      ],
+      "summaryBullets": [
+        "An assistant with access to private data also ingested attacker-controlled web content.",
+        "A link-rendering tool became the exfiltration channel — all three trifecta legs present.",
+        "The fix was to break one leg: strip the outbound channel for untrusted-derived content."
+      ],
+      "whyItMatters": "The lethal trifecta (private data + untrusted content + exfiltration) is the canonical injection failure. Treat the model as untrusted and enforce permissions in your code, not the prompt.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": ["agent-control-routing-degradation"],
+      "moduleRationale": "Prompt injection and the lethal trifecta (topic 20).",
+      "microQuiz": {
+        "question": "What is the most reliable mitigation for the lethal trifecta?",
+        "options": [
+          "Break at least one leg (e.g., remove the exfiltration channel for untrusted-derived actions)",
+          "Add a stronger system prompt telling the model to refuse",
+          "Increase the model size",
+          "Lower the temperature to 0"
+        ],
+        "correct": 0,
+        "explanation": "Injection defenses in the prompt are bypassable. Remove one leg of data + untrusted content + exfiltration architecturally."
+      },
+      "tags": ["prompt injection", "security", "agents"],
+      "meta": { "difficulty": "advanced", "readingTimeMin": 3, "signals": { "points": 340, "comments": 156 } }
+    }
+  ]
+}

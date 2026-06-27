@@ -1,0 +1,109 @@
+---
+{
+  "moduleId": "production-ops-cost-safety-multitenancy",
+  "lessonId": "multitenant-isolation-cache-safety",
+  "title": "Multi-Tenant Isolation, Cache Safety, and Contamination",
+  "order": 3,
+  "topicNumbers": [
+    21
+  ],
+  "objectives": [
+    "Construct tenant-safe cache keys that encode every output and authZ dimension",
+    "Explain why a semantic cache can disclose one tenant's answer to another",
+    "Identify cross-user contamination from shared mutable state and pool/concurrency bugs",
+    "Apply per-request isolation and full-identity namespacing to memory stores"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "Semantic Cache Poisoning",
+      "summary": "An embedding plane with query dots colored by tenant; Tenant B's similar query drifts into Tenant A's cached similarity radius and triggers a wrong-tenant hit until a 'tenant_id in key' toggle splits the plane into walled regions."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "A multi-tenant assistant with a semantic cache returns Tenant A's confidential answer to Tenant B. Root cause?",
+      "options": [
+        "The cache key used only question similarity and omitted tenant identity, so B's near-duplicate matched A's entry",
+        "The LLM provider's prompt cache leaked between customers",
+        "The model needs fine-tuning on tenant boundaries",
+        "The cache TTL was set too long"
+      ],
+      "correct": 0,
+      "explanation": "Semantic caches match on meaning. Without tenant/user/permission in the key, B's similar question hits A's entry. Provider caches are org-scoped; this is your own cache, and TTL/fine-tuning don't address the missing key dimension."
+    },
+    {
+      "id": "q2",
+      "type": "multi",
+      "question": "Which of these must a tenant-safe semantic cache key encode? Select all that apply.",
+      "options": [
+        "tenant_id",
+        "user / permission set",
+        "the query/prompt content",
+        "a fresh random nonce per request"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "The key must partition by identity and authZ (tenant, user/permissions) plus the content (and model/version/locale). A per-request random nonce would make every lookup miss, defeating the cache entirely."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "One system, many customers — and the leaks here usually aren't the model's fault at all. Miss a single tenant_id filter on a vector query and you hand one customer another's nearest neighbors. Turn on a semantic cache — which matches on meaning, not exact words — and a similar question from Tenant B can land right on Tenant A's private cached answer. It's like a coat check that hands out coats based on 'looks about the same' instead of the ticket number. The fix is to make the ticket specific: every cache key must encode tenant, user, permissions, model, and version — and get invalidated the moment permissions change. And the scariest bugs wear an AI costume but are really plain concurrency bugs: a global buffer in an async server, a singleton session, a mis-keyed memory store — all of them interleave one user's data onto another's screen. Isolate per-request state, and namespace every memory store by full identity."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Shared system, many tenants" tag="topic 21">
+
+Multi-tenant isolation is **your** job, not the provider's. One missing `tenant_id` filter leaks data across tenants — worst on **vector queries**, where a forgotten filter returns another tenant's nearest neighbors. Use namespaces, metadata filters, or separate indexes, and treat the filter as non-optional.
+
+</ConceptCard>
+
+## Cache safety
+
+A **semantic cache** matches on *meaning*, not exact text. So Tenant B's near-duplicate question can hit Tenant A's cached private answer unless the key includes identity. Every cache key must encode **all** output and authZ dimensions — tenant, user, permission set, model, prompt version, locale — and invalidate when permissions change.
+
+<KeyInsightCallout>
+a semantic cache is a similarity-based information-disclosure engine unless its key is partitioned by identity and authZ.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"Provider prompt caching will leak my data to other customers."}
+  correction={"Provider caches are scoped to your org; the real risk is YOUR semantic cache leaking across YOUR tenants."}
+/>
+
+<VizWrapper
+  name="semantic-cache-poisoning"
+  title="Semantic Cache Poisoning"
+  summary="On an embedding plane, Tenant B's similar query drifts into Tenant A's cached similarity radius and returns A's private answer — until a 'tenant_id in key' toggle walls the plane into per-tenant regions and B misses safely."
+  height={340}
+/>
+
+## Cross-user contamination
+
+The scariest leaks aren't model bugs — they're **concurrency and state bugs**. A module-level or global buffer in an async server, a singleton session object, or a mis-keyed memory store bleeds one user's tokens into another's response. The March 2023 ChatGPT incident — a redis-py async client bug — exposed some users' data to other users (verify the exact exposed fields before quoting).
+
+<KeyInsightCallout>
+the scariest leaks are shared-state and pool race conditions wearing an AI costume — isolate per-request state, namespace every memory store by full identity.
+</KeyInsightCallout>
+
+<FailureModeList
+  items={[
+    "A missing tenant filter on a vector query returns another tenant's neighbors.",
+    "A semantic cache serves Tenant A's answer to Tenant B via a near-duplicate query.",
+    "A module-level/singleton buffer interleaves concurrent users' output.",
+    "A mis-keyed long-term memory store injects another user's history.",
+    "Permission revocation doesn't invalidate cached or remembered answers.",
+  ]}
+/>

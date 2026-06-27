@@ -1,0 +1,115 @@
+---
+{
+  "moduleId": "rag-retrieval",
+  "lessonId": "chunking-embeddings-vector-search",
+  "title": "Chunking, Embeddings & Bi-Encoder Vector Search",
+  "order": 1,
+  "topicNumbers": [
+    14
+  ],
+  "objectives": [
+    "Explain how chunk size and overlap trade precision against recall and dilute the embedding signal",
+    "Describe the bi-encoder pipeline: independent encoding, precomputed doc vectors, ANN index",
+    "Justify why the same embedding model and version must be used for indexing and querying",
+    "Choose a chunking strategy and explain why structure-aware splits beat fixed-length cuts"
+  ],
+  "hasAudio": true,
+  "visualizations": [
+    {
+      "title": "The retrieval funnel: indexing stage",
+      "summary": "A wide corpus is chunked and embedded into an ANN index; at query time the question is embedded once and pulls its nearest neighbors as the top of a narrowing funnel toward the LLM."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "A single 1500-token chunk covering both 'installation' and 'troubleshooting' ranks poorly for a specific troubleshooting query, even though the answer is in it. Best explanation?",
+      "options": [
+        "The chunk's embedding averages two topics, so its vector lands in the muddy middle and matches neither query sharply",
+        "The embedding model has too few dimensions to store the text",
+        "Cosine similarity is broken for chunks over 1000 tokens",
+        "The ANN index dropped the chunk during approximation"
+      ],
+      "correct": 0,
+      "explanation": "A chunk's embedding is roughly an average of its content. Mixing two topics pulls the vector toward a midpoint that represents neither well. Splitting so each chunk is about one thing fixes this."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Why is a bi-encoder less accurate at scoring relevance than a cross-encoder, despite being the practical choice for first-stage retrieval?",
+      "options": [
+        "It encodes the query and document independently, so they never attend to each other",
+        "It can only handle 512 tokens",
+        "It requires a GPU the cross-encoder does not",
+        "It returns scores on a different numeric scale"
+      ],
+      "correct": 0,
+      "explanation": "Independent encoding is exactly what lets you precompute doc vectors and search at scale — but because query and document never attend to one another, the relevance estimate is blunter than a cross-encoder's joint pass."
+    }
+  ],
+  "isModuleGate": false,
+  "narration": "Think of RAG as a funnel, not a magic box. Before anything reaches the model, you have to turn your documents into something searchable, and that starts with two quiet decisions that decide everything downstream: how you cut your documents, and how you turn them into vectors. Here's the mental model for chunking. An embedding is roughly the average of everything in the chunk. So if you stuff a setup guide and a troubleshooting section into one big chunk, its vector lands in the muddy middle and matches neither query well. Each chunk should be about one thing. Too small, and you shred ideas across fragments; a little overlap stitches the boundaries back together. Now embeddings. A bi-encoder encodes the query and each document completely independently. That's the whole trick that makes search scale: you precompute every document vector once, drop them in an approximate-nearest-neighbor index, and at query time you only embed the question and look up neighbors. But that same independence is the catch. The query and the document never actually read each other, so a bi-encoder is fast but blunt. One more thing that bites everyone: the index and the query must use the exact same model and version, or the vectors live in different spaces and nearness means nothing."
+}
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Chunking is a precision/recall knob" tag="topic 14">
+
+You can't embed a whole document and expect sharp retrieval. You split it into chunks (~200–500 tokens is a common heuristic), embed each, and index the vectors.
+
+- **Oversized chunks** blur several topics into one vector and waste context budget.
+- **Undersized chunks** fragment a single idea across many vectors, hurting recall.
+- **Overlap (~10–20%)** keeps an idea that straddles a boundary from being split.
+- **Structure-aware** splits (headings, sentences, code AST) beat blind fixed-length cuts.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+A chunk's embedding ≈ an average of its content, so each chunk should be about one thing.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="retrieval-funnel"
+  title="From corpus to query: the top of the funnel"
+  summary="Documents are chunked and embedded into an ANN index offline; at query time the question is embedded once and its nearest neighbors enter the funnel that narrows toward the LLM."
+  height={340}
+/>
+
+## The bi-encoder pipeline
+
+<ConceptCard title="Encode independently, search at scale">
+
+A **bi-encoder** runs the query and each document through the model **separately**. Document vectors are computed once, stored in an ANN index (HNSW, IVF). At query time you embed only the question and fetch nearest neighbors by cosine/dot similarity.
+
+Knobs: dimensionality (~384–3072), domain fit, max sequence length, and quantization (smaller/faster vs. some accuracy loss). Model names like text-embedding-3, Cohere, or BGE/E5 are examples, not prescriptions.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Independent encoding makes retrieval scalable and is also why a bi-encoder is less accurate than a cross-encoder — query and doc never attend.
+</KeyInsightCallout>
+
+<MisconceptionFlip
+  claim={"Cosine similarity equals relevance."}
+  correction={"Nearness is not answering — it under-weights exact tokens (IDs, error codes) and can rank a topically-near but unhelpful chunk first."}
+/>
+<MisconceptionFlip
+  claim={"You can swap the embedding model without re-indexing."}
+  correction={"Vectors from a different model/version aren't comparable — the index and query path must share the exact same model."}
+/>
+
+<FailureModeList
+  items={[
+    "Boundary split with no overlap: a key sentence is cut in half across two chunks.",
+    "One chunking strategy forced onto every doc type (prose, tables, code).",
+    "Embedding-model version skew between index and query path.",
+    "Near-duplicate chunks crowding the top-k with redundant hits."
+  ]}
+/>

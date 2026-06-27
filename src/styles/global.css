@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design tokens — "engineer's observatory". Dark-first.
+   RGB triplets so Tailwind's <alpha-value> works.
+   ============================================================ */
+:root,
+[data-theme='dark'] {
+  --bg: 11 14 20;
+  --surface: 18 22 32;
+  --surface-2: 26 31 42;
+  --text: 230 234 242;
+  --text-muted: 154 164 178;
+  --text-faint: 92 102 117;
+  --border: 35 42 54;
+  --accent: 34 211 238;       /* electric cyan */
+  --accent-2: 167 139 250;    /* violet */
+  --signal-good: 52 211 153;  /* green */
+  --signal-warn: 251 191 36;  /* amber */
+  --signal-bad: 248 113 113;  /* red */
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg: 251 252 254;
+  --surface: 255 255 255;
+  --surface-2: 241 244 249;
+  --text: 11 18 32;
+  --text-muted: 71 85 105;
+  --text-faint: 148 163 184;
+  --border: 226 232 240;
+  --accent: 8 145 178;
+  --accent-2: 124 58 237;
+  --signal-good: 5 150 105;
+  --signal-warn: 217 119 6;
+  --signal-bad: 220 38 38;
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded-sm;
+  }
+  a {
+    @apply text-accent underline-offset-2 hover:underline;
+  }
+  code,
+  kbd,
+  pre {
+    @apply font-mono;
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-border bg-surface/70 backdrop-blur-sm;
+  }
+  .prose-tight :where(p, ul, ol) {
+    @apply text-fluid leading-relaxed text-text-muted;
+  }
+  .kbd {
+    @apply inline-flex items-center rounded border border-border bg-surface-2 px-1.5 py-0.5 text-xs font-mono text-text-muted;
+  }
+}
+
+/* Respect reduced-motion globally; viz components also gate programmatically. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.skip-link {
+  @apply sr-only;
+}
+.skip-link:focus {
+  @apply not-sr-only fixed left-3 top-3 z-50 rounded-md bg-accent px-3 py-2 text-bg;
+}
