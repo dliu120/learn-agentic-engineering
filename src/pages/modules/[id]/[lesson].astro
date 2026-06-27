@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Quiz from '@/components/islands/Quiz.tsx';
 import AudioPlayer from '@/components/islands/AudioPlayer.tsx';
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const d = entry.data;
 const m = MODULE_BY_ID[d.moduleId];
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 // sibling ordering: topic lessons by order, gate last
 const sibs = (await getCollection('lessons', (e) => e.data.moduleId === d.moduleId)).sort((a, b) => {
@@ -129,6 +129,8 @@ const vttSrc = `${base}/audio/core/${d.moduleId}-${d.lessonId}.vtt`;
 </script>
 
 <style>
+  @reference '../../../styles/global.css';
+
   .lesson-body :global(h2) {
     @apply mt-10 text-xl font-semibold text-text;
   }

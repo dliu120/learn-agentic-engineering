@@ -36,7 +36,7 @@ export const dailyLesson = z.object({
   meta: z.object({
     difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
     readingTimeMin: z.number(),
-    signals: z.record(z.number()).optional(),
+    signals: z.record(z.string(), z.number()).optional(),
   }),
 });
 

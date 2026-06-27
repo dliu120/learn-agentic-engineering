@@ -1,12 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { MODULE_BY_ID } from '@/content/modules';
 import { moduleHref, hue } from '@/lib/paths';
 
 const entries = (await getCollection('glossary')).sort((a, b) => a.data.term.localeCompare(b.data.term));
 const rendered = await Promise.all(
-  entries.map(async (e) => ({ data: e.data, slug: e.slug, Content: (await e.render()).Content })),
+  entries.map(async (e) => ({ data: e.data, slug: e.id, Content: (await render(e)).Content })),
 );
 ---
 
