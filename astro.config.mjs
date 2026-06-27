@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 import mdx from '@astrojs/mdx';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 // Static-only output. No SSR, no serverless. Deployable to any static host.
 // `site` is used for canonical URLs, the Atom feed, and sitemap-friendly absolute links.
@@ -13,11 +13,12 @@ export default defineConfig({
   site,
   base,
   output: 'static',
-  integrations: [preact({ compat: true }), mdx(), tailwind({ applyBaseStyles: false })],
+  integrations: [preact({ compat: true }), mdx()],
   markdown: {
     shikiConfig: { theme: 'github-dark-dimmed', wrap: true },
   },
   vite: {
+    plugins: [tailwindcss()],
     ssr: { noExternal: ['gsap'] },
   },
 });
