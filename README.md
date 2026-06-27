@@ -35,6 +35,15 @@ npm run preview        # serve the production build
 | `npm run gen:audio` | edge-tts core-concept narration (no-op if edge-tts absent) |
 | `npm run test` | Vitest unit tests |
 
+## Contributing
+
+**Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/).**
+Format: `type(scope): subject` — e.g. `feat(daily): add arXiv source`, `fix(viz): correct kv-cache stepper`.
+Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`, `perf`, `style`.
+Keep the subject imperative and ≤72 chars; add a body for the *why* when it isn't obvious.
+
+Agents working in this repo: see [`AGENTS.md`](./AGENTS.md).
+
 ## Architecture
 
 ```
