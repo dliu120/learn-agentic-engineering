@@ -28,7 +28,8 @@ chore(deps): bump astro to 4.x
 
 ## Working conventions
 
-- Run `npm run check` (typecheck) and `npm run test` before committing code changes.
+- Toolchain is managed by [mise](https://mise.jdx.dev/) (`mise.toml`); the package manager/runtime is [Bun](https://bun.sh/). Use `bun`, not `npm`.
+- Run `bun run check` (typecheck) and `bun run test` before committing code changes.
 - Keep changes surgical — touch only what the task requires; match existing style.
 - Don't commit generated artifacts (`dist/`, `.astro/`) or secrets (`.env`); see `.gitignore`.
 - Schemas in `src/content/schemas/` are the single source of truth shared with `scripts/` — update both sides together.
