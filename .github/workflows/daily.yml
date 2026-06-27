@@ -17,27 +17,24 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+      - uses: jdx/mise-action@v2
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install edge-tts
-      - run: npm ci
+      - run: bun install --frozen-lockfile
       - uses: actions/cache@v4
         with:
           path: .cache
           key: http-cache-${{ github.run_id }}
           restore-keys: http-cache-
       - name: Curate today's briefing
-        run: npm run daily
+        run: bun run daily
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} # optional; falls back to templated curation
           USER_AGENT: 'allm-academy-bot/1.0 (+https://github.com/${{ github.repository }})'
       - name: Generate daily audio (best-effort)
-        run: npm run gen:audio || true
+        run: bun run gen:audio || true
       - name: Commit new briefing
         run: |
           git config user.name "allm-bot"

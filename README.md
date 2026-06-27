@@ -9,31 +9,35 @@ quizzes, progress tracking, and optional build-time audio narration.
 A daily CI job curates AI news (Hacker News, arXiv, OpenAI/HF/blog RSS) into short teachable
 briefings mapped back to the curriculum, so the site stays current without a runtime backend.
 
-> Built from a spec in [`goal-prompt.md`](./goal-prompt.md). Tech: Astro 4 (static) · Preact islands ·
-> Tailwind · GSAP-free SVG/Canvas viz · Pagefind search · edge-tts audio.
+> Tech: Astro 4 (static) · Preact islands · Tailwind · GSAP-free SVG/Canvas viz ·
+> Pagefind search · edge-tts audio.
 
 ## Quick start
 
+This repo uses [mise](https://mise.jdx.dev/) to manage the toolchain (Bun) and
+[Bun](https://bun.sh/) as the package manager/runtime.
+
 ```bash
-npm install
-npm run dev            # http://localhost:4321
-npm run build          # static output in dist/ (astro build + pagefind index)
-npm run preview        # serve the production build
+mise install           # install the toolchain pinned in mise.toml (latest Bun)
+bun install            # install dependencies
+bun run dev            # http://localhost:4321
+bun run build          # static output in dist/ (astro build + pagefind index)
+bun run preview        # serve the production build
 ```
 
 ## Scripts
 
 | script | what it does |
 |---|---|
-| `npm run dev` | Astro dev server |
-| `npm run build` | `astro build` then Pagefind search index over `dist/` |
-| `npm run preview` | serve `dist/` |
-| `npm run check` | `astro check` (typecheck) |
-| `npm run check:coverage` | assert all 22 topics are covered by lessons |
-| `npm run daily` | run the daily pipeline → writes `src/content/daily/<date>.json` |
-| `npm run daily:dry` | fetch + curate to `.tmp/` with no site changes |
-| `npm run gen:audio` | edge-tts core-concept narration (no-op if edge-tts absent) |
-| `npm run test` | Vitest unit tests |
+| `bun run dev` | Astro dev server |
+| `bun run build` | `astro build` then Pagefind search index over `dist/` |
+| `bun run preview` | serve `dist/` |
+| `bun run check` | `astro check` (typecheck) |
+| `bun run check:coverage` | assert all 22 topics are covered by lessons |
+| `bun run daily` | run the daily pipeline → writes `src/content/daily/<date>.json` |
+| `bun run daily:dry` | fetch + curate to `.tmp/` with no site changes |
+| `bun run gen:audio` | edge-tts core-concept narration (no-op if edge-tts absent) |
+| `bun run test` | Vitest unit tests |
 
 ## Contributing
 
@@ -81,7 +85,7 @@ sources.yaml   daily-pipeline config (feeds, weights, thresholds, voice, model)
 
 ## The daily pipeline
 
-`npm run daily` fetches public feeds (see `sources.yaml`), dedupes/filters/ranks by relevance +
+`bun run daily` fetches public feeds (see `sources.yaml`), dedupes/filters/ranks by relevance +
 recency, then curates the top items into lessons mapped to the 9 modules:
 
 - **With** `ANTHROPIC_API_KEY` → LLM curation (summary + why-it-matters + micro-quiz), validated by
@@ -108,10 +112,10 @@ Two GitHub Actions workflows are included:
 
 Any static host works (Netlify/Vercel-static/Cloudflare Pages) — just serve `dist/`.
 
-## Definition of Done status
+## Status
 
-See `goal-prompt.md` §15. Met: clean `build` + `astro check` (0 errors); all 22 topics
-(`npm run check:coverage`); per-module animated diagram + quiz + gate; mcq/multi/ordering/matching;
+Met: clean `build` + `astro check` (0 errors); all 22 topics
+(`bun run check:coverage`); per-module animated diagram + quiz + gate; mcq/multi/ordering/matching;
 localStorage progress + export/import; guarded edge-tts audio + transcripts; daily pipeline
 (dry-run + live) with graceful degradation; today/archive/calendar/news/feed; Pagefind search + ⌘K;
 dark mode; reduced-motion. Lighthouse tuning and full edge-tts audio generation are environment-gated
