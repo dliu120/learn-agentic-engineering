@@ -1,0 +1,207 @@
+{
+  "date": "2026-06-28",
+  "generatedAt": "2026-06-28T13:59:03.875Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-06-28.mp3",
+    "vtt": "/audio/daily/2026-06-28.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: AgentWatch – Prevent runaway AI agents with runtime budget enforcement. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Google limits Meta's use of its Gemini AI models. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Ask HN: Impact on LLM development after the USA policy of preliminary vetting. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Claude Fable 5: What Our Red Team Found Before the Plug Got Pulled. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Hestia – a local-first Home Assistant that trusts timers over the LLM. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Cerberus – a local firewall for AI agents' tool calls. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-agentwatch-prevent-runaway-ai-agents-wit-0",
+      "headline": "Show HN: AgentWatch – Prevent runaway AI agents with runtime budget enforcement",
+      "sourceLinks": [
+        {
+          "title": "Show HN: AgentWatch – Prevent runaway AI agents with runtime budget enforcement",
+          "url": "https://agent-watch.dev/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 5,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "google-limits-meta-s-use-of-its-gemini-ai-models-1",
+      "headline": "Google limits Meta's use of its Gemini AI models",
+      "sourceLinks": [
+        {
+          "title": "Google limits Meta's use of its Gemini AI models",
+          "url": "https://www.cnbc.com/2026/06/28/google-limits-metas-use-of-its-gemini-ai-models-ft-reports.html",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "ask-hn-impact-on-llm-development-after-the-usa-p-2",
+      "headline": "Ask HN: Impact on LLM development after the USA policy of preliminary vetting",
+      "sourceLinks": [
+        {
+          "title": "Ask HN: Impact on LLM development after the USA policy of preliminary vetting",
+          "url": "https://news.ycombinator.com/item?id=48707008",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "claude-fable-5-what-our-red-team-found-before-th-3",
+      "headline": "Claude Fable 5: What Our Red Team Found Before the Plug Got Pulled",
+      "sourceLinks": [
+        {
+          "title": "Claude Fable 5: What Our Red Team Found Before the Plug Got Pulled",
+          "url": "https://www.reco.ai/blog/inside-claude-fable-5-red-team-findings",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "hestia-a-local-first-home-assistant-that-trusts--4",
+      "headline": "Hestia – a local-first Home Assistant that trusts timers over the LLM",
+      "sourceLinks": [
+        {
+          "title": "Hestia – a local-first Home Assistant that trusts timers over the LLM",
+          "url": "https://github.com/thefullnacho/hestia",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "cerberus-a-local-firewall-for-ai-agents-tool-cal-5",
+      "headline": "Cerberus – a local firewall for AI agents' tool calls",
+      "sourceLinks": [
+        {
+          "title": "Cerberus – a local firewall for AI agents' tool calls",
+          "url": "https://github.com/Adirdabush1/cerberus",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
