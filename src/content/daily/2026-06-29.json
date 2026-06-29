@@ -1,0 +1,205 @@
+{
+  "date": "2026-06-29",
+  "generatedAt": "2026-06-29T14:38:47.618Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-06-29.mp3",
+    "vtt": "/audio/daily/2026-06-29.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Fognitix – AI browser with parallel autonomous agents on the browser. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Show HN: I built Exfault, agentic mobile app pentesting tool. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: Show HN: Reference MCP – let your AI agents search each other's past sessions. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: I built an anime-style UI for watching AI coding agents review each other's code. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: AiCompiler – a language where the LLM is the CPU. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Show HN: Llama Legends. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-fognitix-ai-browser-with-parallel-autono-0",
+      "headline": "Show HN: Fognitix – AI browser with parallel autonomous agents on the browser",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Fognitix – AI browser with parallel autonomous agents on the browser",
+          "url": "https://www.fognitix.com/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "show-hn-i-built-exfault-agentic-mobile-app-pente-1",
+      "headline": "Show HN: I built Exfault, agentic mobile app pentesting tool",
+      "sourceLinks": [
+        {
+          "title": "Show HN: I built Exfault, agentic mobile app pentesting tool",
+          "url": "https://www.exfault.com/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-reference-mcp-let-your-ai-agents-search--2",
+      "headline": "Show HN: Reference MCP – let your AI agents search each other's past sessions",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Reference MCP – let your AI agents search each other's past sessions",
+          "url": "https://github.com/kuberwastaken/reference",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 5,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "i-built-an-anime-style-ui-for-watching-ai-coding-3",
+      "headline": "I built an anime-style UI for watching AI coding agents review each other's code",
+      "sourceLinks": [
+        {
+          "title": "I built an anime-style UI for watching AI coding agents review each other's code",
+          "url": "https://old.reddit.com/r/codex/comments/1uit86f/i_built_an_animestyle_ui_for_watching_ai_coding/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "aicompiler-a-language-where-the-llm-is-the-cpu-4",
+      "headline": "AiCompiler – a language where the LLM is the CPU",
+      "sourceLinks": [
+        {
+          "title": "AiCompiler – a language where the LLM is the CPU",
+          "url": "https://aicompiler.dev",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-llama-legends-5",
+      "headline": "Show HN: Llama Legends",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Llama Legends",
+          "url": "https://llamalegends.com/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
