@@ -1,0 +1,204 @@
+{
+  "date": "2026-06-30",
+  "generatedAt": "2026-06-30T14:01:56.635Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-06-30.mp3",
+    "vtt": "/audio/daily/2026-06-30.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: TraceAIO – open-source LLM visibility tracker. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Show HN: Ouijit, command terminals running coding agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: Why LLMs invent answers instead of saying they don't know. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: AI agents finish a third of the job, and the math says why. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Show HN: NodePad – AI agent on a canvas instead of a linear chat. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Do AI Agents Make ML Compilers Obsolete?. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-traceaio-open-source-llm-visibility-trac-0",
+      "headline": "Show HN: TraceAIO – open-source LLM visibility tracker",
+      "sourceLinks": [
+        {
+          "title": "Show HN: TraceAIO – open-source LLM visibility tracker",
+          "url": "https://traceaio.org",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-ouijit-command-terminals-running-coding--1",
+      "headline": "Show HN: Ouijit, command terminals running coding agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Ouijit, command terminals running coding agents",
+          "url": "https://github.com/ouijit/ouijit",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "why-llms-invent-answers-instead-of-saying-they-d-2",
+      "headline": "Why LLMs invent answers instead of saying they don't know",
+      "sourceLinks": [
+        {
+          "title": "Why LLMs invent answers instead of saying they don't know",
+          "url": "https://cristobalsantana.substack.com/p/hallucination-vs-confabulation-why",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "ai-agents-finish-a-third-of-the-job-and-the-math-3",
+      "headline": "AI agents finish a third of the job, and the math says why",
+      "sourceLinks": [
+        {
+          "title": "AI agents finish a third of the job, and the math says why",
+          "url": "https://okaneland.com/study/do-ai-agents-work-yet/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-nodepad-ai-agent-on-a-canvas-instead-of--4",
+      "headline": "Show HN: NodePad – AI agent on a canvas instead of a linear chat",
+      "sourceLinks": [
+        {
+          "title": "Show HN: NodePad – AI agent on a canvas instead of a linear chat",
+          "url": "https://node-pad.com/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "do-ai-agents-make-ml-compilers-obsolete-5",
+      "headline": "Do AI Agents Make ML Compilers Obsolete?",
+      "sourceLinks": [
+        {
+          "title": "Do AI Agents Make ML Compilers Obsolete?",
+          "url": "https://maderix.substack.com/p/the-compiler-strikes-back",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
