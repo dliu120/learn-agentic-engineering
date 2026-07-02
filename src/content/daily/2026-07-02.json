@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-02",
+  "generatedAt": "2026-07-02T14:00:30.348Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-02.mp3",
+    "vtt": "/audio/daily/2026-07-02.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Token accounting and cancellation in durable agent workflows. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Buy or wait on local LLM hardware during the memory crunch. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: memory. Read it through that lens. Item 3: Comparing Fable and 10 other LLMs on refactoring a LangGraph god node. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: LLM Fine-Tuning and Model Iteration Loop: Improve AI Apps in Production. Relevant to Strategy, Tradeoffs & Failure Modes. Matched Strategy, Tradeoffs & Failure Modes on: fine-tuning. Read it through that lens. Item 5: Agentic Software Engineering (ASE): Agentic AI Coding Meets Software Engineering. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: I built an open-source alternative to Claude Cowork. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "token-accounting-and-cancellation-in-durable-age-0",
+      "headline": "Token accounting and cancellation in durable agent workflows",
+      "sourceLinks": [
+        {
+          "title": "Token accounting and cancellation in durable agent workflows",
+          "url": "https://agentbayes.com/blog/stopping-a-streaming-llm-agent",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "buy-or-wait-on-local-llm-hardware-during-the-mem-1",
+      "headline": "Buy or wait on local LLM hardware during the memory crunch",
+      "sourceLinks": [
+        {
+          "title": "Buy or wait on local LLM hardware during the memory crunch",
+          "url": "https://thefrontierlab.ai/buy-or-wait-local-llm-hardware/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: memory. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: memory.",
+      "tags": [
+        "memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "comparing-fable-and-10-other-llms-on-refactoring-2",
+      "headline": "Comparing Fable and 10 other LLMs on refactoring a LangGraph god node",
+      "sourceLinks": [
+        {
+          "title": "Comparing Fable and 10 other LLMs on refactoring a LangGraph god node",
+          "url": "https://wtf.korridzy.com/twilight-of-the-gods/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "llm-fine-tuning-and-model-iteration-loop-improve-3",
+      "headline": "LLM Fine-Tuning and Model Iteration Loop: Improve AI Apps in Production",
+      "sourceLinks": [
+        {
+          "title": "LLM Fine-Tuning and Model Iteration Loop: Improve AI Apps in Production",
+          "url": "https://www.youtube.com/watch?v=Um7sjLEhaQM",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Strategy, Tradeoffs & Failure Modes. Matched Strategy, Tradeoffs & Failure Modes on: fine-tuning. Read it through that lens.",
+      "module": "capstone-strategy-tradeoffs-failure-modes",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Strategy, Tradeoffs & Failure Modes on: fine-tuning.",
+      "tags": [
+        "fine-tuning"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "agentic-software-engineering-ase-agentic-ai-codi-4",
+      "headline": "Agentic Software Engineering (ASE): Agentic AI Coding Meets Software Engineering",
+      "sourceLinks": [
+        {
+          "title": "Agentic Software Engineering (ASE): Agentic AI Coding Meets Software Engineering",
+          "url": "https://ase.tools/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-i-built-an-open-source-alternative-to-cl-5",
+      "headline": "Show HN: I built an open-source alternative to Claude Cowork",
+      "sourceLinks": [
+        {
+          "title": "Show HN: I built an open-source alternative to Claude Cowork",
+          "url": "https://github.com/valmishq/valmis",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
