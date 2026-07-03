@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-03",
+  "generatedAt": "2026-07-03T15:28:13.505Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-03.mp3",
+    "vtt": "/audio/daily/2026-07-03.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: LimitBar, a macOS menu bar app showing your Claude usage limits. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Lenny the LLM – You will learn how LLMs work from this fun short story. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Jamesob's guide to running SOTA LLMs locally. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Meta's Zuckerberg says AI agent tech progressing slower than expected. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: PrivAiTe: Self-hosted proxy that redacts PII from LLM calls, incl. tool-calls. Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii. Read it through that lens. Item 6: Dropway: Share LLM artifacts with your team. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-limitbar-a-macos-menu-bar-app-showing-yo-0",
+      "headline": "Show HN: LimitBar, a macOS menu bar app showing your Claude usage limits",
+      "sourceLinks": [
+        {
+          "title": "Show HN: LimitBar, a macOS menu bar app showing your Claude usage limits",
+          "url": "https://mikaweiss6.gumroad.com/l/limitbar",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "lenny-the-llm-you-will-learn-how-llms-work-from--1",
+      "headline": "Lenny the LLM – You will learn how LLMs work from this fun short story",
+      "sourceLinks": [
+        {
+          "title": "Lenny the LLM – You will learn how LLMs work from this fun short story",
+          "url": "https://www.ivokund.com/lenny-the-llm-life-as-a-language-model/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "jamesob-s-guide-to-running-sota-llms-locally-2",
+      "headline": "Jamesob's guide to running SOTA LLMs locally",
+      "sourceLinks": [
+        {
+          "title": "Jamesob's guide to running SOTA LLMs locally",
+          "url": "https://github.com/jamesob/local-llm",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "meta-s-zuckerberg-says-ai-agent-tech-progressing-3",
+      "headline": "Meta's Zuckerberg says AI agent tech progressing slower than expected",
+      "sourceLinks": [
+        {
+          "title": "Meta's Zuckerberg says AI agent tech progressing slower than expected",
+          "url": "https://finance.yahoo.com/technology/ai/articles/exclusive-zuckerberg-says-ai-agent-201123441.html",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "privaite-self-hosted-proxy-that-redacts-pii-from-4",
+      "headline": "PrivAiTe: Self-hosted proxy that redacts PII from LLM calls, incl. tool-calls",
+      "sourceLinks": [
+        {
+          "title": "PrivAiTe: Self-hosted proxy that redacts PII from LLM calls, incl. tool-calls",
+          "url": "https://github.com/crp4222/PrivAiTe",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii.",
+      "tags": [
+        "pii"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "dropway-share-llm-artifacts-with-your-team-5",
+      "headline": "Dropway: Share LLM artifacts with your team",
+      "sourceLinks": [
+        {
+          "title": "Dropway: Share LLM artifacts with your team",
+          "url": "https://www.hugedomains.com/domain_profile.cfm?d=dropway.com",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
