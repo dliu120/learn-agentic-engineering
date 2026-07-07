@@ -1,0 +1,208 @@
+{
+  "date": "2026-07-07",
+  "generatedAt": "2026-07-07T15:58:24.470Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-07.mp3",
+    "vtt": "/audio/daily/2026-07-07.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrivAiTe, a local LLM proxy that redacts PII in tool-call arguments. Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii. Read it through that lens. Item 2: Show HN: Context Warp Drive – Deterministic context folding for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: No LLM Involved: What If Your Arrays Could Schedule Themselves?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Show HN: TraceGen – realistic OpenTelemetry traces, incl. AI-agent, one binary. Relevant to Evaluation & Observability. Matched Evaluation & Observability on: telemetry, opentelemetry. Read it through that lens. Item 5: My AI Agents Were Working, but I Had No Visibility. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: The Banana Test: coding agents grow a 3D banana plant'. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "privaite-a-local-llm-proxy-that-redacts-pii-in-t-0",
+      "headline": "PrivAiTe, a local LLM proxy that redacts PII in tool-call arguments",
+      "sourceLinks": [
+        {
+          "title": "PrivAiTe, a local LLM proxy that redacts PII in tool-call arguments",
+          "url": "https://github.com/crp4222/PrivAiTe",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii.",
+      "tags": [
+        "pii"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-context-warp-drive-deterministic-context-1",
+      "headline": "Show HN: Context Warp Drive – Deterministic context folding for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Context Warp Drive – Deterministic context folding for AI agents",
+          "url": "https://github.com/dogtorjonah/context-warp-drive",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "no-llm-involved-what-if-your-arrays-could-schedu-2",
+      "headline": "No LLM Involved: What If Your Arrays Could Schedule Themselves?",
+      "sourceLinks": [
+        {
+          "title": "No LLM Involved: What If Your Arrays Could Schedule Themselves?",
+          "url": "https://ilnumerics.net/ilnumerics-accelerator-compiler.html",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-tracegen-realistic-opentelemetry-traces--3",
+      "headline": "Show HN: TraceGen – realistic OpenTelemetry traces, incl. AI-agent, one binary",
+      "sourceLinks": [
+        {
+          "title": "Show HN: TraceGen – realistic OpenTelemetry traces, incl. AI-agent, one binary",
+          "url": "https://github.com/ImmersiveFusion/if-opentelemetry-tracegen",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Evaluation & Observability. Matched Evaluation & Observability on: telemetry, opentelemetry. Read it through that lens.",
+      "module": "eval-observability",
+      "secondaryModules": [
+        "foundations-prompts-to-harnesses"
+      ],
+      "moduleRationale": "Matched Evaluation & Observability on: telemetry, opentelemetry.",
+      "tags": [
+        "telemetry",
+        "opentelemetry"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "my-ai-agents-were-working-but-i-had-no-visibilit-4",
+      "headline": "My AI Agents Were Working, but I Had No Visibility",
+      "sourceLinks": [
+        {
+          "title": "My AI Agents Were Working, but I Had No Visibility",
+          "url": "https://theapplied.substack.com/p/my-ai-agents-were-working-but-i-had",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-the-banana-test-coding-agents-grow-a-3d--5",
+      "headline": "Show HN: The Banana Test: coding agents grow a 3D banana plant'",
+      "sourceLinks": [
+        {
+          "title": "Show HN: The Banana Test: coding agents grow a 3D banana plant'",
+          "url": "https://francescomoramarco.com/banana-test/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
