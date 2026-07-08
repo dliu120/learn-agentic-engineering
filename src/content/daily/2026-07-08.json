@@ -1,0 +1,206 @@
+{
+  "date": "2026-07-08",
+  "generatedAt": "2026-07-08T15:37:35.101Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-08.mp3",
+    "vtt": "/audio/daily/2026-07-08.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Soup – organize and route Agent Skills into your LLM prompts. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens. Item 2: Show HN: I ported llama.cpp to Apple Watch and ran a 0.8B LLM locally. Relevant to Model Efficiency & Compression. Matched Model Efficiency & Compression on: llama.cpp. Read it through that lens. Item 3: Show HN: Kastor – Terraform-style specs for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: LLM-wiki-tags: LLM-readable codebase docs with grep-friendly tags. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Are LLMs good enough for Document Extraction?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Seven Studies on Letting LLMs Edit Trees. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-soup-organize-and-route-agent-skills-int-0",
+      "headline": "Show HN: Soup – organize and route Agent Skills into your LLM prompts",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Soup – organize and route Agent Skills into your LLM prompts",
+          "url": "https://github.com/southwind-ai/soup",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent, prompt.",
+      "tags": [
+        "agent",
+        "prompt"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-i-ported-llama-cpp-to-apple-watch-and-ra-1",
+      "headline": "Show HN: I ported llama.cpp to Apple Watch and ran a 0.8B LLM locally",
+      "sourceLinks": [
+        {
+          "title": "Show HN: I ported llama.cpp to Apple Watch and ran a 0.8B LLM locally",
+          "url": "https://news.ycombinator.com/item?id=48833200",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Model Efficiency & Compression. Matched Model Efficiency & Compression on: llama.cpp. Read it through that lens.",
+      "module": "model-efficiency-compression",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Model Efficiency & Compression on: llama.cpp.",
+      "tags": [
+        "llama.cpp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-kastor-terraform-style-specs-for-ai-agen-2",
+      "headline": "Show HN: Kastor – Terraform-style specs for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Kastor – Terraform-style specs for AI agents",
+          "url": "https://github.com/weirdGuy/kastor",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "llm-wiki-tags-llm-readable-codebase-docs-with-gr-3",
+      "headline": "LLM-wiki-tags: LLM-readable codebase docs with grep-friendly tags",
+      "sourceLinks": [
+        {
+          "title": "LLM-wiki-tags: LLM-readable codebase docs with grep-friendly tags",
+          "url": "https://github.com/mpashka/llm-wiki-tags",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "are-llms-good-enough-for-document-extraction-4",
+      "headline": "Are LLMs good enough for Document Extraction?",
+      "sourceLinks": [
+        {
+          "title": "Are LLMs good enough for Document Extraction?",
+          "url": "https://www.unsiloed.ai/blog/are-llms-good-enough-for-document-extraction-in-2026",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "seven-studies-on-letting-llms-edit-trees-5",
+      "headline": "Seven Studies on Letting LLMs Edit Trees",
+      "sourceLinks": [
+        {
+          "title": "Seven Studies on Letting LLMs Edit Trees",
+          "url": "https://www.lightningjar.com/blog/stable-ids-are-all-you-need",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
