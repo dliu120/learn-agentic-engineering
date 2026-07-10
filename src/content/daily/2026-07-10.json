@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-10",
+  "generatedAt": "2026-07-10T15:40:49.767Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-10.mp3",
+    "vtt": "/audio/daily/2026-07-10.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Truth is not a direction: a Tarski attack on LLM probes. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Token Governor – The cheapest LLM token is the one you never send. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Show HN: Postern, an email system for both humans and agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: Show HN: My AI agent has 1 hour to earn €10 – it shipped this page itself. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: What Muse Spark 1.1 Taught Us About Enterprise Agent Architecture. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: How to get agents into prod at an enterprise. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "truth-is-not-a-direction-a-tarski-attack-on-llm--0",
+      "headline": "Truth is not a direction: a Tarski attack on LLM probes",
+      "sourceLinks": [
+        {
+          "title": "Truth is not a direction: a Tarski attack on LLM probes",
+          "url": "https://abeljansma.nl/2026/07/10/truth-is-not-a-direction.html",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "token-governor-the-cheapest-llm-token-is-the-one-1",
+      "headline": "Token Governor – The cheapest LLM token is the one you never send",
+      "sourceLinks": [
+        {
+          "title": "Token Governor – The cheapest LLM token is the one you never send",
+          "url": "https://github.com/shipitamit/llm-token-governor",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-postern-an-email-system-for-both-humans--2",
+      "headline": "Show HN: Postern, an email system for both humans and agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Postern, an email system for both humans and agents",
+          "url": "https://github.com/skyphusion-labs/postern",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-my-ai-agent-has-1-hour-to-earn-10-it-shi-3",
+      "headline": "Show HN: My AI agent has 1 hour to earn €10 – it shipped this page itself",
+      "sourceLinks": [
+        {
+          "title": "Show HN: My AI agent has 1 hour to earn €10 – it shipped this page itself",
+          "url": "https://1h-money.vercel.app",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "what-muse-spark-1-1-taught-us-about-enterprise-a-4",
+      "headline": "What Muse Spark 1.1 Taught Us About Enterprise Agent Architecture",
+      "sourceLinks": [
+        {
+          "title": "What Muse Spark 1.1 Taught Us About Enterprise Agent Architecture",
+          "url": "https://int21.ai/insights/muse-spark-1-1-enterprise-agent-architecture/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "how-to-get-agents-into-prod-at-an-enterprise-5",
+      "headline": "How to get agents into prod at an enterprise",
+      "sourceLinks": [
+        {
+          "title": "How to get agents into prod at an enterprise",
+          "url": "https://www.tredence.com/blog/95-of-enterprise-ai-agents-never-make-it-to-production-5-ways-to-ensure-yours-does",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    }
+  ]
+}
