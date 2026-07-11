@@ -1,0 +1,212 @@
+{
+  "date": "2026-07-11",
+  "generatedAt": "2026-07-11T14:33:36.801Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-11.mp3",
+    "vtt": "/audio/daily/2026-07-11.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: verbatimeter - check how grounded your LLM / RAG agent is in real-time. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Can we reconstruct a tokenizer using only two oracles from the chat API?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Introduction to Reinforcement Learning and Its Role in LLMs. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: 'Ghostcommit' hides prompt injection in images to fool AI agents, steal secrets. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens. Item 5: Choosing the Right AI Agent Memory Strategy: A Decision-Tree Approach. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, memory. Read it through that lens. Item 6: Karpathy LLM Wiki (Obsidian Plugin). Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-verbatimeter-check-how-grounded-your-llm-0",
+      "headline": "Show HN: verbatimeter - check how grounded your LLM / RAG agent is in real-time",
+      "sourceLinks": [
+        {
+          "title": "Show HN: verbatimeter - check how grounded your LLM / RAG agent is in real-time",
+          "url": "https://pypi.org/project/verbatimeter/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "can-we-reconstruct-a-tokenizer-using-only-two-or-1",
+      "headline": "Can we reconstruct a tokenizer using only two oracles from the chat API?",
+      "sourceLinks": [
+        {
+          "title": "Can we reconstruct a tokenizer using only two oracles from the chat API?",
+          "url": "https://old.reddit.com/r/LocalLLaMA/comments/1utc5b9/can_we_reconstruct_a_closedsource_llm_tokenizer/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "introduction-to-reinforcement-learning-and-its-r-2",
+      "headline": "Introduction to Reinforcement Learning and Its Role in LLMs",
+      "sourceLinks": [
+        {
+          "title": "Introduction to Reinforcement Learning and Its Role in LLMs",
+          "url": "https://huggingface.co/learn/llm-course/en/chapter12/2",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "ghostcommit-hides-prompt-injection-in-images-to--3",
+      "headline": "'Ghostcommit' hides prompt injection in images to fool AI agents, steal secrets",
+      "sourceLinks": [
+        {
+          "title": "'Ghostcommit' hides prompt injection in images to fool AI agents, steal secrets",
+          "url": "https://www.bleepingcomputer.com/news/security/ghostcommit-hides-prompt-injection-in-images-to-fool-ai-agents-steal-secrets/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent, prompt.",
+      "tags": [
+        "agent",
+        "prompt"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "choosing-the-right-ai-agent-memory-strategy-a-de-4",
+      "headline": "Choosing the Right AI Agent Memory Strategy: A Decision-Tree Approach",
+      "sourceLinks": [
+        {
+          "title": "Choosing the Right AI Agent Memory Strategy: A Decision-Tree Approach",
+          "url": "https://machinelearningmastery.com/choosing-the-right-ai-agent-memory-strategy-a-decision-tree-approach/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, memory. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "capstone-strategy-tradeoffs-failure-modes"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent, memory.",
+      "tags": [
+        "agent",
+        "memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 13,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "karpathy-llm-wiki-obsidian-plugin-5",
+      "headline": "Karpathy LLM Wiki (Obsidian Plugin)",
+      "sourceLinks": [
+        {
+          "title": "Karpathy LLM Wiki (Obsidian Plugin)",
+          "url": "https://llmwiki.greenerai.top/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
