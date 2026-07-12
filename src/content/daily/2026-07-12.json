@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-12",
+  "generatedAt": "2026-07-12T14:38:28.370Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-12.mp3",
+    "vtt": "/audio/daily/2026-07-12.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Sanbox, batteries included sandboxes for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Show HN: LocalMask – local-first CLI that masks PII and secrets before LLMs. Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii. Read it through that lens. Item 3: Ollama vs. Llama.cpp – Quick Benchmark. Relevant to Model Efficiency & Compression. Matched Model Efficiency & Compression on: llama.cpp. Read it through that lens. Item 4: GPT-5.6-sol without hitting limits. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Microsoft joins Google in backing Go for AI agents — OpenAI and Anthropic lag. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: The Amazon SES Alternative for AI Agents – MailKite. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-sanbox-batteries-included-sandboxes-for--0",
+      "headline": "Show HN: Sanbox, batteries included sandboxes for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Sanbox, batteries included sandboxes for AI agents",
+          "url": "https://sanbox.cloud",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-localmask-local-first-cli-that-masks-pii-1",
+      "headline": "Show HN: LocalMask – local-first CLI that masks PII and secrets before LLMs",
+      "sourceLinks": [
+        {
+          "title": "Show HN: LocalMask – local-first CLI that masks PII and secrets before LLMs",
+          "url": "https://localmaskpro.com",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Production Ops: Cost, Safety & Multi-Tenancy on: pii.",
+      "tags": [
+        "pii"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "ollama-vs-llama-cpp-quick-benchmark-2",
+      "headline": "Ollama vs. Llama.cpp – Quick Benchmark",
+      "sourceLinks": [
+        {
+          "title": "Ollama vs. Llama.cpp – Quick Benchmark",
+          "url": "https://blawg.pages.dev/ollama-vs-llama-server",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Model Efficiency & Compression. Matched Model Efficiency & Compression on: llama.cpp. Read it through that lens.",
+      "module": "model-efficiency-compression",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Model Efficiency & Compression on: llama.cpp.",
+      "tags": [
+        "llama.cpp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "gpt-5-6-sol-without-hitting-limits-3",
+      "headline": "GPT-5.6-sol without hitting limits",
+      "sourceLinks": [
+        {
+          "title": "GPT-5.6-sol without hitting limits",
+          "url": "https://twitter.com/theo/status/2076078865060151465",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "microsoft-joins-google-in-backing-go-for-ai-agen-4",
+      "headline": "Microsoft joins Google in backing Go for AI agents — OpenAI and Anthropic lag",
+      "sourceLinks": [
+        {
+          "title": "Microsoft joins Google in backing Go for AI agents — OpenAI and Anthropic lag",
+          "url": "https://thenewstack.io/microsoft-agent-framework-go/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "the-amazon-ses-alternative-for-ai-agents-mailkit-5",
+      "headline": "The Amazon SES Alternative for AI Agents – MailKite",
+      "sourceLinks": [
+        {
+          "title": "The Amazon SES Alternative for AI Agents – MailKite",
+          "url": "https://mailkite.dev/blog/amazon-ses-for-ai-agents/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
