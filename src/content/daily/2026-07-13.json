@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-13",
+  "generatedAt": "2026-07-13T16:01:12.347Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-13.mp3",
+    "vtt": "/audio/daily/2026-07-13.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Yes-Brainer – A council of LLMs that debate in the browser, BYOK. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Show HN: A developer tool guide for AI coding agents (900 tools and counting). Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: LLM Honeypots: The Perfect Use for LLMs. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Flow – a compact data pipeline language that cuts LLM token usage by 33%. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Unified CLI for running AI coding agents in isolated Docker or Podman containers. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: ID-JAG helps AI agents authenticate. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-yes-brainer-a-council-of-llms-that-debat-0",
+      "headline": "Show HN: Yes-Brainer – A council of LLMs that debate in the browser, BYOK",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Yes-Brainer – A council of LLMs that debate in the browser, BYOK",
+          "url": "https://yesbrainer.ai/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "show-hn-a-developer-tool-guide-for-ai-coding-age-1",
+      "headline": "Show HN: A developer tool guide for AI coding agents (900 tools and counting)",
+      "sourceLinks": [
+        {
+          "title": "Show HN: A developer tool guide for AI coding agents (900 tools and counting)",
+          "url": "https://zairalabs.ai/guide/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 3
+        }
+      }
+    },
+    {
+      "id": "llm-honeypots-the-perfect-use-for-llms-2",
+      "headline": "LLM Honeypots: The Perfect Use for LLMs",
+      "sourceLinks": [
+        {
+          "title": "LLM Honeypots: The Perfect Use for LLMs",
+          "url": "https://alec.is/posts/llm-honeypots-the-perfect-use-for-llms/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "flow-a-compact-data-pipeline-language-that-cuts--3",
+      "headline": "Flow – a compact data pipeline language that cuts LLM token usage by 33%",
+      "sourceLinks": [
+        {
+          "title": "Flow – a compact data pipeline language that cuts LLM token usage by 33%",
+          "url": "https://github.com/pinku/Flow",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "unified-cli-for-running-ai-coding-agents-in-isol-4",
+      "headline": "Unified CLI for running AI coding agents in isolated Docker or Podman containers",
+      "sourceLinks": [
+        {
+          "title": "Unified CLI for running AI coding agents in isolated Docker or Podman containers",
+          "url": "https://github.com/VibePod/vibepod-cli",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "id-jag-helps-ai-agents-authenticate-5",
+      "headline": "ID-JAG helps AI agents authenticate",
+      "sourceLinks": [
+        {
+          "title": "ID-JAG helps AI agents authenticate",
+          "url": "https://nango.dev/blog/id-jag-agent-authentication/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
