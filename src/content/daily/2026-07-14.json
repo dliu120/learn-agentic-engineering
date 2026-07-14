@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-14",
+  "generatedAt": "2026-07-14T15:04:25.084Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-14.mp3",
+    "vtt": "/audio/daily/2026-07-14.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Oodle.ai – $10 per million agent traces. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Show HN: Hiver – Chrome DevTools for Agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: Show HN: Low-latency local LLM runner via OpenJDK Panama FFM (Java 22). Relevant to Inference Internals & Performance. Matched Inference Internals & Performance on: latency. Read it through that lens. Item 4: Oya – Keep tool outputs away from the LLM to cut tokens and stop injection. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Show HN: I built a smart proxy so your coding agent can run loose. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: Cruxible – Terraform-like ontology config to governed state for agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-oodle-ai-10-per-million-agent-traces-0",
+      "headline": "Show HN: Oodle.ai – $10 per million agent traces",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Oodle.ai – $10 per million agent traces",
+          "url": "https://www.oodle.ai/product/agent-observability",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 11,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-hiver-chrome-devtools-for-agents-1",
+      "headline": "Show HN: Hiver – Chrome DevTools for Agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Hiver – Chrome DevTools for Agents",
+          "url": "https://hiver.sh",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "show-hn-low-latency-local-llm-runner-via-openjdk-2",
+      "headline": "Show HN: Low-latency local LLM runner via OpenJDK Panama FFM (Java 22)",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Low-latency local LLM runner via OpenJDK Panama FFM (Java 22)",
+          "url": "https://github.com/projectargus-cc/libargus.cc",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Inference Internals & Performance. Matched Inference Internals & Performance on: latency. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Inference Internals & Performance on: latency.",
+      "tags": [
+        "latency"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "oya-keep-tool-outputs-away-from-the-llm-to-cut-t-3",
+      "headline": "Oya – Keep tool outputs away from the LLM to cut tokens and stop injection",
+      "sourceLinks": [
+        {
+          "title": "Oya – Keep tool outputs away from the LLM to cut tokens and stop injection",
+          "url": "https://github.com/OyaAIProd/oya",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-i-built-a-smart-proxy-so-your-coding-age-4",
+      "headline": "Show HN: I built a smart proxy so your coding agent can run loose",
+      "sourceLinks": [
+        {
+          "title": "Show HN: I built a smart proxy so your coding agent can run loose",
+          "url": "https://trollbridge.dev/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-cruxible-terraform-like-ontology-config--5",
+      "headline": "Show HN: Cruxible – Terraform-like ontology config to governed state for agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Cruxible – Terraform-like ontology config to governed state for agents",
+          "url": "https://github.com/cruxible-ai/cruxible",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
