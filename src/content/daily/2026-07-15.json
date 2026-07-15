@@ -1,0 +1,208 @@
+{
+  "date": "2026-07-15",
+  "generatedAt": "2026-07-15T15:02:58.451Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-15.mp3",
+    "vtt": "/audio/daily/2026-07-15.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Grepathy – Claude made a decision nobody approved. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: How to explain LLM architecture to your mom and dad. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Detecting Prompt Injection Attacks on Purpose-Specific LLM Agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens. Item 4: Show HN: Agent's Design – Claude/Codex copy-paste templates that kill AI-slop UI. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: GPU-Tile-SIM: Tile-Centric GPU Simulation for LLM Hardware-Software Co-Design. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Show HN: I blind-test 6 LLMs daily by having them summarize the same story. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-grepathy-claude-made-a-decision-nobody-a-0",
+      "headline": "Show HN: Grepathy – Claude made a decision nobody approved",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Grepathy – Claude made a decision nobody approved",
+          "url": "https://github.com/evansjp/grepathy",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 13,
+          "comments": 19
+        }
+      }
+    },
+    {
+      "id": "how-to-explain-llm-architecture-to-your-mom-and--1",
+      "headline": "How to explain LLM architecture to your mom and dad",
+      "sourceLinks": [
+        {
+          "title": "How to explain LLM architecture to your mom and dad",
+          "url": "https://www.ibm.com/think/news/what-does-ai-look-like",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "detecting-prompt-injection-attacks-on-purpose-sp-2",
+      "headline": "Detecting Prompt Injection Attacks on Purpose-Specific LLM Agents",
+      "sourceLinks": [
+        {
+          "title": "Detecting Prompt Injection Attacks on Purpose-Specific LLM Agents",
+          "url": "https://arxiv.org/abs/2607.12624",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent, prompt.",
+      "tags": [
+        "agent",
+        "prompt"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-agent-s-design-claude-codex-copy-paste-t-3",
+      "headline": "Show HN: Agent's Design – Claude/Codex copy-paste templates that kill AI-slop UI",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Agent's Design – Claude/Codex copy-paste templates that kill AI-slop UI",
+          "url": "https://agents-design.com",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "gpu-tile-sim-tile-centric-gpu-simulation-for-llm-4",
+      "headline": "GPU-Tile-SIM: Tile-Centric GPU Simulation for LLM Hardware-Software Co-Design",
+      "sourceLinks": [
+        {
+          "title": "GPU-Tile-SIM: Tile-Centric GPU Simulation for LLM Hardware-Software Co-Design",
+          "url": "https://arxiv.org/abs/2607.11262",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-i-blind-test-6-llms-daily-by-having-them-5",
+      "headline": "Show HN: I blind-test 6 LLMs daily by having them summarize the same story",
+      "sourceLinks": [
+        {
+          "title": "Show HN: I blind-test 6 LLMs daily by having them summarize the same story",
+          "url": "https://www.snipvote.com",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
