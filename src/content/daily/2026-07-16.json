@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-16",
+  "generatedAt": "2026-07-16T15:15:28.335Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-16.mp3",
+    "vtt": "/audio/daily/2026-07-16.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Pressure Point: Realtime LLM for Games. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Show HN: Mac App to turn your computer into a hands-off coding agent. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: Show HN: Termaxa – I found my AI-agent gate had silently stopped gating Cursor. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: Veta: AI agent that QA-tests Android apps. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: StepFun Unveils StepX Neo, the \"First Agentic AI Phone\". Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: Democr.ai – self-hosted agentic AI runtime with audit and RBAC. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "pressure-point-realtime-llm-for-games-0",
+      "headline": "Pressure Point: Realtime LLM for Games",
+      "sourceLinks": [
+        {
+          "title": "Pressure Point: Realtime LLM for Games",
+          "url": "https://iconicgames.io/blog/pressure-point/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-mac-app-to-turn-your-computer-into-a-han-1",
+      "headline": "Show HN: Mac App to turn your computer into a hands-off coding agent",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Mac App to turn your computer into a hands-off coding agent",
+          "url": "https://caider.dev/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-termaxa-i-found-my-ai-agent-gate-had-sil-2",
+      "headline": "Show HN: Termaxa – I found my AI-agent gate had silently stopped gating Cursor",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Termaxa – I found my AI-agent gate had silently stopped gating Cursor",
+          "url": "https://github.com/termaxa/termaxa",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "veta-ai-agent-that-qa-tests-android-apps-3",
+      "headline": "Veta: AI agent that QA-tests Android apps",
+      "sourceLinks": [
+        {
+          "title": "Veta: AI agent that QA-tests Android apps",
+          "url": "https://github.com/Vip3r-MC/Veta",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "stepfun-unveils-stepx-neo-the-first-agentic-ai-p-4",
+      "headline": "StepFun Unveils StepX Neo, the \"First Agentic AI Phone\"",
+      "sourceLinks": [
+        {
+          "title": "StepFun Unveils StepX Neo, the \"First Agentic AI Phone\"",
+          "url": "https://www.etvbharat.com/en/technology/stepfun-unveils-stepx-neo-calling-it-worlds-first-agentic-ai-phone-enn26071401799",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-democr-ai-self-hosted-agentic-ai-runtime-5",
+      "headline": "Show HN: Democr.ai – self-hosted agentic AI runtime with audit and RBAC",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Democr.ai – self-hosted agentic AI runtime with audit and RBAC",
+          "url": "https://github.com/democr-ai/democrai",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
