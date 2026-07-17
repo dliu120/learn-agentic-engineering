@@ -1,0 +1,206 @@
+{
+  "date": "2026-07-17",
+  "generatedAt": "2026-07-17T14:55:02.644Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-17.mp3",
+    "vtt": "/audio/daily/2026-07-17.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: VulnHunter: Capital One's agentic AI code security tool. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Prompt submitted to cloud even when using local LLM by default. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: prompt. Read it through that lens. Item 3: LLM-as-a-Verifier: A General-Purpose Verification Framework. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Are there words LLMs won't say?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Show HN: Wolbarg – Local-first shared memory for AI agents using SQLite. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, memory. Read it through that lens. Item 6: Show HN: On-chain bond market where the issuers are AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "vulnhunter-capital-one-s-agentic-ai-code-securit-0",
+      "headline": "VulnHunter: Capital One's agentic AI code security tool",
+      "sourceLinks": [
+        {
+          "title": "VulnHunter: Capital One's agentic AI code security tool",
+          "url": "https://www.capitalone.com/tech/open-source/announcing-vulnhunter/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 20,
+          "comments": 12
+        }
+      }
+    },
+    {
+      "id": "prompt-submitted-to-cloud-even-when-using-local--1",
+      "headline": "Prompt submitted to cloud even when using local LLM by default",
+      "sourceLinks": [
+        {
+          "title": "Prompt submitted to cloud even when using local LLM by default",
+          "url": "https://github.com/anomalyco/opencode/issues/15854",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: prompt. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: prompt.",
+      "tags": [
+        "prompt"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "llm-as-a-verifier-a-general-purpose-verification-2",
+      "headline": "LLM-as-a-Verifier: A General-Purpose Verification Framework",
+      "sourceLinks": [
+        {
+          "title": "LLM-as-a-Verifier: A General-Purpose Verification Framework",
+          "url": "https://arxiv.org/abs/2607.05391",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "are-there-words-llms-won-t-say-3",
+      "headline": "Are there words LLMs won't say?",
+      "sourceLinks": [
+        {
+          "title": "Are there words LLMs won't say?",
+          "url": "https://samermakes.com/blog/WCS/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-wolbarg-local-first-shared-memory-for-ai-4",
+      "headline": "Show HN: Wolbarg – Local-first shared memory for AI agents using SQLite",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Wolbarg – Local-first shared memory for AI agents using SQLite",
+          "url": "https://wolbarg.com/blog/why-sqlite-is-enough-for-local-ai-agent-memory",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, memory. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent, memory.",
+      "tags": [
+        "agent",
+        "memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-on-chain-bond-market-where-the-issuers-a-5",
+      "headline": "Show HN: On-chain bond market where the issuers are AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: On-chain bond market where the issuers are AI agents",
+          "url": "https://selbonds.now",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
