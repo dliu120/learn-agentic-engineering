@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-19",
+  "generatedAt": "2026-07-19T14:35:59.493Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-19.mp3",
+    "vtt": "/audio/daily/2026-07-19.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Are the LLM Wars the Database Wars?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Show HN: CallBro – Granola, but Powered by Codex, Claude Code, or Your Local LLM. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: In-House LLM Serving at Netflix. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: I built llms.txt files to make local businesses discoverable by AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Show HN: DWS A LLM Generated, \"Drudge Report\" style news site. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Pricing for 145 models LLM/STT/TTS aggregated and comparable. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "are-the-llm-wars-the-database-wars-0",
+      "headline": "Are the LLM Wars the Database Wars?",
+      "sourceLinks": [
+        {
+          "title": "Are the LLM Wars the Database Wars?",
+          "url": "https://rruxandra.github.io/llm-wars-database-wars.html",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 4
+        }
+      }
+    },
+    {
+      "id": "show-hn-callbro-granola-but-powered-by-codex-cla-1",
+      "headline": "Show HN: CallBro – Granola, but Powered by Codex, Claude Code, or Your Local LLM",
+      "sourceLinks": [
+        {
+          "title": "Show HN: CallBro – Granola, but Powered by Codex, Claude Code, or Your Local LLM",
+          "url": "https://callbro.ai/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "in-house-llm-serving-at-netflix-2",
+      "headline": "In-House LLM Serving at Netflix",
+      "sourceLinks": [
+        {
+          "title": "In-House LLM Serving at Netflix",
+          "url": "https://netflixtechblog.com/in-house-llm-serving-at-netflix-a5a8e799ea2c?source=rss-c3aeaf49d8a4------2",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "i-built-llms-txt-files-to-make-local-businesses--3",
+      "headline": "I built llms.txt files to make local businesses discoverable by AI agents",
+      "sourceLinks": [
+        {
+          "title": "I built llms.txt files to make local businesses discoverable by AI agents",
+          "url": "https://www.kloofstreet.online/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 3
+        }
+      }
+    },
+    {
+      "id": "show-hn-dws-a-llm-generated-drudge-report-style--4",
+      "headline": "Show HN: DWS A LLM Generated, \"Drudge Report\" style news site",
+      "sourceLinks": [
+        {
+          "title": "Show HN: DWS A LLM Generated, \"Drudge Report\" style news site",
+          "url": "https://news.dws.rip/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "pricing-for-145-models-llm-stt-tts-aggregated-an-5",
+      "headline": "Pricing for 145 models LLM/STT/TTS aggregated and comparable",
+      "sourceLinks": [
+        {
+          "title": "Pricing for 145 models LLM/STT/TTS aggregated and comparable",
+          "url": "https://hail.so/costs",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
