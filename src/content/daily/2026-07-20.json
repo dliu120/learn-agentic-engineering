@@ -1,0 +1,207 @@
+{
+  "date": "2026-07-20",
+  "generatedAt": "2026-07-20T15:22:36.350Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-20.mp3",
+    "vtt": "/audio/daily/2026-07-20.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Haystack 3.0: Agents with hooks, skills, and built-in introspection. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: The Washing-Machine Tragedy, by Stanisław Lem (1963). Relevant to RAG & Retrieval. Matched RAG & Retrieval on: rag. Read it through that lens. Item 3: What if your AI agent could have its own WhatsApp number?. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: Surgical DevOps – Prevent LLM context drift and regressions. Relevant to Evaluation & Observability. Matched Evaluation & Observability on: drift. Read it through that lens. Item 5: Controlling Reasoning Effort in LLMs. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Watching AI agents build a new business. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "haystack-3-0-agents-with-hooks-skills-and-built--0",
+      "headline": "Haystack 3.0: Agents with hooks, skills, and built-in introspection",
+      "sourceLinks": [
+        {
+          "title": "Haystack 3.0: Agents with hooks, skills, and built-in introspection",
+          "url": "https://haystack.deepset.ai/release-notes/3.0.0",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 6,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "the-washing-machine-tragedy-by-stanis-aw-lem-196-1",
+      "headline": "The Washing-Machine Tragedy, by Stanisław Lem (1963)",
+      "sourceLinks": [
+        {
+          "title": "The Washing-Machine Tragedy, by Stanisław Lem (1963)",
+          "url": "https://www.newyorker.com/magazine/1981/11/30/the-washing-machine-tragedy",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to RAG & Retrieval. Matched RAG & Retrieval on: rag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched RAG & Retrieval on: rag.",
+      "tags": [
+        "rag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "what-if-your-ai-agent-could-have-its-own-whatsap-2",
+      "headline": "What if your AI agent could have its own WhatsApp number?",
+      "sourceLinks": [
+        {
+          "title": "What if your AI agent could have its own WhatsApp number?",
+          "url": "https://tyxter.com/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 4
+        }
+      }
+    },
+    {
+      "id": "surgical-devops-prevent-llm-context-drift-and-re-3",
+      "headline": "Surgical DevOps – Prevent LLM context drift and regressions",
+      "sourceLinks": [
+        {
+          "title": "Surgical DevOps – Prevent LLM context drift and regressions",
+          "url": "https://github.com/bonushora/surgical-dev-ops/blob/main/README_EN.md",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Evaluation & Observability. Matched Evaluation & Observability on: drift. Read it through that lens.",
+      "module": "eval-observability",
+      "secondaryModules": [
+        "capstone-strategy-tradeoffs-failure-modes"
+      ],
+      "moduleRationale": "Matched Evaluation & Observability on: drift.",
+      "tags": [
+        "drift"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "controlling-reasoning-effort-in-llms-4",
+      "headline": "Controlling Reasoning Effort in LLMs",
+      "sourceLinks": [
+        {
+          "title": "Controlling Reasoning Effort in LLMs",
+          "url": "https://magazine.sebastianraschka.com/p/controlling-reasoning-effort-in-llms",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "watching-ai-agents-build-a-new-business-5",
+      "headline": "Watching AI agents build a new business",
+      "sourceLinks": [
+        {
+          "title": "Watching AI agents build a new business",
+          "url": "https://michii.dev/live",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
