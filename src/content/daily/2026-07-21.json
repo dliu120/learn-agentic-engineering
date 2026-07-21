@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-21",
+  "generatedAt": "2026-07-21T15:18:59.755Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-21.mp3",
+    "vtt": "/audio/daily/2026-07-21.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Neverbell, an AI agent that analyzes markets and executes trades. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Ask HN: How do you input to LLMs? Typing, voice, or something else?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Agentpause: Suspends LLM agents before rate limits, resumes cleanly. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: Show HN: Ctoken – CLI util to count LLM tokens in files, dirs or input. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: LLM – 99% hallucination-free outputs. Relevant to Strategy, Tradeoffs & Failure Modes. Matched Strategy, Tradeoffs & Failure Modes on: hallucination. Read it through that lens. Item 6: Show HN: Pinpoint – Visual feedback for AI coding agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-neverbell-an-ai-agent-that-analyzes-mark-0",
+      "headline": "Show HN: Neverbell, an AI agent that analyzes markets and executes trades",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Neverbell, an AI agent that analyzes markets and executes trades",
+          "url": "https://neverbell.com",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "ask-hn-how-do-you-input-to-llms-typing-voice-or--1",
+      "headline": "Ask HN: How do you input to LLMs? Typing, voice, or something else?",
+      "sourceLinks": [
+        {
+          "title": "Ask HN: How do you input to LLMs? Typing, voice, or something else?",
+          "url": "https://news.ycombinator.com/item?id=48993098",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "agentpause-suspends-llm-agents-before-rate-limit-2",
+      "headline": "Agentpause: Suspends LLM agents before rate limits, resumes cleanly",
+      "sourceLinks": [
+        {
+          "title": "Agentpause: Suspends LLM agents before rate limits, resumes cleanly",
+          "url": "https://github.com/Champoleello/agentpause",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-ctoken-cli-util-to-count-llm-tokens-in-f-3",
+      "headline": "Show HN: Ctoken – CLI util to count LLM tokens in files, dirs or input",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Ctoken – CLI util to count LLM tokens in files, dirs or input",
+          "url": "https://github.com/RimantasZ/ctoken",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "llm-99-hallucination-free-outputs-4",
+      "headline": "LLM – 99% hallucination-free outputs",
+      "sourceLinks": [
+        {
+          "title": "LLM – 99% hallucination-free outputs",
+          "url": "https://api.5ceos.com",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Strategy, Tradeoffs & Failure Modes. Matched Strategy, Tradeoffs & Failure Modes on: hallucination. Read it through that lens.",
+      "module": "capstone-strategy-tradeoffs-failure-modes",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Strategy, Tradeoffs & Failure Modes on: hallucination.",
+      "tags": [
+        "hallucination"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-pinpoint-visual-feedback-for-ai-coding-a-5",
+      "headline": "Show HN: Pinpoint – Visual feedback for AI coding agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Pinpoint – Visual feedback for AI coding agents",
+          "url": "https://pinpoint.maferland.com/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    }
+  ]
+}
