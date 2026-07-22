@@ -1,0 +1,206 @@
+{
+  "date": "2026-07-22",
+  "generatedAt": "2026-07-22T15:18:35.134Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-22.mp3",
+    "vtt": "/audio/daily/2026-07-22.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Agent in 9 Lines Python. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Show HN: Octomind Cloud – Persistent cloud compute for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: Vulnerabilities and Best Practices in an LLM World. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Show HN: Anakin – API for your AI agents to access the most difficult websites. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Show HN: Makes local LLMs faster and more reliable by optimizing for your device. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: A conversation becomes an AI agent's memory. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, memory. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-agent-in-9-lines-python-0",
+      "headline": "Show HN: Agent in 9 Lines Python",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Agent in 9 Lines Python",
+          "url": "https://gist.github.com/tosh/6e91a9dbf08dd630c535e7345ac7f0b5",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-octomind-cloud-persistent-cloud-compute--1",
+      "headline": "Show HN: Octomind Cloud – Persistent cloud compute for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Octomind Cloud – Persistent cloud compute for AI agents",
+          "url": "https://octomind.run/blog/octomind-cloud-launch",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "vulnerabilities-and-best-practices-in-an-llm-wor-2",
+      "headline": "Vulnerabilities and Best Practices in an LLM World",
+      "sourceLinks": [
+        {
+          "title": "Vulnerabilities and Best Practices in an LLM World",
+          "url": "https://www.abetterinternet.org/post/vulns-and-llms/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-anakin-api-for-your-ai-agents-to-access--3",
+      "headline": "Show HN: Anakin – API for your AI agents to access the most difficult websites",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Anakin – API for your AI agents to access the most difficult websites",
+          "url": "https://anakin.io",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-makes-local-llms-faster-and-more-reliabl-4",
+      "headline": "Show HN: Makes local LLMs faster and more reliable by optimizing for your device",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Makes local LLMs faster and more reliable by optimizing for your device",
+          "url": "https://www.autotunellm.com/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "a-conversation-becomes-an-ai-agent-s-memory-5",
+      "headline": "A conversation becomes an AI agent's memory",
+      "sourceLinks": [
+        {
+          "title": "A conversation becomes an AI agent's memory",
+          "url": "https://squidler.io/blog/agent-memory-2-capture",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, memory. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent, memory.",
+      "tags": [
+        "agent",
+        "memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
