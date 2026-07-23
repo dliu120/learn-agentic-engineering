@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-23",
+  "generatedAt": "2026-07-23T15:27:12.293Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-23.mp3",
+    "vtt": "/audio/daily/2026-07-23.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Cross-entropy comparison of LLM responses reveals Kimi's similarity to Claude. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Show HN: WatchMachineGo – A visualizer to show hardware performing LLM inference. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: One ChatGPT link could smuggle a rogue AI agent into your company. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: Show HN: Setoku - self-hosted knowledge server for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Notes on Document Processing with LLMs. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Show HN: 5dive – Run a Company of Claude Code/Codex Agents (Written in Bash). Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "cross-entropy-comparison-of-llm-responses-reveal-0",
+      "headline": "Cross-entropy comparison of LLM responses reveals Kimi's similarity to Claude",
+      "sourceLinks": [
+        {
+          "title": "Cross-entropy comparison of LLM responses reveals Kimi's similarity to Claude",
+          "url": "https://typebulb.com/u/lab/you-re-relatively-right/full",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 7,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-watchmachinego-a-visualizer-to-show-hard-1",
+      "headline": "Show HN: WatchMachineGo – A visualizer to show hardware performing LLM inference",
+      "sourceLinks": [
+        {
+          "title": "Show HN: WatchMachineGo – A visualizer to show hardware performing LLM inference",
+          "url": "https://watchmachinego.com/llm-inference",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "one-chatgpt-link-could-smuggle-a-rogue-ai-agent--2",
+      "headline": "One ChatGPT link could smuggle a rogue AI agent into your company",
+      "sourceLinks": [
+        {
+          "title": "One ChatGPT link could smuggle a rogue AI agent into your company",
+          "url": "https://www.theregister.com/security/2026/07/23/one-chatgpt-link-could-smuggle-a-rogue-ai-agent-into-your-company/5275116",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-setoku-self-hosted-knowledge-server-for--3",
+      "headline": "Show HN: Setoku - self-hosted knowledge server for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Setoku - self-hosted knowledge server for AI agents",
+          "url": "https://setoku.com/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "notes-on-document-processing-with-llms-4",
+      "headline": "Notes on Document Processing with LLMs",
+      "sourceLinks": [
+        {
+          "title": "Notes on Document Processing with LLMs",
+          "url": "https://andrewpwheeler.com/2026/07/23/notes-on-document-processing-with-llms/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-5dive-run-a-company-of-claude-code-codex-5",
+      "headline": "Show HN: 5dive – Run a Company of Claude Code/Codex Agents (Written in Bash)",
+      "sourceLinks": [
+        {
+          "title": "Show HN: 5dive – Run a Company of Claude Code/Codex Agents (Written in Bash)",
+          "url": "https://github.com/5dive-ai/5dive",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
