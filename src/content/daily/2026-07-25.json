@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-25",
+  "generatedAt": "2026-07-25T14:43:01.439Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-25.mp3",
+    "vtt": "/audio/daily/2026-07-25.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Codeberg is blocking LLM generated code. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: 2x, not 10x: coding with LLMs in 2026. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Agentreg – DNS for AI agents (self-hosted, single Go binary). Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: It's not a lie if you believe it: LLMs defend their most fluent memory. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: memory. Read it through that lens. Item 5: Sandbox-bwrap-Nix: A lightweight sandbox for AI agents and experiments. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: AgentState – Open-source resilience and caching proxy for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "codeberg-is-blocking-llm-generated-code-0",
+      "headline": "Codeberg is blocking LLM generated code",
+      "sourceLinks": [
+        {
+          "title": "Codeberg is blocking LLM generated code",
+          "url": "https://codeberg.org/Codeberg/org/compare/17bdb39b0c1ecd0e423f3ba592650ce57fcdfbf5..71149c7fc95ccfeae36109b5cddca339e4aa1473?files=TermsOfUse.md#diff-d760d688bb9b929b62db808bfc76abe4493d095a",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "2x-not-10x-coding-with-llms-in-2026-1",
+      "headline": "2x, not 10x: coding with LLMs in 2026",
+      "sourceLinks": [
+        {
+          "title": "2x, not 10x: coding with LLMs in 2026",
+          "url": "https://obryant.dev/p/2x-not-10x/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "agentreg-dns-for-ai-agents-self-hosted-single-go-2",
+      "headline": "Agentreg – DNS for AI agents (self-hosted, single Go binary)",
+      "sourceLinks": [
+        {
+          "title": "Agentreg – DNS for AI agents (self-hosted, single Go binary)",
+          "url": "https://github.com/mkk2026/agentreg",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "it-s-not-a-lie-if-you-believe-it-llms-defend-the-3",
+      "headline": "It's not a lie if you believe it: LLMs defend their most fluent memory",
+      "sourceLinks": [
+        {
+          "title": "It's not a lie if you believe it: LLMs defend their most fluent memory",
+          "url": "https://shubhamg.bearblog.dev/llms-defend-fluent-memory/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: memory. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: memory.",
+      "tags": [
+        "memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "sandbox-bwrap-nix-a-lightweight-sandbox-for-ai-a-4",
+      "headline": "Sandbox-bwrap-Nix: A lightweight sandbox for AI agents and experiments",
+      "sourceLinks": [
+        {
+          "title": "Sandbox-bwrap-Nix: A lightweight sandbox for AI agents and experiments",
+          "url": "https://grigio.org/sandbox-bwrap-nix-a-lightweight-sandbox-for-ai-agents-and-experiments/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-agentstate-open-source-resilience-and-ca-5",
+      "headline": "Show HN: AgentState – Open-source resilience and caching proxy for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: AgentState – Open-source resilience and caching proxy for AI agents",
+          "url": "https://github.com/aleenz1102/AgentState",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
