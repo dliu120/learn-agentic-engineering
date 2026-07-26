@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-26",
+  "generatedAt": "2026-07-26T14:45:24.787Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-26.mp3",
+    "vtt": "/audio/daily/2026-07-26.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Agentic test processes, LLM benchmarks, and other notes on agentic coding. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Show HN: OpenSmith – Trace LLM pipelines locally with trace, no cloud. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Show HN: Wmux – A workspace multiplexer for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 4: Use Your Brain: Engineering Standards in the Age of LLMs. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Data loss in Claude Code and OpenAI Codex: when AI deletes user files. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Dream Exchange – a persistent world where AI agents live, not work. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "agentic-test-processes-llm-benchmarks-and-other--0",
+      "headline": "Agentic test processes, LLM benchmarks, and other notes on agentic coding",
+      "sourceLinks": [
+        {
+          "title": "Agentic test processes, LLM benchmarks, and other notes on agentic coding",
+          "url": "https://danluu.com/ai-coding/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 15,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-opensmith-trace-llm-pipelines-locally-wi-1",
+      "headline": "Show HN: OpenSmith – Trace LLM pipelines locally with trace, no cloud",
+      "sourceLinks": [
+        {
+          "title": "Show HN: OpenSmith – Trace LLM pipelines locally with trace, no cloud",
+          "url": "https://github.com/shivnathtathe/opensmith",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-wmux-a-workspace-multiplexer-for-ai-agen-2",
+      "headline": "Show HN: Wmux – A workspace multiplexer for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Wmux – A workspace multiplexer for AI agents",
+          "url": "https://github.com/openwong2kim/wmux",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 5,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "use-your-brain-engineering-standards-in-the-age--3",
+      "headline": "Use Your Brain: Engineering Standards in the Age of LLMs",
+      "sourceLinks": [
+        {
+          "title": "Use Your Brain: Engineering Standards in the Age of LLMs",
+          "url": "https://pgaleone.eu/ai/2026/07/26/use-your-brain/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "data-loss-in-claude-code-and-openai-codex-when-a-4",
+      "headline": "Data loss in Claude Code and OpenAI Codex: when AI deletes user files",
+      "sourceLinks": [
+        {
+          "title": "Data loss in Claude Code and OpenAI Codex: when AI deletes user files",
+          "url": "https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "dream-exchange-a-persistent-world-where-ai-agent-5",
+      "headline": "Dream Exchange – a persistent world where AI agents live, not work",
+      "sourceLinks": [
+        {
+          "title": "Dream Exchange – a persistent world where AI agents live, not work",
+          "url": "https://www.soudushi.com",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
