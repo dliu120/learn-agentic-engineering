@@ -1,0 +1,205 @@
+{
+  "date": "2026-07-27",
+  "generatedAt": "2026-07-27T15:55:22.534Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-27.mp3",
+    "vtt": "/audio/daily/2026-07-27.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Can LLMs identify 16 cards in 45 bit-queries?. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Show HN: Otlet – Local LLM inference \"inside\" Postgres. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Free LLMrPro self-hosted LLM router. One OpenAI-compatible APIof your machines. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Kimi K3 on vLLM: Up to 370 Tokens/sec. Relevant to Inference Internals & Performance. Matched Inference Internals & Performance on: vllm. Read it through that lens. Item 5: Show HN: Pilot Protocol – a network where AI agents find tools and each other. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: ChatGPT, LLMs, and Automating the Fun Out of Roleplaying. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "can-llms-identify-16-cards-in-45-bit-queries-0",
+      "headline": "Can LLMs identify 16 cards in 45 bit-queries?",
+      "sourceLinks": [
+        {
+          "title": "Can LLMs identify 16 cards in 45 bit-queries?",
+          "url": "https://snwagh.com/blog/2026/open-problem/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-otlet-local-llm-inference-inside-postgre-1",
+      "headline": "Show HN: Otlet – Local LLM inference \"inside\" Postgres",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Otlet – Local LLM inference \"inside\" Postgres",
+          "url": "https://github.com/joshmeek/otlet",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "free-llmrpro-self-hosted-llm-router-one-openai-c-2",
+      "headline": "Free LLMrPro self-hosted LLM router. One OpenAI-compatible APIof your machines",
+      "sourceLinks": [
+        {
+          "title": "Free LLMrPro self-hosted LLM router. One OpenAI-compatible APIof your machines",
+          "url": "https://github.com/Gysho/LLMrPro",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "kimi-k3-on-vllm-up-to-370-tokens-sec-3",
+      "headline": "Kimi K3 on vLLM: Up to 370 Tokens/sec",
+      "sourceLinks": [
+        {
+          "title": "Kimi K3 on vLLM: Up to 370 Tokens/sec",
+          "url": "https://vllm.ai/blog/2026-07-27-k3",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Inference Internals & Performance. Matched Inference Internals & Performance on: vllm. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Inference Internals & Performance on: vllm.",
+      "tags": [
+        "vllm"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-pilot-protocol-a-network-where-ai-agents-4",
+      "headline": "Show HN: Pilot Protocol – a network where AI agents find tools and each other",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Pilot Protocol – a network where AI agents find tools and each other",
+          "url": "https://news.ycombinator.com/item?id=49070104",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "chatgpt-llms-and-automating-the-fun-out-of-rolep-5",
+      "headline": "ChatGPT, LLMs, and Automating the Fun Out of Roleplaying",
+      "sourceLinks": [
+        {
+          "title": "ChatGPT, LLMs, and Automating the Fun Out of Roleplaying",
+          "url": "https://www.typebarmagazine.com/chatgpt-llms-and-automating-the-fun-out-of-roleplaying/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
