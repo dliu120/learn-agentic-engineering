@@ -1,0 +1,203 @@
+{
+  "date": "2026-07-29",
+  "generatedAt": "2026-07-29T15:22:31.728Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-29.mp3",
+    "vtt": "/audio/daily/2026-07-29.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: TokenTown: A visual way to understand how LLMs work. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Show HN: A verification browser for AI agents – 13ms windows, one-call checks. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: Sparse Attention with Persistent State Machines – High‑Sparsity LLM Accelerator. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Escaping the LLM Coding Rat Race. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Show HN: NightRun, bare metal LLM inference, no OS, boots from USB. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Show HN: Multi-agent LLM editor with local inference via WebSockets. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "tokentown-a-visual-way-to-understand-how-llms-wo-0",
+      "headline": "TokenTown: A visual way to understand how LLMs work",
+      "sourceLinks": [
+        {
+          "title": "TokenTown: A visual way to understand how LLMs work",
+          "url": "https://laurentiugabriel.github.io/token-town/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 45,
+          "comments": 11
+        }
+      }
+    },
+    {
+      "id": "show-hn-a-verification-browser-for-ai-agents-13m-1",
+      "headline": "Show HN: A verification browser for AI agents – 13ms windows, one-call checks",
+      "sourceLinks": [
+        {
+          "title": "Show HN: A verification browser for AI agents – 13ms windows, one-call checks",
+          "url": "https://github.com/hongnoul/hwatu",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 7,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "sparse-attention-with-persistent-state-machines--2",
+      "headline": "Sparse Attention with Persistent State Machines – High‑Sparsity LLM Accelerator",
+      "sourceLinks": [
+        {
+          "title": "Sparse Attention with Persistent State Machines – High‑Sparsity LLM Accelerator",
+          "url": "https://zenodo.org/records/21679919",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "escaping-the-llm-coding-rat-race-3",
+      "headline": "Escaping the LLM Coding Rat Race",
+      "sourceLinks": [
+        {
+          "title": "Escaping the LLM Coding Rat Race",
+          "url": "https://aaronstannard.com/escaping-ai-coding-ratrace/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-nightrun-bare-metal-llm-inference-no-os--4",
+      "headline": "Show HN: NightRun, bare metal LLM inference, no OS, boots from USB",
+      "sourceLinks": [
+        {
+          "title": "Show HN: NightRun, bare metal LLM inference, no OS, boots from USB",
+          "url": "https://github.com/hardrave/NIGHTRUN",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-multi-agent-llm-editor-with-local-infere-5",
+      "headline": "Show HN: Multi-agent LLM editor with local inference via WebSockets",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Multi-agent LLM editor with local inference via WebSockets",
+          "url": "https://x-agent.sascha10k.biz",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
