@@ -1,0 +1,207 @@
+{
+  "date": "2026-07-30",
+  "generatedAt": "2026-07-30T15:26:03.242Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-30.mp3",
+    "vtt": "/audio/daily/2026-07-30.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Git worktrees are not an isolation boundary for coding agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Meta shares tumble as Mark Zuckerberg tries to sell his vision for AI 'agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: HN: I ran a 56M parameter LLM across three ESP32-S3 boards via ESP-NOW. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Adversarial Code Obfuscation for Defending Against LLM-Based Analysis. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Show HN: Let your agents create custom pods. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: I tested whether verifying LLM cache hits in real time helps (weak yes). Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "git-worktrees-are-not-an-isolation-boundary-for--0",
+      "headline": "Git worktrees are not an isolation boundary for coding agents",
+      "sourceLinks": [
+        {
+          "title": "Git worktrees are not an isolation boundary for coding agents",
+          "url": "https://fletch.sh/blog/git-worktrees-vs-clones-for-ai-agents/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 11,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "meta-shares-tumble-as-mark-zuckerberg-tries-to-s-1",
+      "headline": "Meta shares tumble as Mark Zuckerberg tries to sell his vision for AI 'agents",
+      "sourceLinks": [
+        {
+          "title": "Meta shares tumble as Mark Zuckerberg tries to sell his vision for AI 'agents",
+          "url": "https://www.ft.com/content/06d941ed-8136-46a4-a2ec-44bea1b35c3b",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 7,
+          "comments": 4
+        }
+      }
+    },
+    {
+      "id": "hn-i-ran-a-56m-parameter-llm-across-three-esp32--2",
+      "headline": "HN: I ran a 56M parameter LLM across three ESP32-S3 boards via ESP-NOW",
+      "sourceLinks": [
+        {
+          "title": "HN: I ran a 56M parameter LLM across three ESP32-S3 boards via ESP-NOW",
+          "url": "https://github.com/wladimiravila/esp32s3-distributed-ai",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "adversarial-code-obfuscation-for-defending-again-3",
+      "headline": "Adversarial Code Obfuscation for Defending Against LLM-Based Analysis",
+      "sourceLinks": [
+        {
+          "title": "Adversarial Code Obfuscation for Defending Against LLM-Based Analysis",
+          "url": "https://arxiv.org/abs/2606.11755",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-let-your-agents-create-custom-pods-4",
+      "headline": "Show HN: Let your agents create custom pods",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Let your agents create custom pods",
+          "url": "https://thedaily.fm/docs/agents",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "i-tested-whether-verifying-llm-cache-hits-in-rea-5",
+      "headline": "I tested whether verifying LLM cache hits in real time helps (weak yes)",
+      "sourceLinks": [
+        {
+          "title": "I tested whether verifying LLM cache hits in real time helps (weak yes)",
+          "url": "https://github.com/imxinchengyou/CacheVerifier",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
