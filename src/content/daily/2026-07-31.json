@@ -1,0 +1,208 @@
+{
+  "date": "2026-07-31",
+  "generatedAt": "2026-07-31T15:31:12.256Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-07-31.mp3",
+    "vtt": "/audio/daily/2026-07-31.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Bypassing Claude's upload limits, 4x (500 MB → 2 GB). Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: Stealthy Concurrent Audio Prompt Injections Against Multimodal LLM Agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens. Item 3: A dystopian world where LLMs can't code but can generate software binaries. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Keep It Real: A Schema-Level Deferral Channel for Concise LLM Dialogue [pdf]. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Show HN: Run manual QA test cases in a real browser with an AI agent. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: LLM-mock – open-source REST API to test LLM integrations for real. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "bypassing-claude-s-upload-limits-4x-500-mb-2-gb-0",
+      "headline": "Bypassing Claude's upload limits, 4x (500 MB → 2 GB)",
+      "sourceLinks": [
+        {
+          "title": "Bypassing Claude's upload limits, 4x (500 MB → 2 GB)",
+          "url": "https://blog.zernote.com/2gb-user-interviews-into-claude/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 5,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "stealthy-concurrent-audio-prompt-injections-agai-1",
+      "headline": "Stealthy Concurrent Audio Prompt Injections Against Multimodal LLM Agents",
+      "sourceLinks": [
+        {
+          "title": "Stealthy Concurrent Audio Prompt Injections Against Multimodal LLM Agents",
+          "url": "https://arxiv.org/abs/2607.28165",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent, prompt. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent, prompt.",
+      "tags": [
+        "agent",
+        "prompt"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "a-dystopian-world-where-llms-can-t-code-but-can--2",
+      "headline": "A dystopian world where LLMs can't code but can generate software binaries",
+      "sourceLinks": [
+        {
+          "title": "A dystopian world where LLMs can't code but can generate software binaries",
+          "url": "https://twitter.com/random_walker/status/2082163285588107752",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "keep-it-real-a-schema-level-deferral-channel-for-3",
+      "headline": "Keep It Real: A Schema-Level Deferral Channel for Concise LLM Dialogue [pdf]",
+      "sourceLinks": [
+        {
+          "title": "Keep It Real: A Schema-Level Deferral Channel for Concise LLM Dialogue [pdf]",
+          "url": "https://raw.githubusercontent.com/noamt/kir/cfdc97de467de8d84d60f073773c0dcfd9975849/paper/arxiv/main.pdf",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-run-manual-qa-test-cases-in-a-real-brows-4",
+      "headline": "Show HN: Run manual QA test cases in a real browser with an AI agent",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Run manual QA test cases in a real browser with an AI agent",
+          "url": "https://github.com/broxhq/qpilot",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "llm-mock-open-source-rest-api-to-test-llm-integr-5",
+      "headline": "LLM-mock – open-source REST API to test LLM integrations for real",
+      "sourceLinks": [
+        {
+          "title": "LLM-mock – open-source REST API to test LLM integrations for real",
+          "url": "https://github.com/axium-lab/llm-mock",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
