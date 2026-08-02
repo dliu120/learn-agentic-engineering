@@ -1,0 +1,207 @@
+{
+  "date": "2026-08-02",
+  "generatedAt": "2026-08-02T14:43:59.325Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-02.mp3",
+    "vtt": "/audio/daily/2026-08-02.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: CC Meter, a Windows Tray Gauge for Claude Code and Codex Limits. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: When Verification Explores Too Far: LLM Test Coverage vs. Validity. Relevant to RAG & Retrieval. Matched RAG & Retrieval on: rag. Read it through that lens. Item 3: Types with AI: Working with LLMs Through Types. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Burstiness is all you need for LLM serving. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 5: Do Not Trust, Continuously Verify (Your AI Agents). Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Arrakis raises $8M for AI agent runtime security. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-cc-meter-a-windows-tray-gauge-for-claude-0",
+      "headline": "Show HN: CC Meter, a Windows Tray Gauge for Claude Code and Codex Limits",
+      "sourceLinks": [
+        {
+          "title": "Show HN: CC Meter, a Windows Tray Gauge for Claude Code and Codex Limits",
+          "url": "https://github.com/silverdolphin863/claude-code-meter",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "when-verification-explores-too-far-llm-test-cove-1",
+      "headline": "When Verification Explores Too Far: LLM Test Coverage vs. Validity",
+      "sourceLinks": [
+        {
+          "title": "When Verification Explores Too Far: LLM Test Coverage vs. Validity",
+          "url": "https://zenodo.org/records/21758550",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to RAG & Retrieval. Matched RAG & Retrieval on: rag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched RAG & Retrieval on: rag.",
+      "tags": [
+        "rag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "types-with-ai-working-with-llms-through-types-2",
+      "headline": "Types with AI: Working with LLMs Through Types",
+      "sourceLinks": [
+        {
+          "title": "Types with AI: Working with LLMs Through Types",
+          "url": "https://www.alecvo.org/blog/types-with-ai/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "burstiness-is-all-you-need-for-llm-serving-3",
+      "headline": "Burstiness is all you need for LLM serving",
+      "sourceLinks": [
+        {
+          "title": "Burstiness is all you need for LLM serving",
+          "url": "https://systems.seas.harvard.edu/blog/burstiness-is-all-you-need/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "do-not-trust-continuously-verify-your-ai-agents-4",
+      "headline": "Do Not Trust, Continuously Verify (Your AI Agents)",
+      "sourceLinks": [
+        {
+          "title": "Do Not Trust, Continuously Verify (Your AI Agents)",
+          "url": "https://nochan.net/b/Internet-Crap/20260714-Do-Not-Trust--Continuously-Verify/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "arrakis-raises-8m-for-ai-agent-runtime-security-5",
+      "headline": "Arrakis raises $8M for AI agent runtime security",
+      "sourceLinks": [
+        {
+          "title": "Arrakis raises $8M for AI agent runtime security",
+          "url": "https://runtimewire.com/article/arrakis-security-raises-8-million-ai-agent-runtime-controls",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
