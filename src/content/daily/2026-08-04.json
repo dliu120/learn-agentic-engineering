@@ -1,0 +1,205 @@
+{
+  "date": "2026-08-04",
+  "generatedAt": "2026-08-04T15:39:23.485Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-04.mp3",
+    "vtt": "/audio/daily/2026-08-04.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Computer Anthology: A continuously evolving benchmark family for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: Show HN: Simple self-hosted LLM assistant with user-steered compounding context. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Vale-LLM-slop – prose linting for LLMs. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: LFM2.5-2.6B: Deploy Agents Everywhere. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Show HN: Guide AI coding agents on how to use libraries securely. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Real cost running LLMs production. Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: cost. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "computer-anthology-a-continuously-evolving-bench-0",
+      "headline": "Computer Anthology: A continuously evolving benchmark family for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Computer Anthology: A continuously evolving benchmark family for AI agents",
+          "url": "https://vetto.ai/companies/computer-anthology-terminal-tasks.html",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 16,
+          "comments": 6
+        }
+      }
+    },
+    {
+      "id": "show-hn-simple-self-hosted-llm-assistant-with-us-1",
+      "headline": "Show HN: Simple self-hosted LLM assistant with user-steered compounding context",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Simple self-hosted LLM assistant with user-steered compounding context",
+          "url": "https://github.com/kol3x/pawmc",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "vale-llm-slop-prose-linting-for-llms-2",
+      "headline": "Vale-LLM-slop – prose linting for LLMs",
+      "sourceLinks": [
+        {
+          "title": "Vale-LLM-slop – prose linting for LLMs",
+          "url": "https://github.com/Syntaf/vale-llm-slop",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "lfm2-5-2-6b-deploy-agents-everywhere-3",
+      "headline": "LFM2.5-2.6B: Deploy Agents Everywhere",
+      "sourceLinks": [
+        {
+          "title": "LFM2.5-2.6B: Deploy Agents Everywhere",
+          "url": "https://www.liquid.ai/blog/lfm2-5-2-6b",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-guide-ai-coding-agents-on-how-to-use-lib-4",
+      "headline": "Show HN: Guide AI coding agents on how to use libraries securely",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Guide AI coding agents on how to use libraries securely",
+          "url": "https://github.com/Reware-Labs/securitycards",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "real-cost-running-llms-production-5",
+      "headline": "Real cost running LLMs production",
+      "sourceLinks": [
+        {
+          "title": "Real cost running LLMs production",
+          "url": "https://soamee.com/en/blog/en-real-cost-running-llms-production",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Production Ops: Cost, Safety & Multi-Tenancy. Matched Production Ops: Cost, Safety & Multi-Tenancy on: cost. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Production Ops: Cost, Safety & Multi-Tenancy on: cost.",
+      "tags": [
+        "cost"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
