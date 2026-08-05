@@ -1,0 +1,205 @@
+{
+  "date": "2026-08-05",
+  "generatedAt": "2026-08-05T15:30:57.611Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-05.mp3",
+    "vtt": "/audio/daily/2026-08-05.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Celeris-1: A diffusion LLM benchmarked at 2,082 output tokens/s. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: We gave a village personal AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 3: RL Is Bottlenecked by Inference. Scale It Independently. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Show HN: Offline 180.9M-parameter LLM and Agent inference on ESP32-P4. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Cuteadmoa-5.4 (Personal Voice Assistant Agent). Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: LLM control of deterministic coder – Sif 1.0 – LLMs as vibe coders. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "celeris-1-a-diffusion-llm-benchmarked-at-2-082-o-0",
+      "headline": "Celeris-1: A diffusion LLM benchmarked at 2,082 output tokens/s",
+      "sourceLinks": [
+        {
+          "title": "Celeris-1: A diffusion LLM benchmarked at 2,082 output tokens/s",
+          "url": "https://artificialanalysis.ai/models/celeris-1",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "we-gave-a-village-personal-ai-agents-1",
+      "headline": "We gave a village personal AI agents",
+      "sourceLinks": [
+        {
+          "title": "We gave a village personal AI agents",
+          "url": "https://blog.cosmos-institute.org/p/we-gave-a-village-personal-ai-agents",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 6,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "rl-is-bottlenecked-by-inference-scale-it-indepen-2",
+      "headline": "RL Is Bottlenecked by Inference. Scale It Independently",
+      "sourceLinks": [
+        {
+          "title": "RL Is Bottlenecked by Inference. Scale It Independently",
+          "url": "https://skypilot.ai/blog/slime-agentic-rl",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 5,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "show-hn-offline-180-9m-parameter-llm-and-agent-i-3",
+      "headline": "Show HN: Offline 180.9M-parameter LLM and Agent inference on ESP32-P4",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Offline 180.9M-parameter LLM and Agent inference on ESP32-P4",
+          "url": "https://github.com/cyfrit/p-for-llm",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "cuteadmoa-5-4-personal-voice-assistant-agent-4",
+      "headline": "Cuteadmoa-5.4 (Personal Voice Assistant Agent)",
+      "sourceLinks": [
+        {
+          "title": "Cuteadmoa-5.4 (Personal Voice Assistant Agent)",
+          "url": "https://news.ycombinator.com/item?id=49184112",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-llm-control-of-deterministic-coder-sif-1-5",
+      "headline": "Show HN: LLM control of deterministic coder – Sif 1.0 – LLMs as vibe coders",
+      "sourceLinks": [
+        {
+          "title": "Show HN: LLM control of deterministic coder – Sif 1.0 – LLMs as vibe coders",
+          "url": "https://github.com/Mac-at-SifSys/Sif-1.0",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
