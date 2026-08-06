@@ -1,0 +1,203 @@
+{
+  "date": "2026-08-06",
+  "generatedAt": "2026-08-06T15:32:00.133Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-06.mp3",
+    "vtt": "/audio/daily/2026-08-06.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Meta latest to tell world its AI agent wandered out of test pen. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 2: I run a 9-model LLM council to write a financial newsletter. What breaks. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Never let the LLM write the subject line. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Berlin's Telli Raises $15M to Expand Enterprise AI Agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Debroid – Autonomous, headless Android debugger designed for AI coding agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 6: Show HN: Solve your document workflows with AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "meta-latest-to-tell-world-its-ai-agent-wandered--0",
+      "headline": "Meta latest to tell world its AI agent wandered out of test pen",
+      "sourceLinks": [
+        {
+          "title": "Meta latest to tell world its AI agent wandered out of test pen",
+          "url": "https://www.theregister.com/ai-and-ml/2026/08/06/meta-latest-to-tell-world-its-ai-agent-wandered-out-of-test-pen/5283947",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 4
+        }
+      }
+    },
+    {
+      "id": "i-run-a-9-model-llm-council-to-write-a-financial-1",
+      "headline": "I run a 9-model LLM council to write a financial newsletter. What breaks",
+      "sourceLinks": [
+        {
+          "title": "I run a 9-model LLM council to write a financial newsletter. What breaks",
+          "url": "https://marketdaily.ai/blog/eng-llm-council-judge-en-202608",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "never-let-the-llm-write-the-subject-line-2",
+      "headline": "Never let the LLM write the subject line",
+      "sourceLinks": [
+        {
+          "title": "Never let the LLM write the subject line",
+          "url": "https://ddz.dev/blog/llm-subject-line-gmail-threading/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "berlin-s-telli-raises-15m-to-expand-enterprise-a-3",
+      "headline": "Berlin's Telli Raises $15M to Expand Enterprise AI Agents",
+      "sourceLinks": [
+        {
+          "title": "Berlin's Telli Raises $15M to Expand Enterprise AI Agents",
+          "url": "https://www.konsulteer.com/article/berlin-s-telli-raises-15m-to-expand-enterprise-ai-agents",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "debroid-autonomous-headless-android-debugger-des-4",
+      "headline": "Debroid – Autonomous, headless Android debugger designed for AI coding agents",
+      "sourceLinks": [
+        {
+          "title": "Debroid – Autonomous, headless Android debugger designed for AI coding agents",
+          "url": "https://github.com/PatilShreyas/debroid",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-solve-your-document-workflows-with-ai-ag-5",
+      "headline": "Show HN: Solve your document workflows with AI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Solve your document workflows with AI agents",
+          "url": "https://docuqueue.com/mcp",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
