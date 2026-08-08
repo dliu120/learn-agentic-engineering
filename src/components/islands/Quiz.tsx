@@ -45,8 +45,9 @@ export function createOrderingDefaults(questions: QuizQuestion[]): Record<string
     if (question.type !== 'ordering' || !question.options) continue;
     const natural = question.options.map((_, index) => index);
     const shuffled = seededShuffle(natural, `${question.id}:ordering`);
+    const correct = (question.correct as number[]) ?? natural;
     result[question.id] =
-      shuffled.every((value, index) => value === natural[index])
+      shuffled.every((value, index) => value === correct[index])
         ? [...shuffled.slice(1), shuffled[0]]
         : shuffled;
   }
@@ -67,9 +68,13 @@ export default function Quiz({
   const [finished, setFinished] = useState(false);
   const questionRef = useRef<HTMLParagraphElement>(null);
   const resultRef = useRef<HTMLParagraphElement>(null);
+  const focusAfterResetRef = useRef(false);
 
   useEffect(() => {
-    if (currentIndex > 0 && !finished) questionRef.current?.focus();
+    if (!finished && (currentIndex > 0 || focusAfterResetRef.current)) {
+      questionRef.current?.focus();
+      focusAfterResetRef.current = false;
+    }
   }, [currentIndex, finished]);
 
   useEffect(() => {
@@ -151,6 +156,7 @@ export default function Quiz({
   };
 
   const reset = () => {
+    focusAfterResetRef.current = true;
     setAnswers({});
     setMatches({});
     setChecked({});

@@ -10,8 +10,9 @@ const STEPS = [
 ];
 
 export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void {
-  const W = 760;
-  const H = 360;
+  const narrow = root.clientWidth < 640;
+  const W = narrow ? 280 : 760;
+  const H = narrow ? 430 : 360;
   const stage = document.createElement('div');
   stage.className = 'w-full';
   const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'w-full', role: 'img' });
@@ -21,38 +22,38 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   );
 
   const host = svgEl('rect', {
-    x: 50,
-    y: 34,
-    width: 400,
-    height: 292,
+    x: narrow ? 10 : 50,
+    y: narrow ? 24 : 34,
+    width: narrow ? 125 : 400,
+    height: narrow ? 382 : 292,
     rx: 8,
     fill: cssColor('--surface'),
     stroke: cssColor('--border'),
     'stroke-width': 2,
   });
   const hostLabel = svgEl('text', {
-    x: 70,
-    y: 64,
+    x: narrow ? 20 : 70,
+    y: narrow ? 46 : 64,
     fill: cssColor('--text-faint'),
-    'font-size': 11,
+    'font-size': narrow ? 12 : 11,
     'font-family': 'Geist Mono, monospace',
   });
   hostLabel.textContent = 'HOST APPLICATION';
   const model = svgEl('rect', {
-    x: 130,
-    y: 86,
-    width: 240,
-    height: 58,
+    x: narrow ? 24 : 130,
+    y: narrow ? 64 : 86,
+    width: narrow ? 96 : 240,
+    height: narrow ? 52 : 58,
     rx: 4,
     fill: cssColor('--surface-2'),
     stroke: cssColor('--border'),
   });
   const modelLabel = svgEl('text', {
-    x: 250,
-    y: 120,
+    x: narrow ? 72 : 250,
+    y: narrow ? 95 : 120,
     'text-anchor': 'middle',
     fill: cssColor('--text'),
-    'font-size': 15,
+    'font-size': narrow ? 12 : 15,
     'font-weight': 600,
     'font-family': 'Geist, sans-serif',
   });
@@ -60,51 +61,51 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   svg.append(host, hostLabel, model, modelLabel);
 
   const clientRows = [
-    { y: 184, label: 'Client A', server: 'Filesystem server' },
-    { y: 238, label: 'Client B', server: 'Issue tracker server' },
-    { y: 292, label: 'Client C', server: 'Database server' },
+    { y: narrow ? 180 : 184, label: 'Client A', server: narrow ? 'Files' : 'Filesystem server' },
+    { y: narrow ? 260 : 238, label: 'Client B', server: narrow ? 'Issues' : 'Issue tracker server' },
+    { y: narrow ? 340 : 292, label: 'Client C', server: narrow ? 'Database' : 'Database server' },
   ];
   const clients = clientRows.map((row) => {
     const client = svgEl('rect', {
-      x: 90,
+      x: narrow ? 20 : 90,
       y: row.y - 18,
-      width: 120,
+      width: narrow ? 105 : 120,
       height: 36,
       rx: 4,
       fill: cssColor('--surface-2'),
       stroke: cssColor('--border'),
     });
     const clientLabel = svgEl('text', {
-      x: 150,
+      x: narrow ? 72 : 150,
       y: row.y + 4,
       'text-anchor': 'middle',
       fill: cssColor('--text-muted'),
-      'font-size': 12,
+      'font-size': narrow ? 12 : 12,
       'font-family': 'Geist, sans-serif',
     });
     clientLabel.textContent = row.label;
     const server = svgEl('rect', {
-      x: 520,
+      x: narrow ? 155 : 520,
       y: row.y - 22,
-      width: 190,
+      width: narrow ? 115 : 190,
       height: 44,
       rx: 4,
       fill: cssColor('--surface'),
       stroke: cssColor('--border'),
     });
     const serverLabel = svgEl('text', {
-      x: 615,
+      x: narrow ? 212 : 615,
       y: row.y + 4,
       'text-anchor': 'middle',
       fill: cssColor('--text'),
-      'font-size': 12,
+      'font-size': narrow ? 12 : 12,
       'font-family': 'Geist, sans-serif',
     });
     serverLabel.textContent = row.server;
     const line = svgEl('line', {
-      x1: 210,
+      x1: narrow ? 125 : 210,
       y1: row.y,
-      x2: 520,
+      x2: narrow ? 155 : 520,
       y2: row.y,
       stroke: cssColor('--border'),
       'stroke-width': 2,
@@ -113,7 +114,12 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     return { client, clientLabel, server, serverLabel, line };
   });
 
-  const packet = svgEl('circle', { cx: 250, cy: 115, r: 7, fill: cssColor('--accent') });
+  const packet = svgEl('circle', {
+    cx: narrow ? 72 : 250,
+    cy: narrow ? 90 : 115,
+    r: 7,
+    fill: cssColor('--accent'),
+  });
   svg.append(packet);
   stage.append(svg);
   root.append(stage);
@@ -134,11 +140,11 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
         row.line.setAttribute('stroke', active >= 3 ? accent : cssColor('--border'));
       });
       const route = [
-        { x: 250, y: 115 },
-        { x: 250, y: 115 },
-        { x: 150, y: 184 },
-        { x: 365, y: 184 },
-        { x: 615, y: 184 },
+        { x: narrow ? 72 : 250, y: narrow ? 90 : 115 },
+        { x: narrow ? 72 : 250, y: narrow ? 90 : 115 },
+        { x: narrow ? 72 : 150, y: narrow ? 180 : 184 },
+        { x: narrow ? 140 : 365, y: narrow ? 180 : 184 },
+        { x: narrow ? 212 : 615, y: narrow ? 180 : 184 },
       ][active];
       packet.setAttribute('cx', String(route.x));
       packet.setAttribute('cy', String(route.y));

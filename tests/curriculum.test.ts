@@ -7,7 +7,7 @@ import {
 } from '../src/content/modules';
 import { MODULE_IDS } from '../src/content/schemas/module-ids';
 import { buildManifest } from '../src/lib/manifest';
-import { getState, isModuleUnlocked, STORAGE_KEY } from '../src/lib/progress';
+import { getState, STORAGE_KEY } from '../src/lib/progress';
 
 class MemoryStorage implements Storage {
   private values = new Map<string, string>();
@@ -92,35 +92,6 @@ describe('curriculum model', () => {
     expect(Array.from({ length: TOTAL_TOPIC_COUNT }, (_, index) => index + 1).every((topic) => topics.has(topic))).toBe(true);
   });
 
-  it('requires every prerequisite gate before unlocking a module', () => {
-    expect(isModuleUnlocked('foundations-prompts-to-harnesses')).toBe(true);
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        version: 1,
-        lessons: {},
-        quizzes: {},
-        gates: { 'graph-workflow-engineering': true },
-        streak: { count: 0 },
-      }),
-    );
-    expect(isModuleUnlocked('capstone-strategy-tradeoffs-failure-modes')).toBe(false);
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        version: 1,
-        lessons: {},
-        quizzes: {},
-        gates: {
-          'graph-workflow-engineering': true,
-          'eval-observability': true,
-        },
-        streak: { count: 0 },
-      }),
-    );
-    expect(isModuleUnlocked('capstone-strategy-tradeoffs-failure-modes')).toBe(true);
-  });
-
   it('migrates moved lesson progress and last-visited state', () => {
     localStorage.setItem(
       STORAGE_KEY,
@@ -152,6 +123,72 @@ describe('curriculum model', () => {
       moduleId: 'conversation-context-engineering',
       lessonId: 'context-engineering',
     });
+  });
+
+  it('merges conflicting old and new progress conservatively', () => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        version: 1,
+        lessons: {
+          'foundations-prompts-to-harnesses/context-engineering': { completed: true, completedAt: '2026-01-01' },
+          'conversation-context-engineering/context-engineering': { completed: false },
+        },
+        quizzes: {
+          'foundations-prompts-to-harnesses/context-engineering': {
+            passed: true,
+            bestScore: 1,
+            attempts: 2,
+            lastAnswers: 'old-best',
+          },
+          'conversation-context-engineering/context-engineering': {
+            passed: false,
+            bestScore: 0.2,
+            attempts: 5,
+            lastAnswers: 'new-latest',
+          },
+        },
+        gates: {},
+        streak: { count: 0 },
+      }),
+    );
+    const state = getState();
+    expect(state.lessons['conversation-context-engineering/context-engineering']).toEqual({
+      completed: true,
+      completedAt: '2026-01-01',
+    });
+    expect(state.quizzes['conversation-context-engineering/context-engineering']).toEqual({
+      passed: true,
+      bestScore: 1,
+      attempts: 5,
+      lastAnswers: 'old-best',
+    });
+  });
+
+  it('returns migrated progress even when persistence is unavailable', () => {
+    const raw = JSON.stringify({
+      version: 1,
+      lessons: {
+        'foundations-prompts-to-harnesses/context-engineering': { completed: true },
+      },
+      quizzes: {},
+      gates: {},
+      streak: { count: 0 },
+    });
+    Object.defineProperty(globalThis, 'localStorage', {
+      configurable: true,
+      value: {
+        length: 1,
+        clear() {},
+        getItem: () => raw,
+        key: () => STORAGE_KEY,
+        removeItem() {},
+        setItem: () => {
+          throw new Error('quota exceeded');
+        },
+      } satisfies Storage,
+    });
+    expect(getState().lessons['conversation-context-engineering/context-engineering']?.completed).toBe(true);
   });
 
   it('includes module gates as resume targets but not progress-counted lessons', () => {

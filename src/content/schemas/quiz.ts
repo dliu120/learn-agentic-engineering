@@ -34,7 +34,10 @@ export const quizQuestion = z
     }
     if ((q.type === 'multi' || q.type === 'ordering') && q.options && Array.isArray(q.correct)) {
       const unique = new Set(q.correct);
-      if (unique.size !== q.correct.length || q.correct.some((index) => index < 0 || index >= q.options!.length)) {
+      if (
+        unique.size !== q.correct.length ||
+        q.correct.some((index) => !Number.isInteger(index) || index < 0 || index >= q.options!.length)
+      ) {
         ctx.addIssue({ code: 'custom', message: `${q.type}.correct must contain unique, in-range option indices` });
       }
       if (q.type === 'ordering' && q.correct.length !== q.options.length) {

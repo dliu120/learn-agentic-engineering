@@ -11,7 +11,7 @@ const STAGES = [
 
 export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void {
   const narrow = root.clientWidth < 640;
-  const W = narrow ? 420 : 900;
+  const W = narrow ? 280 : 900;
   const H = narrow ? 620 : 280;
   const stage = document.createElement('div');
   stage.className = 'w-full';
@@ -22,7 +22,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   );
 
   const positions = STAGES.map((_, index) =>
-    narrow ? { x: 210, y: 72 + index * 116 } : { x: 100 + index * 175, y: 132 },
+    narrow ? { x: 140, y: 72 + index * 116 } : { x: 100 + index * 175, y: 132 },
   );
 
   for (let index = 0; index < positions.length - 1; index++) {
@@ -38,11 +38,14 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
 
   const nodes = STAGES.map((item, index) => {
     const { x, y } = positions[index];
+    const boxX = narrow ? -100 : -66;
+    const boxWidth = narrow ? 200 : 132;
+    const textX = narrow ? -82 : -50;
     const group = svgEl('g', { transform: `translate(${x} ${y})` });
     const box = svgEl('rect', {
-      x: -66,
+      x: boxX,
       y: -36,
-      width: 132,
+      width: boxWidth,
       height: 72,
       rx: 4,
       fill: cssColor('--surface'),
@@ -50,18 +53,18 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       'stroke-width': 1.5,
     });
     const number = svgEl('text', {
-      x: -50,
+      x: textX,
       y: -12,
       fill: cssColor('--text-faint'),
-      'font-size': 10,
+      'font-size': narrow ? 12 : 10,
       'font-family': 'Geist Mono, monospace',
     });
     number.textContent = `0${index + 1}`;
     const title = svgEl('text', {
-      x: -50,
+      x: textX,
       y: 12,
       fill: cssColor('--text'),
-      'font-size': 14,
+      'font-size': narrow ? 15 : 14,
       'font-weight': 600,
       'font-family': 'Geist, sans-serif',
     });
@@ -98,7 +101,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
         node.box.setAttribute('stroke', reached ? accent : cssColor('--border'));
         node.box.setAttribute('stroke-width', current ? '2.5' : '1.5');
         node.number.setAttribute('fill', reached ? accent : cssColor('--text-faint'));
-        node.title.setAttribute('fill', current ? accent : cssColor('--text'));
+        node.title.setAttribute('fill', cssColor('--text'));
       });
       note.textContent = STAGES[active].question;
     },

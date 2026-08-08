@@ -70,6 +70,9 @@ describe('mapModule', () => {
   it('maps agent memory items to state and durability', () => {
     expect(mapModule(mk({ title: 'Agent memory patterns' })).module).toBe('state-memory-durable-workflows');
   });
+  it('keeps drift and regression items in evaluation and observability', () => {
+    expect(mapModule(mk({ title: 'Context drift and regressions' })).module).toBe('eval-observability');
+  });
 });
 
 describe('schema-valid outputs', () => {

@@ -17,4 +17,16 @@ describe('quiz interaction helpers', () => {
     expect(isStructuredAnswerCorrect(question, initial)).toBe(false);
     expect(isStructuredAnswerCorrect(question, question.correct)).toBe(true);
   });
+
+  it('starts away from a non-natural correct permutation', () => {
+    const question = quizQuestion.parse({
+      id: 'non-natural-order',
+      type: 'ordering',
+      question: 'Order the stages',
+      options: ['A', 'B', 'C', 'D', 'E'],
+      correct: [1, 3, 2, 0, 4],
+      explanation: 'A custom order.',
+    });
+    expect(createOrderingDefaults([question])[question.id]).not.toEqual(question.correct);
+  });
 });

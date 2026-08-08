@@ -7,9 +7,6 @@
  *   quiz key    = lesson key (lesson quiz) or `${moduleId}/module-gate`
  *   gate key    = moduleId
  */
-import { MODULE_BY_ID } from '@/content/modules';
-import type { ModuleId } from '@/content/schemas/module-ids';
-
 export const STORAGE_KEY = 'allm:progress:v1';
 const LESSON_KEY_MIGRATIONS: Record<string, string> = {
   'foundations-prompts-to-harnesses/context-engineering':
@@ -55,12 +52,25 @@ function read(): ProgressState {
     const state = { ...empty(), ...JSON.parse(raw) } as ProgressState;
     let changed = false;
     for (const [oldKey, newKey] of Object.entries(LESSON_KEY_MIGRATIONS)) {
-      if (state.lessons[oldKey] && !state.lessons[newKey]) {
-        state.lessons[newKey] = state.lessons[oldKey];
+      const oldLesson = state.lessons[oldKey];
+      const newLesson = state.lessons[newKey];
+      if (oldLesson) {
+        state.lessons[newKey] = {
+          completed: oldLesson.completed || newLesson?.completed || false,
+          completedAt: newLesson?.completedAt ?? oldLesson.completedAt,
+        };
         changed = true;
       }
-      if (state.quizzes[oldKey] && !state.quizzes[newKey]) {
-        state.quizzes[newKey] = state.quizzes[oldKey];
+      const oldQuiz = state.quizzes[oldKey];
+      const newQuiz = state.quizzes[newKey];
+      if (oldQuiz) {
+        const oldWins = oldQuiz.bestScore > (newQuiz?.bestScore ?? -1);
+        state.quizzes[newKey] = {
+          passed: oldQuiz.passed || newQuiz?.passed || false,
+          bestScore: Math.max(oldQuiz.bestScore, newQuiz?.bestScore ?? 0),
+          attempts: Math.max(oldQuiz.attempts, newQuiz?.attempts ?? 0),
+          lastAnswers: oldWins ? oldQuiz.lastAnswers : newQuiz?.lastAnswers,
+        };
         changed = true;
       }
       if (state.lessons[oldKey]) {
@@ -77,7 +87,13 @@ function read(): ProgressState {
         changed = true;
       }
     }
-    if (changed) localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    if (changed) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch {
+        // Keep the migrated in-memory state even if persistence is unavailable.
+      }
+    }
     return state;
   } catch {
     return empty();
@@ -124,12 +140,6 @@ export const getState = (): ProgressState => read();
 export const isLessonDone = (moduleId: string, lessonId: string): boolean =>
   !!read().lessons[lessonKey(moduleId, lessonId)]?.completed;
 export const isGatePassed = (moduleId: string): boolean => !!read().gates[moduleId];
-
-export function isModuleUnlocked(moduleId: string): boolean {
-  const module = MODULE_BY_ID[moduleId as ModuleId];
-  if (!module) return true;
-  return module.prerequisites.every(isGatePassed);
-}
 
 export function overall(manifest: Manifest): {
   pct: number;

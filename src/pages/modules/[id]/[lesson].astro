@@ -62,7 +62,7 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
     <a href={moduleHref(m.id)} class="no-underline hover:text-accent">{m.name}</a>
   </nav>
 
-  <article class="mx-auto mt-6 max-w-prose">
+  <article class="mx-auto mt-6 max-w-prose" data-module-gate={d.isModuleGate ? 'true' : 'false'}>
     <button
       id="resume-position"
       type="button"
@@ -180,19 +180,34 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
 </BaseLayout>
 
 <script>
-  import { setLastVisited, markLessonComplete, isLessonDone } from '@/lib/progress';
+  import { setLastVisited, markLessonComplete, isGatePassed, isLessonDone } from '@/lib/progress';
   // record visit (derive module/lesson from the URL)
   const parts = location.pathname.replace(/\/$/, '').split('/');
   const lessonId = parts.pop()!;
   const mod = parts.pop()!;
   if (mod && lessonId) setLastVisited(mod, lessonId);
+  const isModuleGate = document.querySelector('[data-module-gate]')?.getAttribute('data-module-gate') === 'true';
 
   const positionKey = `allm:lesson-position:v1:${location.pathname}`;
+  const previousPositionKey = location.pathname.includes('/modules/conversation-context-engineering/context-engineering')
+    ? `allm:lesson-position:v1:${location.pathname.replace(
+        '/modules/conversation-context-engineering/context-engineering',
+        '/modules/foundations-prompts-to-harnesses/context-engineering',
+      )}`
+    : null;
+  if (previousPositionKey && localStorage.getItem(positionKey) == null) {
+    const previousPosition = localStorage.getItem(previousPositionKey);
+    if (previousPosition != null) {
+      localStorage.setItem(positionKey, previousPosition);
+      localStorage.removeItem(previousPositionKey);
+    }
+  }
   const progress = document.getElementById('lesson-scroll-progress');
   const resume = document.getElementById('resume-position') as HTMLButtonElement | null;
   const savedPosition = Number(localStorage.getItem(positionKey) ?? 0);
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let completed = isLessonDone(mod, lessonId);
+  const isComplete = () => isModuleGate ? isGatePassed(mod) : isLessonDone(mod, lessonId);
+  let completed = isComplete();
 
   if (!completed && resume && savedPosition > 400 && savedPosition < document.documentElement.scrollHeight - innerHeight - 200) {
     resume.classList.remove('hidden');
@@ -204,7 +219,8 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
 
   let lastSave = 0;
   let scheduled = false;
-  const paintProgress = () => {
+  let canSavePosition = false;
+  const paintProgress = (savePosition: boolean) => {
     scheduled = false;
     const maximum = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     const percent = Math.min(100, Math.round((scrollY / maximum) * 100));
@@ -213,22 +229,23 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
       progress.setAttribute('aria-valuenow', String(percent));
     }
     const now = Date.now();
-    if (!completed && now - lastSave > 500) {
+    if (savePosition && !completed && now - lastSave > 500) {
       localStorage.setItem(positionKey, String(Math.round(scrollY)));
       lastSave = now;
     }
   };
   addEventListener('scroll', () => {
+    canSavePosition = true;
     if (!scheduled) {
       scheduled = true;
-      requestAnimationFrame(paintProgress);
+      requestAnimationFrame(() => paintProgress(true));
     }
   }, { passive: true });
   addEventListener('pagehide', () => {
-    if (!completed) localStorage.setItem(positionKey, String(Math.round(scrollY)));
+    if (canSavePosition && !completed) localStorage.setItem(positionKey, String(Math.round(scrollY)));
   });
   const syncCompletion = () => {
-    completed = isLessonDone(mod, lessonId);
+    completed = isComplete();
     if (completed) {
       localStorage.removeItem(positionKey);
       resume?.classList.add('hidden');
@@ -236,7 +253,7 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
   };
   window.addEventListener('allm:progress', syncCompletion);
   syncCompletion();
-  paintProgress();
+  paintProgress(false);
 
   const btn = document.getElementById('mark-complete') as HTMLButtonElement | null;
   if (btn) {

@@ -82,7 +82,7 @@ export function mapModule(i: RawItem): { module: string; secondary: string[]; ra
     const score = matched.reduce((sum, keyword) => {
       if (generic.has(keyword)) return sum + 0.25;
       const words = keyword.trim().split(/\s+/).length;
-      return sum + words + Math.min(keyword.length / 100, 0.5);
+      return sum + words;
     }, 0);
     return { id: m.id, name: m.name, order: m.order, matched, score };
   })

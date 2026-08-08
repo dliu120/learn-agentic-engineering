@@ -10,11 +10,12 @@ const NODES = [
 ];
 
 export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void {
-  const W = 700;
-  const H = 340;
+  const narrow = root.clientWidth < 640;
+  const W = narrow ? 280 : 700;
+  const H = narrow ? 420 : 340;
   const cx = W / 2;
-  const cy = 160;
-  const radius = 112;
+  const cy = narrow ? 190 : 160;
+  const radius = narrow ? 98 : 112;
   const stage = document.createElement('div');
   stage.className = 'w-full';
   const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'w-full', role: 'img' });
@@ -44,7 +45,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const { x, y } = positions[index];
     const group = svgEl('g', { transform: `translate(${x} ${y})` });
     const circle = svgEl('circle', {
-      r: 42,
+      r: narrow ? 38 : 42,
       fill: cssColor('--surface'),
       stroke: cssColor('--border'),
       'stroke-width': 1.5,
@@ -53,7 +54,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       'text-anchor': 'middle',
       dy: '0.35em',
       fill: cssColor('--text'),
-      'font-size': 12,
+      'font-size': narrow ? 13 : 12,
       'font-weight': 600,
       'font-family': 'Geist, sans-serif',
     });
@@ -64,10 +65,10 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   });
   const note = svgEl('text', {
     x: cx,
-    y: 324,
+    y: narrow ? 405 : 324,
     'text-anchor': 'middle',
     fill: cssColor('--text-muted'),
-    'font-size': 12,
+    'font-size': narrow ? 13 : 12,
     'font-family': 'Geist, sans-serif',
   });
   svg.append(note);
@@ -87,7 +88,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
         node.circle.setAttribute('fill', on ? accentFill : cssColor('--surface'));
         node.circle.setAttribute('stroke', on ? accent : cssColor('--border'));
         node.circle.setAttribute('stroke-width', on ? '2.5' : '1.5');
-        node.label.setAttribute('fill', on ? accent : cssColor('--text'));
+        node.label.setAttribute('fill', cssColor('--text'));
       });
       note.textContent = NODES[active].note;
     },
