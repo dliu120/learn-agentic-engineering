@@ -31,7 +31,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const line = narrow
       ? svgEl('line', { x1: from.x, y1: from.y + 36, x2: to.x, y2: to.y - 36 })
       : svgEl('line', { x1: from.x + 66, y1: from.y, x2: to.x - 66, y2: to.y });
-    line.setAttribute('stroke', cssColor('--border'));
+    line.setAttribute('stroke', cssColor('--text-faint'));
     line.setAttribute('stroke-width', '2');
     svg.append(line);
   }

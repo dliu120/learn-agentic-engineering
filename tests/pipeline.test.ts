@@ -73,6 +73,9 @@ describe('mapModule', () => {
   it('keeps drift and regression items in evaluation and observability', () => {
     expect(mapModule(mk({ title: 'Context drift and regressions' })).module).toBe('eval-observability');
   });
+  it('does not match agent spec inside speculative', () => {
+    expect(mapModule(mk({ title: 'Agent speculative decoding' })).module).toBe('model-efficiency-compression');
+  });
 });
 
 describe('schema-valid outputs', () => {

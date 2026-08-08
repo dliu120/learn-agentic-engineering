@@ -64,12 +64,11 @@ function read(): ProgressState {
       const oldQuiz = state.quizzes[oldKey];
       const newQuiz = state.quizzes[newKey];
       if (oldQuiz) {
-        const oldWins = oldQuiz.bestScore > (newQuiz?.bestScore ?? -1);
         state.quizzes[newKey] = {
           passed: oldQuiz.passed || newQuiz?.passed || false,
           bestScore: Math.max(oldQuiz.bestScore, newQuiz?.bestScore ?? 0),
           attempts: Math.max(oldQuiz.attempts, newQuiz?.attempts ?? 0),
-          lastAnswers: oldWins ? oldQuiz.lastAnswers : newQuiz?.lastAnswers,
+          lastAnswers: newQuiz?.lastAnswers ?? oldQuiz.lastAnswers,
         };
         changed = true;
       }

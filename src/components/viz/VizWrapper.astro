@@ -57,4 +57,14 @@ const { name, title, summary, height = 360 } = Astro.props;
 
   mounts.forEach(load);
   document.addEventListener('allm:theme-change', () => mounts.forEach(load));
+  mounts.forEach((mount) => {
+    let narrow = mount.clientWidth < 640;
+    const observer = new ResizeObserver(([entry]) => {
+      const nextNarrow = entry.contentRect.width < 640;
+      if (nextNarrow === narrow) return;
+      narrow = nextNarrow;
+      load(mount);
+    });
+    observer.observe(mount);
+  });
 </script>

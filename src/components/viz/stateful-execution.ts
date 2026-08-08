@@ -37,7 +37,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       height: 64,
       rx: 4,
       fill: cssColor('--surface'),
-      stroke: cssColor('--border'),
+      stroke: cssColor('--text-faint'),
     });
     const second = svgEl('rect', {
       x,
@@ -46,7 +46,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       height: 64,
       rx: 4,
       fill: cssColor('--surface'),
-      stroke: cssColor('--border'),
+      stroke: cssColor('--text-faint'),
     });
     const firstText = svgEl('text', {
       x: x + width / 2,
@@ -137,8 +137,8 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       checkpoint.setAttribute('fill', active >= 2 ? accentFill : cssColor('--surface-2'));
       stateful.second.setAttribute('stroke', active >= 3 ? accent : cssColor('--border'));
       stateful.secondText.textContent = active >= 3 ? 'Resume from checkpoint → continue' : 'Request 2 → model → result';
-      down.setAttribute('stroke', active >= 2 ? accent : cssColor('--border'));
-      resume.setAttribute('stroke', active >= 3 ? accent : cssColor('--border'));
+      down.setAttribute('stroke', active >= 2 ? accent : cssColor('--text-faint'));
+      resume.setAttribute('stroke', active >= 3 ? accent : cssColor('--text-faint'));
     },
   });
 }

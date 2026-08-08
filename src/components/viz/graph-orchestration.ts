@@ -52,7 +52,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       y1: from.y + 26,
       x2: to.x,
       y2: to.y - 26,
-      stroke: cssColor('--border'),
+      stroke: cssColor('--text-faint'),
       'stroke-width': 2,
     });
     svg.append(line);

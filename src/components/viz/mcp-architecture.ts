@@ -28,7 +28,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     height: narrow ? 382 : 292,
     rx: 8,
     fill: cssColor('--surface'),
-    stroke: cssColor('--border'),
+    stroke: cssColor('--text-faint'),
     'stroke-width': 2,
   });
   const hostLabel = svgEl('text', {
@@ -137,7 +137,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
         row.client.setAttribute('stroke', active >= 2 ? accent : cssColor('--border'));
         row.client.setAttribute('fill', active >= 2 ? accentFill : cssColor('--surface-2'));
         row.server.setAttribute('stroke', active >= 3 ? accent : cssColor('--border'));
-        row.line.setAttribute('stroke', active >= 3 ? accent : cssColor('--border'));
+        row.line.setAttribute('stroke', active >= 3 ? accent : cssColor('--text-faint'));
       });
       const route = [
         { x: narrow ? 72 : 250, y: narrow ? 90 : 115 },

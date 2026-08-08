@@ -303,7 +303,7 @@ export const MODULES: ModuleMeta[] = [
       'Navigate the latency, quality, cost, and reliability tradeoff surface',
       'Recognize common production failure modes and their early signals',
     ],
-    keywords: ['fine-tuning', 'lora', 'in-context learning', 'rag vs fine-tuning', 'tradeoff', 'failure mode', 'hallucination', 'regression', 'strategy', 'inference stack'],
+    keywords: ['fine-tuning', 'fine tuning', 'lora', 'in-context learning', 'rag vs fine-tuning', 'tradeoff', 'failure mode', 'hallucination', 'regression', 'strategy', 'inference stack'],
   },
 ];
 

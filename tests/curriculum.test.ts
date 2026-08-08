@@ -161,7 +161,7 @@ describe('curriculum model', () => {
       passed: true,
       bestScore: 1,
       attempts: 5,
-      lastAnswers: 'old-best',
+      lastAnswers: 'new-latest',
     });
   });
 

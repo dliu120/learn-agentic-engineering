@@ -35,7 +35,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       y1: from.y,
       x2: to.x,
       y2: to.y,
-      stroke: cssColor('--border'),
+      stroke: cssColor('--text-faint'),
       'stroke-width': 2,
       'stroke-dasharray': '4 5',
     });

@@ -276,7 +276,7 @@ export default function Quiz({
             <div class="mt-4 space-y-2">
               <p class="text-xs text-text-faint">Put these in the correct order.</p>
               {order.map((optionIndex, position) => (
-                <div class="flex items-center gap-3 rounded-sm border border-border p-3">
+                <div key={optionIndex} class="flex items-center gap-3 rounded-sm border border-border p-3">
                   <span class="font-mono text-xs tabular-nums text-text-faint">{position + 1}</span>
                   <span class="min-w-0 flex-1 text-sm leading-relaxed text-text-muted">
                     {current.options![optionIndex]}

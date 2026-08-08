@@ -40,6 +40,14 @@ const relevanceHits = (i: RawItem, allow: string[]): string[] => {
   return allow.filter((t) => hay.includes(t.toLowerCase()));
 };
 
+const matchesKeyword = (haystack: string, keyword: string): boolean => {
+  const escaped = keyword
+    .trim()
+    .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    .replace(/\s+/g, '\\s+');
+  return new RegExp(`(^|[^a-z0-9])${escaped}(?=$|[^a-z0-9])`, 'i').test(haystack);
+};
+
 export function filterItems(items: RawItem[], cfg: SourcesConfig): RawItem[] {
   return items.filter((i) => {
     if (ageHours(i.publishedAt) > cfg.window_hours) return false;
@@ -78,7 +86,7 @@ export function mapModule(i: RawItem): { module: string; secondary: string[]; ra
   const hay = `${i.title} ${i.text ?? ''}`.toLowerCase();
   const generic = new Set(['agent', 'ai', 'llm', 'prompt', 'memory']);
   const scored = MODULES.map((m) => {
-    const matched = m.keywords.filter((k) => hay.includes(k.toLowerCase()));
+    const matched = m.keywords.filter((keyword) => matchesKeyword(hay, keyword));
     const score = matched.reduce((sum, keyword) => {
       if (generic.has(keyword)) return sum + 0.25;
       const words = keyword.trim().split(/\s+/).length;
