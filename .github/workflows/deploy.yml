@@ -23,6 +23,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - run: bun install --frozen-lockfile
+      - run: bun run check:coverage
+      - run: bun run check
+      - run: bun run test
       - run: bun run build
         env:
           SITE: ${{ steps.pages.outputs.origin }}

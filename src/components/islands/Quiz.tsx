@@ -1,5 +1,5 @@
 /** @jsxImportSource preact */
-import { useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { QuizQuestion } from '@/content/schemas/quiz';
 import { lessonKey, markLessonComplete, passGate, recordQuiz } from '@/lib/progress';
 
@@ -14,7 +14,7 @@ interface Props {
 type AnswerState = Record<string, number | number[]>;
 type MatchState = Record<string, Record<number, number>>;
 
-function seededShuffle<T>(values: T[], seed: string): T[] {
+export function seededShuffle<T>(values: T[], seed: string): T[] {
   let hash = 2166136261;
   for (const character of seed) hash = (hash ^ character.charCodeAt(0)) * 16777619;
   return values
@@ -23,7 +23,7 @@ function seededShuffle<T>(values: T[], seed: string): T[] {
     .map(({ value }) => value);
 }
 
-function isStructuredAnswerCorrect(question: QuizQuestion, answer: number | number[] | undefined): boolean {
+export function isStructuredAnswerCorrect(question: QuizQuestion, answer: number | number[] | undefined): boolean {
   if (answer === undefined) return false;
   if (question.type === 'mcq') return answer === question.correct;
   if (question.type === 'multi') {
@@ -39,6 +39,20 @@ function isStructuredAnswerCorrect(question: QuizQuestion, answer: number | numb
   return false;
 }
 
+export function createOrderingDefaults(questions: QuizQuestion[]): Record<string, number[]> {
+  const result: Record<string, number[]> = {};
+  for (const question of questions) {
+    if (question.type !== 'ordering' || !question.options) continue;
+    const natural = question.options.map((_, index) => index);
+    const shuffled = seededShuffle(natural, `${question.id}:ordering`);
+    result[question.id] =
+      shuffled.every((value, index) => value === natural[index])
+        ? [...shuffled.slice(1), shuffled[0]]
+        : shuffled;
+  }
+  return result;
+}
+
 export default function Quiz({
   questions,
   moduleId,
@@ -51,6 +65,16 @@ export default function Quiz({
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [finished, setFinished] = useState(false);
+  const questionRef = useRef<HTMLParagraphElement>(null);
+  const resultRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (currentIndex > 0 && !finished) questionRef.current?.focus();
+  }, [currentIndex, finished]);
+
+  useEffect(() => {
+    if (finished) resultRef.current?.focus();
+  }, [finished]);
 
   const matchRights = useMemo(() => {
     const result: Record<string, { label: string; originalIndex: number }[]> = {};
@@ -65,19 +89,7 @@ export default function Quiz({
     return result;
   }, [questions]);
 
-  const orderingDefaults = useMemo(() => {
-    const result: Record<string, number[]> = {};
-    for (const question of questions) {
-      if (question.type !== 'ordering' || !question.options) continue;
-      const natural = question.options.map((_, index) => index);
-      const shuffled = seededShuffle(natural, `${question.id}:ordering`);
-      result[question.id] =
-        shuffled.every((value, index) => value === natural[index])
-          ? [...shuffled.slice(1), shuffled[0]]
-          : shuffled;
-    }
-    return result;
-  }, [questions]);
+  const orderingDefaults = useMemo(() => createOrderingDefaults(questions), [questions]);
 
   const matchingCorrect = (question: QuizQuestion): boolean => {
     if (question.type !== 'matching' || !question.pairs) return false;
@@ -188,8 +200,8 @@ export default function Quiz({
       </div>
 
       {finished ? (
-        <div class="mt-7" aria-live="polite">
-          <p class="text-2xl font-semibold tracking-[-0.03em] text-text">
+        <div class="mt-7">
+          <p ref={resultRef} tabIndex={-1} class="text-2xl font-semibold tracking-[-0.03em] text-text">
             {passed ? (isGate ? 'Gate passed.' : 'Lesson complete.') : 'Review the missed ideas.'}
           </p>
           <p class="mt-2 text-sm text-text-muted">
@@ -216,7 +228,7 @@ export default function Quiz({
         </div>
       ) : (
         <div class="mt-7">
-          <p class="text-base font-medium leading-relaxed text-text">{current.question}</p>
+          <p ref={questionRef} tabIndex={-1} class="text-base font-medium leading-relaxed text-text">{current.question}</p>
 
           {current.type === 'mcq' && (
             <div class="mt-4 space-y-2">
@@ -322,25 +334,26 @@ export default function Quiz({
             </div>
           )}
 
-          {currentChecked && (
-            <div
-              class="mt-5 border-l-2 p-4 text-sm leading-relaxed"
-              aria-live="polite"
-              style={{
-                borderColor: currentCorrect ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-bad))',
-              }}
-            >
-              <p
-                class="font-semibold"
+          <div aria-live="polite" aria-atomic="true" class={currentChecked ? 'mt-5' : ''}>
+            {currentChecked && (
+              <div
+                class="border-l-2 p-4 text-sm leading-relaxed"
                 style={{
-                  color: currentCorrect ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-bad))',
+                  borderColor: currentCorrect ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-bad))',
                 }}
               >
-                {currentCorrect ? 'Correct.' : 'Review this.'}
-              </p>
-              <p class="mt-1 text-text-muted">{current.explanation}</p>
-            </div>
-          )}
+                <p
+                  class="font-semibold"
+                  style={{
+                    color: currentCorrect ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-bad))',
+                  }}
+                >
+                  {currentCorrect ? 'Correct.' : 'Review this.'}
+                </p>
+                <p class="mt-1 text-text-muted">{current.explanation}</p>
+              </div>
+            )}
+          </div>
 
           <div class="mt-6 flex flex-wrap items-center gap-3">
             {!currentChecked ? (

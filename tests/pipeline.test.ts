@@ -56,13 +56,19 @@ describe('mapModule', () => {
     expect(mapModule(mk({ title: 'A new prompt injection attack' })).module).toBe('production-ops-cost-safety-multitenancy');
   });
   it('maps MCP items to the capabilities module', () => {
-    expect(mapModule(mk({ title: 'MCP server adds tools and resources' })).module).toBe('tools-skills-plugins-mcp');
+    expect(mapModule(mk({ title: 'MCP agent interoperability' })).module).toBe('tools-skills-plugins-mcp');
   });
   it('maps checkpoint items to state and durability', () => {
-    expect(mapModule(mk({ title: 'Durable agent checkpoint recovery' })).module).toBe('state-memory-durable-workflows');
+    expect(mapModule(mk({ title: 'Agent checkpoint recovery' })).module).toBe('state-memory-durable-workflows');
   });
   it('maps LangGraph items to graph engineering', () => {
     expect(mapModule(mk({ title: 'LangGraph parallel workers and state graph' })).module).toBe('graph-workflow-engineering');
+  });
+  it('maps spec-driven agent items to the specification module', () => {
+    expect(mapModule(mk({ title: 'Spec-driven agent engineering' })).module).toBe('spec-driven-agent-engineering');
+  });
+  it('maps agent memory items to state and durability', () => {
+    expect(mapModule(mk({ title: 'Agent memory patterns' })).module).toBe('state-memory-durable-workflows');
   });
 });
 

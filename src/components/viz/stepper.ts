@@ -21,7 +21,7 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
   let timer: ReturnType<typeof setInterval> | null = null;
 
   const bar = document.createElement('div');
-  bar.className = 'flex items-center gap-2 border-t border-border px-4 py-2';
+  bar.className = 'flex flex-wrap items-center gap-2 px-4 pb-4 pt-2';
 
   const mk = (label: string, aria: string) => {
     const b = document.createElement('button');
@@ -39,7 +39,7 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
   const stepLbl = document.createElement('span');
   stepLbl.className = 'font-mono text-xs text-text-faint tabular-nums';
   const caption = document.createElement('p');
-  caption.className = 'flex-1 text-sm text-text-muted';
+  caption.className = 'min-w-0 basis-full text-sm text-text-muted sm:basis-auto';
   caption.setAttribute('aria-live', 'polite');
 
   function set(target: number, dir = 1) {
@@ -60,6 +60,7 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
   }
   function start() {
     if (reduced) return;
+    if (!opts.loop && i === n - 1) set(0, -1);
     play.textContent = 'Pause';
     play.setAttribute('aria-label', 'Pause animation');
     timer = setInterval(() => {
@@ -92,6 +93,14 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
     { threshold: 0 },
   );
   io.observe(stage);
+  root.addEventListener(
+    'allm:viz-dispose',
+    () => {
+      stop();
+      io.disconnect();
+    },
+    { once: true },
+  );
 
   return { set, stop };
 }

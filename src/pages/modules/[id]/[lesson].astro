@@ -192,8 +192,9 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
   const resume = document.getElementById('resume-position') as HTMLButtonElement | null;
   const savedPosition = Number(localStorage.getItem(positionKey) ?? 0);
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let completed = isLessonDone(mod, lessonId);
 
-  if (resume && savedPosition > 400 && savedPosition < document.documentElement.scrollHeight - innerHeight - 200) {
+  if (!completed && resume && savedPosition > 400 && savedPosition < document.documentElement.scrollHeight - innerHeight - 200) {
     resume.classList.remove('hidden');
     resume.addEventListener('click', () => {
       scrollTo({ top: savedPosition, behavior: reducedMotion ? 'auto' : 'smooth' });
@@ -212,7 +213,7 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
       progress.setAttribute('aria-valuenow', String(percent));
     }
     const now = Date.now();
-    if (now - lastSave > 500) {
+    if (!completed && now - lastSave > 500) {
       localStorage.setItem(positionKey, String(Math.round(scrollY)));
       lastSave = now;
     }
@@ -223,15 +224,25 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
       requestAnimationFrame(paintProgress);
     }
   }, { passive: true });
-  addEventListener('pagehide', () => localStorage.setItem(positionKey, String(Math.round(scrollY))));
+  addEventListener('pagehide', () => {
+    if (!completed) localStorage.setItem(positionKey, String(Math.round(scrollY)));
+  });
+  const syncCompletion = () => {
+    completed = isLessonDone(mod, lessonId);
+    if (completed) {
+      localStorage.removeItem(positionKey);
+      resume?.classList.add('hidden');
+    }
+  };
+  window.addEventListener('allm:progress', syncCompletion);
+  syncCompletion();
   paintProgress();
 
   const btn = document.getElementById('mark-complete') as HTMLButtonElement | null;
   if (btn) {
     const sync = () => {
-      const completed = isLessonDone(btn.dataset.module!, btn.dataset.lesson!);
-      btn.textContent = completed ? 'Completed' : 'Mark lesson complete';
-      if (completed) localStorage.removeItem(positionKey);
+      const done = isLessonDone(btn.dataset.module!, btn.dataset.lesson!);
+      btn.textContent = done ? 'Completed' : 'Mark lesson complete';
     };
     sync();
     btn.addEventListener('click', () => {

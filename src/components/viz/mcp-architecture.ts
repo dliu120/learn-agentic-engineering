@@ -13,6 +13,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const W = 760;
   const H = 360;
   const stage = document.createElement('div');
+  stage.className = 'w-full';
   const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'w-full', role: 'img' });
   svg.setAttribute(
     'aria-label',

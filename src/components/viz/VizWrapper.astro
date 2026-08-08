@@ -34,8 +34,19 @@ const { name, title, summary, height = 360 } = Astro.props;
     const loader = vizRegistry[name];
     el.querySelector('.viz-fallback')?.remove();
     if (!loader) return; // unknown viz → text equivalent stays
+    const generation = String(Number(el.dataset.vizGeneration ?? 0) + 1);
+    el.dataset.vizGeneration = generation;
+    const previousRuntime = el.querySelector('.viz-runtime');
+    previousRuntime?.dispatchEvent(new CustomEvent('allm:viz-dispose'));
+    previousRuntime?.remove();
+    const runtime = document.createElement('div');
+    runtime.className = 'viz-runtime w-full';
+    el.append(runtime);
     loader()
-      .then((m) => m.init(el, { reduced }))
+      .then((m) => {
+        if (el.dataset.vizGeneration !== generation) return;
+        m.init(runtime, { reduced });
+      })
       .catch((e) => console.error('[viz]', name, e));
   };
 
@@ -45,4 +56,5 @@ const { name, title, summary, height = 360 } = Astro.props;
   mounts.forEach((m) => (m.dataset.vizMounted = '1'));
 
   mounts.forEach(load);
+  document.addEventListener('allm:theme-change', () => mounts.forEach(load));
 </script>

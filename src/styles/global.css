@@ -8,12 +8,12 @@
   --surface-2: 235 237 232;
   --text: 25 29 31;
   --text-muted: 78 86 87;
-  --text-faint: 123 131 130;
+  --text-faint: 94 103 102;
   --border: 207 211 207;
   --accent: 21 116 137;
   --accent-2: 91 111 119;
   --signal-good: 34 120 96;
-  --signal-warn: 157 106 43;
+  --signal-warn: 128 82 25;
   --signal-bad: 168 69 69;
   color-scheme: light;
 }
@@ -24,7 +24,7 @@
   --surface-2: 31 35 36;
   --text: 235 237 232;
   --text-muted: 166 172 168;
-  --text-faint: 111 119 116;
+  --text-faint: 146 154 150;
   --border: 53 59 57;
   --accent: 91 182 201;
   --accent-2: 124 145 151;

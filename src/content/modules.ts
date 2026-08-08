@@ -19,7 +19,6 @@ export interface ModuleMeta {
   short: string;
   why: string;
   track: CurriculumTrackId;
-  essential: boolean;
   prerequisites: ModuleId[];
   estimatedSessions: string;
   topicNumbers: number[];
@@ -62,7 +61,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Design one clear model request with instructions, examples, constraints, and a realistic success test.',
     why: 'Start here to learn what a prompt can control—and what it cannot.',
     track: 'core-stages',
-    essential: true,
     prerequisites: [],
     estimatedSessions: '1–2 sessions',
     topicNumbers: [1],
@@ -81,7 +79,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Manage turns, roles, history, summaries, retrieval, and what carries forward between messages.',
     why: 'A good first answer is not enough when the interaction lasts more than one turn.',
     track: 'core-stages',
-    essential: true,
     prerequisites: ['foundations-prompts-to-harnesses'],
     estimatedSessions: '2 sessions',
     topicNumbers: [2],
@@ -100,7 +97,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Turn stochastic text into typed, validated, repairable responses and safe tool requests.',
     why: 'Downstream code needs a contract, not a string that usually looks right.',
     track: 'core-stages',
-    essential: true,
     prerequisites: ['conversation-context-engineering'],
     estimatedSessions: '2 sessions',
     topicNumbers: [8, 9],
@@ -119,7 +115,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Build bounded model–tool loops with routing, retries, verification, budgets, and explicit exits.',
     why: 'Iteration creates capability, but an unbounded loop creates cost and failure.',
     track: 'core-stages',
-    essential: true,
     prerequisites: ['reliable-structured-output-tool-calling'],
     estimatedSessions: '3–4 sessions',
     topicNumbers: [10, 11, 12, 13],
@@ -138,7 +133,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Make control flow explicit with typed state, branches, parallel nodes, cycles, subgraphs, and human gates.',
     why: 'Graphs make dependencies, waiting, retries, and failure ownership visible.',
     track: 'core-stages',
-    essential: true,
     prerequisites: ['agent-control-routing-degradation'],
     estimatedSessions: '2–3 sessions',
     topicNumbers: [23, 24, 25],
@@ -157,7 +151,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Distinguish capabilities from packaging, then connect hosts and servers through MCP.',
     why: 'Clear boundaries prevent “tool,” “skill,” “plugin,” and “MCP server” from becoming meaningless synonyms.',
     track: 'agent-capabilities',
-    essential: false,
     prerequisites: ['reliable-structured-output-tool-calling'],
     estimatedSessions: '2 sessions',
     topicNumbers: [26, 27, 28],
@@ -176,7 +169,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Separate stateless requests, thread state, checkpoints, durable tasks, and long-term memory.',
     why: 'Most “memory” bugs come from mixing five different kinds of state.',
     track: 'agent-capabilities',
-    essential: false,
     prerequisites: ['agent-control-routing-degradation'],
     estimatedSessions: '2 sessions',
     topicNumbers: [29, 30],
@@ -185,7 +177,7 @@ export const MODULES: ModuleMeta[] = [
       'Choose between thread state, checkpoints, durable tasks, and long-term memory',
       'Resume interrupted work without replaying completed side effects',
     ],
-    keywords: ['stateful', 'stateless', 'checkpoint', 'checkpointer', 'durable execution', 'durable agent', 'thread state', 'long-term memory', 'task handle', 'persistence', 'resume'],
+    keywords: ['stateful', 'stateless', 'checkpoint', 'checkpointer', 'durable execution', 'durable agent', 'agent memory', 'thread state', 'long-term memory', 'task handle', 'persistence', 'resume'],
   },
   {
     id: 'spec-driven-agent-engineering',
@@ -195,7 +187,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Define goals, capabilities, invariants, states, exits, and verification before implementation.',
     why: 'A long system prompt is not a testable behavior contract.',
     track: 'agent-capabilities',
-    essential: false,
     prerequisites: ['agent-control-routing-degradation'],
     estimatedSessions: '2 sessions',
     topicNumbers: [31, 32],
@@ -214,7 +205,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'KV cache, prefill vs. decode, PagedAttention, continuous batching, and caching.',
     why: 'Use this path when latency, throughput, memory, or serving cost becomes the bottleneck.',
     track: 'production-deep-dives',
-    essential: false,
     prerequisites: ['foundations-prompts-to-harnesses'],
     estimatedSessions: '2 sessions',
     topicNumbers: [3, 4],
@@ -233,7 +223,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Speculative decoding, quantization, and distillation through one bandwidth-and-quality lens.',
     why: 'Use this path when the right model is too slow, too large, or too expensive.',
     track: 'production-deep-dives',
-    essential: false,
     prerequisites: ['inference-internals-performance'],
     estimatedSessions: '3 sessions',
     topicNumbers: [5, 6, 7],
@@ -252,7 +241,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Chunking, embeddings, hybrid search, reranking, freshness, grounding, and retrieval evaluation.',
     why: 'Use this path when answers must depend on changing or private knowledge.',
     track: 'production-deep-dives',
-    essential: false,
     prerequisites: ['conversation-context-engineering'],
     estimatedSessions: '3 sessions',
     topicNumbers: [14, 15, 16],
@@ -271,7 +259,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Regression, adversarial, judge, and human evaluations connected to traces and production drift.',
     why: 'Use this path when you need evidence that a change improved the system.',
     track: 'production-deep-dives',
-    essential: false,
     prerequisites: ['reliable-structured-output-tool-calling'],
     estimatedSessions: '2 sessions',
     topicNumbers: [17, 18],
@@ -290,7 +277,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Cost attribution, prompt injection, authorization, isolation, and cache safety.',
     why: 'Use this path before giving an agent consequential access or shared infrastructure.',
     track: 'production-deep-dives',
-    essential: false,
     prerequisites: ['agent-control-routing-degradation'],
     estimatedSessions: '3 sessions',
     topicNumbers: [19, 20, 21],
@@ -309,7 +295,6 @@ export const MODULES: ModuleMeta[] = [
     short: 'Choose adaptation, orchestration, and serving approaches across latency, quality, cost, and reliability.',
     why: 'Use this path to make architecture decisions instead of collecting techniques.',
     track: 'production-deep-dives',
-    essential: false,
     prerequisites: ['graph-workflow-engineering', 'eval-observability'],
     estimatedSessions: '1–2 sessions',
     topicNumbers: [3, 5, 20, 21, 22],
@@ -336,10 +321,6 @@ export const MODULES_BY_TRACK: Record<CurriculumTrackId, ModuleMeta[]> = Object.
     MODULES.filter((module) => module.track === track.id).sort((a, b) => a.order - b.order),
   ]),
 ) as Record<CurriculumTrackId, ModuleMeta[]>;
-
-export const MODULE_ORDER: ModuleId[] = [...MODULES]
-  .sort((a, b) => a.order - b.order)
-  .map((module) => module.id);
 
 if (MODULES.length !== MODULE_IDS.length) {
   throw new Error(`modules.ts: expected ${MODULE_IDS.length} modules, got ${MODULES.length}`);

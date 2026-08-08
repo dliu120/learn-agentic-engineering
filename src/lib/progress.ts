@@ -11,6 +11,10 @@ import { MODULE_BY_ID } from '@/content/modules';
 import type { ModuleId } from '@/content/schemas/module-ids';
 
 export const STORAGE_KEY = 'allm:progress:v1';
+const LESSON_KEY_MIGRATIONS: Record<string, string> = {
+  'foundations-prompts-to-harnesses/context-engineering':
+    'conversation-context-engineering/context-engineering',
+};
 
 export interface LessonRec {
   completed: boolean;
@@ -47,7 +51,34 @@ function read(): ProgressState {
   if (!hasStorage()) return empty();
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? { ...empty(), ...JSON.parse(raw) } : empty();
+    if (!raw) return empty();
+    const state = { ...empty(), ...JSON.parse(raw) } as ProgressState;
+    let changed = false;
+    for (const [oldKey, newKey] of Object.entries(LESSON_KEY_MIGRATIONS)) {
+      if (state.lessons[oldKey] && !state.lessons[newKey]) {
+        state.lessons[newKey] = state.lessons[oldKey];
+        changed = true;
+      }
+      if (state.quizzes[oldKey] && !state.quizzes[newKey]) {
+        state.quizzes[newKey] = state.quizzes[oldKey];
+        changed = true;
+      }
+      if (state.lessons[oldKey]) {
+        delete state.lessons[oldKey];
+        changed = true;
+      }
+      if (state.quizzes[oldKey]) {
+        delete state.quizzes[oldKey];
+        changed = true;
+      }
+      if (state.lastVisited && lessonKey(state.lastVisited.moduleId, state.lastVisited.lessonId) === oldKey) {
+        const [moduleId, lessonId] = newKey.split('/');
+        state.lastVisited = { moduleId, lessonId };
+        changed = true;
+      }
+    }
+    if (changed) localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    return state;
   } catch {
     return empty();
   }
@@ -98,13 +129,6 @@ export function isModuleUnlocked(moduleId: string): boolean {
   const module = MODULE_BY_ID[moduleId as ModuleId];
   if (!module) return true;
   return module.prerequisites.every(isGatePassed);
-}
-
-export function moduleProgress(_moduleId: string, lessonKeys: string[]): number {
-  if (lessonKeys.length === 0) return 0;
-  const s = read();
-  const done = lessonKeys.filter((k) => s.lessons[k]?.completed).length;
-  return Math.round((100 * done) / lessonKeys.length);
 }
 
 export function overall(manifest: Manifest): {

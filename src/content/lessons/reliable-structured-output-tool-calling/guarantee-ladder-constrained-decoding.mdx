@@ -96,9 +96,10 @@ Reliability is a ladder, and each rung promises something *stronger about shape*
 
 - **Prompt-only** ("reply in JSON") — guarantees **nothing**; you may get prose, fences, or invalid JSON.
 - **JSON mode** — guarantees **syntactically valid JSON**, *not* your schema (fields, enums, types can all be wrong).
-- **Schema-constrained decoding** (OpenAI Structured Outputs `strict:true`, server-side at Google; Outlines / XGrammar / GBNF / lm-format-enforcer locally) — guarantees **structure + types**.
+- **Schema-constrained decoding** (OpenAI Structured Outputs `strict:true`; Anthropic `output_config.format` with `type: json_schema`; Google structured output; Outlines / XGrammar / GBNF / lm-format-enforcer locally) — guarantees **structure + types**.
 
-Anthropic's reliable pattern is tool-use with a forced `tool_choice` (often plus prefill); check current docs for a native `json_schema` response format rather than assuming.
+Anthropic also supports `strict: true` tool schemas. Forced `tool_choice` remains useful when the
+model must call a specific tool, but it is no longer the only route to schema-constrained output.
 
 </ConceptCard>
 

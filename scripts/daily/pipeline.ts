@@ -76,11 +76,14 @@ export function rank(items: RawItem[], cfg: SourcesConfig, weightOf: (src: strin
 
 export function mapModule(i: RawItem): { module: string; secondary: string[]; rationale: string; tags: string[] } {
   const hay = `${i.title} ${i.text ?? ''}`.toLowerCase();
-  // Score by specificity: a multi-word keyword ("prompt injection") outweighs a generic
-  // single-word one ("prompt"), so news maps to the most specific matching module.
+  const generic = new Set(['agent', 'ai', 'llm', 'prompt', 'memory']);
   const scored = MODULES.map((m) => {
     const matched = m.keywords.filter((k) => hay.includes(k.toLowerCase()));
-    const score = matched.reduce((s, k) => s + k.trim().split(/\s+/).length, 0);
+    const score = matched.reduce((sum, keyword) => {
+      if (generic.has(keyword)) return sum + 0.25;
+      const words = keyword.trim().split(/\s+/).length;
+      return sum + words + Math.min(keyword.length / 100, 0.5);
+    }, 0);
     return { id: m.id, name: m.name, order: m.order, matched, score };
   })
     .filter((s) => s.matched.length > 0)

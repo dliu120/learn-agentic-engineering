@@ -1,3 +1,4 @@
+// These IDs are stable URL and localStorage keys. Display names may evolve independently.
 export const MODULE_IDS = [
   'foundations-prompts-to-harnesses',
   'conversation-context-engineering',

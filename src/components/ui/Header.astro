@@ -90,6 +90,7 @@ const isActive = (href: string) => (href === withBase('/') ? path === href : pat
     const button = document.getElementById('theme-toggle');
     if (el) el.textContent = label[t];
     button?.setAttribute('aria-label', `Theme: ${label[t]}. Activate to switch.`);
+    document.dispatchEvent(new CustomEvent('allm:theme-change'));
   }
   const current = (): Theme => ((localStorage.getItem(KEY) as Theme) ?? 'light');
   apply(current());
@@ -101,6 +102,7 @@ const isActive = (href: string) => (href === withBase('/') ? path === href : pat
   });
 
   document.getElementById('search-trigger')?.addEventListener('click', () => {
+    (window as Window & { __allmOpenSearchPending?: boolean }).__allmOpenSearchPending = true;
     document.dispatchEvent(new CustomEvent('allm:open-search'));
   });
 </script>

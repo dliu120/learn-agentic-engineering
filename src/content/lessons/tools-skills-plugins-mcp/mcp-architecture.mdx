@@ -124,4 +124,8 @@ Local servers commonly use **stdio**: the host launches a subprocess and exchang
 standard input and output. Remote servers commonly use **Streamable HTTP** and need network
 authentication, TLS, tenancy checks, and revocation.
 
+Clients can also expose capabilities back to servers. In the 2026-07-28 protocol, **elicitation**
+lets a server request additional user input through the host. Keep that flow visible to the user;
+it is not permission for a server to open an invisible side channel.
+
 </DeepDive>

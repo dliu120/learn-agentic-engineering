@@ -56,6 +56,14 @@ _Avoid_: Long-term memory
 State persisted so a workflow can resume after waiting, failure, disconnection, or process restart.
 _Avoid_: Chat history
 
+**Checkpoint**:
+A persisted snapshot of workflow state used to resume, inspect, or replay a run.
+_Avoid_: Long-term memory
+
+**Durable Task**:
+A long-running operation represented by an explicit handle that survives disconnection or process restart.
+_Avoid_: Hidden session
+
 **Long-Term Memory**:
 Cross-thread information intentionally retained for future work, such as user preferences or learned facts.
 _Avoid_: Context window, checkpoint

@@ -12,6 +12,9 @@ describe('quiz schema encodings', () => {
   it('accepts ordering (correct = number[])', () => {
     expect(quizQuestion.safeParse({ id: 'a', type: 'ordering', question: 'q', options: ['x', 'y', 'z'], correct: [2, 0, 1], explanation: 'e' }).success).toBe(true);
   });
+  it('rejects ordering answers that are not complete permutations', () => {
+    expect(quizQuestion.safeParse({ id: 'a', type: 'ordering', question: 'q', options: ['x', 'y', 'z'], correct: [0, 0, 3], explanation: 'e' }).success).toBe(false);
+  });
   it('accepts matching with pairs and no correct', () => {
     expect(
       quizQuestion.safeParse({ id: 'a', type: 'matching', question: 'q', pairs: [{ left: 'a', right: '1' }, { left: 'b', right: '2' }], explanation: 'e' }).success,
