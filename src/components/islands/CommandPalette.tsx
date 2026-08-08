@@ -58,17 +58,25 @@ export default function CommandPalette({ items }: { items: Item[] }) {
   };
 
   return (
-    <div class="fixed inset-0 z-50 flex items-start justify-center bg-black/50 p-4 pt-[12vh]" onClick={() => setOpen(false)}>
-      <div class="w-full max-w-xl overflow-hidden rounded-xl border border-border bg-surface shadow-2xl" onClick={(e) => e.stopPropagation()}>
+    <div
+      class="fixed inset-0 z-50 flex items-start justify-center overscroll-contain bg-text/20 p-4 pt-[12vh]"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Search the course"
+      onClick={() => setOpen(false)}
+    >
+      <div class="w-full max-w-xl overflow-hidden rounded-md border border-border bg-surface shadow-[0_24px_70px_-35px_rgb(var(--text)/0.45)]" onClick={(e) => e.stopPropagation()}>
         <input
           ref={inputRef}
+          name="course-search"
+          autoComplete="off"
           value={q}
           onInput={(e) => {
             setQ((e.target as HTMLInputElement).value);
             setSel(0);
           }}
           onKeyDown={onKeyDown}
-          placeholder="Jump to a module or lesson…"
+          placeholder="Search modules and lessons…"
           aria-label="Search modules and lessons"
           class="w-full border-b border-border bg-transparent px-4 py-3 text-text outline-none placeholder:text-text-faint"
         />
@@ -79,7 +87,7 @@ export default function CommandPalette({ items }: { items: Item[] }) {
               <button
                 onMouseEnter={() => setSel(idx)}
                 onClick={() => go(i)}
-                class={`flex w-full items-center justify-between px-4 py-2 text-left ${idx === sel ? 'bg-surface-2' : ''}`}
+                class={`flex w-full items-center justify-between px-4 py-2.5 text-left active:translate-y-px ${idx === sel ? 'bg-surface-2' : ''}`}
               >
                 <span class="text-sm text-text">{i.title}</span>
                 <span class="font-mono text-[10px] uppercase tracking-wider text-text-faint">{i.kind}</span>

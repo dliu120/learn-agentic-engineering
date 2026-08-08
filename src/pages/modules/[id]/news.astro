@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import DailyLessonCard from '@/components/ui/DailyLessonCard.astro';
 import { MODULES, type ModuleMeta } from '@/content/modules';
 import { newsForModule, prettyDate } from '@/lib/daily';
-import { moduleHref, withBase, hue } from '@/lib/paths';
+import { moduleHref, withBase } from '@/lib/paths';
 
 export async function getStaticPaths() {
   return MODULES.map((m) => ({ params: { id: m.id }, props: { module: m } }));
@@ -13,8 +13,9 @@ const news = await newsForModule(m.id);
 ---
 
 <BaseLayout title={`${m.name} — Related News`}>
-  <a href={moduleHref(m.id)} class="text-sm text-text-muted no-underline hover:text-text">← {m.name}</a>
-  <h1 class="mt-3 text-fluid-xl font-bold text-text" style={`color:${hue(m.colorHue, 70, 65)}`}>Trend feed: {m.name}</h1>
+  <a href={moduleHref(m.id)} class="text-sm text-text-muted no-underline hover:text-accent">{m.name}</a>
+  <p class="eyebrow mt-5">Related News</p>
+  <h1 class="mt-3 text-fluid-xl font-semibold tracking-[-0.04em] text-text">Trend Feed: {m.name}</h1>
   <p class="mt-2 text-text-muted">Daily items the curator mapped to this module.</p>
 
   {
@@ -23,11 +24,11 @@ const news = await newsForModule(m.id);
         No daily items tagged to this module yet. Check the <a href={withBase('/today')}>today's briefing</a>.
       </p>
     ) : (
-      <div class="mt-6 space-y-4">
-        {news.map(({ date, lesson }) => (
+      <div class="mt-6 border-b border-border">
+        {news.map(({ date, lesson }, index) => (
           <div>
             <p class="mb-1 text-xs text-text-faint">{prettyDate(date)}</p>
-            <DailyLessonCard lesson={lesson} />
+            <DailyLessonCard lesson={lesson} index={index + 1} />
           </div>
         ))}
       </div>

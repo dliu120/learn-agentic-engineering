@@ -1,0 +1,126 @@
+---
+moduleId: graph-workflow-engineering
+lessonId: graph-state-parallelism
+title: "Typed State, Parallel Work, and Human Gates"
+order: 2
+topicNumbers: [24, 25]
+summary: "Use one explicit state contract to coordinate parallel nodes, retries, checkpoints, and human decisions."
+estimatedMinutes: 15
+prerequisites:
+  - moduleId: graph-workflow-engineering
+    lessonId: loops-to-graphs
+    label: "From Loops to Explicit Graphs"
+references:
+  - title: "LangGraph Persistence"
+    url: "https://docs.langchain.com/oss/python/langgraph/persistence"
+    source: "LangChain Docs"
+  - title: "Interrupts"
+    url: "https://docs.langchain.com/oss/python/langgraph/interrupts"
+    source: "LangChain Docs"
+  - title: "Agents SDK Handoffs"
+    url: "https://openai.github.io/openai-agents-python/handoffs/"
+    source: "OpenAI Agents SDK"
+deepDiveTopics:
+  - "Reducers for parallel writes"
+  - "Handoffs vs. shared-state nodes"
+objectives:
+  - "Define a typed state object that every node can inspect"
+  - "Merge parallel writes without silent overwrite"
+  - "Pause and resume a graph around a human approval decision"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: mcq
+    question: "Two parallel workers both write to state.results. What must the graph define?"
+    options:
+      - "A merge or reducer rule for combining both writes"
+      - "A higher temperature"
+      - "A longer system prompt"
+      - "A shared hidden chat transcript"
+    correct: 0
+    explanation: "Parallel state updates need explicit conflict resolution. Otherwise one result can overwrite the other."
+  - id: q2
+    type: mcq
+    question: "What should happen before a graph sends a real payment?"
+    options:
+      - "Pause at a human approval node with the proposed amount and recipient in state"
+      - "Ask the model if it feels confident"
+      - "Hide the tool arguments to reduce user friction"
+      - "Add more worker agents"
+    correct: 0
+    explanation: "Consequential actions need an explicit approval boundary with reviewable data."
+  - id: q3
+    type: matching
+    question: "Match each graph concern to the control that addresses it."
+    pairs:
+      - { left: "Resume after a crash", right: "Checkpoint" }
+      - { left: "Two workers write at once", right: "Reducer" }
+      - { left: "User must approve", right: "Interrupt or human node" }
+      - { left: "Cycle may never exit", right: "Termination budget" }
+    explanation: "State, persistence, human control, and termination are separate graph responsibilities."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="The state object is the shared contract" tag="worked example">
+
+```ts
+type ResearchState = {
+  question: string;
+  plan: string[];
+  findings: Finding[];
+  draft?: string;
+  approval?: "pending" | "approved" | "rejected";
+  budgetRemaining: number;
+};
+```
+
+Every node reads only the fields it needs and writes declared fields back.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Shared typed state is safer than giving every agent a private, slightly different version of reality.
+</KeyInsightCallout>
+
+## Parallel work needs a merge rule
+
+If 5 research workers finish at nearly the same time, they cannot all replace
+`state.findings`. The graph needs a reducer such as “append each worker's findings, then
+deduplicate by source URL.”
+
+Without that rule, parallelism creates a race condition.
+
+## A human gate is a normal node
+
+Before a consequential action:
+
+1. write the proposed action to state,
+2. checkpoint the graph,
+3. pause,
+4. show the proposal to a person,
+5. resume with approved, rejected, or edited state.
+
+The process can wait minutes or days because the decision is durable, not held in one web request.
+
+<FailureModeList
+  items={[
+    "Parallel workers silently overwrite each other's state.",
+    "A handoff drops constraints the receiving agent still needs.",
+    "A human approval page shows less detail than the tool will actually execute.",
+    "A cyclic graph has a soft quality target but no hard maximum budget.",
+  ]}
+/>
+
+<DeepDive title="Handoffs vs. shared-state nodes">
+
+A handoff transfers control to a specialist agent. A shared-state node keeps one graph in
+control and invokes a specialist as one step. Prefer the shared-state pattern when auditability
+and central budgets matter more than conversational autonomy.
+
+</DeepDive>

@@ -1,0 +1,56 @@
+---
+moduleId: spec-driven-agent-engineering
+lessonId: module-gate
+title: "Gate: Spec-Driven Agents"
+order: 99
+topicNumbers: [31, 32]
+summary: "Check that you can turn a behavior contract into enforceable graph controls and tests."
+estimatedMinutes: 10
+prerequisites:
+  - moduleId: spec-driven-agent-engineering
+    lessonId: spec-to-tests
+    label: "From Specification to Graph and Tests"
+references: []
+deepDiveTopics: []
+objectives:
+  - "Write and enforce agent invariants, exits, and evidence"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: g1
+    type: multi
+    question: "Which belong in a behavior specification?"
+    options:
+      - "Allowed tools and permissions"
+      - "Success, exhaustion, failure, and escalation"
+      - "Invariants and evidence"
+      - "The exact local variable names"
+    correct: [0, 1, 2]
+    explanation: "The spec captures observable behavior and constraints, not incidental implementation details."
+  - id: g2
+    type: mcq
+    question: "What is bug backpropagation?"
+    options:
+      - "Turning a discovered failure into a stronger invariant and regression test"
+      - "Hiding the bug from the spec"
+      - "Retrying until the bug disappears"
+      - "Rewriting commit history"
+    correct: 0
+    explanation: "A production bug reveals a missing or weak contract. Capture the lesson so it cannot recur silently."
+  - id: g3
+    type: matching
+    question: "Match each contract element to enforcement."
+    pairs:
+      - { left: "Budget", right: "Runtime counter and exhausted state" }
+      - { left: "Approval invariant", right: "Human interrupt before tool call" }
+      - { left: "Citation requirement", right: "Final response validator" }
+      - { left: "Replay safety", right: "Idempotency guard" }
+    explanation: "A useful specification maps to concrete controls."
+isModuleGate: true
+---
+
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+
+<KeyInsightCallout>
+Specify the behavior, prove it with checks, and strengthen the contract whenever real evidence exposes a gap.
+</KeyInsightCallout>

@@ -15,15 +15,15 @@ const audioVtt = entry.audio.vtt ? withBase(entry.audio.vtt) : undefined;
 const hasAudioBlock = entry.audio.available || !!entry.audio.transcript;
 ---
 
-<header class="rounded-2xl border border-border bg-surface/40 p-6">
+<header class="grid gap-5 border-b border-border pb-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
   <div class="flex flex-wrap items-center gap-3">
-    <p class="font-mono text-xs uppercase tracking-widest text-accent">Daily briefing</p>
+    <p class="eyebrow">Daily Briefing</p>
     <CurationFlagBadge flag={entry.curationFlag} />
   </div>
-  <h1 class="mt-2 text-fluid-xl font-bold text-text">{prettyDate(entry.date)}</h1>
-  <p class="mt-1 text-sm text-text-muted">
-    {entry.lessons.length} item{entry.lessons.length === 1 ? '' : 's'}
-    {entry.sourcesUsed.length > 0 && <> · sources: {entry.sourcesUsed.join(', ')}</>}
+  <h1 class="text-fluid-xl font-semibold tracking-[-0.04em] text-text lg:col-start-1">{prettyDate(entry.date)}</h1>
+  <p class="text-sm leading-relaxed text-text-muted lg:col-start-2 lg:row-span-2 lg:row-start-1">
+    {entry.lessons.length} item{entry.lessons.length === 1 ? '' : 's'} selected from{' '}
+    {entry.sourcesUsed.length} monitored sources.
   </p>
 </header>
 
@@ -31,6 +31,6 @@ const hasAudioBlock = entry.audio.available || !!entry.audio.transcript;
   <AudioPlayer client:visible src={audioSrc} vtt={audioVtt} transcript={entry.audio.transcript} title="Daily audio digest" />
 )}
 
-<div class="mt-6 grid gap-4 lg:grid-cols-2">
-  {entry.lessons.map((l) => <DailyLessonCard lesson={l} />)}
+<div class="mt-8 space-y-4">
+  {entry.lessons.map((l, i) => <DailyLessonCard lesson={l} index={i + 1} />)}
 </div>

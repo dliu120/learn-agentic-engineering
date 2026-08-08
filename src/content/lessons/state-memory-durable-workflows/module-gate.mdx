@@ -1,0 +1,56 @@
+---
+moduleId: state-memory-durable-workflows
+lessonId: module-gate
+title: "Gate: State, Memory & Durability"
+order: 99
+topicNumbers: [29, 30]
+summary: "Check that you can choose explicit state scopes and resume safely."
+estimatedMinutes: 10
+prerequisites:
+  - moduleId: state-memory-durable-workflows
+    lessonId: checkpoints-memory
+    label: "Thread State, Checkpoints, Tasks, and Memory"
+references: []
+deepDiveTopics: []
+objectives:
+  - "Design state retention and recovery without hidden sessions"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: g1
+    type: mcq
+    question: "Can a stateless protocol support a stateful workflow?"
+    options:
+      - "Yes. Requests carry explicit identifiers and the application loads durable state"
+      - "No. Stateless means no data can persist anywhere"
+      - "Only if the same TCP connection stays open"
+      - "Only if the model has a larger context window"
+    correct: 0
+    explanation: "Protocol request handling and application state are separate design concerns."
+  - id: g2
+    type: matching
+    question: "Match the requirement to the state mechanism."
+    pairs:
+      - { left: "Resume after node failure", right: "Checkpoint" }
+      - { left: "Remember a user preference next month", right: "Long-term memory" }
+      - { left: "Poll a 20-minute export", right: "Durable task handle" }
+      - { left: "Carry graph variables within one run", right: "Thread state" }
+    explanation: "Choose by scope and lifetime."
+  - id: g3
+    type: mcq
+    question: "What must protect an external side effect during replay?"
+    options:
+      - "Idempotency"
+      - "Checkpoint compression"
+      - "Prompt caching"
+      - "A larger task TTL"
+    correct: 0
+    explanation: "A checkpoint can replay a step. The external tool must deduplicate repeated writes."
+isModuleGate: true
+---
+
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+
+<KeyInsightCallout>
+Make state explicit, scoped, durable only when necessary, and safe to replay.
+</KeyInsightCallout>

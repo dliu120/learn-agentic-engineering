@@ -51,6 +51,15 @@ allowlist:
   - speculative
   - tool call
   - function call
+  - mcp
+  - model context protocol
+  - langgraph
+  - stateful
+  - checkpoint
+  - durable agent
+  - agent memory
+  - spec-driven
+  - agent skill
   - mixture of experts
   - moe
   - transformer

@@ -2,16 +2,18 @@
 import { withBase } from '@/lib/paths';
 ---
 
-<footer class="mt-20 border-t border-border">
-  <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-text-faint sm:flex-row sm:items-center sm:justify-between">
-    <p>
-      ALLM Academy — an open course on production-LLM engineering.
-      <span class="text-text-muted">Built as a static site; daily lessons refresh via CI.</span>
-    </p>
-    <nav aria-label="Footer" class="flex gap-4">
+<footer class="mt-24 border-t border-border">
+  <div class="mx-auto grid max-w-7xl gap-6 px-5 py-10 text-sm sm:px-6 md:grid-cols-[1fr_auto] md:items-end">
+    <div>
+      <p class="font-medium text-text">ALLM Academy</p>
+      <p class="mt-1 max-w-xl text-text-muted">
+        An open course on production-LLM engineering, updated through a transparent static pipeline.
+      </p>
+    </div>
+    <nav aria-label="Footer" class="flex gap-5">
       <a href={withBase('/about')} class="text-text-muted no-underline hover:text-text">About</a>
       <a href={withBase('/archive')} class="text-text-muted no-underline hover:text-text">Archive</a>
-      <a href={withBase('/feed.xml')} class="text-text-muted no-underline hover:text-text">Feed</a>
+      <a href={withBase('/feed.xml')} class="text-text-muted no-underline hover:text-text">RSS</a>
     </nav>
   </div>
 </footer>

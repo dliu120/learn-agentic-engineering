@@ -1,0 +1,127 @@
+---
+moduleId: tools-skills-plugins-mcp
+lessonId: mcp-architecture
+title: "MCP: Host, Client, Server, and Primitives"
+order: 2
+topicNumbers: [27, 28]
+summary: "Understand the MCP connection model, who controls each primitive, and where consent and trust belong."
+estimatedMinutes: 16
+prerequisites:
+  - moduleId: tools-skills-plugins-mcp
+    lessonId: tools-skills-plugins
+    label: "Tools, Skills, Plugins, and Extensions"
+references:
+  - title: "MCP Architecture"
+    url: "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture"
+    source: "Model Context Protocol"
+  - title: "MCP Base Protocol and Statelessness"
+    url: "https://modelcontextprotocol.io/specification/2026-07-28/basic/index"
+    source: "Model Context Protocol"
+  - title: "MCP Inspector"
+    url: "https://github.com/modelcontextprotocol/inspector"
+    source: "Model Context Protocol"
+deepDiveTopics:
+  - "stdio vs. Streamable HTTP"
+  - "Protocol extensions and version negotiation"
+objectives:
+  - "Explain host, client, and server responsibilities"
+  - "Distinguish model-controlled tools, application-controlled resources, and user-controlled prompts"
+  - "Apply consent and trust checks at the host boundary"
+hasAudio: false
+visualizations:
+  - title: "MCP host, clients, and servers"
+    summary: "A model inside a host connects through one client per external MCP server."
+quiz:
+  - id: q1
+    type: mcq
+    question: "An IDE connects to a filesystem server and an issue-tracker server. How many MCP client connections does the host manage?"
+    options:
+      - "Two—one client per server connection"
+      - "One shared client for every server"
+      - "Zero because the model connects directly"
+      - "Three because the model is also a client"
+    correct: 0
+    explanation: "The host creates a dedicated MCP client connection for each server."
+  - id: q2
+    type: matching
+    question: "Match each MCP primitive to who primarily controls it."
+    pairs:
+      - { left: "Tool", right: "Model" }
+      - { left: "Resource", right: "Application" }
+      - { left: "Prompt", right: "User" }
+    explanation: "This control hierarchy helps hosts design clear consent and discovery UX."
+  - id: q3
+    type: mcq
+    question: "Does a long-lived MCP connection automatically create a hidden session?"
+    options:
+      - "No. Requests must carry explicit state or identifiers"
+      - "Yes. The server may infer all earlier context"
+      - "Yes, but only over stdio"
+      - "No, because MCP cannot support durable work"
+    correct: 0
+    explanation: "The protocol is stateless at the request layer. Durable work uses explicit identifiers such as task handles."
+  - id: q4
+    type: multi
+    question: "What should a host do before a sensitive tool call?"
+    options:
+      - "Show the proposed inputs"
+      - "Apply the user's consent and permission policy"
+      - "Treat server annotations as trusted regardless of source"
+      - "Validate results before returning them to the model"
+    correct: [0, 1, 3]
+    explanation: "The host owns user control and the trust boundary. Server descriptions and results are not automatically safe."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Three MCP roles" tag="architecture">
+
+- **Host** — the AI application that owns the user experience, consent, and context.
+- **Client** — one connector inside the host for one server connection.
+- **Server** — a separate program that exposes capabilities and context.
+
+</ConceptCard>
+
+<VizWrapper
+  name="mcp-architecture"
+  title="MCP host, clients, and servers"
+  summary="The model sits inside a host application. The host creates one MCP client per external server and routes requests through that boundary."
+  height={380}
+/>
+
+<KeyInsightCallout>
+MCP standardizes the connection. It does not remove the need for permission checks, validation, timeouts, or product-specific UX.
+</KeyInsightCallout>
+
+## Tools, resources, and prompts
+
+| Primitive | Who chooses it? | Example |
+|---|---|---|
+| **Tool** | Model | Create an issue |
+| **Resource** | Application | Attach a file or database record |
+| **Prompt** | User | Run a named review template |
+
+The host may add stronger controls. A payment tool can require confirmation even when the model
+selects it.
+
+<FailureModeList
+  items={[
+    "A malicious server description tries to persuade the model to reveal unrelated data.",
+    "A tool result contains prompt injection that is passed back without validation.",
+    "A remote server receives more context than the user approved.",
+    "A client treats the transport connection as a hidden session and relies on earlier requests.",
+  ]}
+/>
+
+<DeepDive title="Local and remote transports">
+
+Local servers commonly use **stdio**: the host launches a subprocess and exchanges messages over
+standard input and output. Remote servers commonly use **Streamable HTTP** and need network
+authentication, TLS, tenancy checks, and revocation.
+
+</DeepDive>

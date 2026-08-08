@@ -1,0 +1,120 @@
+---
+moduleId: graph-workflow-engineering
+lessonId: loops-to-graphs
+title: "From Loops to Explicit Graphs"
+order: 1
+topicNumbers: [23]
+summary: "Learn when a loop is enough and when branches, joins, and visible dependencies require a graph."
+estimatedMinutes: 13
+prerequisites:
+  - moduleId: agent-control-routing-degradation
+    lessonId: bounded-agent-loops
+    label: "Bounded Agent Loops"
+references:
+  - title: "LangGraph Overview"
+    url: "https://docs.langchain.com/oss/python/langgraph/overview"
+    source: "LangChain Docs"
+  - title: "Building Effective Agents"
+    url: "https://www.anthropic.com/engineering/building-effective-agents"
+    source: "Anthropic Engineering"
+deepDiveTopics:
+  - "DAGs vs. state machines with cycles"
+  - "Deterministic and model-directed edges"
+objectives:
+  - "Distinguish a loop, workflow, DAG, and cyclic state graph"
+  - "Identify work that can run in parallel and where joins are required"
+  - "Keep the graph topology deterministic unless model-directed routing is justified"
+hasAudio: false
+visualizations:
+  - title: "Parallel branches and a join"
+    summary: "Plan fans out to Research and Draft, both must finish before Review, then Publish runs."
+quiz:
+  - id: q1
+    type: mcq
+    question: "Research and drafting can run independently, but review needs both results. What structure expresses this most clearly?"
+    options:
+      - "A graph with two parallel nodes and a join"
+      - "A longer system prompt"
+      - "One recursive model call"
+      - "A larger context window"
+    correct: 0
+    explanation: "The graph makes the independent branches and the join dependency explicit."
+  - id: q2
+    type: multi
+    question: "Which are valid graph nodes?"
+    options:
+      - "A model call"
+      - "A deterministic validation function"
+      - "A human approval step"
+      - "A tool execution"
+    correct: [0, 1, 2, 3]
+    explanation: "A node is a unit of work. It can be model-driven, deterministic, tool-driven, or human-executed."
+  - id: q3
+    type: mcq
+    question: "Does using a graph automatically mean using multiple agents?"
+    options:
+      - "No. One agent, tools, and deterministic functions can share one graph"
+      - "Yes. Every node must be a separate agent"
+      - "Yes. Graphs are only for agent handoffs"
+      - "No. Graphs cannot contain agents"
+    correct: 0
+    explanation: "Graphs describe control flow. Multiple agents are one optional node pattern, not the definition of a graph."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="A graph makes dependencies visible" tag="mental model">
+
+- A **node** does one unit of work.
+- An **edge** says what can run next.
+- A **branch** chooses among paths.
+- A **join** waits for required upstream work.
+- A **cycle** repeats until an explicit exit condition is met.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Use a graph when the important question is no longer “what repeats?” but “what depends on what?”
+</KeyInsightCallout>
+
+<VizWrapper
+  name="graph-orchestration"
+  title="Parallel branches and a join"
+  summary="Plan runs first. Research and Draft run in parallel. Review waits for both, then Publish runs."
+  height={390}
+/>
+
+## The same task as a loop
+
+A loop can say:
+
+1. research,
+2. draft,
+3. review,
+4. publish.
+
+That is easy to write, but it hides that research and drafting could overlap. It also makes
+failure recovery coarse: if review fails, do you restart everything?
+
+The graph exposes the structure. Research and Draft can run together. Review waits. A failed
+Draft node can retry without repeating Research.
+
+<MisconceptionFlip
+  claim={"A graph is a picture of code after the system is built."}
+  correction={"The graph should be the control model the runtime executes, not a diagram that drifts away from implementation."}
+/>
+
+<DeepDive title="DAGs vs. cycles">
+
+A directed acyclic graph cannot revisit an earlier node. That is useful for fixed pipelines.
+Agent systems often need cycles for repair or evaluation, so they use a state machine or cyclic
+graph with a hard termination condition.
+
+Every cycle still needs a maximum step, time, token, or cost budget.
+
+</DeepDive>

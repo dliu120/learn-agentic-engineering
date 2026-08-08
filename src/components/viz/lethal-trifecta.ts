@@ -39,7 +39,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const lx = i === 0 ? cx : i === 1 ? cx - spread - r * 0.6 : cx + spread + r * 0.6;
     const ly = i === 0 ? cy - spread - r - 6 : cy + spread + r * 0.8;
     const g = svgEl('g', {});
-    const t = svgEl('text', { x: lx, y: ly, 'text-anchor': 'middle', fill: cssColor(c.tone), 'font-size': 12, 'font-weight': 600, 'font-family': 'JetBrains Mono, monospace' });
+    const t = svgEl('text', { x: lx, y: ly, 'text-anchor': 'middle', fill: cssColor(c.tone), 'font-size': 12, 'font-weight': 600, 'font-family': 'Geist Mono, monospace' });
     t.textContent = c.t;
     const s = svgEl('text', { x: lx, y: ly + 15, 'text-anchor': 'middle', fill: cssColor('--text-faint'), 'font-size': 10 });
     s.textContent = c.sub;
@@ -48,7 +48,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     return g;
   });
 
-  const danger = svgEl('text', { x: cx, y: cy + 18, 'text-anchor': 'middle', fill: cssColor('--signal-bad'), 'font-size': 13, 'font-weight': 700, 'font-family': 'JetBrains Mono, monospace' });
+  const danger = svgEl('text', { x: cx, y: cy + 18, 'text-anchor': 'middle', fill: cssColor('--signal-bad'), 'font-size': 13, 'font-weight': 700, 'font-family': 'Geist Mono, monospace' });
   danger.style.opacity = '0';
   (danger.style as CSSStyleDeclaration).transition = 'opacity .4s';
   danger.textContent = '☠ lethal';

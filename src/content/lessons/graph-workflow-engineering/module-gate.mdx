@@ -1,0 +1,68 @@
+---
+moduleId: graph-workflow-engineering
+lessonId: module-gate
+title: "Gate: Graph Engineering"
+order: 99
+topicNumbers: [23, 24, 25]
+summary: "Check that you can model dependencies, shared state, parallel work, cycles, and human gates."
+estimatedMinutes: 10
+prerequisites:
+  - moduleId: graph-workflow-engineering
+    lessonId: graph-state-parallelism
+    label: "Typed State, Parallel Work, and Human Gates"
+references: []
+deepDiveTopics: []
+objectives:
+  - "Design an explicit graph with safe state transitions and termination"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: g1
+    type: ordering
+    question: "Put this graph execution in dependency order."
+    options:
+      - "Plan the work"
+      - "Run Research and Draft in parallel"
+      - "Join both results at Review"
+      - "Publish the accepted artifact"
+    correct: [0, 1, 2, 3]
+    explanation: "The parallel nodes share one dependency and the reviewer waits for both."
+  - id: g2
+    type: mcq
+    question: "What makes a graph cycle safe?"
+    options:
+      - "A conditional exit plus a hard budget"
+      - "A model promise to stop"
+      - "A larger context window"
+      - "More parallel workers"
+    correct: 0
+    explanation: "The conditional edge expresses the desired exit; the hard budget guarantees termination when the desired condition never arrives."
+  - id: g3
+    type: mcq
+    question: "Why checkpoint before human approval?"
+    options:
+      - "The graph can wait and resume without keeping one process alive"
+      - "It makes the model weights remember the decision"
+      - "It hides the pending action from other nodes"
+      - "It eliminates the need for authorization"
+    correct: 0
+    explanation: "The checkpoint durably records the pending state and lets the runtime resume later."
+  - id: g4
+    type: matching
+    question: "Match each concept to its role."
+    pairs:
+      - { left: "Node", right: "Unit of work" }
+      - { left: "Edge", right: "Allowed transition" }
+      - { left: "State", right: "Shared typed data" }
+      - { left: "Reducer", right: "Parallel write merge rule" }
+    explanation: "These are the core pieces of an executable graph."
+isModuleGate: true
+---
+
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+
+Pass this gate to complete the **Core Stages** path.
+
+<KeyInsightCallout>
+A graph earns its complexity when it makes dependencies, state, waiting, and failure ownership clearer than a loop.
+</KeyInsightCallout>

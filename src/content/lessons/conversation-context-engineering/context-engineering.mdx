@@ -1,9 +1,25 @@
 ---
-moduleId: foundations-prompts-to-harnesses
+moduleId: conversation-context-engineering
 lessonId: context-engineering
 title: "Context Engineering: Curate, Don't Accumulate"
 order: 2
 topicNumbers: [2]
+summary: "Treat every turn as a fresh context assembly problem: write, select, compress, and isolate."
+estimatedMinutes: 14
+prerequisites:
+  - moduleId: conversation-context-engineering
+    lessonId: conversation-engineering
+    label: "Designing a Multi-Turn Conversation"
+references:
+  - title: "Context Windows"
+    url: "https://docs.anthropic.com/en/docs/build-with-claude/context-windows"
+    source: "Anthropic"
+  - title: "Conversation State"
+    url: "https://platform.openai.com/docs/guides/conversation-state"
+    source: "OpenAI Platform"
+deepDiveTopics:
+  - "Lost in the middle"
+  - "Prefix caching layout"
 objectives:
   - "Apply write / select / compress / isolate under a fixed token budget"
   - "Explain why more tokens is not better (lost-in-the-middle, context rot, cost)"

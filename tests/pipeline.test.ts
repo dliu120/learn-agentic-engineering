@@ -55,6 +55,15 @@ describe('mapModule', () => {
   it('maps a prompt-injection item to the production-ops module', () => {
     expect(mapModule(mk({ title: 'A new prompt injection attack' })).module).toBe('production-ops-cost-safety-multitenancy');
   });
+  it('maps MCP items to the capabilities module', () => {
+    expect(mapModule(mk({ title: 'MCP server adds tools and resources' })).module).toBe('tools-skills-plugins-mcp');
+  });
+  it('maps checkpoint items to state and durability', () => {
+    expect(mapModule(mk({ title: 'Durable agent checkpoint recovery' })).module).toBe('state-memory-durable-workflows');
+  });
+  it('maps LangGraph items to graph engineering', () => {
+    expect(mapModule(mk({ title: 'LangGraph parallel workers and state graph' })).module).toBe('graph-workflow-engineering');
+  });
 });
 
 describe('schema-valid outputs', () => {

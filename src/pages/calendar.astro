@@ -23,11 +23,14 @@ for (let d = 1; d <= daysInMonth; d++) {
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 ---
 
-<BaseLayout title="Calendar — ALLM Academy">
-  <h1 class="text-fluid-xl font-bold text-text">Briefing calendar</h1>
-  <p class="mt-1 text-text-muted">{monthName} — days with a briefing are linked.</p>
+<BaseLayout title="Calendar — ALLM Academy" wide>
+  <header class="border-b border-border pb-8">
+    <p class="eyebrow">Daily Briefings</p>
+    <h1 class="mt-3 text-fluid-xl font-semibold tracking-[-0.04em] text-text">Briefing Calendar</h1>
+    <p class="mt-3 text-fluid text-text-muted">{monthName} — days with a briefing are linked.</p>
+  </header>
 
-  <div class="mt-6 grid grid-cols-7 gap-1.5">
+  <div class="mt-8 grid grid-cols-7 gap-1">
     {weekdays.map((w) => <div class="py-1 text-center font-mono text-xs text-text-faint">{w}</div>)}
     {
       cells.map((c) =>
@@ -36,12 +39,12 @@ const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         ) : c.has ? (
           <a
             href={withBase(`/daily/${c.iso}`)}
-            class="grid aspect-square place-items-center rounded-lg border border-accent/40 bg-accent/10 text-text no-underline hover:bg-accent/20"
+            class="grid aspect-square place-items-center rounded-sm border border-accent/40 bg-accent/10 text-text no-underline transition-colors hover:border-accent hover:bg-accent/15"
           >
             {c.day}
           </a>
         ) : (
-          <div class="grid aspect-square place-items-center rounded-lg border border-border/50 text-text-faint">{c.day}</div>
+          <div class="grid aspect-square place-items-center rounded-sm border border-border/70 text-text-faint">{c.day}</div>
         ),
       )
     }

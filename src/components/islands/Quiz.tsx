@@ -1,7 +1,7 @@
 /** @jsxImportSource preact */
 import { useMemo, useState } from 'preact/hooks';
 import type { QuizQuestion } from '@/content/schemas/quiz';
-import { recordQuiz, markLessonComplete, passGate, lessonKey } from '@/lib/progress';
+import { lessonKey, markLessonComplete, passGate, recordQuiz } from '@/lib/progress';
 
 interface Props {
   questions: QuizQuestion[];
@@ -9,266 +9,370 @@ interface Props {
   lessonId: string;
   isGate?: boolean;
   passThreshold?: number;
-  colorHue?: number;
 }
 
 type AnswerState = Record<string, number | number[]>;
+type MatchState = Record<string, Record<number, number>>;
 
-// Stable shuffle seeded by question id so render order is deterministic per build but mixed.
-function seededShuffle<T>(arr: T[], seed: string): T[] {
-  let h = 2166136261;
-  for (const c of seed) h = (h ^ c.charCodeAt(0)) * 16777619;
-  const out = arr.map((v, i) => ({ v, k: ((h ^ (i * 2654435761)) >>> 0) / 2 ** 32 }));
-  out.sort((a, b) => a.k - b.k);
-  return out.map((o) => o.v);
+function seededShuffle<T>(values: T[], seed: string): T[] {
+  let hash = 2166136261;
+  for (const character of seed) hash = (hash ^ character.charCodeAt(0)) * 16777619;
+  return values
+    .map((value, index) => ({ value, rank: ((hash ^ (index * 2654435761)) >>> 0) / 2 ** 32 }))
+    .sort((a, b) => a.rank - b.rank)
+    .map(({ value }) => value);
 }
 
-function isCorrect(q: QuizQuestion, a: number | number[] | undefined): boolean {
-  if (a === undefined) return false;
-  if (q.type === 'mcq') return a === q.correct;
-  if (q.type === 'multi') {
-    const want = (q.correct as number[]) ?? [];
-    const got = (a as number[]) ?? [];
-    return want.length === got.length && want.every((x) => got.includes(x));
+function isStructuredAnswerCorrect(question: QuizQuestion, answer: number | number[] | undefined): boolean {
+  if (answer === undefined) return false;
+  if (question.type === 'mcq') return answer === question.correct;
+  if (question.type === 'multi') {
+    const expected = (question.correct as number[]) ?? [];
+    const actual = (answer as number[]) ?? [];
+    return expected.length === actual.length && expected.every((index) => actual.includes(index));
   }
-  if (q.type === 'ordering') {
-    const want = (q.correct as number[]) ?? [];
-    const got = (a as number[]) ?? [];
-    return want.length === got.length && want.every((x, i) => got[i] === x);
+  if (question.type === 'ordering') {
+    const expected = (question.correct as number[]) ?? [];
+    const actual = (answer as number[]) ?? [];
+    return expected.length === actual.length && expected.every((index, position) => actual[position] === index);
   }
-  return false; // matching handled separately (its own state)
+  return false;
 }
 
-export default function Quiz({ questions, moduleId, lessonId, isGate = false, passThreshold = 0.7, colorHue = 190 }: Props) {
+export default function Quiz({
+  questions,
+  moduleId,
+  lessonId,
+  isGate = false,
+  passThreshold = 0.7,
+}: Props) {
   const [answers, setAnswers] = useState<AnswerState>({});
-  // matching: per-question map of leftIndex -> chosen rightIndex
-  const [matches, setMatches] = useState<Record<string, Record<number, number>>>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [matches, setMatches] = useState<MatchState>({});
+  const [checked, setChecked] = useState<Record<string, boolean>>({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [finished, setFinished] = useState(false);
 
-  const accent = `hsl(${colorHue} 70% 55%)`;
-
-  // Precompute shuffled right-columns for matching questions.
   const matchRights = useMemo(() => {
-    const m: Record<string, { label: string; origIndex: number }[]> = {};
-    for (const q of questions) {
-      if (q.type === 'matching' && q.pairs) {
-        m[q.id] = seededShuffle(
-          q.pairs.map((p, i) => ({ label: p.right, origIndex: i })),
-          q.id,
+    const result: Record<string, { label: string; originalIndex: number }[]> = {};
+    for (const question of questions) {
+      if (question.type === 'matching' && question.pairs) {
+        result[question.id] = seededShuffle(
+          question.pairs.map((pair, index) => ({ label: pair.right, originalIndex: index })),
+          question.id,
         );
       }
     }
-    return m;
+    return result;
   }, [questions]);
 
-  const matchingCorrect = (q: QuizQuestion): boolean => {
-    if (q.type !== 'matching' || !q.pairs) return false;
-    const chosen = matches[q.id] ?? {};
-    return q.pairs.every((_, li) => chosen[li] === li); // origIndex equality = correct pairing
+  const orderingDefaults = useMemo(() => {
+    const result: Record<string, number[]> = {};
+    for (const question of questions) {
+      if (question.type !== 'ordering' || !question.options) continue;
+      const natural = question.options.map((_, index) => index);
+      const shuffled = seededShuffle(natural, `${question.id}:ordering`);
+      result[question.id] =
+        shuffled.every((value, index) => value === natural[index])
+          ? [...shuffled.slice(1), shuffled[0]]
+          : shuffled;
+    }
+    return result;
+  }, [questions]);
+
+  const matchingCorrect = (question: QuizQuestion): boolean => {
+    if (question.type !== 'matching' || !question.pairs) return false;
+    const selected = matches[question.id] ?? {};
+    return question.pairs.every((_, leftIndex) => selected[leftIndex] === leftIndex);
   };
 
-  const perQuestionCorrect = (q: QuizQuestion): boolean =>
-    q.type === 'matching' ? matchingCorrect(q) : isCorrect(q, answers[q.id]);
+  const questionCorrect = (question: QuizQuestion): boolean =>
+    question.type === 'matching'
+      ? matchingCorrect(question)
+      : isStructuredAnswerCorrect(
+          question,
+          question.type === 'ordering'
+            ? answers[question.id] ?? orderingDefaults[question.id]
+            : answers[question.id],
+        );
 
-  const score = useMemo(() => {
-    if (!submitted) return 0;
-    const right = questions.filter(perQuestionCorrect).length;
-    return questions.length ? right / questions.length : 0;
-  }, [submitted, answers, matches, questions]);
+  const questionAnswered = (question: QuizQuestion): boolean => {
+    if (question.type === 'matching') {
+      const selected = matches[question.id] ?? {};
+      return !!question.pairs?.every((_, leftIndex) => selected[leftIndex] !== undefined);
+    }
+    if (question.type === 'multi') return Array.isArray(answers[question.id]) && (answers[question.id] as number[]).length > 0;
+    if (question.type === 'ordering') return true;
+    return answers[question.id] !== undefined;
+  };
 
+  const current = questions[currentIndex];
+  const currentChecked = checked[current.id] ?? false;
+  const currentCorrect = currentChecked && questionCorrect(current);
+  const rightCount = questions.filter(questionCorrect).length;
+  const score = questions.length ? rightCount / questions.length : 0;
   const passed = score >= passThreshold;
 
-  const allAnswered = questions.every((q) => {
-    if (q.type === 'matching') {
-      const chosen = matches[q.id] ?? {};
-      return q.pairs?.every((_, li) => chosen[li] !== undefined);
-    }
-    if (q.type === 'multi' || q.type === 'ordering') return Array.isArray(answers[q.id]);
-    return answers[q.id] !== undefined;
-  });
+  const setMulti = (questionId: string, optionIndex: number) =>
+    setAnswers((currentAnswers) => {
+      const selected = new Set((currentAnswers[questionId] as number[]) ?? []);
+      selected.has(optionIndex) ? selected.delete(optionIndex) : selected.add(optionIndex);
+      return { ...currentAnswers, [questionId]: [...selected].sort((a, b) => a - b) };
+    });
 
-  function submit() {
-    setSubmitted(true);
-    const right = questions.filter(perQuestionCorrect).length;
-    const s = questions.length ? right / questions.length : 0;
+  const moveOrder = (questionId: string, length: number, from: number, direction: -1 | 1) =>
+    setAnswers((currentAnswers) => {
+      const order = ((currentAnswers[questionId] as number[]) ?? orderingDefaults[questionId] ?? Array.from({ length }, (_, index) => index)).slice();
+      const to = from + direction;
+      if (to < 0 || to >= order.length) return currentAnswers;
+      [order[from], order[to]] = [order[to], order[from]];
+      return { ...currentAnswers, [questionId]: order };
+    });
+
+  const finish = () => {
+    const finalScore = questions.length ? questions.filter(questionCorrect).length / questions.length : 0;
     const key = isGate ? `${moduleId}/module-gate` : lessonKey(moduleId, lessonId);
-    recordQuiz(key, s, s >= passThreshold, { answers, matches });
-    if (s >= passThreshold) {
-      if (isGate) passGate(moduleId);
-      else markLessonComplete(moduleId, lessonId);
+    recordQuiz(key, finalScore, finalScore >= passThreshold, { answers, matches });
+    if (finalScore >= passThreshold) {
+      isGate ? passGate(moduleId) : markLessonComplete(moduleId, lessonId);
     }
-  }
+    setFinished(true);
+  };
 
-  function retry() {
-    setSubmitted(false);
+  const reset = () => {
     setAnswers({});
     setMatches({});
-  }
+    setChecked({});
+    setCurrentIndex(0);
+    setFinished(false);
+  };
 
-  const setMulti = (qid: string, idx: number) =>
-    setAnswers((a) => {
-      const cur = new Set((a[qid] as number[]) ?? []);
-      cur.has(idx) ? cur.delete(idx) : cur.add(idx);
-      return { ...a, [qid]: [...cur].sort((x, y) => x - y) };
-    });
+  const advance = () => {
+    if (currentIndex === questions.length - 1) finish();
+    else setCurrentIndex((index) => index + 1);
+  };
 
-  const moveOrder = (qid: string, len: number, from: number, dir: -1 | 1) =>
-    setAnswers((a) => {
-      const cur = ((a[qid] as number[]) ?? Array.from({ length: len }, (_, i) => i)).slice();
-      const to = from + dir;
-      if (to < 0 || to >= cur.length) return a;
-      [cur[from], cur[to]] = [cur[to], cur[from]];
-      return { ...a, [qid]: cur };
-    });
+  const checkCurrent = () => {
+    if (current.type === 'ordering' && !answers[current.id]) {
+      setAnswers((value) => ({ ...value, [current.id]: orderingDefaults[current.id] }));
+    }
+    setChecked((value) => ({ ...value, [current.id]: true }));
+  };
+
+  const order =
+    (answers[current.id] as number[]) ??
+    orderingDefaults[current.id] ??
+    (current.options?.map((_, index) => index) ?? []);
+  const wrongQuestions = questions
+    .map((question, index) => ({ question, index }))
+    .filter(({ question }) => !questionCorrect(question));
 
   return (
-    <section class="card mt-8 p-5" aria-label={isGate ? 'Module gate quiz' : 'Lesson quiz'}>
-      <div class="flex items-center justify-between">
-        <h2 class="text-lg font-semibold text-text">{isGate ? '★ Gate quiz' : 'Check yourself'}</h2>
-        <span class="text-xs text-text-faint">
-          {questions.length} question{questions.length === 1 ? '' : 's'} · pass ≥ {Math.round(passThreshold * 100)}%
+    <section class="mt-10 rounded-md bg-surface p-5 sm:p-6" aria-label={isGate ? 'Module gate quiz' : 'Lesson quiz'}>
+      <header class="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end">
+        <div>
+          <p class="eyebrow">{isGate ? 'Module Gate' : 'Retrieval Practice'}</p>
+          <h2 class="mt-2 text-xl font-semibold tracking-[-0.02em] text-text">
+            {isGate ? 'Check the whole module' : 'Check one idea at a time'}
+          </h2>
+        </div>
+        <span class="font-mono text-xs tabular-nums text-text-faint">
+          {finished ? 'Complete' : `Question ${currentIndex + 1} of ${questions.length}`}
         </span>
+      </header>
+
+      <div class="mt-5 h-1 bg-surface-2" aria-hidden="true">
+        <div
+          class="h-full bg-accent transition-[width] duration-300"
+          style={{ width: `${finished ? 100 : ((currentIndex + (currentChecked ? 1 : 0)) / questions.length) * 100}%` }}
+        />
       </div>
 
-      <ol class="mt-4 space-y-6">
-        {questions.map((q, qi) => {
-          const correct = submitted && perQuestionCorrect(q);
-          const order = (answers[q.id] as number[]) ?? (q.options?.map((_, i) => i) ?? []);
-          return (
-            <li key={q.id} class="border-t border-border pt-4 first:border-0 first:pt-0">
-              <p class="font-medium text-text">
-                <span class="mr-2 font-mono text-text-faint">{qi + 1}.</span>
-                {q.question}
-              </p>
-
-              {/* mcq */}
-              {q.type === 'mcq' && (
-                <div class="mt-3 space-y-2">
-                  {q.options!.map((opt, oi) => (
-                    <label
-                      key={oi}
-                      class="flex cursor-pointer items-start gap-2 rounded-md border border-border p-2.5 hover:bg-surface-2"
-                      style={submitted && oi === q.correct ? `border-color:${accent}` : undefined}
-                    >
-                      <input
-                        type="radio"
-                        name={q.id}
-                        disabled={submitted}
-                        checked={answers[q.id] === oi}
-                        onChange={() => setAnswers((a) => ({ ...a, [q.id]: oi }))}
-                        class="mt-1 accent-current"
-                      />
-                      <span class="text-sm text-text-muted">{opt}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
-
-              {/* multi */}
-              {q.type === 'multi' && (
-                <div class="mt-3 space-y-2">
-                  <p class="text-xs text-text-faint">Select all that apply.</p>
-                  {q.options!.map((opt, oi) => (
-                    <label key={oi} class="flex cursor-pointer items-start gap-2 rounded-md border border-border p-2.5 hover:bg-surface-2"
-                      style={submitted && (q.correct as number[]).includes(oi) ? `border-color:${accent}` : undefined}>
-                      <input
-                        type="checkbox"
-                        disabled={submitted}
-                        checked={((answers[q.id] as number[]) ?? []).includes(oi)}
-                        onChange={() => setMulti(q.id, oi)}
-                        class="mt-1"
-                      />
-                      <span class="text-sm text-text-muted">{opt}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
-
-              {/* ordering */}
-              {q.type === 'ordering' && (
-                <div class="mt-3 space-y-2">
-                  <p class="text-xs text-text-faint">Put these in the correct order.</p>
-                  {order.map((optIdx, pos) => (
-                    <div key={optIdx} class="flex items-center gap-2 rounded-md border border-border p-2.5">
-                      <span class="font-mono text-xs text-text-faint">{pos + 1}</span>
-                      <span class="flex-1 text-sm text-text-muted">{q.options![optIdx]}</span>
-                      <button class="rounded px-1.5 text-text-muted hover:text-text disabled:opacity-30" disabled={submitted || pos === 0} aria-label="Move up" onClick={() => moveOrder(q.id, q.options!.length, pos, -1)}>↑</button>
-                      <button class="rounded px-1.5 text-text-muted hover:text-text disabled:opacity-30" disabled={submitted || pos === order.length - 1} aria-label="Move down" onClick={() => moveOrder(q.id, q.options!.length, pos, 1)}>↓</button>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* matching */}
-              {q.type === 'matching' && q.pairs && (
-                <div class="mt-3 space-y-2">
-                  <p class="text-xs text-text-faint">Match each item to its pair.</p>
-                  {q.pairs.map((p, li) => {
-                    const chosen = matches[q.id]?.[li];
-                    const ok = submitted && chosen === li;
-                    return (
-                      <div key={li} class="flex flex-wrap items-center gap-2 rounded-md border border-border p-2.5"
-                        style={ok ? `border-color:${accent}` : submitted ? 'border-color:rgb(var(--signal-bad))' : undefined}>
-                        <span class="min-w-[8rem] flex-1 text-sm text-text-muted">{p.left}</span>
-                        <span class="text-text-faint">→</span>
-                        <select
-                          disabled={submitted}
-                          value={chosen ?? ''}
-                          onChange={(e) =>
-                            setMatches((m) => ({ ...m, [q.id]: { ...(m[q.id] ?? {}), [li]: Number((e.target as HTMLSelectElement).value) } }))
-                          }
-                          class="rounded-md border border-border bg-surface px-2 py-1 text-sm text-text"
-                        >
-                          <option value="" disabled>
-                            choose…
-                          </option>
-                          {matchRights[q.id]?.map((r) => (
-                            <option key={r.origIndex} value={r.origIndex}>
-                              {r.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-
-              {submitted && (
-                <p class="mt-3 rounded-md p-2.5 text-sm" style={`background:${correct ? 'rgb(var(--signal-good)/0.12)' : 'rgb(var(--signal-bad)/0.12)'}`}>
-                  <span class="font-semibold" style={`color:${correct ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-bad))'}`}>
-                    {correct ? '✓ Correct. ' : '✗ Not quite. '}
-                  </span>
-                  <span class="text-text-muted">{q.explanation}</span>
-                </p>
-              )}
-            </li>
-          );
-        })}
-      </ol>
-
-      <div class="mt-6 flex items-center gap-3">
-        {!submitted ? (
+      {finished ? (
+        <div class="mt-7" aria-live="polite">
+          <p class="text-2xl font-semibold tracking-[-0.03em] text-text">
+            {passed ? (isGate ? 'Gate passed.' : 'Lesson complete.') : 'Review the missed ideas.'}
+          </p>
+          <p class="mt-2 text-sm text-text-muted">
+            {rightCount} of {questions.length} correct · {Math.round(score * 100)}%
+          </p>
+          {wrongQuestions.length > 0 && (
+            <div class="mt-5 rounded-md bg-bg p-4">
+              <p class="text-sm font-medium text-text">Revisit</p>
+              <ul class="mt-2 space-y-2 text-sm text-text-muted">
+                {wrongQuestions.map(({ question, index }) => (
+                  <li>
+                    {index + 1}. {question.question}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <button
-            onClick={submit}
-            disabled={!allAnswered}
-            class="rounded-lg px-5 py-2 font-medium text-bg disabled:cursor-not-allowed disabled:opacity-40"
-            style={`background:${accent}`}
+            onClick={reset}
+            class="mt-5 rounded-sm border border-border px-4 py-2 text-sm text-text hover:border-accent hover:text-accent active:translate-y-px"
           >
-            Submit answers
+            Try again
           </button>
-        ) : (
-          <>
-            <span class="text-sm font-semibold" style={`color:${passed ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-warn))'}`}>
-              {passed ? (isGate ? 'Gate passed — next module unlocked!' : 'Lesson complete!') : 'Keep going'} · {Math.round(score * 100)}%
-            </span>
-            <button onClick={retry} class="rounded-lg border border-border px-4 py-2 text-sm text-text hover:bg-surface-2">
-              Try again
-            </button>
-          </>
-        )}
-        {!allAnswered && !submitted && <span class="text-xs text-text-faint">Answer every question to submit.</span>}
-      </div>
+        </div>
+      ) : (
+        <div class="mt-7">
+          <p class="text-base font-medium leading-relaxed text-text">{current.question}</p>
+
+          {current.type === 'mcq' && (
+            <div class="mt-4 space-y-2">
+              {current.options!.map((option, optionIndex) => (
+                <label class="flex cursor-pointer items-start gap-3 rounded-sm border border-border p-3 hover:bg-surface">
+                  <input
+                    type="radio"
+                    name={current.id}
+                    disabled={currentChecked}
+                    checked={answers[current.id] === optionIndex}
+                    onChange={() => setAnswers((value) => ({ ...value, [current.id]: optionIndex }))}
+                    class="mt-1 accent-current"
+                  />
+                  <span class="text-sm leading-relaxed text-text-muted">{option}</span>
+                </label>
+              ))}
+            </div>
+          )}
+
+          {current.type === 'multi' && (
+            <div class="mt-4 space-y-2">
+              <p class="text-xs text-text-faint">Select all that apply.</p>
+              {current.options!.map((option, optionIndex) => (
+                <label class="flex cursor-pointer items-start gap-3 rounded-sm border border-border p-3 hover:bg-surface">
+                  <input
+                    type="checkbox"
+                    disabled={currentChecked}
+                    checked={((answers[current.id] as number[]) ?? []).includes(optionIndex)}
+                    onChange={() => setMulti(current.id, optionIndex)}
+                    class="mt-1"
+                  />
+                  <span class="text-sm leading-relaxed text-text-muted">{option}</span>
+                </label>
+              ))}
+            </div>
+          )}
+
+          {current.type === 'ordering' && (
+            <div class="mt-4 space-y-2">
+              <p class="text-xs text-text-faint">Put these in the correct order.</p>
+              {order.map((optionIndex, position) => (
+                <div class="flex items-center gap-3 rounded-sm border border-border p-3">
+                  <span class="font-mono text-xs tabular-nums text-text-faint">{position + 1}</span>
+                  <span class="min-w-0 flex-1 text-sm leading-relaxed text-text-muted">
+                    {current.options![optionIndex]}
+                  </span>
+                  <button
+                    type="button"
+                    class="min-h-11 min-w-11 rounded-sm border border-border text-text-muted hover:border-accent hover:text-accent disabled:opacity-30"
+                    disabled={currentChecked || position === 0}
+                    aria-label="Move up"
+                    onClick={() => moveOrder(current.id, current.options!.length, position, -1)}
+                  >
+                    Up
+                  </button>
+                  <button
+                    type="button"
+                    class="min-h-11 min-w-11 rounded-sm border border-border text-text-muted hover:border-accent hover:text-accent disabled:opacity-30"
+                    disabled={currentChecked || position === order.length - 1}
+                    aria-label="Move down"
+                    onClick={() => moveOrder(current.id, current.options!.length, position, 1)}
+                  >
+                    Down
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {current.type === 'matching' && current.pairs && (
+            <div class="mt-4 space-y-2">
+              <p class="text-xs text-text-faint">Match each item to its pair.</p>
+              {current.pairs.map((pair, leftIndex) => {
+                const selected = matches[current.id]?.[leftIndex];
+                return (
+                  <label class="grid gap-2 rounded-sm border border-border p-3 sm:grid-cols-[minmax(0,1fr)_minmax(11rem,0.8fr)] sm:items-center">
+                    <span class="text-sm leading-relaxed text-text-muted">{pair.left}</span>
+                    <select
+                      disabled={currentChecked}
+                      value={selected ?? ''}
+                      aria-label={`Match for ${pair.left}`}
+                      onChange={(event) =>
+                        setMatches((value) => ({
+                          ...value,
+                          [current.id]: {
+                            ...(value[current.id] ?? {}),
+                            [leftIndex]: Number((event.target as HTMLSelectElement).value),
+                          },
+                        }))
+                      }
+                      class="rounded-sm border border-border bg-surface px-2 py-2 text-sm text-text"
+                    >
+                      <option value="" disabled>
+                        Choose…
+                      </option>
+                      {matchRights[current.id]?.map((right) => (
+                        <option value={right.originalIndex}>{right.label}</option>
+                      ))}
+                    </select>
+                  </label>
+                );
+              })}
+            </div>
+          )}
+
+          {currentChecked && (
+            <div
+              class="mt-5 border-l-2 p-4 text-sm leading-relaxed"
+              aria-live="polite"
+              style={{
+                borderColor: currentCorrect ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-bad))',
+              }}
+            >
+              <p
+                class="font-semibold"
+                style={{
+                  color: currentCorrect ? 'rgb(var(--signal-good))' : 'rgb(var(--signal-bad))',
+                }}
+              >
+                {currentCorrect ? 'Correct.' : 'Review this.'}
+              </p>
+              <p class="mt-1 text-text-muted">{current.explanation}</p>
+            </div>
+          )}
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            {!currentChecked ? (
+              <button
+                type="button"
+                onClick={checkCurrent}
+                disabled={!questionAnswered(current)}
+                class="rounded-sm bg-accent px-5 py-2.5 font-medium text-bg disabled:cursor-not-allowed disabled:opacity-40 active:translate-y-px"
+              >
+                Check answer
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={advance}
+                class="rounded-sm bg-accent px-5 py-2.5 font-medium text-bg active:translate-y-px"
+              >
+                {currentIndex === questions.length - 1 ? 'Finish quiz' : 'Next question'}
+              </button>
+            )}
+            {currentIndex > 0 && !currentChecked && (
+              <button
+                type="button"
+                onClick={() => setCurrentIndex((index) => index - 1)}
+                class="rounded-sm border border-border px-4 py-2.5 text-sm text-text hover:border-accent hover:text-accent"
+              >
+                Previous question
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

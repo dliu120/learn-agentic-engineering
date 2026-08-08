@@ -61,7 +61,7 @@ export default function AudioPlayer({ src, vtt, transcript, title = 'Listen to t
   };
 
   return (
-    <section class="card my-6 p-4" aria-label="Audio narration">
+    <section class="my-8 rounded-md bg-surface p-4" aria-label="Audio narration">
       {src && (
         <audio ref={ref} preload="metadata" src={src}>
           {vtt && <track kind="captions" src={vtt} srclang="en" label="English" default />}
@@ -69,17 +69,17 @@ export default function AudioPlayer({ src, vtt, transcript, title = 'Listen to t
       )}
 
       {available ? (
-        <div class="flex flex-wrap items-center gap-3">
+        <div class="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[auto_minmax(0,1fr)_auto]">
           <button
             onClick={toggle}
-            class="grid h-10 w-10 place-items-center rounded-full bg-accent text-bg"
+            class="min-w-16 rounded-sm bg-accent px-3 py-2 text-sm font-medium text-bg active:translate-y-px"
             aria-label={playing ? 'Pause' : 'Play'}
           >
-            {playing ? '❚❚' : '▶'}
+            {playing ? 'Pause' : 'Play'}
           </button>
           <div class="min-w-[8rem] flex-1">
             <div class="text-sm font-medium text-text">{title}</div>
-            <div class="mt-1 flex items-center gap-2">
+            <div class="mt-2 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
               <input
                 type="range"
                 min={0}
@@ -94,10 +94,10 @@ export default function AudioPlayer({ src, vtt, transcript, title = 'Listen to t
               </span>
             </div>
           </div>
-          <label class="flex items-center gap-1 text-xs text-text-faint">
-            speed
+          <label class="col-span-2 flex items-center gap-2 text-xs text-text-faint sm:col-span-1">
+            Speed
             <select
-              class="rounded border border-border bg-surface px-1.5 py-1 text-text"
+              class="rounded-sm border border-border bg-surface px-2 py-1 text-text"
               value={speed}
               onChange={(e) => changeSpeed(Number((e.target as HTMLSelectElement).value))}
             >
@@ -118,10 +118,10 @@ export default function AudioPlayer({ src, vtt, transcript, title = 'Listen to t
 
       {transcript && (
         <div class="mt-3">
-          <button onClick={() => setShowText((v) => !v)} class="text-sm text-accent">
+          <button onClick={() => setShowText((v) => !v)} class="border-b border-border pb-0.5 text-sm text-text hover:border-accent hover:text-accent">
             {showText ? 'Hide transcript' : 'Show transcript'}
           </button>
-          {showText && <p class="mt-2 rounded-lg bg-surface-2 p-3 text-sm leading-relaxed text-text-muted">{transcript}</p>}
+          {showText && <p class="mt-4 border-l-2 border-border pl-4 text-sm leading-relaxed text-text-muted">{transcript}</p>}
         </div>
       )}
     </section>

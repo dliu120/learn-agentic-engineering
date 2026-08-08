@@ -7,7 +7,8 @@
  *   quiz key    = lesson key (lesson quiz) or `${moduleId}/module-gate`
  *   gate key    = moduleId
  */
-import { MODULE_ORDER } from '@/content/modules';
+import { MODULE_BY_ID } from '@/content/modules';
+import type { ModuleId } from '@/content/schemas/module-ids';
 
 export const STORAGE_KEY = 'allm:progress:v1';
 
@@ -31,7 +32,11 @@ export interface ProgressState {
 }
 
 export interface Manifest {
-  modules: { id: string; lessonKeys: string[] }[];
+  modules: {
+    id: string;
+    lessonKeys: string[];
+    lessons: { key: string; title: string; href: string }[];
+  }[];
 }
 
 const empty = (): ProgressState => ({ version: 1, lessons: {}, quizzes: {}, gates: {}, streak: { count: 0 } });
@@ -90,9 +95,9 @@ export const isLessonDone = (moduleId: string, lessonId: string): boolean =>
 export const isGatePassed = (moduleId: string): boolean => !!read().gates[moduleId];
 
 export function isModuleUnlocked(moduleId: string): boolean {
-  const idx = MODULE_ORDER.indexOf(moduleId as never);
-  if (idx <= 0) return true; // first module (or unknown) always open
-  return isGatePassed(MODULE_ORDER[idx - 1]);
+  const module = MODULE_BY_ID[moduleId as ModuleId];
+  if (!module) return true;
+  return module.prerequisites.every(isGatePassed);
 }
 
 export function moduleProgress(_moduleId: string, lessonKeys: string[]): number {

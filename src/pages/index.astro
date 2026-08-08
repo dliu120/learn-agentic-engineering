@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ModuleCard from '@/components/ui/ModuleCard.astro';
-import { MODULES } from '@/content/modules';
+import { CURRICULUM_TRACKS, MODULES_BY_TRACK, TOTAL_TOPIC_COUNT } from '@/content/modules';
 import { withBase } from '@/lib/paths';
 import { buildManifest } from '@/lib/manifest';
 import { latestDay, prettyDate } from '@/lib/daily';
@@ -10,92 +10,135 @@ import CurationFlagBadge from '@/components/ui/CurationFlagBadge.astro';
 
 const lessons = await getCollection('lessons');
 const countFor = (id: string) => lessons.filter((l) => l.data.moduleId === id && !l.data.isModuleGate).length;
-const totalTopics = 22;
 const manifest = buildManifest(lessons);
 const today = await latestDay();
+const coreModules = MODULES_BY_TRACK['core-stages'];
+const optionalTracks = CURRICULUM_TRACKS.filter((track) => track.id !== 'core-stages');
 ---
 
-<BaseLayout title="ALLM Academy — Production-LLM Engineering">
-  <section class="relative overflow-hidden rounded-2xl border border-border bg-surface/40 px-6 py-12 sm:px-10">
-    <div class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl"></div>
-    <p class="font-mono text-xs uppercase tracking-widest text-accent">Production-LLM Engineering</p>
-    <h1 class="mt-3 max-w-3xl text-fluid-2xl font-bold leading-tight text-text">
-      Go from <span class="text-text-muted">prompt engineering</span> to
-      <span class="text-accent">harness engineering</span>.
-    </h1>
-    <p class="mt-4 max-w-2xl text-fluid text-text-muted">
-      {totalTopics} hard topics — KV caches, speculative decoding, RAG, evals, prompt-injection defense — taught with
-      animated diagrams, interactive widgets, quizzes, and audio. Plus a daily, auto-curated feed so you stay current.
-    </p>
-    <div class="mt-6 flex flex-wrap gap-3">
-      <a
-        href={withBase('/modules')}
-        class="rounded-lg bg-accent px-5 py-2.5 font-medium text-bg no-underline hover:opacity-90"
-        data-resume-target
-      >
-        Start the course
-      </a>
-      <a
-        href={withBase('/today')}
-        class="rounded-lg border border-border bg-surface px-5 py-2.5 font-medium text-text no-underline hover:bg-surface-2"
-      >
-        Today’s briefing
-      </a>
+<BaseLayout title="ALLM Academy — Production-LLM Engineering" wide>
+  <section class="grid gap-12 border-b border-border pb-14 pt-4 lg:grid-cols-[minmax(0,1.55fr)_minmax(18rem,0.65fr)] lg:pb-20 lg:pt-10">
+    <div>
+      <p class="eyebrow">Production-LLM Engineering</p>
+      <h1 class="mt-5 max-w-4xl text-fluid-2xl font-semibold leading-[1.02] tracking-[-0.045em] text-text">
+        From one prompt to <span class="text-accent">engineered agent systems</span>.
+      </h1>
+      <p class="mt-6 max-w-2xl text-fluid leading-relaxed text-text-muted">
+        {TOTAL_TOPIC_COUNT} focused topics on the systems around the model: prompting, conversation, response contracts,
+        loops, graphs, interoperability, state, serving, retrieval, evaluation,
+        reliability, cost, and safety.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        <a
+          href={withBase('/modules')}
+          class="rounded-sm bg-accent px-5 py-3 font-medium text-bg no-underline transition-opacity hover:opacity-90 active:translate-y-px"
+          data-resume-target
+        >
+          Start with Prompt Engineering
+        </a>
+        <a
+          href={withBase('/today')}
+          class="border-b border-border pb-1 font-medium text-text no-underline transition-colors hover:border-accent hover:text-accent"
+        >
+          Read today’s briefing
+        </a>
+      </div>
     </div>
+
+    <aside class="border-t border-border pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-1" aria-label="Course overview">
+      <p class="eyebrow">Course Index</p>
+      <dl class="mt-5 space-y-4">
+        <div class="grid grid-cols-[4rem_1fr] gap-4 py-4">
+          <dt class="font-mono text-2xl tabular-nums text-text">{coreModules.length}</dt>
+          <dd class="text-sm leading-relaxed text-text-muted">Core stages from one request to graph-controlled systems</dd>
+        </div>
+        <div class="grid grid-cols-[4rem_1fr] gap-4 py-4">
+          <dt class="font-mono text-2xl tabular-nums text-text">{TOTAL_TOPIC_COUNT}</dt>
+          <dd class="text-sm leading-relaxed text-text-muted">Topics with diagrams, examples, quizzes, and deeper references</dd>
+        </div>
+        <div class="grid grid-cols-[4rem_1fr] gap-4 py-4">
+          <dt class="font-mono text-sm text-accent">Daily</dt>
+          <dd class="text-sm leading-relaxed text-text-muted">A source-linked briefing mapped back to the curriculum</dd>
+        </div>
+      </dl>
+    </aside>
   </section>
 
-  <!-- Progress summary (hydrated client-side from localStorage in Phase 2) -->
   <section
     id="overall-summary"
-    class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4"
+    class="grid gap-6 border-b border-border py-8 md:grid-cols-[1.2fr_repeat(3,0.7fr)] md:items-end"
     aria-label="Your progress"
     data-overall-summary
   >
+    <div>
+      <p class="eyebrow">Your Progress</p>
+      <p class="mt-2 text-sm text-text-muted">Stored only in this browser.</p>
+    </div>
     {
       [
         { k: 'overall', label: 'Overall' },
         { k: 'lessons', label: 'Lessons done' },
         { k: 'quizzes', label: 'Quizzes passed' },
-        { k: 'streak', label: 'Day streak' },
       ].map((s) => (
-        <div class="card p-4">
-          <div class="text-2xl font-semibold text-text" data-summary={s.k}>—</div>
-          <div class="text-xs text-text-faint">{s.label}</div>
+        <div class="border-l border-border pl-4">
+          <div class="font-mono text-2xl tabular-nums text-text" data-summary={s.k}>—</div>
+          <div class="mt-1 text-xs text-text-faint">{s.label}</div>
         </div>
       ))
     }
+    <span class="hidden" data-summary="streak">—</span>
   </section>
 
   {
     today && (
-      <section class="mt-8">
-        <a href={withBase('/today')} class="card block p-5 no-underline transition-colors hover:bg-surface-2">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="font-mono text-xs uppercase tracking-widest text-accent">Today · {prettyDate(today.data.date)}</span>
-            <CurationFlagBadge flag={today.data.curationFlag} />
-            <span class="ml-auto text-sm text-accent">Open briefing →</span>
-          </div>
-          <ul class="mt-3 grid gap-1.5 sm:grid-cols-2">
-            {today.data.lessons.slice(0, 4).map((l) => (
-              <li class="flex items-start gap-2 text-sm text-text-muted">
-                <span class="mt-1 text-text-faint" aria-hidden="true">·</span>
-                <span class="line-clamp-1">{l.headline}</span>
-              </li>
-            ))}
-          </ul>
-        </a>
+      <section class="grid gap-6 border-b border-border py-10 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <div>
+          <p class="eyebrow">Today · {prettyDate(today.data.date)}</p>
+          <div class="mt-3"><CurationFlagBadge flag={today.data.curationFlag} /></div>
+          <a href={withBase('/today')} class="mt-6 inline-block border-b border-border pb-1 text-sm text-text no-underline hover:border-accent hover:text-accent">
+            Open briefing
+          </a>
+        </div>
+        <ol class="space-y-3">
+          {today.data.lessons.slice(0, 4).map((l, i) => (
+            <li class="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 text-sm">
+              <span class="font-mono text-xs tabular-nums text-text-faint">{String(i + 1).padStart(2, '0')}</span>
+              <span class="min-w-0 text-pretty text-text-muted">{l.headline}</span>
+            </li>
+          ))}
+        </ol>
       </section>
     )
   }
 
-  <section class="mt-10">
-    <div class="flex items-baseline justify-between">
-      <h2 class="text-xl font-semibold text-text">Learning path</h2>
-      <span class="text-sm text-text-faint">9 modules · 22 topics</span>
+  <section class="pt-12">
+    <div class="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
+      <div>
+        <p class="eyebrow">Curriculum</p>
+        <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em] text-text">The Core Stages</h2>
+      </div>
+      <span class="text-sm text-text-faint">{coreModules.length} stages · learn in order</span>
     </div>
-    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {MODULES.map((m) => <ModuleCard module={m} lessonCount={countFor(m.id)} />)}
+    <div class="mt-7 space-y-1">
+      {coreModules.map((m) => <ModuleCard module={m} lessonCount={countFor(m.id)} />)}
     </div>
+  </section>
+
+  <section class="mt-12 grid gap-5 lg:grid-cols-2">
+    {
+      optionalTracks.map((track) => (
+        <a
+          href={withBase(`/modules#${track.id}`)}
+          class="group rounded-md bg-surface/70 px-4 py-6 no-underline transition-colors hover:bg-surface"
+        >
+          <p class="eyebrow">{track.name}</p>
+          <p class="mt-3 max-w-xl text-sm leading-relaxed text-text-muted">{track.short}</p>
+          <p class="mt-5 text-sm text-text transition-colors group-hover:text-accent">
+            Explore {MODULES_BY_TRACK[track.id].length} modules
+          </p>
+        </a>
+      ))
+    }
   </section>
   <script id="lesson-manifest" type="application/json" is:inline set:html={JSON.stringify(manifest)} />
 </BaseLayout>

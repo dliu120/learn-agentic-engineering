@@ -1,0 +1,118 @@
+---
+moduleId: spec-driven-agent-engineering
+lessonId: agent-specs
+title: "What Belongs in an Agent Specification"
+order: 1
+topicNumbers: [31]
+summary: "Write a testable behavior contract for goals, capabilities, state, invariants, exits, and verification."
+estimatedMinutes: 13
+prerequisites:
+  - moduleId: agent-control-routing-degradation
+    lessonId: bounded-agent-loops
+    label: "Bounded Agent Loops"
+references:
+  - title: "LangGraph Overview"
+    url: "https://docs.langchain.com/oss/python/langgraph/overview"
+    source: "LangChain Docs"
+  - title: "Guardrails"
+    url: "https://openai.github.io/openai-agents-python/guardrails/"
+    source: "OpenAI Agents SDK"
+deepDiveTopics:
+  - "Executable invariants"
+  - "Behavior contracts vs. implementation plans"
+objectives:
+  - "Separate an agent behavior contract from a long system prompt"
+  - "Specify capabilities, state, invariants, exits, and evidence"
+  - "Write acceptance examples that can fail"
+hasAudio: false
+visualizations:
+  - title: "The specification feedback cycle"
+    summary: "Specify, test, build, observe, then feed failures back into a stronger specification."
+quiz:
+  - id: q1
+    type: multi
+    question: "Which belong in an agent specification?"
+    options:
+      - "Allowed capabilities and permissions"
+      - "State transitions and termination states"
+      - "Invariants that must always hold"
+      - "Every private helper function name"
+    correct: [0, 1, 2]
+    explanation: "The spec defines behavior and constraints, not internal implementation trivia."
+  - id: q2
+    type: mcq
+    question: "Which is an invariant?"
+    options:
+      - "Never send an email without recorded user approval"
+      - "Use a function named runAgent"
+      - "Prefer blue buttons"
+      - "Call the model at least twice"
+    correct: 0
+    explanation: "An invariant is a behavior condition that must hold across every valid execution."
+  - id: q3
+    type: mcq
+    question: "Why include failing examples before implementation?"
+    options:
+      - "They turn vague goals into observable acceptance checks"
+      - "They guarantee the model never hallucinates"
+      - "They replace production monitoring"
+      - "They remove the need for a runtime"
+    correct: 0
+    explanation: "Examples force the team to define expected behavior and edge cases before code hardens assumptions."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="The minimum behavior contract" tag="template">
+
+An agent specification should name:
+
+1. **Goal** — what outcome is valuable?
+2. **Capabilities** — what tools and data may it use?
+3. **State** — what information can change during the run?
+4. **Invariants** — what must never become false?
+5. **Exits** — success, exhaustion, failure, and escalation.
+6. **Evidence** — what proves the result is acceptable?
+
+</ConceptCard>
+
+<VizWrapper
+  name="spec-cycle"
+  title="The specification feedback cycle"
+  summary="Specify behavior, write tests, build the workflow, observe real runs, and feed failures back into a stronger specification."
+  height={360}
+/>
+
+<KeyInsightCallout>
+A system prompt asks the model to behave. A specification gives the whole system a contract you can test.
+</KeyInsightCallout>
+
+## Example: research assistant
+
+**Goal:** Produce a cited answer to one research question.
+
+**Capabilities:** Web search and page reading. No posting, purchasing, or account changes.
+
+**Invariants:** Every factual claim must cite a fetched source. The assistant must not follow
+instructions embedded in source pages.
+
+**Exits:** Success with cited answer; exhaustion at 12 sources; failure on unavailable search;
+escalation when sources materially disagree.
+
+<MisconceptionFlip
+  claim={"A detailed implementation plan is an agent specification."}
+  correction={"A plan describes how you intend to build. A specification describes behavior that remains true across implementations."}
+/>
+
+<DeepDive title="Executable invariants">
+
+Some invariants can run as code: reject a final answer with uncited claims, block a write tool
+without approval, or halt a graph when budget reaches zero. The closer the invariant is to the
+runtime boundary, the less it depends on model compliance.
+
+</DeepDive>

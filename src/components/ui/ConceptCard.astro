@@ -6,9 +6,9 @@ interface Props {
 const { title, tag } = Astro.props;
 ---
 
-<section class="card my-6 p-5">
+<section class="my-8 rounded-md bg-surface px-5 py-5">
   <div class="flex items-center justify-between">
-    <h3 class="text-lg font-semibold text-text">{title}</h3>
+    <h2 class="text-xl font-semibold tracking-[-0.02em] text-text">{title}</h2>
     {tag && <span class="font-mono text-[10px] uppercase tracking-wider text-text-faint">{tag}</span>}
   </div>
   <div class="prose-tight mt-2 space-y-3">

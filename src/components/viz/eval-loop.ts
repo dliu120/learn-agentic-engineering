@@ -30,14 +30,14 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const y = cy + R * Math.sin(angle(i));
     const g = svgEl('g', { transform: `translate(${x} ${y})` });
     const c = svgEl('circle', { r: 30, fill: cssColor('--surface-2'), stroke: cssColor('--border'), 'stroke-width': 1.5 });
-    const t = svgEl('text', { 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-muted'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+    const t = svgEl('text', { 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-muted'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
     t.textContent = n.t;
     g.append(c, t);
     svg.append(g);
     return { c, t };
   });
 
-  const center = svgEl('text', { x: cx, y: cy, 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const center = svgEl('text', { x: cx, y: cy, 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   center.textContent = 'closed loop';
   svg.append(center);
 

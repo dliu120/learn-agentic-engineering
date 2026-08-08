@@ -1,0 +1,100 @@
+---
+moduleId: tools-skills-plugins-mcp
+lessonId: tools-skills-plugins
+title: "Tools, Skills, Plugins, and Extensions"
+order: 1
+topicNumbers: [26]
+summary: "Use precise names for executable operations, reusable capabilities, installable packages, and negotiated protocol features."
+estimatedMinutes: 11
+prerequisites:
+  - moduleId: reliable-structured-output-tool-calling
+    lessonId: tool-calling-reliability-idempotency
+    label: "Tool Calls & Idempotency"
+references:
+  - title: "Tool Use Overview"
+    url: "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"
+    source: "Anthropic"
+  - title: "MCP Extensions Overview"
+    url: "https://modelcontextprotocol.io/extensions/overview"
+    source: "Model Context Protocol"
+deepDiveTopics:
+  - "Capability packaging"
+  - "Extension negotiation"
+objectives:
+  - "Distinguish a tool from a reusable skill"
+  - "Explain why plugin and extension are ecosystem-specific packaging terms"
+  - "Choose a capability boundary that can be tested and permissioned"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: matching
+    question: "Match each term to the best description."
+    pairs:
+      - { left: "Tool", right: "Typed operation the host executes" }
+      - { left: "Skill", right: "Reusable capability package" }
+      - { left: "Plugin", right: "Installable package for a host ecosystem" }
+      - { left: "MCP extension", right: "Optional protocol feature negotiated by both peers" }
+    explanation: "The terms describe different layers: operation, capability, packaging, and protocol negotiation."
+  - id: q2
+    type: mcq
+    question: "Is skill a universal MCP protocol primitive?"
+    options:
+      - "No. It is a useful capability term, but MCP defines tools, resources, prompts, and extensions"
+      - "Yes. Every MCP server must expose skills/list"
+      - "Yes. Skill and tool are identical protocol messages"
+      - "No. Skills can never contain tools"
+    correct: 0
+    explanation: "Skill is common product language, not a formal core MCP primitive."
+  - id: q3
+    type: multi
+    question: "What makes a good skill boundary?"
+    options:
+      - "A clear purpose"
+      - "Explicit inputs and outputs"
+      - "A permission and failure model"
+      - "Every available tool in one package"
+    correct: [0, 1, 2]
+    explanation: "A reusable capability should be understandable, testable, and permissionable. A grab bag increases confusion and risk."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Four different layers" tag="vocabulary">
+
+| Term | Plain-English meaning |
+|---|---|
+| **Tool** | One typed operation, such as `lookup_order` |
+| **Skill** | A reusable capability that may combine instructions, tools, examples, or a specialist workflow |
+| **Plugin** | An installable package for a particular host product |
+| **Extension** | An optional protocol feature that both peers agree to use |
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Good architecture starts by naming the layer: operation, reusable capability, ecosystem package, or protocol feature.
+</KeyInsightCallout>
+
+## Example: refund investigation
+
+A **tool** retrieves one order. A **skill** investigates a refund by using order lookup,
+payment history, policy instructions, and a report template. A host-specific **plugin** installs
+that capability into an application. An MCP **extension** may add an optional protocol behavior
+such as durable tasks.
+
+<MisconceptionFlip
+  claim={"An MCP server is a plugin."}
+  correction={"An MCP server speaks a protocol. A plugin may install or configure one, but the concepts are not interchangeable."}
+/>
+
+<DeepDive title="Capability packaging">
+
+Keep a skill small enough to test as one promise. Document its inputs, outputs, tools,
+permissions, stopping conditions, and known failure modes. If two parts need different trust or
+release cycles, split them.
+
+</DeepDive>

@@ -23,26 +23,16 @@ export default {
         'signal-bad': withVar('--signal-bad'),
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        sans: ['Geist', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       fontSize: {
         fluid: 'clamp(1rem, 0.9rem + 0.5vw, 1.125rem)',
         'fluid-lg': 'clamp(1.25rem, 1rem + 1.2vw, 1.6rem)',
-        'fluid-xl': 'clamp(1.75rem, 1.2rem + 2.5vw, 3rem)',
-        'fluid-2xl': 'clamp(2.25rem, 1.4rem + 4vw, 4.25rem)',
+        'fluid-xl': 'clamp(2rem, 1.45rem + 2.4vw, 3.25rem)',
+        'fluid-2xl': 'clamp(2.6rem, 1.8rem + 3.6vw, 4rem)',
       },
-      maxWidth: { prose: '72ch' },
-      boxShadow: {
-        glow: '0 0 0 1px rgb(var(--accent) / 0.35), 0 0 24px -6px rgb(var(--accent) / 0.4)',
-      },
-      keyframes: {
-        'pulse-node': {
-          '0%,100%': { opacity: '1', filter: 'drop-shadow(0 0 0 rgb(var(--accent)/0))' },
-          '50%': { opacity: '0.85', filter: 'drop-shadow(0 0 8px rgb(var(--accent)/0.7))' },
-        },
-      },
-      animation: { 'pulse-node': 'pulse-node 1.8s ease-in-out infinite' },
+      maxWidth: { prose: '68ch' },
     },
   },
   plugins: [],

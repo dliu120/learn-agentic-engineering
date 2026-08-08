@@ -1,38 +1,41 @@
 ---
 import type { ModuleMeta } from '@/content/modules';
-import { moduleHref, hue } from '@/lib/paths';
+import { MODULE_BY_ID } from '@/content/modules';
+import { moduleHref } from '@/lib/paths';
 
 interface Props {
   module: ModuleMeta;
   lessonCount?: number;
 }
 const { module: m, lessonCount = 0 } = Astro.props;
+const pathLabel =
+  m.prerequisites.length === 0
+    ? 'Start here'
+    : `After ${m.prerequisites.map((id) => MODULE_BY_ID[id].num).join(' + ')}`;
 ---
 
 <a
   href={moduleHref(m.id)}
-  class="card group relative block overflow-hidden p-5 no-underline transition-transform hover:-translate-y-0.5"
+  class="group grid min-w-0 gap-4 rounded-md px-3 py-5 no-underline transition-[background-color,color,transform] hover:bg-surface active:translate-y-px sm:grid-cols-[4rem_minmax(0,1fr)_10rem] sm:items-start"
   data-module={m.id}
-  style={`--mhue:${m.colorHue}`}
 >
-  <span class="absolute inset-y-0 left-0 w-1" style={`background:${hue(m.colorHue)}`}></span>
-  <div class="flex items-center justify-between">
-    <span class="font-mono text-xs font-semibold" style={`color:${hue(m.colorHue, 70, 60)}`}>{m.num}</span>
-    <span class="text-xs text-text-faint" data-module-progress-label={m.id}>{lessonCount} lessons</span>
+  <div class="eyebrow pt-0.5">{m.num}</div>
+  <div class="min-w-0">
+    <h3 class="text-xl font-semibold tracking-[-0.02em] text-text transition-colors group-hover:text-accent">{m.name}</h3>
+    <p class="mt-1 max-w-2xl text-sm leading-relaxed text-text-muted">{m.short}</p>
   </div>
-  <h3 class="mt-2 text-lg font-semibold text-text">{m.name}</h3>
-  <p class="mt-1 text-sm text-text-muted">{m.short}</p>
-
-  <div class="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-surface-2">
-    <div
-      class="h-full rounded-full transition-[width] duration-500"
-      style={`width:0%;background:${hue(m.colorHue)}`}
-      data-module-progress-bar={m.id}
-    >
+  <div class="self-stretch sm:pt-1">
+    <div class="flex items-center justify-between gap-3 text-xs text-text-faint">
+      <span data-module-progress-label={m.id} data-default-label={`${lessonCount} lessons`}>{lessonCount} lessons</span>
+      <span class="text-text-muted transition-colors group-hover:text-accent">{pathLabel}</span>
     </div>
-  </div>
-  <div class="mt-3 flex items-center gap-1 text-sm" style={`color:${hue(m.colorHue, 70, 62)}`}>
-    <span class="opacity-0 transition-opacity group-hover:opacity-100">Open</span>
-    <span aria-hidden="true">→</span>
+    <div class="mt-3 h-1 overflow-hidden rounded-full bg-surface-2">
+      <div
+        class="h-full bg-accent transition-[width] duration-500"
+        style="width:0%"
+        data-module-progress-bar={m.id}
+      >
+      </div>
+    </div>
   </div>
 </a>

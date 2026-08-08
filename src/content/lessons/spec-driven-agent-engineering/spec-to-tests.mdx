@@ -1,0 +1,108 @@
+---
+moduleId: spec-driven-agent-engineering
+lessonId: spec-to-tests
+title: "From Specification to Graph and Tests"
+order: 2
+topicNumbers: [32]
+summary: "Map the contract into nodes, edges, validation gates, tests, traces, and a feedback loop."
+estimatedMinutes: 15
+prerequisites:
+  - moduleId: spec-driven-agent-engineering
+    lessonId: agent-specs
+    label: "What Belongs in an Agent Specification"
+references:
+  - title: "LangGraph Overview"
+    url: "https://docs.langchain.com/oss/python/langgraph/overview"
+    source: "LangChain Docs"
+  - title: "Tracing"
+    url: "https://openai.github.io/openai-agents-python/tracing/"
+    source: "OpenAI Agents SDK"
+deepDiveTopics:
+  - "Bug backpropagation"
+  - "Trace-based acceptance tests"
+objectives:
+  - "Map goals and exits to graph nodes and terminal states"
+  - "Turn invariants into runtime guards and test cases"
+  - "Use production failures to strengthen the specification"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: matching
+    question: "Match each specification element to an implementation artifact."
+    pairs:
+      - { left: "Success and failure exits", right: "Terminal graph states" }
+      - { left: "Allowed capability", right: "Tool registration and permission" }
+      - { left: "Invariant", right: "Runtime guard and test" }
+      - { left: "Evidence requirement", right: "Evaluator or acceptance check" }
+    explanation: "The implementation should make each contract element visible and enforceable."
+  - id: q2
+    type: mcq
+    question: "A production bug reveals that a retry can send the same email twice. What should change?"
+    options:
+      - "Add an idempotency invariant and a regression test, then fix the tool boundary"
+      - "Only change the prompt wording"
+      - "Delete the trace"
+      - "Increase the retry count"
+    correct: 0
+    explanation: "The bug exposed a missing system invariant. Capture it in the spec so every future implementation must preserve it."
+  - id: q3
+    type: ordering
+    question: "Put the spec-driven loop in order."
+    options:
+      - "Write the behavior contract"
+      - "Create failing examples and checks"
+      - "Implement the loop or graph"
+      - "Observe traces and real failures"
+      - "Strengthen the specification"
+    correct: [0, 1, 2, 3, 4]
+    explanation: "The important final step is feeding evidence back into the contract instead of treating the spec as frozen paperwork."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Map contract language to runtime controls" tag="worked example">
+
+| Specification | Runtime artifact |
+|---|---|
+| “Stop after 8 attempts” | Budget guard and exhausted terminal state |
+| “Every claim has a source” | Citation validator before success |
+| “Human approves payment” | Interrupt before the payment tool |
+| “Resume after failure” | Checkpointer and idempotent tools |
+
+</ConceptCard>
+
+<KeyInsightCallout>
+If a contract statement has no runtime control, test, trace, or review step, it is documentation—not enforcement.
+</KeyInsightCallout>
+
+## Backpropagate bugs into the spec
+
+Suppose a crash after `send_email` causes the graph to retry and send twice.
+
+Do not stop at “fix the retry.” Add the missing invariant:
+
+> Every side-effecting tool call uses a stable idempotency key, and replay cannot create a second effect.
+
+Then add a regression test that simulates the crash window.
+
+<FailureModeList
+  items={[
+    "The specification is updated to match broken code instead of fixing the implementation.",
+    "An invariant exists only in prose and has no runtime enforcement.",
+    "Tests cover the happy path but not exhaustion, failure, or replay.",
+    "The graph adds a new capability without updating permissions and threat assumptions.",
+  ]}
+/>
+
+<DeepDive title="Trace-based acceptance tests">
+
+A trace records node order, inputs, outputs, tool calls, budgets, and terminal state. Save a
+redacted trace from a real failure and turn it into an acceptance scenario. This tests the
+system's behavior, not just one function.
+
+</DeepDive>

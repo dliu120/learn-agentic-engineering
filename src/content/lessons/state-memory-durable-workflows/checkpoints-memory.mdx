@@ -1,0 +1,109 @@
+---
+moduleId: state-memory-durable-workflows
+lessonId: checkpoints-memory
+title: "Thread State, Checkpoints, Tasks, and Memory"
+order: 2
+topicNumbers: [30]
+summary: "Choose the right storage scope instead of calling every retained value memory."
+estimatedMinutes: 15
+prerequisites:
+  - moduleId: state-memory-durable-workflows
+    lessonId: stateless-stateful
+    label: "Stateless Requests, Stateful Applications"
+references:
+  - title: "LangGraph Persistence"
+    url: "https://docs.langchain.com/oss/python/langgraph/persistence"
+    source: "LangChain Docs"
+  - title: "MCP Tasks Extension"
+    url: "https://modelcontextprotocol.io/extensions/tasks/overview"
+    source: "Model Context Protocol"
+deepDiveTopics:
+  - "Checkpoint retention"
+  - "Event logs and replay"
+objectives:
+  - "Distinguish thread state, checkpoint, task handle, and long-term memory"
+  - "Choose retention and ownership rules for each kind of state"
+  - "Resume work without duplicating completed side effects"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: matching
+    question: "Match each stored item to the best state type."
+    pairs:
+      - { left: "Current graph variables for one conversation", right: "Thread state" }
+      - { left: "Snapshot after node 4", right: "Checkpoint" }
+      - { left: "Handle for a long-running export", right: "Durable task" }
+      - { left: "User prefers concise answers", right: "Long-term memory" }
+    explanation: "The scope and lifetime determine the storage type."
+  - id: q2
+    type: mcq
+    question: "A write tool succeeded, then the process crashed before the next checkpoint. What prevents a duplicate write on retry?"
+    options:
+      - "An idempotency key or recorded side-effect result"
+      - "A larger context window"
+      - "A hidden server session"
+      - "A higher model temperature"
+    correct: 0
+    explanation: "Checkpointing does not replace idempotency. External side effects need their own replay protection."
+  - id: q3
+    type: mcq
+    question: "Should every conversation detail become long-term memory?"
+    options:
+      - "No. Store only information with a clear future use, consent, and retention policy"
+      - "Yes. More memory always improves answers"
+      - "Yes, if storage is cheap"
+      - "No, because agents cannot use long-term memory"
+    correct: 0
+    explanation: "Unbounded memory adds privacy, staleness, retrieval, and correction problems."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Choose state by scope and lifetime" tag="decision table">
+
+| State type | Scope | Typical lifetime |
+|---|---|---|
+| **Thread state** | One conversation or run | Minutes to days |
+| **Checkpoint** | One workflow snapshot | Until completion or retention expiry |
+| **Durable task** | One long-running operation | Until terminal result and TTL |
+| **Long-term memory** | Across threads | Explicit product retention period |
+
+</ConceptCard>
+
+<KeyInsightCallout>
+“Memory” is not one feature. Name the scope, owner, lifetime, correction path, and deletion rule.
+</KeyInsightCallout>
+
+## Checkpoints are restart points
+
+A checkpoint records enough graph state to continue after a crash or pause. It may include
+messages, tool results, intermediate variables, budget counters, and the next scheduled node.
+
+It does **not** automatically make external side effects exactly once. A payment or email tool
+still needs idempotency.
+
+## Durable tasks are handles
+
+Long work should return a task identifier instead of keeping one request open. The client can
+poll, provide requested input, cancel cooperatively, or fetch the final result later.
+
+<FailureModeList
+  items={[
+    "In-memory checkpoints disappear during a production restart.",
+    "Task identifiers are exposed without per-user ownership checks.",
+    "Long-term memory stores a wrong fact with no correction path.",
+    "Checkpoint retention grows forever because no deletion policy exists.",
+  ]}
+/>
+
+<DeepDive title="Event logs and replay">
+
+An event log stores changes rather than only full snapshots. Snapshots make restart fast; events
+make history and replay visible. Many durable systems use both.
+
+</DeepDive>

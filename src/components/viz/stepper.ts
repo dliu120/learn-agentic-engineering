@@ -1,5 +1,5 @@
-// Shared scrollytelling-style stepper: consistent play / step controls + live caption for every viz.
-// Reduced-motion → jumps to final step, no autoplay. Auto-pauses when scrolled offscreen.
+// Shared stepper: consistent play / step controls + live caption for every viz.
+// Motion is learner-initiated. Reduced-motion jumps to the final state and hides playback.
 import { prefersReducedMotion } from '@/lib/motion';
 
 export interface Step {
@@ -29,13 +29,13 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
     b.setAttribute('aria-label', aria);
     b.type = 'button';
     b.className =
-      'grid h-7 w-7 place-items-center rounded border border-border text-text-muted hover:text-text disabled:opacity-30';
+      'grid min-h-11 min-w-11 place-items-center rounded-sm border border-border px-2 text-xs text-text-muted hover:border-accent hover:text-accent disabled:opacity-30';
     return b;
   };
 
-  const prev = mk('‹', 'Previous step');
-  const play = mk('▶', 'Play animation');
-  const next = mk('›', 'Next step');
+  const prev = mk('Prev', 'Previous step');
+  const play = mk('Play', 'Play animation');
+  const next = mk('Next', 'Next step');
   const stepLbl = document.createElement('span');
   stepLbl.className = 'font-mono text-xs text-text-faint tabular-nums';
   const caption = document.createElement('p');
@@ -51,7 +51,7 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
     next.disabled = !opts.loop && i === n - 1;
   }
   function stop() {
-    play.textContent = '▶';
+    play.textContent = 'Play';
     play.setAttribute('aria-label', 'Play animation');
     if (timer) {
       clearInterval(timer);
@@ -60,7 +60,7 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
   }
   function start() {
     if (reduced) return;
-    play.textContent = '⏸';
+    play.textContent = 'Pause';
     play.setAttribute('aria-label', 'Pause animation');
     timer = setInterval(() => {
       if (i === n - 1 && !opts.loop) return stop();
@@ -85,8 +85,6 @@ export function mountStepper(root: HTMLElement, stage: HTMLElement, opts: Steppe
   if (reduced) {
     set(n - 1, 1);
     play.style.display = 'none';
-  } else {
-    start();
   }
 
   const io = new IntersectionObserver(

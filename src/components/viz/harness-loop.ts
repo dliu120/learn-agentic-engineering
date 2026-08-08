@@ -34,7 +34,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const y = cy + R * Math.sin(angle(i));
     const g = svgEl('g', { transform: `translate(${x} ${y})` });
     const c = svgEl('circle', { r: 32, fill: cssColor('--surface-2'), stroke: cssColor('--border'), 'stroke-width': 1.5 });
-    const label = svgEl('text', { 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-muted'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+    const label = svgEl('text', { 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-muted'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
     label.textContent = n.t;
     g.append(c, label);
     svg.append(g);

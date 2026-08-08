@@ -1,57 +1,78 @@
 @import 'tailwindcss';
 @config '../../tailwind.config.mjs';
 
-/* ============================================================
-   Design tokens — "engineer's observatory". Dark-first.
-   RGB triplets so Tailwind's <alpha-value> works.
-   ============================================================ */
 :root,
-[data-theme='dark'] {
-  --bg: 11 14 20;
-  --surface: 18 22 32;
-  --surface-2: 26 31 42;
-  --text: 230 234 242;
-  --text-muted: 154 164 178;
-  --text-faint: 92 102 117;
-  --border: 35 42 54;
-  --accent: 34 211 238;       /* electric cyan */
-  --accent-2: 167 139 250;    /* violet */
-  --signal-good: 52 211 153;  /* green */
-  --signal-warn: 251 191 36;  /* amber */
-  --signal-bad: 248 113 113;  /* red */
-  color-scheme: dark;
+[data-theme='light'] {
+  --bg: 246 246 242;
+  --surface: 252 252 249;
+  --surface-2: 235 237 232;
+  --text: 25 29 31;
+  --text-muted: 78 86 87;
+  --text-faint: 123 131 130;
+  --border: 207 211 207;
+  --accent: 21 116 137;
+  --accent-2: 91 111 119;
+  --signal-good: 34 120 96;
+  --signal-warn: 157 106 43;
+  --signal-bad: 168 69 69;
+  color-scheme: light;
 }
 
-[data-theme='light'] {
-  --bg: 251 252 254;
-  --surface: 255 255 255;
-  --surface-2: 241 244 249;
-  --text: 11 18 32;
-  --text-muted: 71 85 105;
-  --text-faint: 148 163 184;
-  --border: 226 232 240;
-  --accent: 8 145 178;
-  --accent-2: 124 58 237;
-  --signal-good: 5 150 105;
-  --signal-warn: 217 119 6;
-  --signal-bad: 220 38 38;
-  color-scheme: light;
+[data-theme='dark'] {
+  --bg: 17 19 20;
+  --surface: 23 26 27;
+  --surface-2: 31 35 36;
+  --text: 235 237 232;
+  --text-muted: 166 172 168;
+  --text-faint: 111 119 116;
+  --border: 53 59 57;
+  --accent: 91 182 201;
+  --accent-2: 124 145 151;
+  --signal-good: 91 177 143;
+  --signal-warn: 203 153 82;
+  --signal-bad: 210 112 112;
+  color-scheme: dark;
 }
 
 @layer base {
   html {
+    background: rgb(var(--bg));
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
   body {
     @apply bg-bg text-text font-sans antialiased;
+    min-width: 320px;
+    overflow-x: hidden;
     text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: rgb(var(--accent) / 0.12);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    scroll-margin-top: 7rem;
+    text-wrap: balance;
+  }
+  p,
+  li {
+    text-wrap: pretty;
   }
   :focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded-sm;
+    @apply rounded-sm outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
   }
   a {
     @apply text-accent underline-offset-2 hover:underline;
+  }
+  a,
+  button {
+    touch-action: manipulation;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
   }
   code,
   kbd,
@@ -65,13 +86,19 @@
 
 @layer components {
   .card {
-    @apply rounded-xl border border-border bg-surface/70 backdrop-blur-sm;
+    @apply rounded-md border border-border bg-surface;
   }
   .prose-tight :where(p, ul, ol) {
     @apply text-fluid leading-relaxed text-text-muted;
   }
   .kbd {
-    @apply inline-flex items-center rounded border border-border bg-surface-2 px-1.5 py-0.5 text-xs font-mono text-text-muted;
+    @apply inline-flex items-center rounded-sm border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-xs text-text-muted;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-accent;
+  }
+  .editorial-rule {
+    @apply border-t border-border;
   }
 }
 
@@ -91,5 +118,5 @@
   @apply sr-only;
 }
 .skip-link:focus {
-  @apply not-sr-only fixed left-3 top-3 z-50 rounded-md bg-accent px-3 py-2 text-bg;
+  @apply not-sr-only fixed left-3 top-3 z-50 rounded-sm bg-accent px-3 py-2 text-bg;
 }

@@ -1,0 +1,58 @@
+---
+moduleId: conversation-context-engineering
+lessonId: module-gate
+title: "Gate: Conversation Engineering"
+order: 99
+topicNumbers: [2]
+summary: "Check that you can manage turns and context without confusing history, state, and memory."
+estimatedMinutes: 8
+prerequisites:
+  - moduleId: conversation-context-engineering
+    lessonId: context-engineering
+    label: "Context Engineering"
+references: []
+deepDiveTopics: []
+objectives:
+  - "Design a clear history, reset, and context-budget policy"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: g1
+    type: mcq
+    question: "Why can a long chat lose an early instruction?"
+    options:
+      - "The application may truncate or summarize earlier content as the context fills"
+      - "The model deletes its own weights during the conversation"
+      - "The browser clears every third message"
+      - "MCP forces the history to reset"
+    correct: 0
+    explanation: "Conversation continuity depends on the context your application sends. Older content can be removed or compressed."
+  - id: g2
+    type: matching
+    question: "Match each context problem to the most direct response."
+    pairs:
+      - { left: "Wrong fact keeps repeating", right: "Remove the poisoned fact" }
+      - { left: "History hides the current goal", right: "Compress or reset" }
+      - { left: "Too many tools confuse selection", right: "Scope the tool set" }
+      - { left: "Retrieved sources disagree", right: "Rerank and deduplicate" }
+    explanation: "Naming the context failure points to the control you should change."
+  - id: g3
+    type: mcq
+    question: "A new request is unrelated to the current thread. What should the interface make easy?"
+    options:
+      - "Start a new thread with a clean context"
+      - "Hide the topic change from the user"
+      - "Add the new topic to every future prompt"
+      - "Write the old thread into model weights"
+    correct: 0
+    explanation: "A visible reset prevents accidental carryover and reduces cognitive load."
+isModuleGate: true
+---
+
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+
+Pass this gate to mark **Conversation Engineering** complete.
+
+<KeyInsightCallout>
+Conversation quality comes from deliberate state selection, not from keeping a thread alive forever.
+</KeyInsightCallout>
