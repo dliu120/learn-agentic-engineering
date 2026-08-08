@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-08",
+  "generatedAt": "2026-08-08T14:00:16.501Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-08.mp3",
+    "vtt": "/audio/daily/2026-08-08.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: The CPU is back: Rethinking the CPU-GPU split for LLM inference. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 2: I run a 9-model LLM council to write a financial newsletter. What breaks. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 3: Show HN: Hosted LLM Wiki. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 4: Cloudflare launches Kitesurf, a browser built for AI agents. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens. Item 5: Supply-chain hygiene for Emacs: LLM review of package upgrades. Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens. Item 6: Show HN: My AI agent built and shipped a browser game on its own. Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "the-cpu-is-back-rethinking-the-cpu-gpu-split-for-0",
+      "headline": "The CPU is back: Rethinking the CPU-GPU split for LLM inference",
+      "sourceLinks": [
+        {
+          "title": "The CPU is back: Rethinking the CPU-GPU split for LLM inference",
+          "url": "https://www.redhat.com/en/blog/cpu-back-rethinking-cpu-gpu-split-llm-inference",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 39,
+          "comments": 5
+        }
+      }
+    },
+    {
+      "id": "i-run-a-9-model-llm-council-to-write-a-financial-1",
+      "headline": "I run a 9-model LLM council to write a financial newsletter. What breaks",
+      "sourceLinks": [
+        {
+          "title": "I run a 9-model LLM council to write a financial newsletter. What breaks",
+          "url": "https://marketdaily.ai/blog/eng-llm-council-judge-en-202608",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-hosted-llm-wiki-2",
+      "headline": "Show HN: Hosted LLM Wiki",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Hosted LLM Wiki",
+          "url": "https://getmana.md/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "cloudflare-launches-kitesurf-a-browser-built-for-3",
+      "headline": "Cloudflare launches Kitesurf, a browser built for AI agents",
+      "sourceLinks": [
+        {
+          "title": "Cloudflare launches Kitesurf, a browser built for AI agents",
+          "url": "https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "supply-chain-hygiene-for-emacs-llm-review-of-pac-4",
+      "headline": "Supply-chain hygiene for Emacs: LLM review of package upgrades",
+      "sourceLinks": [
+        {
+          "title": "Supply-chain hygiene for Emacs: LLM review of package upgrades",
+          "url": "https://blog.fidelramos.net/software/emacs-straight-ai-review",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. No strong keyword match; defaulted to foundations. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to foundations.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-my-ai-agent-built-and-shipped-a-browser--5",
+      "headline": "Show HN: My AI agent built and shipped a browser game on its own",
+      "sourceLinks": [
+        {
+          "title": "Show HN: My AI agent built and shipped a browser game on its own",
+          "url": "https://overlk.itch.io/afterimage",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to From Prompts to Harnesses. Matched From Prompts to Harnesses on: agent. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "Matched From Prompts to Harnesses on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
