@@ -843,7 +843,7 @@ jobs:
       - run: npm run build
       - name: commit content+audio
         run: |
-          git config user.name "allm-bot"; git config user.email "bot@users.noreply.github.com"
+          git config user.name "dliu120"; git config user.email "2090090+dliu120@users.noreply.github.com"
           git add src/content/daily public/audio/daily
           git commit -m "daily: ${{ github.run_id }}" || echo "no changes"
           git push
