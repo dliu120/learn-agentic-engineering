@@ -1,0 +1,208 @@
+{
+  "date": "2026-08-09",
+  "generatedAt": "2026-08-09T14:02:12.797Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-09.mp3",
+    "vtt": "/audio/daily/2026-08-09.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: China created a system that simulates the Earth with billions of AI agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 2: Show HN: FAIth – a syntax-free JVM language, compiled by an LLM front-end. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 3: Self Hosting Coding LLMs. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 4: Time has started serving ads to AI agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 5: What LLMs Should Do. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: Show HN: Job Seeker – AI agent skills for job searching. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: agent skill, skills. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "china-created-a-system-that-simulates-the-earth--0",
+      "headline": "China created a system that simulates the Earth with billions of AI agents",
+      "sourceLinks": [
+        {
+          "title": "China created a system that simulates the Earth with billions of AI agents",
+          "url": "https://twitter.com/howtoprompt__/status/2086110097663795365",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-faith-a-syntax-free-jvm-language-compile-1",
+      "headline": "Show HN: FAIth – a syntax-free JVM language, compiled by an LLM front-end",
+      "sourceLinks": [
+        {
+          "title": "Show HN: FAIth – a syntax-free JVM language, compiled by an LLM front-end",
+          "url": "https://github.com/krossovochkin/faith",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "self-hosting-coding-llms-2",
+      "headline": "Self Hosting Coding LLMs",
+      "sourceLinks": [
+        {
+          "title": "Self Hosting Coding LLMs",
+          "url": "https://blog.samibadawi.com/2026/08/self-hosting-coding-llms.html",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "time-has-started-serving-ads-to-ai-agents-3",
+      "headline": "Time has started serving ads to AI agents",
+      "sourceLinks": [
+        {
+          "title": "Time has started serving ads to AI agents",
+          "url": "https://digiday.com/media/time-has-started-serving-ads-to-ai-agents/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 8,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "what-llms-should-do-4",
+      "headline": "What LLMs Should Do",
+      "sourceLinks": [
+        {
+          "title": "What LLMs Should Do",
+          "url": "https://adamperesztegi.com/posts/what-llms-should-do/",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-job-seeker-ai-agent-skills-for-job-searc-5",
+      "headline": "Show HN: Job Seeker – AI agent skills for job searching",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Job Seeker – AI agent skills for job searching",
+          "url": "https://github.com/galiprandi/job-seeker",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: agent skill, skills. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: agent skill, skills.",
+      "tags": [
+        "agent skill",
+        "skills"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
