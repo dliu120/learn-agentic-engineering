@@ -44,8 +44,10 @@ export interface Manifest {
 
 const empty = (): ProgressState => ({ version: 1, lessons: {}, quizzes: {}, gates: {}, streak: { count: 0 } });
 let memoryState: ProgressState | null = null;
+let memoryIsAuthoritative = false;
 
 function read(): ProgressState {
+  if (memoryIsAuthoritative) return memoryState ?? empty();
   try {
     const raw = storageGet(STORAGE_KEY);
     if (!raw) return memoryState ?? empty();
@@ -86,8 +88,8 @@ function read(): ProgressState {
         changed = true;
       }
     }
-    if (changed) storageSet(STORAGE_KEY, JSON.stringify(state));
     memoryState = state;
+    if (changed) memoryIsAuthoritative = !storageSet(STORAGE_KEY, JSON.stringify(state));
     return state;
   } catch {
     return memoryState ?? empty();
@@ -97,6 +99,7 @@ function read(): ProgressState {
 function write(s: ProgressState): boolean {
   memoryState = s;
   const persisted = storageSet(STORAGE_KEY, JSON.stringify(s));
+  memoryIsAuthoritative = !persisted;
   emit();
   return persisted;
 }

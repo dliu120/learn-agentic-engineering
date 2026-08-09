@@ -7,7 +7,14 @@ import {
 } from '../src/content/modules';
 import { MODULE_IDS } from '../src/content/schemas/module-ids';
 import { buildManifest } from '../src/lib/manifest';
-import { getState, importJSON, reset, setLastVisited, STORAGE_KEY } from '../src/lib/progress';
+import {
+  getState,
+  importJSON,
+  markLessonComplete,
+  reset,
+  setLastVisited,
+  STORAGE_KEY,
+} from '../src/lib/progress';
 
 class MemoryStorage implements Storage {
   private values = new Map<string, string>();
@@ -214,6 +221,33 @@ describe('curriculum model', () => {
       gates: {},
       streak: { count: 0 },
     }))).toBe(false);
+  });
+
+  it('keeps newer in-memory progress when readable storage cannot be updated', () => {
+    const stale = JSON.stringify({
+      version: 1,
+      lessons: {},
+      quizzes: {},
+      gates: {},
+      streak: { count: 0 },
+    });
+    Object.defineProperty(globalThis, 'localStorage', {
+      configurable: true,
+      value: {
+        length: 1,
+        clear() {},
+        getItem: () => stale,
+        key: () => STORAGE_KEY,
+        removeItem() {},
+        setItem: () => {
+          throw new Error('quota exceeded');
+        },
+      } satisfies Storage,
+    });
+
+    markLessonComplete('foundations-prompts-to-harnesses', 'prompt-context-harness');
+
+    expect(getState().lessons['foundations-prompts-to-harnesses/prompt-context-harness']?.completed).toBe(true);
   });
 
   it('rejects malformed progress imports instead of wiping state', () => {
