@@ -1,0 +1,134 @@
+---
+moduleId: rag-retrieval
+lessonId: semantic-rag-graphrag
+title: "Semantic RAG, Hybrid Retrieval, and GraphRAG"
+order: 3
+topicNumbers: [14, 15, 16]
+summary: "Choose a retrieval structure from the question you need to answer, not from whichever RAG label is fashionable."
+estimatedMinutes: 15
+prerequisites:
+  - moduleId: rag-retrieval
+    lessonId: hybrid-search-rrf-reranking
+    label: "Hybrid Search, RRF, and Reranking"
+references:
+  - title: "GraphRAG Overview"
+    url: "https://microsoft.github.io/graphrag/"
+    source: "Microsoft"
+  - title: "GraphRAG Query Engine"
+    url: "https://microsoft.github.io/graphrag/query/overview/"
+    source: "Microsoft"
+  - title: "GraphRAG Detailed Configuration"
+    url: "https://microsoft.github.io/graphrag/config/yaml/"
+    source: "Microsoft"
+  - title: "From Local to Global: A Graph RAG Approach"
+    url: "https://arxiv.org/abs/2404.16130"
+    source: "Microsoft Research"
+deepDiveTopics:
+  - "GraphRAG local, global, and DRIFT search"
+  - "Knowledge-graph indexing cost and update strategy"
+objectives:
+  - "Distinguish semantic vector retrieval, hybrid retrieval, and GraphRAG"
+  - "Choose local or global graph search based on the question shape"
+  - "Account for GraphRAG indexing, freshness, and query cost before adopting it"
+hasAudio: false
+quiz:
+  - id: q1
+    type: mcq
+    question: "A support query contains an exact error code plus a natural-language description. Which first-stage retrieval is the strongest default?"
+    options:
+      - "Hybrid retrieval: lexical search for the code plus semantic search for the description"
+      - "Pure semantic vector search"
+      - "GraphRAG global search"
+      - "Long-term memory"
+    correct: 0
+    explanation: "The exact identifier favors lexical retrieval while the paraphrased description favors semantic retrieval. Hybrid search covers both."
+  - id: q2
+    type: mcq
+    question: "Which question most strongly justifies GraphRAG global search?"
+    options:
+      - "What themes and relationships appear across this entire research archive?"
+      - "Which paragraph contains error code ERR_2049?"
+      - "What did this user choose in the current form?"
+      - "What was the last tool result in this agent run?"
+    correct: 0
+    explanation: "Global search uses community summaries to reason about corpus-wide themes. The other questions need lexical retrieval or application state."
+  - id: q3
+    type: multi
+    question: "What costs should be justified before adopting GraphRAG?"
+    options:
+      - "LLM-assisted entity and relationship extraction"
+      - "Community detection and summary generation"
+      - "A freshness plan when source documents change"
+      - "The assumption that every query is graph-shaped"
+    correct: [0, 1, 2]
+    explanation: "GraphRAG adds an expensive structured index and must be updated. It is not automatically the right retrieval path for every query."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Three retrieval shapes" tag="RAG">
+
+- **Semantic RAG** embeds the query and text chunks, then retrieves nearby vectors. It is good at paraphrase and topical similarity.
+- **Hybrid RAG** combines semantic retrieval with lexical search such as BM25, then fuses and reranks the candidates. It is the strongest general default.
+- **GraphRAG** extracts entities and relationships, then builds communities and summaries before query time. Tuned claim extraction is optional and off by default. It is useful when the answer depends on connections or corpus-wide structure.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+“Semantic RAG” is baseline vector retrieval, not a separate memory system. GraphRAG changes the index structure because some questions cannot be answered by nearest chunks alone.
+</KeyInsightCallout>
+
+## Start with the question shape
+
+<TradeoffTable
+  headers={["Question shape", "Best starting point", "Why"]}
+  rows={[
+    ["Paraphrased fact lookup", "Semantic vector retrieval", "Meaning matters more than exact wording"],
+    ["IDs, names, and natural language together", "Hybrid retrieval", "Lexical and semantic signals cover opposite blind spots"],
+    ["How is entity A connected to entity B?", "GraphRAG local search", "Relationships and neighboring entities are part of the answer"],
+    ["What themes span the whole corpus?", "GraphRAG global search", "Community summaries support corpus-level aggregation"]
+  ]}
+/>
+
+<MisconceptionFlip
+  claim={"GraphRAG is a better vector database."}
+  correction={"GraphRAG is an indexing and query pipeline that creates a knowledge graph, community hierarchy, and summaries. It may still use vectors, but the graph structure is the point."}
+/>
+
+## What GraphRAG builds
+
+Baseline RAG chunks text and embeds the chunks. GraphRAG adds an offline pipeline:
+
+1. extract entities and relationships from the text units, with optional tuned claim extraction,
+2. cluster the graph into communities,
+3. summarize those communities at several levels,
+4. keep links back to source text for evidence,
+5. retrieve graph and text context using the query mode that fits the question.
+
+That extra structure is not free. Indexing uses model calls, graph processing, storage, and a
+freshness strategy. If documents change frequently, update cost can dominate the value.
+
+<DeepDive title="Local, global, DRIFT, and basic search">
+
+- **Local search** starts from entities related to the query, expands through neighbors, and mixes graph facts with source chunks.
+- **Global search** map-reduces community reports to answer questions about themes across the whole dataset.
+- **DRIFT search** begins broadly with community information, then follows local questions for more detail.
+- **Basic search** is ordinary top-k vector retrieval and remains the cheaper answer for ordinary fact lookup.
+
+</DeepDive>
+
+<FailureModeList
+  items={[
+    "Using pure semantic search for exact IDs and silently missing the literal match.",
+    "Building GraphRAG before proving that relationship-heavy or corpus-wide questions matter.",
+    "Letting entity extraction errors become confident graph edges with no source trace.",
+    "Rebuilding an expensive graph index on every small document update.",
+    "Returning a graph summary without preserving citations to the original text units."
+  ]}
+/>

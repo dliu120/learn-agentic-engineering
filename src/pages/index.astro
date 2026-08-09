@@ -12,8 +12,10 @@ const lessons = await getCollection('lessons');
 const countFor = (id: string) => lessons.filter((l) => l.data.moduleId === id && !l.data.isModuleGate).length;
 const manifest = buildManifest(lessons);
 const today = await latestDay();
+const fundamentalsModules = MODULES_BY_TRACK.fundamentals;
+const fundamentalsLessonCount = fundamentalsModules.reduce((total, module) => total + countFor(module.id), 0);
 const coreModules = MODULES_BY_TRACK['core-stages'];
-const optionalTracks = CURRICULUM_TRACKS.filter((track) => track.id !== 'core-stages');
+const optionalTracks = CURRICULUM_TRACKS.filter((track) => !['fundamentals', 'core-stages'].includes(track.id));
 ---
 
 <BaseLayout title="ALLM Academy — Production-LLM Engineering" wide>
@@ -24,9 +26,9 @@ const optionalTracks = CURRICULUM_TRACKS.filter((track) => track.id !== 'core-st
         From one prompt to <span class="text-accent">engineered agent systems</span>.
       </h1>
       <p class="mt-6 max-w-2xl text-fluid leading-relaxed text-text-muted">
-        {TOTAL_TOPIC_COUNT} focused topics on the systems around the model: prompting, conversation, response contracts,
-        loops, graphs, interoperability, state, serving, retrieval, evaluation,
-        reliability, cost, and safety.
+        {fundamentalsLessonCount} fundamentals and {TOTAL_TOPIC_COUNT} focused topics on the systems around the model:
+        context, prompting, conversation, response contracts, loops, graphs, interoperability, state, serving,
+        retrieval, evaluation, reliability, cost, and safety.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-5">
         <a
@@ -34,7 +36,7 @@ const optionalTracks = CURRICULUM_TRACKS.filter((track) => track.id !== 'core-st
           class="rounded-sm bg-accent px-5 py-3 font-medium text-bg no-underline transition-colors hover:bg-accent-hover active:translate-y-px"
           data-resume-target
         >
-          Start with Prompt Engineering
+          Start with Fundamentals
         </a>
         <a
           href={withBase('/today')}
@@ -48,6 +50,10 @@ const optionalTracks = CURRICULUM_TRACKS.filter((track) => track.id !== 'core-st
     <aside class="border-t border-border pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-1" aria-label="Course overview">
       <p class="eyebrow">Course Index</p>
       <dl class="mt-5 space-y-4">
+        <div class="grid grid-cols-[4rem_1fr] gap-4 py-4">
+          <dt class="font-mono text-2xl tabular-nums text-text">{fundamentalsLessonCount}</dt>
+          <dd class="text-sm leading-relaxed text-text-muted">Fundamentals for model calls, context, retrieval, memory, tools, and agents</dd>
+        </div>
         <div class="grid grid-cols-[4rem_1fr] gap-4 py-4">
           <dt class="font-mono text-2xl tabular-nums text-text">{coreModules.length}</dt>
           <dd class="text-sm leading-relaxed text-text-muted">Core stages from one request to graph-controlled systems</dd>
@@ -112,6 +118,19 @@ const optionalTracks = CURRICULUM_TRACKS.filter((track) => track.id !== 'core-st
   }
 
   <section class="pt-12">
+    <div class="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
+      <div>
+        <p class="eyebrow">Start Here</p>
+        <h2 class="mt-2 text-3xl font-semibold tracking-[-0.03em] text-text">Fundamentals</h2>
+      </div>
+      <span class="text-sm text-text-faint">{fundamentalsLessonCount} concise lessons · no assumed vocabulary</span>
+    </div>
+    <div class="mt-7 space-y-1">
+      {fundamentalsModules.map((module) => <ModuleCard module={module} lessonCount={countFor(module.id)} />)}
+    </div>
+  </section>
+
+  <section class="mt-12">
     <div class="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
       <div>
         <p class="eyebrow">Curriculum</p>

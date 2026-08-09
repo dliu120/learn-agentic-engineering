@@ -1,0 +1,147 @@
+---
+moduleId: agent-engineering-fundamentals
+lessonId: retrieval-state-memory
+title: "Retrieval, State, and Memory"
+order: 3
+topicNumbers: []
+summary: "Separate what a call can see now from what an application searches, tracks, checkpoints, resumes, or remembers."
+estimatedMinutes: 13
+prerequisites:
+  - moduleId: agent-engineering-fundamentals
+    lessonId: context-windows-token-budgets
+    label: "Context Windows and Token Budgets"
+references:
+  - title: "Effective Context Engineering for AI Agents"
+    url: "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+    source: "Anthropic Engineering"
+  - title: "LLM Fundamentals"
+    url: "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals"
+    source: "Microsoft Learn"
+  - title: "GraphRAG"
+    url: "https://microsoft.github.io/graphrag/"
+    source: "Microsoft Research"
+deepDiveTopics:
+  - "Lexical, semantic, and graph retrieval"
+  - "Retention and correction policies"
+objectives:
+  - "Distinguish current-call context, retrieval, RAG, thread state, checkpoints, durable tasks, and long-term memory"
+  - "Compare lexical, semantic, and GraphRAG retrieval at an orientation level"
+  - "Choose the right scope and lifetime for information an application must retain"
+hasAudio: false
+visualizations:
+  - title: "State across calls and execution"
+    summary: "Current context is assembled from retrieved evidence and application state while checkpoints, tasks, and long-term memory persist at different scopes."
+quiz:
+  - id: q1
+    type: matching
+    question: "Match each mechanism to its primary role."
+    pairs:
+      - { left: "Current-call context", right: "Information directly visible to this model invocation" }
+      - { left: "Retrieval", right: "Search that selects stored information for possible use" }
+      - { left: "Checkpoint", right: "Snapshot used to resume workflow execution" }
+      - { left: "Durable task", right: "Tracked long-running work with a handle and status" }
+      - { left: "Long-term memory", right: "Retained information intended for use across threads" }
+    explanation: "The mechanisms differ by job, scope, and lifetime. Calling all of them memory hides important design decisions."
+  - id: q2
+    type: mcq
+    question: "A user searches for the exact error code ERR-4187. Which retrieval approach is the strongest starting point?"
+    options:
+      - "Lexical retrieval that matches the exact token"
+      - "Semantic retrieval only"
+      - "A workflow checkpoint"
+      - "Long-term user memory"
+    correct: 0
+    explanation: "Lexical search is strong for exact identifiers and phrases. Semantic search is useful when meaning matches despite different wording; production systems may combine both."
+  - id: q3
+    type: mcq
+    question: "When is GraphRAG most justified?"
+    options:
+      - "When corpus-level themes or relationships among entities matter enough to justify extra indexing and query work"
+      - "Whenever one exact keyword lookup is needed"
+      - "Whenever a conversation has more than one turn"
+      - "Whenever the context window is nearly full"
+    correct: 0
+    explanation: "GraphRAG builds entity, relationship, and community structures for relationship-heavy or corpus-level questions, with more cost and complexity than ordinary retrieval."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Name the storage and execution layer" tag="orientation">
+
+| Term | What it does | Typical scope |
+|---|---|---|
+| **Current-call context** | Gives one model invocation information it can directly use | One call |
+| **Retrieval** | Searches stored information and selects candidates | One search |
+| **RAG** | Retrieves evidence and places selected evidence into a model request | One answering step |
+| **Thread state** | Tracks messages, variables, and decisions for one ongoing thread | One conversation or run |
+| **Checkpoint** | Saves a workflow snapshot so execution can resume | One workflow |
+| **Durable task** | Represents long-running work with an ID, status, and result | One operation |
+| **Long-term memory** | Retains useful information for future threads | Cross-thread |
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Retrieval finds information. State tracks work. Memory retains selected information. Context is
+what the model can see **right now**.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="stateful-execution"
+  title="A stateless call inside a stateful system"
+  summary="The application assembles current context from thread state, retrieved evidence, and selected memory, then checkpoints workflow progress and tracks durable work outside the model call."
+  height={360}
+/>
+
+## Retrieval is a selection step
+
+**Lexical retrieval** matches words, phrases, and exact tokens. It is strong for names, product
+codes, error strings, and quoted text. **Semantic retrieval** embeds queries and documents as
+vectors so differently worded passages can match by meaning. It is strong for paraphrases and
+conceptual similarity, but may underweight an exact identifier.
+
+RAG—retrieval-augmented generation—uses retrieval to select evidence, then adds that evidence to
+the current model request. The model cannot use a retrieved document until some layer places the
+relevant content or a usable representation into its context.
+
+## State is not one bucket
+
+Thread state might hold the latest user goal and completed tool results. A checkpoint records
+enough workflow state to restart after a pause or crash. A durable task gives long-running work a
+stable handle so a client can inspect status, cancel, or fetch a later result.
+
+Long-term memory crosses thread boundaries. It needs a reason to exist, an owner, a retention
+rule, a correction path, and a retrieval policy. Storing everything makes future selection
+harder and creates privacy and staleness risks.
+
+<MisconceptionFlip
+  claim={"RAG gives the model permanent knowledge."}
+  correction={"RAG selects evidence for a request. Unless the application stores something separately, that evidence disappears from the model's view after the call."}
+/>
+
+<DeepDive title="Where GraphRAG fits">
+
+GraphRAG indexes a corpus into entities, relationships, and community structures or summaries.
+That can help with questions about connections among people, organizations, events, or themes
+across a large corpus—not just the nearest passage to one query.
+
+The tradeoff is additional extraction, indexing, storage, and query work. Use it for
+relationship-heavy or corpus-level questions that simpler lexical, vector, or hybrid retrieval
+does not answer well. The dedicated retrieval modules cover design and evaluation in depth.
+
+</DeepDive>
+
+<FailureModeList
+  title="Category mistakes"
+  items={[
+    "Calling conversation history memory without defining who stores it or for how long.",
+    "Treating a checkpoint as protection against duplicate external side effects.",
+    "Using semantic search alone for exact IDs, names, or error codes.",
+    "Building a knowledge graph before proving simpler retrieval cannot answer the target questions.",
+  ]}
+/>

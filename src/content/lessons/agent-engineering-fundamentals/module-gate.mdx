@@ -1,0 +1,92 @@
+---
+moduleId: agent-engineering-fundamentals
+lessonId: module-gate
+title: "Gate: Agent Engineering Fundamentals"
+order: 99
+topicNumbers: []
+summary: "Check that you can separate model requests, context budgets, retrieval and state, and orchestration structures."
+estimatedMinutes: 10
+prerequisites:
+  - moduleId: agent-engineering-fundamentals
+    lessonId: tools-agents-orchestration
+    label: "Tools, Agents, and Orchestration"
+references: []
+deepDiveTopics: []
+objectives:
+  - "Trace the boundaries around one model call"
+  - "Classify retrieval, state, memory, and durable execution mechanisms"
+  - "Choose the simplest fitting tool and orchestration structure"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: mcq
+    question: "A chat application shows ten prior turns, but the next request sends only the latest user message. What can the model directly use?"
+    options:
+      - "Only the content supplied or referenced in the current request"
+      - "All ten turns because the interface displayed them"
+      - "Any turn generated with the same temperature"
+      - "Everything stored in the user's browser"
+    correct: 0
+    explanation: "The model call has no hidden application state. The application or provider must attach relevant prior information to the current request."
+  - id: q2
+    type: multi
+    question: "A request is approaching its context limit. Which responses directly manage the finite budget?"
+    options:
+      - "Reserve output tokens"
+      - "Select relevant evidence"
+      - "Compress older history"
+      - "Isolate a large side task"
+      - "Assume all earlier turns became permanent memory"
+    correct: [0, 1, 2, 3]
+    explanation: "Output reservation, selection, compression, and isolation manage the current-call budget. Context does not become memory automatically."
+  - id: q3
+    type: matching
+    question: "Match each need to the best mechanism."
+    pairs:
+      - { left: "Find an exact invoice number", right: "Lexical retrieval" }
+      - { left: "Find passages with similar meaning", right: "Semantic or vector retrieval" }
+      - { left: "Resume a paused workflow", right: "Checkpoint" }
+      - { left: "Track a long-running export", right: "Durable task" }
+      - { left: "Reuse a preference across threads", right: "Long-term memory with a retention policy" }
+    explanation: "Different needs require different search, execution, and retention mechanisms."
+  - id: q4
+    type: mcq
+    question: "Which problem is the best fit for GraphRAG rather than a simple exact lookup?"
+    options:
+      - "Explain relationships and major themes across many entities in a large corpus"
+      - "Find the page containing error code E17"
+      - "Store the latest conversation turn"
+      - "Reserve output tokens in a context window"
+    correct: 0
+    explanation: "GraphRAG's entity, relationship, and community structures target corpus-level and relationship-heavy questions, with additional indexing and query cost."
+  - id: q5
+    type: mcq
+    question: "A task has two independent research branches that must join before one approval step. No separate agent boundaries are needed. What is the simplest fitting structure?"
+    options:
+      - "An explicit workflow graph with parallel branches and a join"
+      - "An unbounded model-tool loop"
+      - "Several agents because graphs require them"
+      - "One larger prompt with no execution structure"
+    correct: 0
+    explanation: "The graph makes parallel work, the join, and approval visible. Multi-agent is optional and needs a separate justification."
+isModuleGate: true
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+
+<ConceptCard title="The fundamental boundaries" tag="module review">
+
+- A **model call** sees the context assembled for that request.
+- A **context window** is a finite input-plus-output token budget.
+- **Retrieval** selects information; **RAG** places selected evidence into a request.
+- **State, checkpoints, tasks, and memory** have different scopes and lifetimes.
+- **Tools, loops, graphs, and multiple agents** add different kinds of control.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Agent engineering gets easier when every piece has a named boundary: what the model sees, what
+the application stores, what code executes, what can repeat, and what must stop.
+</KeyInsightCallout>

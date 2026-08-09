@@ -30,7 +30,8 @@ const missing = all.filter((n) => !seen.has(n));
 
 console.log('Topic coverage by module:');
 for (const [m, nums] of Object.entries(byModule)) {
-  console.log(`  ${m}: ${[...new Set(nums)].sort((a, b) => a - b).join(', ')}`);
+  const topics = [...new Set(nums)].sort((a, b) => a - b);
+  console.log(`  ${m}: ${topics.length > 0 ? topics.join(', ') : '(unnumbered primer)'}`);
 }
 
 if (missing.length) {

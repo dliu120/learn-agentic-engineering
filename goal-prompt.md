@@ -3,8 +3,9 @@
 > **Historical build brief.** This file records the original 9-module / 22-topic implementation prompt.
 > The current curriculum and design source of truth is [`CONTEXT.md`](./CONTEXT.md),
 > [`src/content/modules.ts`](./src/content/modules.ts), and [`README.md`](./README.md).
-> Current code uses 3 progressively disclosed paths, 14 modules, 32 topics, one restrained accent,
-> and accessible 2D teaching diagrams. Conflicting counts or visual directions below are superseded.
+> Current code uses 4 progressively disclosed layers, 15 modules, 4 unnumbered fundamentals lessons,
+> 32 focused topics, one restrained accent, and accessible 2D teaching diagrams. Conflicting counts
+> or visual directions below are superseded.
 
 ## 1. Mission
 

@@ -1,5 +1,6 @@
 // These IDs are stable URL and localStorage keys. Display names may evolve independently.
 export const MODULE_IDS = [
+  'agent-engineering-fundamentals',
   'foundations-prompts-to-harnesses',
   'conversation-context-engineering',
   'reliable-structured-output-tool-calling',

@@ -46,6 +46,26 @@ quiz:
       - "One user message"
     correct: 0
     explanation: "The host manages a dedicated client connection for each server."
+  - id: g4
+    type: mcq
+    question: "Which statement correctly compares deprecated HTTP+SSE with current Streamable HTTP?"
+    options:
+      - "The old transport used a dedicated GET SSE channel and separate POST endpoint; the current transport POSTs to one MCP endpoint and may stream that response with SSE"
+      - "The current transport removed every use of SSE"
+      - "The old transport was stateless but the current transport stores conversation history"
+      - "The transports differ only in their names"
+    correct: 0
+    explanation: "Streamable HTTP replaced the old connection topology. SSE can still carry a streamed response, but it is no longer a dedicated hidden session channel."
+  - id: g5
+    type: mcq
+    question: "A remote MCP operation will finish after the client disconnects. What should represent that work?"
+    options:
+      - "An explicit durable task handle"
+      - "The transport socket"
+      - "The model's context window"
+      - "A plugin name"
+    correct: 0
+    explanation: "Long-running work needs an explicit handle that can be queried or resumed. The protocol connection is not hidden durable application state."
 isModuleGate: true
 ---
 

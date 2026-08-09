@@ -59,6 +59,9 @@ describe('curriculum model', () => {
   });
 
   it('keeps exact ordered membership for every curriculum track', () => {
+    expect(MODULES_BY_TRACK.fundamentals.map((module) => module.id)).toEqual([
+      'agent-engineering-fundamentals',
+    ]);
     expect(MODULES_BY_TRACK['core-stages'].map((module) => module.id)).toEqual([
       'foundations-prompts-to-harnesses',
       'conversation-context-engineering',
@@ -83,6 +86,7 @@ describe('curriculum model', () => {
 
   it('defines a five-stage prerequisite chain for the core path', () => {
     const core = MODULES_BY_TRACK['core-stages'];
+    expect(core[0].prerequisites).toContain('agent-engineering-fundamentals');
     expect(core.map((module) => module.name)).toEqual([
       'Prompt Engineering',
       'Conversation Engineering',

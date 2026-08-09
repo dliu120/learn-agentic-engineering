@@ -1,0 +1,160 @@
+---
+moduleId: agent-engineering-fundamentals
+lessonId: tools-agents-orchestration
+title: "Tools, Agents, and Orchestration"
+order: 4
+topicNumbers: []
+summary: "Choose among a model call, typed tool, bounded agent loop, explicit graph, and multi-agent design without adding unnecessary machinery."
+estimatedMinutes: 14
+prerequisites:
+  - moduleId: agent-engineering-fundamentals
+    lessonId: retrieval-state-memory
+    label: "Retrieval, State, and Memory"
+references:
+  - title: "Building Effective Agents"
+    url: "https://www.anthropic.com/engineering/building-effective-agents"
+    source: "Anthropic Engineering"
+  - title: "MCP Architecture"
+    url: "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture"
+    source: "Model Context Protocol"
+  - title: "LLM Fundamentals"
+    url: "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals"
+    source: "Microsoft Learn"
+deepDiveTopics:
+  - "Workflow and agent boundaries"
+  - "Multi-agent justification"
+objectives:
+  - "Distinguish a model call, typed tool, bounded agent loop, explicit graph, and multi-agent pattern"
+  - "Explain tool, skill, plugin, and MCP at the correct abstraction layer"
+  - "Choose the simplest orchestration structure that meets the task's control needs"
+hasAudio: false
+visualizations:
+  - title: "From one request to explicit orchestration"
+    summary: "The control surface grows from one model call to tools, bounded loops, workflow graphs, and optional multi-agent boundaries."
+quiz:
+  - id: q1
+    type: ordering
+    question: "Order these structures from the smallest control surface to the largest."
+    options:
+      - "One model call"
+      - "A model call with a typed tool"
+      - "A bounded agent loop"
+      - "An explicit workflow graph"
+      - "A graph or workflow with multiple agents"
+    correct: [0, 1, 2, 3, 4]
+    explanation: "Each step adds control machinery. Multi-agent is an optional architecture on top of explicit orchestration, not a required destination."
+  - id: q2
+    type: multi
+    question: "Which reasons can justify a multi-agent design?"
+    options:
+      - "Isolating sensitive or noisy context"
+      - "Specializing policies, tools, or expertise"
+      - "Running independent work in parallel"
+      - "Assigning clear ownership across team or service boundaries"
+      - "Making the architecture sound more advanced"
+    correct: [0, 1, 2, 3]
+    explanation: "Isolation, specialization, parallelism, and ownership can outweigh coordination cost. Prestige cannot."
+  - id: q3
+    type: matching
+    question: "Match each capability term to the best description."
+    pairs:
+      - { left: "Tool", right: "Typed operation a host can execute" }
+      - { left: "Skill", right: "Reusable instructions or workflow that may use tools" }
+      - { left: "Plugin", right: "Installable package for a particular host ecosystem" }
+      - { left: "MCP", right: "Protocol for connecting hosts, clients, servers, and exposed capabilities" }
+    explanation: "The terms refer to operation, reusable capability, product packaging, and interoperability protocol."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Five control structures" tag="architecture map">
+
+| Structure | What controls the work |
+|---|---|
+| **Model call** | One request produces one response |
+| **Typed tool** | Code exposes a named operation with an input and output contract |
+| **Bounded agent loop** | A model chooses actions repeatedly within budgets and stop conditions |
+| **Explicit graph** | Nodes and edges define branches, joins, retries, waits, and human gates |
+| **Multi-agent pattern** | Separate agent contexts or policies coordinate through an explicit workflow |
+
+</ConceptCard>
+
+<KeyInsightCallout>
+Use the smallest structure that makes the required decisions, permissions, dependencies, and
+stopping conditions explicit.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="control-structures"
+  title="Control grows in stages"
+  summary="One request can gain typed operations, bounded iteration, explicit graph structure, and—only when justified—separate agent boundaries."
+  height={360}
+/>
+
+## Tools connect generation to action
+
+A tool is a typed operation such as `search_orders`, `create_ticket`, or `run_test`. The model may
+propose a tool name and arguments, but the host validates authorization and inputs, executes the
+operation, and returns the result. A tool contract narrows communication; it does not make the
+model trustworthy or the operation safe by itself.
+
+A **bounded agent loop** repeats a cycle such as model → tool → result → model. It needs maximum
+steps, time, token or cost budgets, no-progress detection, validation, and explicit success and
+failure exits.
+
+An **explicit graph** is useful when dependencies matter: two branches can run in parallel, a
+join waits for both, one failure retries locally, or a human must approve a write. A graph can use
+one model or no model in some nodes. It does not imply multiple agents.
+
+<TradeoffTable
+  headers={['Choose', 'When it is the simplest fit']}
+  rows={[
+    ['One call', 'The answer can be produced from available context without external action.'],
+    ['Tool use', 'The model needs a narrow operation or fresh external data.'],
+    ['Bounded loop', 'The next action depends on the previous result and may repeat.'],
+    ['Explicit graph', 'Branches, joins, retries, waiting, or ownership must be visible.'],
+    ['Multiple agents', 'Separate boundaries provide real isolation, specialization, parallelism, or ownership.'],
+  ]}
+/>
+
+## Tool, skill, plugin, and MCP
+
+- A **tool** is one executable, typed operation.
+- A **skill** is a reusable capability made from instructions, examples, workflows, or tools.
+- A **plugin** is packaging installed into a particular host product.
+- **MCP** is an interoperability protocol through which a host uses clients to connect to servers
+  that expose capabilities such as tools, resources, and prompts.
+
+These terms are related but not interchangeable. The dedicated capability module covers MCP
+transport, lifecycle, and trust boundaries in detail.
+
+<MisconceptionFlip
+  claim={"A serious agent system should have several agents."}
+  correction={"Multiple agents add handoffs, duplicated context, latency, failure modes, and evaluation work. Add them only when a concrete boundary pays for that cost."}
+/>
+
+<DeepDive title="Multi-agent is a boundary decision">
+
+Separate agents can protect a small context from unrelated work, give a specialist a restricted
+tool set, parallelize independent tasks, or map responsibility to different services or teams.
+If the agents share the same context, tools, policy, and owner and run sequentially, separate
+names may add ceremony without adding a useful boundary.
+
+</DeepDive>
+
+<FailureModeList
+  title="Orchestration mistakes"
+  items={[
+    "Giving a write tool to a model without authorization and argument validation in the host.",
+    "Calling repeated model-tool execution an agent without budgets or stop conditions.",
+    "Using a graph diagram that is not the control structure the runtime executes.",
+    "Splitting one coherent task across agents and paying coordination cost without a clear boundary.",
+  ]}
+/>

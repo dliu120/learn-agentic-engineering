@@ -1,0 +1,150 @@
+---
+moduleId: agent-engineering-fundamentals
+lessonId: context-windows-token-budgets
+title: "Context Windows and Token Budgets"
+order: 2
+topicNumbers: []
+summary: "Manage the finite space shared by instructions, history, retrieved evidence, tool definitions, and the model's answer."
+estimatedMinutes: 12
+prerequisites:
+  - moduleId: agent-engineering-fundamentals
+    lessonId: model-call-anatomy
+    label: "Anatomy of an LLM Request"
+references:
+  - title: "Effective Context Engineering for AI Agents"
+    url: "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+    source: "Anthropic Engineering"
+  - title: "Context Windows"
+    url: "https://platform.claude.com/docs/en/build-with-claude/context-windows"
+    source: "Anthropic"
+  - title: "LLM Fundamentals"
+    url: "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals"
+    source: "Microsoft Learn"
+deepDiveTopics:
+  - "Lost in the middle and context rot"
+  - "Context isolation"
+objectives:
+  - "Budget a context window across input and expected output"
+  - "Explain how tokenization, truncation, and poor placement can remove or bury useful information"
+  - "Apply selection, compression, and isolation without confusing context with memory"
+hasAudio: false
+visualizations:
+  - title: "The context window as a finite budget"
+    summary: "Instructions, conversation history, evidence, tools, and output reserve compete for one fixed token budget."
+quiz:
+  - id: q1
+    type: mcq
+    question: "A model supports a 32K-token context window. Why should an application reserve space before filling the input?"
+    options:
+      - "Input and generated output share the model's finite token budget"
+      - "The tokenizer can only process half of the advertised window"
+      - "Reserved tokens become long-term memory"
+      - "Sampling requires an empty second context window"
+    correct: 0
+    explanation: "The request needs room for both the assembled input and the expected response. Filling the entire budget with input can truncate content or leave too little output space."
+  - id: q2
+    type: multi
+    question: "Which actions improve context quality under a fixed budget?"
+    options:
+      - "Select only evidence relevant to the current step"
+      - "Compress older history while preserving decisions and open questions"
+      - "Isolate a side task in a separate context"
+      - "Append every available document in arrival order"
+    correct: [0, 1, 2]
+    explanation: "Selection, compression, and isolation raise signal density. Accumulating everything increases distraction and truncation risk."
+  - id: q3
+    type: mcq
+    question: "Which statement best distinguishes context from memory?"
+    options:
+      - "Context is what the current call can see; memory is retained information that may be selected into a later call"
+      - "Context and memory are two names for the same token buffer"
+      - "Memory is any text near the beginning of a prompt"
+      - "Context persists automatically after the response ends"
+    correct: 0
+    explanation: "Context is current-call input. Memory requires storage and a later decision to retrieve or include it."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+import TradeoffTable from '@/components/ui/TradeoffTable.astro';
+
+<ConceptCard title="Budget the whole request" tag="finite resource">
+
+A context window is the maximum token span the model can use for one generation. The budget may
+need to hold:
+
+- instructions and the current user request,
+- selected conversation history,
+- retrieved evidence and examples,
+- tool descriptions and tool results,
+- formatting overhead,
+- and enough space for the expected output.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+The context limit is an **input-plus-output budget**, not a target for how much input to send.
+</KeyInsightCallout>
+
+<VizWrapper
+  name="context-budget"
+  title="One window, competing uses"
+  summary="Instructions, history, retrieved evidence, and tool definitions fill the input side while an explicit reserve protects space for the response."
+  height={300}
+/>
+
+## Tokens are not characters
+
+Models process tokens, not words or characters. A token may represent a whole short word, part of
+a long word, punctuation, whitespace, or a fragment of code. Different tokenizers split the same
+text differently. Estimate with the tokenizer for the chosen model and leave margin for
+formatting and output.
+
+When a request exceeds the limit, an API may reject it or some layer may truncate it. Blindly
+dropping the oldest or middle content can remove an instruction, a decision, or the only relevant
+piece of evidence.
+
+## The hard limit is not the only limit
+
+Long input can fail before it reaches the maximum size:
+
+- **Lost in the middle:** information buried in a long sequence may be used less reliably than
+  information near clearer boundaries.
+- **Context rot:** irrelevant, stale, duplicated, or conflicting content reduces signal quality
+  as the context grows.
+- **Instruction competition:** old messages or retrieved text can distract from the current task.
+
+More tokens increase available space; they do not guarantee that every token receives equal
+attention or that conflicting evidence will be resolved correctly.
+
+<TradeoffTable
+  headers={['Technique', 'Use it when']}
+  rows={[
+    ['Select', 'Only a subset of history, documents, examples, or tools is relevant now.'],
+    ['Compress', 'Older detail can become a faithful summary of decisions, facts, and open work.'],
+    ['Isolate', 'A side task needs substantial context that should not pollute the main task.'],
+  ]}
+/>
+
+Compression can lose detail, selection can miss evidence, and isolation creates coordination
+work. Treat each move as a controlled tradeoff and preserve source links or identifiers when a
+summary may need verification.
+
+<MisconceptionFlip
+  claim={"If information was in an earlier context window, the model remembers it."}
+  correction={"Once it is absent from the current call, it is unavailable unless the application stores and supplies it again."}
+/>
+
+<FailureModeList
+  title="Context budget failures"
+  items={[
+    "Using the full advertised window for input and leaving too little space for the answer.",
+    "Truncating by position without protecting instructions, recent decisions, and critical evidence.",
+    "Summarizing away identifiers or constraints that later steps must use exactly.",
+    "Giving every tool and document to every step instead of selecting the relevant subset.",
+  ]}
+/>
