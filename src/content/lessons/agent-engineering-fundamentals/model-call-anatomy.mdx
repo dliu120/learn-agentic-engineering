@@ -1,0 +1,120 @@
+---
+moduleId: agent-engineering-fundamentals
+lessonId: model-call-anatomy
+title: "Anatomy of an LLM Request"
+order: 1
+topicNumbers: []
+summary: "Follow one model request from messages and tokens through inference, sampling, and the returned response."
+estimatedMinutes: 10
+prerequisites: []
+references:
+  - title: "LLM Fundamentals"
+    url: "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals"
+    source: "Microsoft Learn"
+  - title: "Context Windows"
+    url: "https://platform.claude.com/docs/en/build-with-claude/context-windows"
+    source: "Anthropic"
+deepDiveTopics:
+  - "Sampling controls"
+  - "Stateless model calls and stateful applications"
+objectives:
+  - "Trace a model request from messages to tokens to a response"
+  - "Explain the roles of inference, sampling, and stop conditions"
+  - "Explain why application state must be supplied or stored outside a model call"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: ordering
+    question: "Put the main stages of one LLM request in order."
+    options:
+      - "Assemble messages, instructions, and context"
+      - "Tokenize the assembled input"
+      - "Run model inference"
+      - "Select output tokens under decoding rules"
+      - "Return the response"
+    correct: [0, 1, 2, 3, 4]
+    explanation: "The application assembles input, the provider tokenizes it, the model computes token probabilities, decoding selects tokens, and the API returns a response."
+  - id: q2
+    type: mcq
+    question: "A second API request must remember a user's earlier correction. What must happen?"
+    options:
+      - "The application must include or retrieve that correction for the new request"
+      - "The model automatically remembers every prior call"
+      - "Temperature must be set to zero"
+      - "The tokenizer stores the correction between calls"
+    correct: 0
+    explanation: "A model call only operates on the input made available to that call. Conversation or user state must be managed explicitly by the application or a provider feature."
+  - id: q3
+    type: matching
+    question: "Match each part of a model call to its job."
+    pairs:
+      - { left: "Messages and context", right: "Supply instructions and evidence for this call" }
+      - { left: "Tokenizer", right: "Convert text and structured content into token IDs" }
+      - { left: "Inference", right: "Compute probabilities for possible next tokens" }
+      - { left: "Sampling or decoding", right: "Choose tokens until a stop condition" }
+    explanation: "These parts form one request pipeline, but they do different jobs."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import FailureModeList from '@/components/ui/FailureModeList.astro';
+
+<ConceptCard title="One request, six parts" tag="mental model">
+
+1. **Messages** identify roles and turns.
+2. **Instructions** say what the model should do and what constraints apply.
+3. **Context** supplies the facts, examples, tool descriptions, or retrieved text available now.
+4. **Tokenization** turns that assembled input into token IDs the model can process.
+5. **Inference and decoding** repeatedly estimate and select the next token.
+6. **Response handling** returns text, structured data, or a tool request to the application.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+A model call is a computation over the input available **for that call**. It is not a hidden application session.
+</KeyInsightCallout>
+
+## From input to output
+
+Your application first assembles an ordered request. Depending on the API, that request may
+contain system or developer instructions, user messages, prior turns, tool definitions, images,
+and retrieved documents. The provider converts the content into tokens.
+
+During **inference**, the model uses those tokens to estimate a probability distribution for the
+next token. A decoding strategy selects one candidate. The new token is added to the sequence,
+and the process repeats until the model or API reaches a stop sequence, an end token, or an
+output limit.
+
+Controls such as temperature or top-p affect how candidates are selected. They can make outputs
+more or less varied, but they do not add knowledge, state, or verification.
+
+## The response is not the application
+
+The returned response may be prose, JSON-like data, or a request to call a tool. The application
+still decides what to validate, display, store, execute, retry, or reject.
+
+If the next call needs an earlier fact, the application must do one of three things:
+
+- include it again in the new request,
+- retrieve it from an explicit store,
+- or use a documented provider feature that stores and reattaches state.
+
+An inference server may use internal caches while generating tokens. That implementation detail
+is not user memory and does not remove the application's responsibility for state.
+
+<MisconceptionFlip
+  claim={"The chat model remembers because the interface shows a conversation."}
+  correction={"The interface or service stores the thread and supplies relevant history again. The model only receives the context assembled for the current call."}
+/>
+
+<FailureModeList
+  title="Common request-level mistakes"
+  items={[
+    "Assuming a fact from an earlier call is available without including or retrieving it.",
+    "Treating sampling settings as factuality or correctness controls.",
+    "Executing a returned tool request without validating its name, arguments, and authorization.",
+  ]}
+/>

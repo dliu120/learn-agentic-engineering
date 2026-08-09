@@ -2,6 +2,28 @@
 
 This context defines the course's teaching vocabulary. The curriculum uses these terms consistently so learners can distinguish levels of control without treating every agent feature as the same thing.
 
+## Fundamentals
+
+**Model Call**:
+One request assembled from instructions, current context, and generation settings, followed by one sampled model response. It carries no hidden application state.
+_Avoid_: Agent run, conversation
+
+**Context Window**:
+The finite token budget visible to the model for one call, including input and generated output.
+_Avoid_: Long-term memory, database
+
+**Retrieval / RAG**:
+Selecting external information at query time and placing it into the current context. Semantic retrieval uses vector similarity; hybrid retrieval combines semantic and lexical signals; GraphRAG adds entity, relationship, and community structures for graph-shaped questions.
+_Avoid_: Memory, training
+
+**Application State**:
+Explicit data retained by the surrounding system, such as thread variables, checkpoints, or task status.
+_Avoid_: Context window
+
+**Orchestration**:
+The control logic that decides which model, tool, function, loop, graph node, or specialist agent runs next.
+_Avoid_: Prompting
+
 ## Engineering Stages
 
 **Prompt Engineering**:

@@ -12,6 +12,7 @@
   "objectives": [
     "Synthesize the end-to-end retrieval funnel from chunking through grounded generation",
     "Apply the right fix when dense, sparse, freshness, or metric failures appear",
+    "Choose semantic, hybrid, or graph-backed retrieval from the question shape",
     "Distinguish retrieval quality from generation quality across the pipeline"
   ],
   "hasAudio": false,
@@ -71,6 +72,32 @@
       ],
       "correct": 0,
       "explanation": "Embeddings are only comparable within the same model and version. Mixing a new query encoder with an old index produces incomparable vectors — a silent, catastrophic failure. Treat the index as a versioned artifact tied to its model and re-index fully on a swap."
+    },
+    {
+      "id": "g4",
+      "type": "mcq",
+      "question": "A team asks, 'What major themes connect the entire archive, and how do they relate?' Which retrieval path best fits?",
+      "options": [
+        "GraphRAG global search over community summaries",
+        "Pure BM25 over individual chunks",
+        "Long-term user memory",
+        "A larger model with no retrieval"
+      ],
+      "correct": 0,
+      "explanation": "The question requires corpus-wide aggregation and relationships. GraphRAG global search is designed for that shape; nearest-chunk retrieval often lacks a query term pointing to every relevant region."
+    },
+    {
+      "id": "g5",
+      "type": "mcq",
+      "question": "Why is GraphRAG not the default for every RAG workload?",
+      "options": [
+        "It adds model-assisted indexing, graph construction, summaries, update cost, and query modes that only pay off for graph-shaped questions",
+        "It cannot return citations to source text",
+        "It only works on public web data",
+        "It replaces semantic retrieval and cannot use vectors"
+      ],
+      "correct": 0,
+      "explanation": "GraphRAG can be powerful, but the structured index is materially more expensive. Ordinary semantic or hybrid retrieval remains simpler for ordinary fact lookup."
     }
   ],
   "isModuleGate": true
@@ -87,5 +114,5 @@ import TradeoffTable from '@/components/ui/TradeoffTable.astro';
 RAG is a funnel, not a magic box: chunk and embed the corpus, pull semantic and keyword matches, fuse and rerank a small set, and only a handful of passages reach the model. Prove you can connect each stage to its failure mode and its fix.
 
 <KeyInsightCallout>
-The model can only reason over what retrieval handed it — recall sets the ceiling for the whole system, everything downstream is precision and ordering, and grounded, correct, and well-cited remain three separate questions.
+The model can only reason over what retrieval handed it. Choose the retrieval structure from the question shape, treat recall as the ceiling, and measure grounded, correct, and well-cited as separate outcomes.
 </KeyInsightCallout>

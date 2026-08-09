@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { normalize, dedupe, filterItems, rank, mapModule, quietDay, templatedLessons } from '../scripts/daily/pipeline';
+import { normalizeDailyLessonModules } from '../scripts/daily/curate';
 import type { RawItem, SourcesConfig } from '../scripts/daily/types';
 
 const cfg: SourcesConfig = {
@@ -100,6 +101,9 @@ describe('mapModule', () => {
     expect(mapModule(mk({ title: 'Tail latencies in production inference' })).module).toBe('inference-internals-performance');
     expect(mapModule(mk({ title: 'Long-term memories for assistants' })).module).toBe('state-memory-durable-workflows');
   });
+  it('keeps the unnumbered fundamentals primer out of daily routing', () => {
+    expect(mapModule(mk({ title: 'A general introduction with no curriculum keywords' })).module).toBe('foundations-prompts-to-harnesses');
+  });
 });
 
 describe('schema-valid outputs', () => {
@@ -113,5 +117,13 @@ describe('schema-valid outputs', () => {
     const lessons = templatedLessons(ranked, cfg);
     expect(lessons[0].summaryBullets.length).toBeGreaterThanOrEqual(2);
     expect(lessons[0].sourceLinks[0].url).toMatch(/^https?:\/\//);
+  });
+  it('removes the unnumbered primer from curated secondary routing', () => {
+    const lesson = templatedLessons(
+      rank([mk({ title: 'agent rag retrieval reranking' })], cfg, () => 1),
+      cfg,
+    )[0];
+    lesson.secondaryModules = ['agent-engineering-fundamentals', 'rag-retrieval'];
+    expect(normalizeDailyLessonModules(lesson)?.secondaryModules).toEqual(['rag-retrieval']);
   });
 });

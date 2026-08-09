@@ -1,6 +1,6 @@
 import { MODULE_IDS, type ModuleId } from './schemas/module-ids';
 
-export const TRACK_IDS = ['core-stages', 'agent-capabilities', 'production-deep-dives'] as const;
+export const TRACK_IDS = ['fundamentals', 'core-stages', 'agent-capabilities', 'production-deep-dives'] as const;
 export type CurriculumTrackId = (typeof TRACK_IDS)[number];
 
 export interface CurriculumTrack {
@@ -30,6 +30,13 @@ export const TOTAL_TOPIC_COUNT = 32;
 
 export const CURRICULUM_TRACKS: CurriculumTrack[] = [
   {
+    id: 'fundamentals',
+    name: 'Fundamentals',
+    short: 'The shared mental model: model calls, context windows, retrieval, state, memory, tools, and agents.',
+    order: 0,
+    defaultOpen: true,
+  },
+  {
     id: 'core-stages',
     name: 'Core Stages',
     short: 'The shortest path from one model request to durable, graph-controlled systems.',
@@ -54,14 +61,32 @@ export const CURRICULUM_TRACKS: CurriculumTrack[] = [
 
 export const MODULES: ModuleMeta[] = [
   {
+    id: 'agent-engineering-fundamentals',
+    order: 0,
+    num: 'Primer',
+    name: 'Agent Engineering Fundamentals',
+    short: 'Learn the system map before choosing prompts, retrieval, memory, tools, loops, graphs, or multiple agents.',
+    why: 'The later techniques are easier when context, retrieval, state, memory, and orchestration are not blurred together.',
+    track: 'fundamentals',
+    prerequisites: [],
+    estimatedSessions: '2–3 sessions',
+    topicNumbers: [],
+    objectives: [
+      'Trace one model request from tokens and context to a sampled response',
+      'Separate context, retrieval, thread state, checkpoints, durable tasks, and long-term memory',
+      'Choose the smallest control structure from one call through tools, loops, graphs, and multi-agent systems',
+    ],
+    keywords: ['llm fundamentals', 'agent fundamentals', 'context window basics', 'agent system map'],
+  },
+  {
     id: 'foundations-prompts-to-harnesses',
     order: 1,
     num: 'S1',
     name: 'Prompt Engineering',
     short: 'Design one clear model request with instructions, examples, constraints, and a realistic success test.',
-    why: 'Start here to learn what a prompt can control—and what it cannot.',
+    why: 'After the primer, start the five-stage path by learning what one prompt can control—and what it cannot.',
     track: 'core-stages',
-    prerequisites: [],
+    prerequisites: ['agent-engineering-fundamentals'],
     estimatedSessions: '1–2 sessions',
     topicNumbers: [1],
     objectives: [
@@ -140,6 +165,7 @@ export const MODULES: ModuleMeta[] = [
       'Model workflows as nodes, edges, typed state, and termination conditions',
       'Use parallel branches and joins without creating race conditions',
       'Add checkpoints and human approval without hiding control flow',
+      'Choose shared-state nodes or multi-agent handoffs based on isolation and ownership needs',
     ],
     keywords: ['langgraph', 'stategraph', 'graph workflow', 'dag', 'directed acyclic graph', 'multi-agent', 'handoff', 'orchestrator-worker', 'parallel workers', 'state machine', 'subgraph'],
   },
@@ -158,6 +184,7 @@ export const MODULES: ModuleMeta[] = [
       'Distinguish tools, skills, plugins, and negotiated protocol extensions',
       'Explain MCP host, client, server, tool, resource, and prompt roles',
       'Choose local stdio or remote HTTP connections with explicit trust boundaries',
+      'Migrate legacy HTTP+SSE integrations to version-negotiated Streamable HTTP',
     ],
     keywords: ['mcp', 'model context protocol', 'plugin', 'extension', 'agent skill', 'skills', 'mcp server', 'mcp client', 'mcp host', 'stdio'],
   },
@@ -238,18 +265,19 @@ export const MODULES: ModuleMeta[] = [
     order: 11,
     num: 'D3',
     name: 'Retrieval & RAG',
-    short: 'Chunking, embeddings, hybrid search, reranking, freshness, grounding, and retrieval evaluation.',
+    short: 'Semantic and lexical retrieval, hybrid search, GraphRAG, reranking, freshness, grounding, and evaluation.',
     why: 'Use this path when answers must depend on changing or private knowledge.',
     track: 'production-deep-dives',
     prerequisites: ['conversation-context-engineering'],
-    estimatedSessions: '3 sessions',
+    estimatedSessions: '4 sessions',
     topicNumbers: [14, 15, 16],
     objectives: [
       'Design chunking and embedding strategies for the retrieval job',
       'Combine lexical and dense retrieval with fusion and reranking',
+      'Choose baseline semantic, hybrid, or graph-backed retrieval based on the question shape',
       'Measure recall, freshness, grounding, and citation quality separately',
     ],
-    keywords: ['rag', 'retrieval', 'embeddings', 'vector search', 'reranking', 'hybrid search', 'bm25', 'chunking', 'cross-encoder', 'grounding', 'citation', 'rrf'],
+    keywords: ['rag', 'retrieval', 'embeddings', 'semantic search', 'vector search', 'reranking', 'hybrid search', 'bm25', 'chunking', 'cross-encoder', 'graphrag', 'graph rag', 'knowledge graph', 'global search', 'local search', 'grounding', 'citation', 'rrf'],
   },
   {
     id: 'eval-observability',

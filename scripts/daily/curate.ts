@@ -2,15 +2,24 @@
 // key is present or every attempt fails — the caller then uses the deterministic fallback.
 import { llmJSON, hasLLM } from '../lib/llm';
 import { log } from '../lib/log';
-import { MODULES } from '../../src/content/modules';
 import { dailyLesson, type DailyLesson } from '../../src/content/schemas/daily';
-import { mapModule, type Ranked } from './pipeline';
+import { DAILY_MODULES, mapModule, type Ranked } from './pipeline';
 import type { SourcesConfig } from './types';
+
+const dailyModuleIds = new Set(DAILY_MODULES.map((module) => module.id));
+
+export function normalizeDailyLessonModules(lesson: DailyLesson): DailyLesson | null {
+  if (!dailyModuleIds.has(lesson.module)) return null;
+  return {
+    ...lesson,
+    secondaryModules: lesson.secondaryModules.filter((moduleId) => dailyModuleIds.has(moduleId)),
+  };
+}
 
 export async function curate(ranked: Ranked[], cfg: SourcesConfig): Promise<DailyLesson[] | null> {
   if (!hasLLM()) return null;
 
-  const moduleList = MODULES.map((m) => `  ${m.id} — ${m.name}: ${m.short}`).join('\n');
+  const moduleList = DAILY_MODULES.map((m) => `  ${m.id} — ${m.name}: ${m.short}`).join('\n');
   const candidates = ranked.slice(0, cfg.max_lessons * 2).map((i, idx) => ({
     idx,
     title: i.title,
@@ -47,7 +56,10 @@ export async function curate(ranked: Ranked[], cfg: SourcesConfig): Promise<Dail
       const lessons: DailyLesson[] = [];
       for (const raw of out.lessons ?? []) {
         const p = dailyLesson.safeParse(raw);
-        if (p.success) lessons.push(p.data);
+        if (p.success) {
+          const normalized = normalizeDailyLessonModules(p.data);
+          if (normalized) lessons.push(normalized);
+        }
       }
       if (lessons.length >= 1) {
         log.ok(`curate: ${lessons.length} lessons (attempt ${attempt + 1})`);

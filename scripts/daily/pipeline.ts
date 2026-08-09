@@ -2,6 +2,8 @@ import { MODULES } from '../../src/content/modules';
 import { dailyEntrySchema, type DailyEntry, type DailyLesson } from '../../src/content/schemas/daily';
 import type { RawItem, SourcesConfig } from './types';
 
+export const DAILY_MODULES = MODULES.filter((module) => module.topicNumbers.length > 0);
+
 const slug = (s: string) =>
   s
     .toLowerCase()
@@ -101,7 +103,7 @@ export function rank(items: RawItem[], cfg: SourcesConfig, weightOf: (src: strin
 export function mapModule(i: RawItem): { module: string; secondary: string[]; rationale: string; tags: string[] } {
   const hay = `${i.title} ${i.text ?? ''}`.toLowerCase();
   const generic = new Set(['agent', 'ai', 'llm', 'prompt', 'memory']);
-  const scored = MODULES.map((m) => {
+  const scored = DAILY_MODULES.map((m) => {
     const matched = m.keywords.filter((keyword) => matchesKeyword(hay, keyword));
     const score = matched.reduce((sum, keyword) => {
       if (generic.has(keyword)) return sum + 0.25;
@@ -114,7 +116,7 @@ export function mapModule(i: RawItem): { module: string; secondary: string[]; ra
     .sort((a, b) => b.score - a.score || a.order - b.order);
 
   if (scored.length === 0) {
-    return { module: MODULES[0].id, secondary: [], rationale: 'No strong keyword match; defaulted to foundations.', tags: [] };
+    return { module: DAILY_MODULES[0].id, secondary: [], rationale: 'No strong keyword match; defaulted to prompt engineering.', tags: [] };
   }
   const best = scored[0];
   return {
@@ -166,13 +168,13 @@ export function quietDay(date: string): DailyEntry {
       {
         id: 'quiet-day-evergreen',
         headline: 'A quiet day — revisit a fundamental',
-        sourceLinks: [{ title: 'Browse the curriculum', url: '/modules', source: 'ALLM Academy' }],
+        sourceLinks: [{ title: 'Review Agent Engineering Fundamentals', url: '/modules/agent-engineering-fundamentals', source: 'ALLM Academy' }],
         summaryBullets: [
           'No fresh items cleared the relevance + recency bar today.',
           'Use the slack to re-derive a core idea instead of skimming news.',
         ],
         whyItMatters: 'Staying current is necessary but not sufficient — fundamentals are what let you judge the news.',
-        module: 'foundations-prompts-to-harnesses',
+        module: 'agent-engineering-fundamentals',
         secondaryModules: [],
         moduleRationale: 'Evergreen fallback card.',
         tags: ['quiet-day'],
