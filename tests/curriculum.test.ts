@@ -7,7 +7,7 @@ import {
 } from '../src/content/modules';
 import { MODULE_IDS } from '../src/content/schemas/module-ids';
 import { buildManifest } from '../src/lib/manifest';
-import { getState, STORAGE_KEY } from '../src/lib/progress';
+import { getState, setLastVisited, STORAGE_KEY } from '../src/lib/progress';
 
 class MemoryStorage implements Storage {
   private values = new Map<string, string>();
@@ -189,6 +189,23 @@ describe('curriculum model', () => {
       } satisfies Storage,
     });
     expect(getState().lessons['conversation-context-engineering/context-engineering']?.completed).toBe(true);
+  });
+
+  it('does not abort navigation when progress persistence is unavailable', () => {
+    Object.defineProperty(globalThis, 'localStorage', {
+      configurable: true,
+      value: {
+        length: 0,
+        clear() {},
+        getItem: () => null,
+        key: () => null,
+        removeItem() {},
+        setItem: () => {
+          throw new Error('quota exceeded');
+        },
+      } satisfies Storage,
+    });
+    expect(() => setLastVisited('foundations-prompts-to-harnesses', 'prompt-context-harness')).not.toThrow();
   });
 
   it('includes module gates as resume targets but not progress-counted lessons', () => {

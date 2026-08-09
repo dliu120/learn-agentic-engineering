@@ -9,6 +9,9 @@ describe('quiz schema encodings', () => {
   it('rejects mcq with array correct', () => {
     expect(quizQuestion.safeParse({ id: 'a', type: 'mcq', question: 'q', options: ['x', 'y'], correct: [0], explanation: 'e' }).success).toBe(false);
   });
+  it('rejects fractional mcq indices', () => {
+    expect(quizQuestion.safeParse({ id: 'a', type: 'mcq', question: 'q', options: ['x', 'y'], correct: 1.5, explanation: 'e' }).success).toBe(false);
+  });
   it('accepts ordering (correct = number[])', () => {
     expect(quizQuestion.safeParse({ id: 'a', type: 'ordering', question: 'q', options: ['x', 'y', 'z'], correct: [2, 0, 1], explanation: 'e' }).success).toBe(true);
   });

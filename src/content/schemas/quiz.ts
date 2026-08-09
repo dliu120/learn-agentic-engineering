@@ -26,7 +26,12 @@ export const quizQuestion = z
     if (q.type === 'mcq' && typeof q.correct !== 'number') {
       ctx.addIssue({ code: 'custom', message: 'mcq.correct must be an option index (number)' });
     }
-    if (q.type === 'mcq' && q.options && typeof q.correct === 'number' && (q.correct < 0 || q.correct >= q.options.length)) {
+    if (
+      q.type === 'mcq' &&
+      q.options &&
+      typeof q.correct === 'number' &&
+      (!Number.isInteger(q.correct) || q.correct < 0 || q.correct >= q.options.length)
+    ) {
       ctx.addIssue({ code: 'custom', message: 'mcq.correct must reference an existing option' });
     }
     if ((q.type === 'multi' || q.type === 'ordering') && !Array.isArray(q.correct)) {

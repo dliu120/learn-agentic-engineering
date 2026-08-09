@@ -101,7 +101,11 @@ function read(): ProgressState {
 
 function write(s: ProgressState): void {
   if (!hasStorage()) return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+  } catch {
+    return;
+  }
   emit();
 }
 

@@ -76,6 +76,9 @@ describe('mapModule', () => {
   it('does not match agent spec inside speculative', () => {
     expect(mapModule(mk({ title: 'Agent speculative decoding' })).module).toBe('model-efficiency-compression');
   });
+  it('matches common plural keyword forms', () => {
+    expect(mapModule(mk({ title: 'Agent checkpoints improve recovery' })).module).toBe('state-memory-durable-workflows');
+  });
 });
 
 describe('schema-valid outputs', () => {

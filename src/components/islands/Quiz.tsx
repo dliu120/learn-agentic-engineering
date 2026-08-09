@@ -68,13 +68,14 @@ export default function Quiz({
   const [finished, setFinished] = useState(false);
   const questionRef = useRef<HTMLParagraphElement>(null);
   const resultRef = useRef<HTMLParagraphElement>(null);
-  const focusAfterResetRef = useRef(false);
+  const initialQuestionRef = useRef(true);
 
   useEffect(() => {
-    if (!finished && (currentIndex > 0 || focusAfterResetRef.current)) {
-      questionRef.current?.focus();
-      focusAfterResetRef.current = false;
+    if (initialQuestionRef.current) {
+      initialQuestionRef.current = false;
+      return;
     }
+    if (!finished) questionRef.current?.focus();
   }, [currentIndex, finished]);
 
   useEffect(() => {
@@ -156,7 +157,6 @@ export default function Quiz({
   };
 
   const reset = () => {
-    focusAfterResetRef.current = true;
     setAnswers({});
     setMatches({});
     setChecked({});
@@ -314,24 +314,26 @@ export default function Quiz({
                     <span class="text-sm leading-relaxed text-text-muted">{pair.left}</span>
                     <select
                       disabled={currentChecked}
-                      value={selected ?? ''}
+                      value={selected === undefined ? '__unselected__' : String(selected)}
                       aria-label={`Match for ${pair.left}`}
-                      onChange={(event) =>
-                        setMatches((value) => ({
-                          ...value,
+                      onChange={(event) => {
+                        const value = (event.target as HTMLSelectElement).value;
+                        if (value === '__unselected__') return;
+                        setMatches((currentMatches) => ({
+                          ...currentMatches,
                           [current.id]: {
-                            ...(value[current.id] ?? {}),
-                            [leftIndex]: Number((event.target as HTMLSelectElement).value),
+                            ...(currentMatches[current.id] ?? {}),
+                            [leftIndex]: Number(value),
                           },
-                        }))
-                      }
+                        }));
+                      }}
                       class="rounded-sm border border-border bg-surface px-2 py-2 text-sm text-text"
                     >
-                      <option value="" disabled>
+                      <option value="__unselected__" disabled>
                         Choose…
                       </option>
                       {matchRights[current.id]?.map((right) => (
-                        <option value={right.originalIndex}>{right.label}</option>
+                        <option value={String(right.originalIndex)}>{right.label}</option>
                       ))}
                     </select>
                   </label>

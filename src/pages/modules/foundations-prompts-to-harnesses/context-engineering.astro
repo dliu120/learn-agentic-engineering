@@ -15,5 +15,8 @@ const target = lessonHref('conversation-context-engineering', 'context-engineeri
   </head>
   <body data-pagefind-ignore>
     <p>This lesson moved to <a href={target}>Conversation Engineering</a>.</p>
+    <script is:inline define:vars={{ target }}>
+      location.replace(`${target}${location.search}${location.hash}`);
+    </script>
   </body>
 </html>

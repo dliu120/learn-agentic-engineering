@@ -45,7 +45,8 @@ const matchesKeyword = (haystack: string, keyword: string): boolean => {
     .trim()
     .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     .replace(/\s+/g, '\\s+');
-  return new RegExp(`(^|[^a-z0-9])${escaped}(?=$|[^a-z0-9])`, 'i').test(haystack);
+  const plural = /[a-z0-9]$/i.test(keyword) && !keyword.endsWith('s') ? '(?:s|es)?' : '';
+  return new RegExp(`(^|[^a-z0-9])${escaped}${plural}(?=$|[^a-z0-9])`, 'i').test(haystack);
 };
 
 export function filterItems(items: RawItem[], cfg: SourcesConfig): RawItem[] {
