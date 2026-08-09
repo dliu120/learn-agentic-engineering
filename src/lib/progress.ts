@@ -7,6 +7,8 @@
  *   quiz key    = lesson key (lesson quiz) or `${moduleId}/module-gate`
  *   gate key    = moduleId
  */
+import { storageGet, storageSet } from '@/lib/storage';
+
 export const STORAGE_KEY = 'allm:progress:v1';
 const LESSON_KEY_MIGRATIONS: Record<string, string> = {
   'foundations-prompts-to-harnesses/context-engineering':
@@ -42,12 +44,9 @@ export interface Manifest {
 
 const empty = (): ProgressState => ({ version: 1, lessons: {}, quizzes: {}, gates: {}, streak: { count: 0 } });
 
-const hasStorage = () => typeof localStorage !== 'undefined';
-
 function read(): ProgressState {
-  if (!hasStorage()) return empty();
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = storageGet(STORAGE_KEY);
     if (!raw) return empty();
     const state = { ...empty(), ...JSON.parse(raw) } as ProgressState;
     let changed = false;
@@ -86,27 +85,17 @@ function read(): ProgressState {
         changed = true;
       }
     }
-    if (changed) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      } catch {
-        // Keep the migrated in-memory state even if persistence is unavailable.
-      }
-    }
+    if (changed) storageSet(STORAGE_KEY, JSON.stringify(state));
     return state;
   } catch {
     return empty();
   }
 }
 
-function write(s: ProgressState): void {
-  if (!hasStorage()) return;
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
-  } catch {
-    return;
-  }
+function write(s: ProgressState): boolean {
+  if (!storageSet(STORAGE_KEY, JSON.stringify(s))) return false;
   emit();
+  return true;
 }
 
 const listeners = new Set<() => void>();
@@ -199,16 +188,43 @@ export function passGate(moduleId: string): void {
 
 // ---- import / export / reset ----
 export const exportJSON = (): string => JSON.stringify(read(), null, 2);
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null && !Array.isArray(value);
+
+const isProgressState = (value: unknown): value is ProgressState => {
+  if (!isRecord(value) || value.version !== 1) return false;
+  if (!isRecord(value.lessons) || !isRecord(value.quizzes) || !isRecord(value.gates) || !isRecord(value.streak)) return false;
+  if (typeof value.streak.count !== 'number') return false;
+  if (!Object.values(value.lessons).every((entry) => isRecord(entry) && typeof entry.completed === 'boolean')) return false;
+  if (
+    !Object.values(value.quizzes).every(
+      (entry) =>
+        isRecord(entry) &&
+        typeof entry.passed === 'boolean' &&
+        typeof entry.bestScore === 'number' &&
+        typeof entry.attempts === 'number',
+    )
+  ) return false;
+  if (!Object.values(value.gates).every((gate) => typeof gate === 'boolean')) return false;
+  if (
+    value.lastVisited !== undefined &&
+    (!isRecord(value.lastVisited) ||
+      typeof value.lastVisited.moduleId !== 'string' ||
+      typeof value.lastVisited.lessonId !== 'string')
+  ) return false;
+  return true;
+};
+
 export function importJSON(text: string): boolean {
   try {
-    const p = JSON.parse(text);
-    if (p && typeof p === 'object') {
-      write({ ...empty(), ...p, version: 1 });
-      return true;
-    }
+    const parsed: unknown = JSON.parse(text);
+    if (isProgressState(parsed)) return write(parsed);
   } catch {
     /* fallthrough */
   }
   return false;
 }
-export const reset = (): void => write(empty());
+export const reset = (): void => {
+  write(empty());
+};

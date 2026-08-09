@@ -11,6 +11,7 @@
   --text-faint: 94 103 102;
   --border: 207 211 207;
   --accent: 21 116 137;
+  --accent-hover: 17 94 112;
   --accent-2: 91 111 119;
   --signal-good: 34 120 96;
   --signal-warn: 128 82 25;
@@ -27,6 +28,7 @@
   --text-faint: 146 154 150;
   --border: 53 59 57;
   --accent: 91 182 201;
+  --accent-hover: 111 196 214;
   --accent-2: 124 145 151;
   --signal-good: 91 177 143;
   --signal-warn: 203 153 82;

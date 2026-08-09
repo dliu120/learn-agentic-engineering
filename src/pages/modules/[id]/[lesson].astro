@@ -181,6 +181,7 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
 
 <script>
   import { setLastVisited, markLessonComplete, isGatePassed, isLessonDone } from '@/lib/progress';
+  import { storageGet, storageRemove, storageSet } from '@/lib/storage';
   // record visit (derive module/lesson from the URL)
   const parts = location.pathname.replace(/\/$/, '').split('/');
   const lessonId = parts.pop()!;
@@ -195,16 +196,16 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
         '/modules/foundations-prompts-to-harnesses/context-engineering',
       )}`
     : null;
-  if (previousPositionKey && localStorage.getItem(positionKey) == null) {
-    const previousPosition = localStorage.getItem(previousPositionKey);
+  if (previousPositionKey && storageGet(positionKey) == null) {
+    const previousPosition = storageGet(previousPositionKey);
     if (previousPosition != null) {
-      localStorage.setItem(positionKey, previousPosition);
-      localStorage.removeItem(previousPositionKey);
+      storageSet(positionKey, previousPosition);
+      storageRemove(previousPositionKey);
     }
   }
   const progress = document.getElementById('lesson-scroll-progress');
   const resume = document.getElementById('resume-position') as HTMLButtonElement | null;
-  const savedPosition = Number(localStorage.getItem(positionKey) ?? 0);
+  const savedPosition = Number(storageGet(positionKey) ?? 0);
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isComplete = () => isModuleGate ? isGatePassed(mod) : isLessonDone(mod, lessonId);
   let completed = isComplete();
@@ -230,7 +231,7 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
     }
     const now = Date.now();
     if (savePosition && !completed && now - lastSave > 500) {
-      localStorage.setItem(positionKey, String(Math.round(scrollY)));
+      storageSet(positionKey, String(Math.round(scrollY)));
       lastSave = now;
     }
   };
@@ -242,12 +243,12 @@ const prerequisiteLinks = d.prerequisites.map((prerequisite) => {
     }
   }, { passive: true });
   addEventListener('pagehide', () => {
-    if (canSavePosition && !completed) localStorage.setItem(positionKey, String(Math.round(scrollY)));
+    if (canSavePosition && !completed) storageSet(positionKey, String(Math.round(scrollY)));
   });
   const syncCompletion = () => {
     completed = isComplete();
     if (completed) {
-      localStorage.removeItem(positionKey);
+      storageRemove(positionKey);
       resume?.classList.add('hidden');
     }
   };

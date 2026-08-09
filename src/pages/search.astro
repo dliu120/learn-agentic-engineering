@@ -32,13 +32,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 </style>
 
 <script is:inline define:vars={{ base: import.meta.env.BASE_URL }}>
+  const assetBase = base.endsWith('/') ? base : `${base}/`;
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = base + 'pagefind/pagefind-ui.css';
+  css.href = assetBase + 'pagefind/pagefind-ui.css';
   document.head.appendChild(css);
 
   const s = document.createElement('script');
-  s.src = base + 'pagefind/pagefind-ui.js';
+  s.src = assetBase + 'pagefind/pagefind-ui.js';
   s.onload = () => {
     // eslint-disable-next-line no-undef
     new PagefindUI({ element: '#search', showSubResults: true, showImages: false });

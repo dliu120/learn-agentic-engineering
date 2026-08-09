@@ -78,6 +78,10 @@ describe('mapModule', () => {
   });
   it('matches common plural keyword forms', () => {
     expect(mapModule(mk({ title: 'Agent checkpoints improve recovery' })).module).toBe('state-memory-durable-workflows');
+    expect(mapModule(mk({ title: 'Agent memories improve continuity' })).module).toBe('state-memory-durable-workflows');
+  });
+  it('does not interpret unrelated words as plural RAG', () => {
+    expect(mapModule(mk({ title: 'AI rages against flaky tests' })).module).not.toBe('rag-retrieval');
   });
 });
 

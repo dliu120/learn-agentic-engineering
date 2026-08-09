@@ -17,6 +17,7 @@ export default {
         'text-faint': withVar('--text-faint'),
         border: withVar('--border'),
         accent: withVar('--accent'),
+        'accent-hover': withVar('--accent-hover'),
         'accent-2': withVar('--accent-2'),
         'signal-good': withVar('--signal-good'),
         'signal-warn': withVar('--signal-warn'),

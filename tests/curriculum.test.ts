@@ -7,7 +7,7 @@ import {
 } from '../src/content/modules';
 import { MODULE_IDS } from '../src/content/schemas/module-ids';
 import { buildManifest } from '../src/lib/manifest';
-import { getState, setLastVisited, STORAGE_KEY } from '../src/lib/progress';
+import { getState, importJSON, setLastVisited, STORAGE_KEY } from '../src/lib/progress';
 
 class MemoryStorage implements Storage {
   private values = new Map<string, string>();
@@ -206,6 +206,18 @@ describe('curriculum model', () => {
       } satisfies Storage,
     });
     expect(() => setLastVisited('foundations-prompts-to-harnesses', 'prompt-context-harness')).not.toThrow();
+    expect(importJSON(JSON.stringify({
+      version: 1,
+      lessons: {},
+      quizzes: {},
+      gates: {},
+      streak: { count: 0 },
+    }))).toBe(false);
+  });
+
+  it('rejects malformed progress imports instead of wiping state', () => {
+    expect(importJSON('{}')).toBe(false);
+    expect(importJSON('{"version":1,"lessons":[],"quizzes":{},"gates":{},"streak":{"count":0}}')).toBe(false);
   });
 
   it('includes module gates as resume targets but not progress-counted lessons', () => {

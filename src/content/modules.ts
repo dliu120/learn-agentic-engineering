@@ -177,7 +177,7 @@ export const MODULES: ModuleMeta[] = [
       'Choose between thread state, checkpoints, durable tasks, and long-term memory',
       'Resume interrupted work without replaying completed side effects',
     ],
-    keywords: ['stateful', 'stateless', 'checkpoint', 'checkpointer', 'durable execution', 'durable agent', 'agent memory', 'thread state', 'long-term memory', 'task handle', 'persistence', 'resume'],
+    keywords: ['stateful', 'stateless', 'checkpoint', 'checkpointer', 'durable execution', 'durable agent', 'agent memory', 'agent memories', 'thread state', 'long-term memory', 'task handle', 'persistence', 'resume'],
   },
   {
     id: 'spec-driven-agent-engineering',

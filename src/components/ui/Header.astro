@@ -74,6 +74,8 @@ const isActive = (href: string) => (href === withBase('/') ? path === href : pat
 </header>
 
 <script>
+  import { storageGet, storageSet } from '@/lib/storage';
+
   const KEY = 'allm:theme';
   const order = ['light', 'dark', 'system'] as const;
   type Theme = (typeof order)[number];
@@ -92,13 +94,20 @@ const isActive = (href: string) => (href === withBase('/') ? path === href : pat
     button?.setAttribute('aria-label', `Theme: ${label[t]}. Activate to switch.`);
     document.dispatchEvent(new CustomEvent('allm:theme-change'));
   }
-  const current = (): Theme => ((localStorage.getItem(KEY) as Theme) ?? 'light');
+  const storedTheme = storageGet(KEY);
+  let activeTheme: Theme = order.includes(storedTheme as Theme) ? (storedTheme as Theme) : 'light';
+  const current = (): Theme => activeTheme;
   apply(current());
 
   document.getElementById('theme-toggle')?.addEventListener('click', () => {
     const next = order[(order.indexOf(current()) + 1) % order.length];
-    localStorage.setItem(KEY, next);
+    activeTheme = next;
+    storageSet(KEY, next);
     apply(next);
+  });
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (current() === 'system') apply('system');
   });
 
   document.getElementById('search-trigger')?.addEventListener('click', () => {
