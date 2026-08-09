@@ -5,9 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 // Static-only output. No SSR, no serverless. Deployable to any static host.
 // `site` is used for canonical URLs, the Atom feed, and sitemap-friendly absolute links.
-// Override in CI for GitHub Pages, e.g. SITE=https://user.github.io BASE=/repo/.
+// Override in CI for GitHub Pages, e.g. SITE=https://user.github.io BASE=/repo.
 const site = process.env.SITE ?? 'https://allm-academy.example';
-const base = process.env.BASE ?? '/';
+const configuredBase = process.env.BASE ?? '/';
+const base = configuredBase === '/' ? '/' : `/${configuredBase.replace(/^\/+|\/+$/g, '')}`;
 
 export default defineConfig({
   site,
