@@ -37,6 +37,18 @@ describe('filter', () => {
     const out = filterItems(items, cfg);
     expect(out).toHaveLength(1);
   });
+
+  it('uses word boundaries while preserving explicit stems', () => {
+    const items = [
+      mk({ title: 'AI rages against flaky tests', url: 'https://e.com/rages' }),
+      mk({ title: 'Fine-tuning a reranker by distillation', url: 'https://e.com/training' }),
+    ];
+    const out = filterItems(items, {
+      ...cfg,
+      allowlist: ['rag', 'fine-tun*', 'rerank*', 'distill*'],
+    });
+    expect(out.map((item) => item.url)).toEqual(['https://e.com/training']);
+  });
 });
 
 describe('rank', () => {
