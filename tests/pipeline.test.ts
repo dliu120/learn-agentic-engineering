@@ -83,6 +83,11 @@ describe('mapModule', () => {
   it('does not interpret unrelated words as plural RAG', () => {
     expect(mapModule(mk({ title: 'AI rages against flaky tests' })).module).not.toBe('rag-retrieval');
   });
+  it('matches y-to-ies keyword inflections', () => {
+    expect(mapModule(mk({ title: 'Retries with exponential backoff' })).module).toBe('agent-control-routing-degradation');
+    expect(mapModule(mk({ title: 'Tail latencies in production inference' })).module).toBe('inference-internals-performance');
+    expect(mapModule(mk({ title: 'Long-term memories for assistants' })).module).toBe('state-memory-durable-workflows');
+  });
 });
 
 describe('schema-valid outputs', () => {

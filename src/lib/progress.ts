@@ -43,11 +43,12 @@ export interface Manifest {
 }
 
 const empty = (): ProgressState => ({ version: 1, lessons: {}, quizzes: {}, gates: {}, streak: { count: 0 } });
+let memoryState: ProgressState | null = null;
 
 function read(): ProgressState {
   try {
     const raw = storageGet(STORAGE_KEY);
-    if (!raw) return empty();
+    if (!raw) return memoryState ?? empty();
     const state = { ...empty(), ...JSON.parse(raw) } as ProgressState;
     let changed = false;
     for (const [oldKey, newKey] of Object.entries(LESSON_KEY_MIGRATIONS)) {
@@ -86,16 +87,18 @@ function read(): ProgressState {
       }
     }
     if (changed) storageSet(STORAGE_KEY, JSON.stringify(state));
+    memoryState = state;
     return state;
   } catch {
-    return empty();
+    return memoryState ?? empty();
   }
 }
 
 function write(s: ProgressState): boolean {
-  if (!storageSet(STORAGE_KEY, JSON.stringify(s))) return false;
+  memoryState = s;
+  const persisted = storageSet(STORAGE_KEY, JSON.stringify(s));
   emit();
-  return true;
+  return persisted;
 }
 
 const listeners = new Set<() => void>();

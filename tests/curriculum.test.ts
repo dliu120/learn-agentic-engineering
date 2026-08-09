@@ -7,7 +7,7 @@ import {
 } from '../src/content/modules';
 import { MODULE_IDS } from '../src/content/schemas/module-ids';
 import { buildManifest } from '../src/lib/manifest';
-import { getState, importJSON, setLastVisited, STORAGE_KEY } from '../src/lib/progress';
+import { getState, importJSON, reset, setLastVisited, STORAGE_KEY } from '../src/lib/progress';
 
 class MemoryStorage implements Storage {
   private values = new Map<string, string>();
@@ -36,6 +36,7 @@ beforeEach(() => {
     configurable: true,
     value: new MemoryStorage(),
   });
+  reset();
 });
 
 describe('curriculum model', () => {

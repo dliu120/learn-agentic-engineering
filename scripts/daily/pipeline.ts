@@ -41,12 +41,21 @@ const relevanceHits = (i: RawItem, allow: string[]): string[] => {
 };
 
 const matchesKeyword = (haystack: string, keyword: string): boolean => {
-  const escaped = keyword
-    .trim()
-    .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    .replace(/\s+/g, '\\s+');
-  const plural = /[a-z0-9]$/i.test(keyword) && !keyword.endsWith('s') ? 's?' : '';
-  return new RegExp(`(^|[^a-z0-9])${escaped}${plural}(?=$|[^a-z0-9])`, 'i').test(haystack);
+  const words = keyword.trim().split(/\s+/);
+  const last = words.at(-1) ?? '';
+  const plural =
+    /[^aeiou]y$/i.test(last)
+      ? `${last.slice(0, -1)}ies`
+      : last.endsWith('s')
+        ? last
+        : `${last}s`;
+  const variants = [keyword, [...words.slice(0, -1), plural].join(' ')];
+  return variants.some((variant) => {
+    const escaped = variant
+      .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      .replace(/\s+/g, '\\s+');
+    return new RegExp(`(^|[^a-z0-9])${escaped}(?=$|[^a-z0-9])`, 'i').test(haystack);
+  });
 };
 
 export function filterItems(items: RawItem[], cfg: SourcesConfig): RawItem[] {

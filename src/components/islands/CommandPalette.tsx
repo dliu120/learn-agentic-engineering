@@ -117,17 +117,25 @@ export default function CommandPalette({ items }: { items: Item[] }) {
             onKeyDown={onKeyDown}
             placeholder="Search modules and lessons…"
             aria-label="Search modules and lessons"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="course-search-results"
+            aria-autocomplete="list"
+            aria-activedescendant={filtered[sel] ? `course-search-option-${sel}` : undefined}
             class="min-w-0 flex-1 bg-transparent px-4 py-3 text-text outline-none placeholder:text-text-faint"
           />
           <button type="button" onClick={close} class="min-h-11 px-4 text-sm text-text-muted hover:text-text">
             Close
           </button>
         </div>
-        <ul class="max-h-[50vh] overflow-y-auto py-1">
+        <ul id="course-search-results" role="listbox" class="max-h-[50vh] overflow-y-auto py-1">
           {filtered.length === 0 && <li class="px-4 py-3 text-sm text-text-faint">No matches.</li>}
           {filtered.map((i, idx) => (
             <li key={i.href}>
               <button
+                id={`course-search-option-${idx}`}
+                role="option"
+                aria-selected={idx === sel}
                 onMouseEnter={() => setSel(idx)}
                 onClick={() => go(i)}
                 class={`flex w-full items-center justify-between px-4 py-2.5 text-left active:translate-y-px ${idx === sel ? 'bg-surface-2' : ''}`}

@@ -30,6 +30,10 @@ describe('quiz schema encodings', () => {
   it('rejects matching with < 2 pairs', () => {
     expect(quizQuestion.safeParse({ id: 'a', type: 'matching', question: 'q', pairs: [{ left: 'a', right: '1' }], explanation: 'e' }).success).toBe(false);
   });
+  it('rejects empty multi answers and matching correct fields', () => {
+    expect(quizQuestion.safeParse({ id: 'a', type: 'multi', question: 'q', options: ['x', 'y'], correct: [], explanation: 'e' }).success).toBe(false);
+    expect(quizQuestion.safeParse({ id: 'a', type: 'matching', question: 'q', pairs: [{ left: 'a', right: '1' }, { left: 'b', right: '2' }], correct: [0, 1], explanation: 'e' }).success).toBe(false);
+  });
 });
 
 describe('daily entry schema', () => {

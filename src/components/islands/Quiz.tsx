@@ -14,6 +14,9 @@ interface Props {
 type AnswerState = Record<string, number | number[]>;
 type MatchState = Record<string, Record<number, number>>;
 
+export const effectivePassThreshold = (isGate: boolean, requested: number): number =>
+  isGate ? Math.max(0.8, requested) : requested;
+
 export function seededShuffle<T>(values: T[], seed: string): T[] {
   let hash = 2166136261;
   for (const character of seed) hash = (hash ^ character.charCodeAt(0)) * 16777619;
@@ -66,6 +69,7 @@ export default function Quiz({
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [orderAnnouncement, setOrderAnnouncement] = useState('');
   const questionRef = useRef<HTMLParagraphElement>(null);
   const resultRef = useRef<HTMLParagraphElement>(null);
   const initialQuestionRef = useRef(true);
@@ -124,11 +128,12 @@ export default function Quiz({
   };
 
   const current = questions[currentIndex];
+  const threshold = effectivePassThreshold(isGate, passThreshold);
   const currentChecked = checked[current.id] ?? false;
   const currentCorrect = currentChecked && questionCorrect(current);
   const rightCount = questions.filter(questionCorrect).length;
   const score = questions.length ? rightCount / questions.length : 0;
-  const passed = score >= passThreshold;
+  const passed = score >= threshold;
 
   const setMulti = (questionId: string, optionIndex: number) =>
     setAnswers((currentAnswers) => {
@@ -143,14 +148,17 @@ export default function Quiz({
       const to = from + direction;
       if (to < 0 || to >= order.length) return currentAnswers;
       [order[from], order[to]] = [order[to], order[from]];
+      setOrderAnnouncement(
+        `${questions.find((question) => question.id === questionId)?.options?.[order[to]] ?? 'Item'} moved to position ${to + 1}.`,
+      );
       return { ...currentAnswers, [questionId]: order };
     });
 
   const finish = () => {
     const finalScore = questions.length ? questions.filter(questionCorrect).length / questions.length : 0;
     const key = isGate ? `${moduleId}/module-gate` : lessonKey(moduleId, lessonId);
-    recordQuiz(key, finalScore, finalScore >= passThreshold, { answers, matches });
-    if (finalScore >= passThreshold) {
+    recordQuiz(key, finalScore, finalScore >= threshold, { answers, matches });
+    if (finalScore >= threshold) {
       isGate ? passGate(moduleId) : markLessonComplete(moduleId, lessonId);
     }
     setFinished(true);
@@ -162,6 +170,7 @@ export default function Quiz({
     setChecked({});
     setCurrentIndex(0);
     setFinished(false);
+    setOrderAnnouncement('');
   };
 
   const advance = () => {
@@ -275,6 +284,7 @@ export default function Quiz({
           {current.type === 'ordering' && (
             <div class="mt-4 space-y-2">
               <p class="text-xs text-text-faint">Put these in the correct order.</p>
+              <p class="sr-only" aria-live="polite">{orderAnnouncement}</p>
               {order.map((optionIndex, position) => (
                 <div key={optionIndex} class="flex items-center gap-3 rounded-sm border border-border p-3">
                   <span class="font-mono text-xs tabular-nums text-text-faint">{position + 1}</span>
@@ -285,7 +295,7 @@ export default function Quiz({
                     type="button"
                     class="min-h-11 min-w-11 rounded-sm border border-border text-text-muted hover:border-accent hover:text-accent disabled:opacity-30"
                     disabled={currentChecked || position === 0}
-                    aria-label="Move up"
+                    aria-label={`Move ${current.options![optionIndex]} from position ${position + 1} up`}
                     onClick={() => moveOrder(current.id, current.options!.length, position, -1)}
                   >
                     Up
@@ -294,7 +304,7 @@ export default function Quiz({
                     type="button"
                     class="min-h-11 min-w-11 rounded-sm border border-border text-text-muted hover:border-accent hover:text-accent disabled:opacity-30"
                     disabled={currentChecked || position === order.length - 1}
-                    aria-label="Move down"
+                    aria-label={`Move ${current.options![optionIndex]} from position ${position + 1} down`}
                     onClick={() => moveOrder(current.id, current.options!.length, position, 1)}
                   >
                     Down

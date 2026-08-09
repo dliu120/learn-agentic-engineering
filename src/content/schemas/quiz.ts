@@ -48,9 +48,15 @@ export const quizQuestion = z
       if (q.type === 'ordering' && q.correct.length !== q.options.length) {
         ctx.addIssue({ code: 'custom', message: 'ordering.correct must be a complete permutation of option indices' });
       }
+      if (q.type === 'multi' && q.correct.length === 0) {
+        ctx.addIssue({ code: 'custom', message: 'multi.correct must contain at least one option index' });
+      }
     }
     if (q.type === 'matching' && (!q.pairs || q.pairs.length < 2)) {
       ctx.addIssue({ code: 'custom', message: 'matching requires >=2 pairs (correct is derived; omit it)' });
+    }
+    if (q.type === 'matching' && q.correct !== undefined) {
+      ctx.addIssue({ code: 'custom', message: 'matching.correct must be omitted; pairs define the answer' });
     }
   });
 

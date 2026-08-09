@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createOrderingDefaults, isStructuredAnswerCorrect } from '../src/components/islands/Quiz';
+import { createOrderingDefaults, effectivePassThreshold, isStructuredAnswerCorrect } from '../src/components/islands/Quiz';
 import { quizQuestion } from '../src/content/schemas/quiz';
 
 describe('quiz interaction helpers', () => {
@@ -28,5 +28,11 @@ describe('quiz interaction helpers', () => {
       explanation: 'A custom order.',
     });
     expect(createOrderingDefaults([question])[question.id]).not.toEqual(question.correct);
+  });
+
+  it('requires at least 80% for module gates', () => {
+    expect(effectivePassThreshold(false, 0.7)).toBe(0.7);
+    expect(effectivePassThreshold(true, 0.7)).toBe(0.8);
+    expect(3 / 4 >= effectivePassThreshold(true, 0.7)).toBe(false);
   });
 });
