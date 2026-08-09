@@ -21,4 +21,12 @@ jobs:
       - run: bun run check:coverage
       - run: bun run check
       - run: bun run test
-      - run: bun run build
+      - name: Build and verify Pages paths
+        env:
+          SITE: https://${{ github.repository_owner }}.github.io
+          BASE: /${{ github.event.repository.name }}/
+        run: |
+          bun run build
+          base="${BASE%/}"
+          grep -q "href=\"$base/_astro/" dist/index.html
+          grep -q "src=\"$base/_astro/" dist/index.html
