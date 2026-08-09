@@ -1,0 +1,56 @@
+---
+moduleId: tools-skills-plugins-mcp
+lessonId: module-gate
+title: "Gate: Skills, Plugins & MCP"
+order: 99
+topicNumbers: [26, 27, 28]
+summary: "Check that you can name capability layers and explain the MCP trust model."
+estimatedMinutes: 10
+prerequisites:
+  - moduleId: tools-skills-plugins-mcp
+    lessonId: mcp-architecture
+    label: "MCP Architecture"
+references: []
+deepDiveTopics: []
+objectives:
+  - "Choose correct capability boundaries and MCP controls"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: g1
+    type: matching
+    question: "Match each layer."
+    pairs:
+      - { left: "lookup_order", right: "Tool" }
+      - { left: "Investigate refund", right: "Skill" }
+      - { left: "Installable host package", right: "Plugin" }
+      - { left: "io.modelcontextprotocol/tasks", right: "Extension" }
+    explanation: "Operation, capability, packaging, and protocol features are different layers."
+  - id: g2
+    type: mcq
+    question: "Who owns consent before a sensitive MCP tool call?"
+    options:
+      - "The host application"
+      - "The tool description"
+      - "The model weights"
+      - "The transport socket"
+    correct: 0
+    explanation: "The host owns the user experience and must enforce consent and permissions."
+  - id: g3
+    type: mcq
+    question: "What does one MCP client connect to?"
+    options:
+      - "One MCP server"
+      - "Every discovered server"
+      - "One model provider"
+      - "One user message"
+    correct: 0
+    explanation: "The host manages a dedicated client connection for each server."
+isModuleGate: true
+---
+
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+
+<KeyInsightCallout>
+Use precise capability language and keep consent, validation, and trust in the host—even when the connection is standardized.
+</KeyInsightCallout>

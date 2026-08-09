@@ -1,52 +1,59 @@
 ---
 moduleId: foundations-prompts-to-harnesses
 lessonId: module-gate
-title: "Gate: Foundations & Mindset"
+title: "Gate: Prompt Engineering"
 order: 99
-topicNumbers: [1, 2]
+topicNumbers: [1]
+summary: "Check that you can scope one request and recognize when prompting is no longer enough."
+estimatedMinutes: 8
+prerequisites:
+  - moduleId: foundations-prompts-to-harnesses
+    lessonId: prompt-engineering-basics
+    label: "One Request"
+references: []
+deepDiveTopics: []
 objectives:
-  - "Prove you can reason about harness, context curation, and failure modes"
+  - "Choose the right engineering scope and write testable prompt requirements"
 hasAudio: false
 visualizations: []
 quiz:
   - id: g1
-    type: ordering
-    question: "Put the stages of a harness loop in execution order."
-    options:
-      - "Invoke the model"
-      - "Parse the output"
-      - "Execute the tool in a sandbox"
-      - "Observe the result"
-      - "Verify against the goal"
-      - "Check budget / stop condition"
-    correct: [0, 1, 2, 3, 4, 5]
-    explanation: "Invoke → Parse → Execute → Observe → Verify → Check budget. The final stage is what prevents a runaway loop."
-  - id: g2
     type: matching
-    question: "Match each context failure mode to its fix."
+    question: "Match each need to the smallest engineering stage."
     pairs:
-      - { left: "Poisoning", right: "Prune the bad fact" }
-      - { left: "Distraction", right: "Compact the history" }
-      - { left: "Confusion", right: "Scope the tool set" }
-      - { left: "Clash", right: "Rerank / dedupe retrieval" }
-    explanation: "Each failure mode has a context-engineering fix — not a prompt reword."
+      - { left: "One clear request", right: "Prompt engineering" }
+      - { left: "History across turns", right: "Conversation engineering" }
+      - { left: "Typed JSON contract", right: "Response engineering" }
+      - { left: "Repeated tool work with budgets", right: "Loop engineering" }
+      - { left: "Parallel branches and joins", right: "Graph engineering" }
+    explanation: "Use the smallest stage whose control surface matches the requirement."
+  - id: g2
+    type: mcq
+    question: "Which prompt requirement is most testable?"
+    options:
+      - "Return exactly 3 risks and cite the source sentence for each"
+      - "Think deeply and be very careful"
+      - "Act like a world-class expert"
+      - "Give a high-quality answer"
+    correct: 0
+    explanation: "It defines count and evidence. The others express intent without an observable acceptance check."
   - id: g3
     type: mcq
-    question: "Which statement best reflects the production mindset of this module?"
+    question: "A task requires retries after tool failures. Is more prompt engineering enough?"
     options:
-      - "You ship a system — the harness and curated context dominate; the prompt is the smallest lever"
-      - "Pick the biggest context window and paste everything in"
-      - "The model is the product; better wording is the main job"
-      - "Caching always makes requests cheaper regardless of prompt layout"
+      - "No. The task needs loop control outside the model"
+      - "Yes. Add the word retry several times"
+      - "Yes. Increase temperature"
+      - "No. It requires model fine-tuning"
     correct: 0
-    explanation: "Prompt ⊂ context ⊂ harness. Engineer the loop and the information the model sees each step."
+    explanation: "Retries, budgets, and termination are runtime control flow, not prompt wording."
 isModuleGate: true
 ---
 
 import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
 
-Pass this gate to mark **Module 1** complete and unlock **Module 2**.
+Pass this gate to mark **Prompt Engineering** complete.
 
 <KeyInsightCallout>
-You don't write a clever string — you engineer the loop and the information it sees each step.
+Write the smallest testable request first. Add conversation, response, loop, or graph control only when the requirement demands it.
 </KeyInsightCallout>

@@ -7,6 +7,26 @@
   "topicNumbers": [
     12
   ],
+  "summary": "Route each task to the cheapest model that satisfies capabilities, quality, latency, and risk.",
+  "estimatedMinutes": 12,
+  "prerequisites": [
+    {
+      "moduleId": "agent-control-routing-degradation",
+      "lessonId": "guardrails-and-tripwires",
+      "label": "Guardrails and Tripwires"
+    }
+  ],
+  "references": [
+    {
+      "title": "Building Effective Agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "source": "Anthropic Engineering"
+    }
+  ],
+  "deepDiveTopics": [
+    "Capability routing",
+    "Silent quality regression"
+  ],
   "objectives": [
     "Describe a routing strategy combining hard capability rules, complexity classification, and latency/cost policies",
     "Quantify the order-of-magnitude price gap between frontier and small models and when down-routing pays off",

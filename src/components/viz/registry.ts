@@ -17,4 +17,9 @@ export const vizRegistry: Record<string, () => Promise<VizModule>> = {
   'eval-loop': () => import('./eval-loop'),
   'lethal-trifecta': () => import('./lethal-trifecta'),
   'tradeoff-radar': () => import('./tradeoff-radar'),
+  'engineering-stages': () => import('./engineering-stages'),
+  'graph-orchestration': () => import('./graph-orchestration'),
+  'mcp-architecture': () => import('./mcp-architecture'),
+  'stateful-execution': () => import('./stateful-execution'),
+  'spec-cycle': () => import('./spec-cycle'),
 };

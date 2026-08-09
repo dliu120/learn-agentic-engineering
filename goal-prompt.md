@@ -1,5 +1,11 @@
 # MASTER GOAL PROMPT — Build "ALLM Academy": An Immersive, Self-Updating Production-LLM Learning Site
 
+> **Historical build brief.** This file records the original 9-module / 22-topic implementation prompt.
+> The current curriculum and design source of truth is [`CONTEXT.md`](./CONTEXT.md),
+> [`src/content/modules.ts`](./src/content/modules.ts), and [`README.md`](./README.md).
+> Current code uses 3 progressively disclosed paths, 14 modules, 32 topics, one restrained accent,
+> and accessible 2D teaching diagrams. Conflicting counts or visual directions below are superseded.
+
 ## 1. Mission
 
 You are building **ALLM Academy** — a fully static, immersive, animated learning site that teaches a practicing AI engineer 22 advanced production-LLM topics (organized into 9 modules) through intuition-building 2D animated diagrams, interactive widgets, pre-generated narration, and gated quizzes — and keeps that engineer current via an auto-curated **daily "Stay Current" feed** produced by a build-time CI pipeline. The site ships as static HTML/JS/CSS (no runtime backend), persists learner progress in `localStorage`, and regenerates its daily content once per day via GitHub Actions. Your single overriding constraint: **the embedded technical content must be correct.**

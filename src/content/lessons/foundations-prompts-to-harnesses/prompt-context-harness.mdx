@@ -1,40 +1,71 @@
 ---
 moduleId: foundations-prompts-to-harnesses
 lessonId: prompt-context-harness
-title: "Prompt ⊂ Context ⊂ Harness"
+title: "The Engineering Scope Ladder"
 order: 1
 topicNumbers: [1]
+summary: "Learn the five scopes of LLM engineering and why each new stage exists."
+estimatedMinutes: 10
+prerequisites: []
+references:
+  - title: "Building Effective Agents"
+    url: "https://www.anthropic.com/engineering/building-effective-agents"
+    source: "Anthropic Engineering"
+  - title: "Agents Guide"
+    url: "https://developers.openai.com/api/docs/guides/agents"
+    source: "OpenAI Developers"
+deepDiveTopics:
+  - "Workflow vs. agent"
+  - "Deterministic vs. model-directed control"
 objectives:
-  - "Distinguish prompt vs context vs harness engineering by scope"
-  - "Explain why a better harness can beat any amount of prompt rewriting"
-  - "Use the LLM-as-OS mental model (CPU / RAM / OS)"
+  - "Name the five engineering stages from prompt to graph"
+  - "Explain what control each stage adds"
+  - "Choose the simplest stage that can solve a task"
 hasAudio: true
 narration: >
-  Here's the reframe that changes how you build with LLMs. The model is not the product —
-  it's a component, like a CPU. A CPU does nothing useful on its own; it needs an operating
-  system to decide what to load into memory and when to call devices. Same with a language
-  model. The prompt is the wording of a single instruction — the smallest lever you have.
-  The context is everything in the window on a given step: system prompt, tool definitions,
-  retrieved documents, conversation history, memory. And the harness is the program around
-  the model — the loop, the tool execution, the parsing, the verification, the budgets, the
-  recovery. Karpathy's analogy: the model is the CPU, the context window is RAM, and the
-  harness is the OS. At production scale, the harness and the curated context dominate
-  end-to-end quality. Hold the model fixed, add a loop that runs tests and feeds failures
-  back, and you can beat any prompt rewrite. Your job shifts from writing a clever string to
-  engineering the loop and the information the model sees each step.
+  LLM systems become easier to reason about when you stop calling every design decision
+  prompt engineering. There are five useful scopes. Prompt engineering designs one request.
+  Conversation engineering manages what carries across turns. Response engineering gives the
+  answer a typed contract. Loop engineering repeats model and tool steps with budgets and
+  verification. Graph engineering makes branches, parallel work, state, and human gates
+  explicit. Each stage solves a limitation in the one before it. The goal is not to reach the
+  most complicated stage. The goal is to stop at the simplest stage that can meet the
+  reliability requirement.
 visualizations:
-  - { title: "Anatomy of an agent harness loop", summary: "A six-node ring — invoke, parse, execute in a sandbox, observe, verify, then check the stop/budget condition — with a token packet traveling the loop and the active stage highlighted." }
+  - title: "Five stages of LLM engineering"
+    summary: "A five-step progression from one prompt to conversation, response contracts, bounded loops, and explicit workflow graphs."
 quiz:
   - id: q1
-    type: mcq
-    question: "Team A ships a single well-worded prompt. Team B wraps the SAME model in a loop that runs tests and feeds failures back for a retry. Team B scores far higher. What does this show?"
+    type: ordering
+    question: "Put the engineering stages in order from smallest to largest control scope."
     options:
-      - "The harness can dominate end-to-end performance with the model held fixed"
-      - "Team B must be using a bigger or fine-tuned model"
-      - "Prompt wording is the primary performance lever"
-      - "The benchmark results are essentially random"
+      - "Prompt engineering"
+      - "Conversation engineering"
+      - "Response engineering"
+      - "Loop engineering"
+      - "Graph engineering"
+    correct: [0, 1, 2, 3, 4]
+    explanation: "Each stage adds a wider control surface: one request, multiple turns, a response contract, repeated execution, then explicit topology and state."
+  - id: q2
+    type: mcq
+    question: "A task needs two independent research steps to run in parallel and join before review. What is the smallest fitting stage?"
+    options:
+      - "Graph engineering"
+      - "Prompt engineering"
+      - "Conversation engineering"
+      - "Response engineering"
     correct: 0
-    explanation: "Same model, different harness. Tools + feedback + verification + retries turn a stateless predictor into a task-completer — independent of prompt wording."
+    explanation: "Parallel branches and joins are graph structure. A larger prompt cannot make those dependencies explicit or observable."
+  - id: q3
+    type: mcq
+    question: "Why should you avoid jumping straight to a multi-agent graph?"
+    options:
+      - "Complexity adds cost, coordination failures, and more state to debug"
+      - "Graphs cannot call language models"
+      - "Single prompts are always more accurate"
+      - "Multi-agent systems cannot use tools"
+    correct: 0
+    explanation: "Use the simplest architecture that meets the requirement. Extra nodes and agents create new failure modes without guaranteeing better results."
 isModuleGate: false
 ---
 
@@ -42,65 +73,56 @@ import VizWrapper from '@/components/viz/VizWrapper.astro';
 import ConceptCard from '@/components/ui/ConceptCard.astro';
 import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
 import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
-import FailureModeList from '@/components/ui/FailureModeList.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
 
-Most people start with **prompt engineering** — tweaking the wording of one instruction. That's
-the smallest lever in the system. The leverage lives one and two layers out.
+<ConceptCard title="One model, five engineering scopes" tag="orientation">
 
-<ConceptCard title="Three nested scopes" tag="topic 1">
-
-- **Prompt** — the wording of a single instruction.
-- **Context** — the *entire token set* in the window on a given step: system prompt, tool
-  definitions, retrieved data, conversation history, memory.
-- **Harness** — the code and control flow *around* the model: the loop, tool execution, output
-  parsing, verification, state, recovery, and budgets.
-
-Karpathy's framing — **LLM-as-OS**: the model is the **CPU**, the context window is **RAM**, and
-the harness is the **OS** that decides what to load and when to call tools.
+- **Prompt engineering** shapes one request.
+- **Conversation engineering** manages turns and context.
+- **Response engineering** defines what a valid answer looks like.
+- **Loop engineering** repeats model and tool work with budgets and checks.
+- **Graph engineering** makes branches, joins, cycles, state, and human gates explicit.
 
 </ConceptCard>
 
 <KeyInsightCallout>
-The prompt is the smallest lever; the model is a component, not the product — you ship a
-**system**, not a string.
+The stages are not maturity badges. Choose the **smallest control structure** that can meet the task's reliability needs.
 </KeyInsightCallout>
 
 <VizWrapper
-  name="harness-loop"
-  title="Anatomy of an agent harness loop"
-  summary="A ring of six stages — Invoke, Parse, Execute (sandbox), Observe, Verify, and Check Budget/Stop. A token packet travels the loop and each active stage glows. The loop must terminate on success, exhaustion, or failure — never run forever."
+  name="engineering-stages"
+  title="Five stages of LLM engineering"
+  summary="Prompt, Conversation, Response, Loop, and Graph engineering appear in order. Each stage answers a larger control question and keeps the earlier stages inside it."
   height={360}
 />
 
-## Harness engineering
+## A worked example: extract one invoice
 
-The harness is the program that turns a stateless next-token predictor into a *task-completer*.
-The same model scores very differently depending on the loop you wrap around it — add test
-execution and failure feedback, and capability jumps without touching the weights.
+Suppose you receive one invoice and need the vendor, total, currency, and due date.
 
-<KeyInsightCallout>
-Hold the model fixed and a better loop — tools, feedback, verification, budget control — can
-outperform any amount of prompt rewriting.
-</KeyInsightCallout>
+1. Start with **prompt engineering**: write a clear extraction instruction and include one example.
+2. If a user corrects the invoice over several messages, add **conversation engineering**.
+3. If code must consume the result, add **response engineering** with a schema.
+4. If missing fields require lookup tools and retries, add **loop engineering**.
+5. If several documents can be checked in parallel and require an approval step, add **graph engineering**.
+
+The task did not become “more agentic.” Its **control requirements expanded**.
 
 <MisconceptionFlip
-  claim={"An agent is just the model in a while-loop."}
-  correction={"A real harness adds parsing, sandboxed execution, verification, recovery, and budgets — the while-loop is the least of it."}
+  claim={"Graph engineering replaces prompt engineering."}
+  correction={"Every graph node still needs good prompts and response contracts. Larger stages contain the smaller ones."}
 />
 <MisconceptionFlip
-  claim={"Prompt wording is the main performance lever."}
-  correction={"Wording is the smallest scope. Context curation and the harness dominate at production scale."}
+  claim={"More agents means more capability."}
+  correction={"Extra agents help only when specialization or parallel work outweighs coordination cost."}
 />
 
-<FailureModeList
-  items={[
-    "Runaway loop with no budget cap (the loop never decides to stop).",
-    "Silent context truncation that drops the system prompt mid-session.",
-    "Brittle output parsing that cascades one bad parse into total failure.",
-    "Non-deterministic debugging because there is no per-step logging.",
-  ]}
-/>
+<DeepDive title="Workflow vs. agent">
 
-> **Accuracy note.** Context-window sizes vary (~200K is common; some models offer ~1M modes) —
-> treat them as ranges. "Roughly quadratic" attention cost refers to *standard* attention;
-> FlashAttention cuts memory I/O (not asymptotic compute) and sub-quadratic architectures exist.
+A **workflow** follows control flow defined mostly by code: run A, then B, then choose C or D.
+An **agent** gives the model more authority to choose actions or the next step.
+
+Both can use graphs. A graph is a way to make control flow explicit; it does not automatically
+mean “multi-agent.”
+
+</DeepDive>

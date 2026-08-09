@@ -9,17 +9,17 @@ interface Props {
 const { name, title, summary, height = 360 } = Astro.props;
 ---
 
-<figure class="card my-8 overflow-hidden">
-  <figcaption class="flex items-center justify-between border-b border-border px-4 py-2.5">
+<figure class="my-10 overflow-hidden rounded-md bg-surface">
+  <figcaption class="flex items-center justify-between px-4 pt-4">
     <span class="text-sm font-semibold text-text">{title}</span>
-    <span class="font-mono text-[10px] uppercase tracking-wider text-text-faint">interactive · 2D</span>
+    <span class="font-mono text-[10px] uppercase tracking-wider text-text-faint">Interactive · 2D</span>
   </figcaption>
   <div class="viz-mount relative grid place-items-center p-4" data-viz={name} style={`min-height:${height}px`}>
     <p class="sr-only">{summary}</p>
     <noscript><p class="p-4 text-sm text-text-muted">{summary}</p></noscript>
     <div class="viz-fallback text-sm text-text-faint">Loading diagram…</div>
   </div>
-  <details class="border-t border-border px-4 py-2.5 text-sm">
+  <details class="px-4 pb-4 pt-2 text-sm">
     <summary class="cursor-pointer text-text-faint">Text description</summary>
     <p class="mt-2 text-text-muted">{summary}</p>
   </details>
@@ -34,8 +34,19 @@ const { name, title, summary, height = 360 } = Astro.props;
     const loader = vizRegistry[name];
     el.querySelector('.viz-fallback')?.remove();
     if (!loader) return; // unknown viz → text equivalent stays
+    const generation = String(Number(el.dataset.vizGeneration ?? 0) + 1);
+    el.dataset.vizGeneration = generation;
+    const previousRuntime = el.querySelector('.viz-runtime');
+    previousRuntime?.dispatchEvent(new CustomEvent('allm:viz-dispose'));
+    previousRuntime?.remove();
+    const runtime = document.createElement('div');
+    runtime.className = 'viz-runtime w-full';
+    el.append(runtime);
     loader()
-      .then((m) => m.init(el, { reduced }))
+      .then((m) => {
+        if (el.dataset.vizGeneration !== generation) return;
+        m.init(runtime, { reduced });
+      })
       .catch((e) => console.error('[viz]', name, e));
   };
 
@@ -44,19 +55,16 @@ const { name, title, summary, height = 360 } = Astro.props;
   );
   mounts.forEach((m) => (m.dataset.vizMounted = '1'));
 
-  if (reduced) {
-    mounts.forEach(load);
-  } else {
-    const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            load(e.target as HTMLElement);
-            io.unobserve(e.target);
-          }
-        }),
-      { rootMargin: '200px' },
-    );
-    mounts.forEach((m) => io.observe(m));
-  }
+  mounts.forEach(load);
+  document.addEventListener('allm:theme-change', () => mounts.forEach(load));
+  mounts.forEach((mount) => {
+    let narrow = mount.clientWidth < 640;
+    const observer = new ResizeObserver(([entry]) => {
+      const nextNarrow = entry.contentRect.width < 640;
+      if (nextNarrow === narrow) return;
+      narrow = nextNarrow;
+      load(mount);
+    });
+    observer.observe(mount);
+  });
 </script>

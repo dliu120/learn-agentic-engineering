@@ -7,6 +7,26 @@
   "topicNumbers": [
     11
   ],
+  "summary": "Put independent veto layers around the model instead of relying on instructions it can ignore.",
+  "estimatedMinutes": 12,
+  "prerequisites": [
+    {
+      "moduleId": "agent-control-routing-degradation",
+      "lessonId": "bounded-agent-loops",
+      "label": "Bounded Agent Loops"
+    }
+  ],
+  "references": [
+    {
+      "title": "Guardrails",
+      "url": "https://openai.github.io/openai-agents-python/guardrails/",
+      "source": "OpenAI Agents SDK"
+    }
+  ],
+  "deepDiveTopics": [
+    "Parallel guardrail execution",
+    "False-positive calibration"
+  ],
   "objectives": [
     "Distinguish a guardrail (separate validation layer) from a system-prompt instruction",
     "Place input guardrails (injection/PII/policy) before the model and output guardrails (schema/moderation/grounding) before downstream consumers",

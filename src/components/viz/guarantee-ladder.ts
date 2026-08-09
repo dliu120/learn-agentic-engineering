@@ -27,7 +27,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const y = top + (RUNGS.length - 1 - i) * (rungH + 8); // bottom = rung 0
     const g = svgEl('g', {});
     const box = svgEl('rect', { x: L, y, width: meterX - L - 24, height: rungH, rx: 6, fill: cssColor('--surface-2'), stroke: cssColor('--border'), 'stroke-width': 1.5 });
-    const t = svgEl('text', { x: L + 12, y: y + 18, fill: cssColor('--text'), 'font-size': 13, 'font-weight': 600, 'font-family': 'JetBrains Mono, monospace' });
+    const t = svgEl('text', { x: L + 12, y: y + 18, fill: cssColor('--text'), 'font-size': 13, 'font-weight': 600, 'font-family': 'Geist Mono, monospace' });
     t.textContent = `${i + 1}. ${r.t}`;
     const d = svgEl('text', { x: L + 12, y: y + 35, fill: cssColor('--text-muted'), 'font-size': 11 });
     d.textContent = r.d;
@@ -45,7 +45,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const mFill = svgEl('rect', { x: meterX, y: mTop + mH, width: mW, height: 0, rx: 6, fill: cssColor('--signal-good') });
   (mFill.style as CSSStyleDeclaration).transition = 'height .6s ease, y .6s ease';
   svg.append(mFill);
-  const mLabel = svgEl('text', { x: meterX + mW / 2, y: mTop + mH + 16, 'text-anchor': 'middle', fill: cssColor('--text-faint'), 'font-size': 10, 'font-family': 'JetBrains Mono, monospace' });
+  const mLabel = svgEl('text', { x: meterX + mW / 2, y: mTop + mH + 16, 'text-anchor': 'middle', fill: cssColor('--text-faint'), 'font-size': 10, 'font-family': 'Geist Mono, monospace' });
   mLabel.textContent = 'reliab.';
   svg.append(mLabel);
 

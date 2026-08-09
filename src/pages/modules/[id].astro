@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { MODULES, type ModuleMeta } from '@/content/modules';
-import { lessonHref, withBase, hue } from '@/lib/paths';
+import { MODULES, MODULE_BY_ID, TRACK_BY_ID, type ModuleMeta } from '@/content/modules';
+import { lessonHref, moduleHref, withBase } from '@/lib/paths';
 import { newsForModule, prettyDate } from '@/lib/daily';
 
 export function getStaticPaths() {
@@ -19,69 +19,82 @@ const topicLessons = all.filter((l) => !l.data.isModuleGate).sort((a, b) => a.da
 const gate = all.find((l) => l.data.isModuleGate);
 const related = (await newsForModule(m.id)).slice(0, 3);
 const linkUrl = (u: string) => (u.startsWith('http') ? u : withBase(u));
+const track = TRACK_BY_ID[m.track];
+const prerequisites = m.prerequisites.map((id) => MODULE_BY_ID[id]);
 ---
 
-<BaseLayout title={`${m.name} — ALLM Academy`}>
-  <a href={withBase('/modules')} class="text-sm text-text-muted no-underline hover:text-text">← All modules</a>
+<BaseLayout title={`${m.name} — ALLM Academy`} wide>
+  <a href={withBase('/modules')} class="text-sm text-text-muted no-underline hover:text-accent">All modules</a>
 
-  <header class="mt-3 border-l-4 pl-4" style={`border-color:${hue(m.colorHue)}`}>
-    <p class="font-mono text-xs font-semibold" style={`color:${hue(m.colorHue, 70, 62)}`}>
-      {m.num} · Topics {m.topicNumbers.join(', ')}
+  <header class="mt-6 grid gap-6 border-b border-border pb-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+    <div>
+      <p class="eyebrow">{track.name} · {m.num}</p>
+      <h1 class="mt-3 max-w-4xl text-fluid-xl font-semibold tracking-[-0.04em] text-text">{m.name}</h1>
+      <p class="mt-4 max-w-2xl text-fluid leading-relaxed text-text-muted">{m.short}</p>
+    </div>
+    <p class="border-t border-border pt-4 text-sm leading-relaxed text-text-faint lg:border-t-0 lg:pt-0">
+      {m.why}
+      <span class="mt-3 block font-mono text-xs text-text-faint">{m.estimatedSessions}</span>
     </p>
-    <h1 class="mt-1 text-fluid-xl font-bold text-text">{m.name}</h1>
-    <p class="mt-2 max-w-2xl text-text-muted">{m.short}</p>
   </header>
 
-  <section class="mt-8 grid gap-8 lg:grid-cols-[1fr_18rem]">
+  {
+    prerequisites.length > 0 && (
+      <nav class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm" aria-label="Prerequisites">
+        <span class="text-text-faint">Builds on</span>
+        {prerequisites.map((prerequisite) => (
+          <a href={moduleHref(prerequisite.id)} class="border-b border-border pb-0.5 text-text no-underline hover:border-accent hover:text-accent">
+            {prerequisite.num} {prerequisite.name}
+          </a>
+        ))}
+      </nav>
+    )
+  }
+
+  <section class="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
     <div>
-      <h2 class="text-sm font-semibold uppercase tracking-wide text-text-faint">What you’ll be able to do</h2>
-      <ul class="mt-3 space-y-2">
+      <h2 class="eyebrow">What You’ll Be Able to Do</h2>
+      <ol class="mt-4 divide-y divide-border border-y border-border">
         {
-          m.objectives.map((o) => (
-            <li class="flex gap-2 text-text-muted">
-              <span style={`color:${hue(m.colorHue)}`}>▹</span>
-              {o}
+          m.objectives.map((o, i) => (
+            <li class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 py-3 text-text-muted">
+              <span class="font-mono text-xs tabular-nums text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <span>{o}</span>
             </li>
           ))
         }
-      </ul>
+      </ol>
 
-      <h2 class="mt-8 text-sm font-semibold uppercase tracking-wide text-text-faint">Lessons</h2>
+      <h2 class="eyebrow mt-10">Lessons</h2>
       {
         topicLessons.length === 0 ? (
-          <p class="mt-3 rounded-lg border border-dashed border-border p-4 text-sm text-text-faint">
+          <p class="mt-4 border-y border-dashed border-border py-4 text-sm text-text-faint">
             Lessons for this module are being authored.
           </p>
         ) : (
-          <ol class="mt-3 space-y-2">
+          <ol class="mt-4 border-b border-border">
             {topicLessons.map((l, i) => (
-              <li>
+              <li class="border-t border-border">
                 <a
                   href={lessonHref(m.id, l.data.lessonId)}
-                  class="card flex items-center gap-3 p-3 no-underline hover:bg-surface-2"
+                  class="group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 px-2 py-4 no-underline transition-colors hover:bg-surface"
                   data-lesson-key={`${m.id}/${l.data.lessonId}`}
                 >
-                  <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-surface-2 font-mono text-xs text-text-muted">
-                    {i + 1}
-                  </span>
-                  <span class="flex-1 text-text">{l.data.title}</span>
-                  <span class="lesson-check text-signal-good" aria-hidden="true" hidden>
-                    ✓
-                  </span>
+                  <span class="font-mono text-xs tabular-nums text-text-faint">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="min-w-0 text-text transition-colors group-hover:text-accent">{l.data.title}</span>
+                  <span class="lesson-check text-xs text-signal-good" hidden>Completed</span>
                 </a>
               </li>
             ))}
             {gate && (
-              <li>
+              <li class="border-t border-border">
                 <a
                   href={lessonHref(m.id, gate.data.lessonId)}
-                  class="card flex items-center gap-3 border-dashed p-3 no-underline hover:bg-surface-2"
+                  class="group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 px-2 py-4 no-underline transition-colors hover:bg-surface"
                 >
-                  <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full font-mono text-xs" style={`background:${hue(m.colorHue, 70, 30)};color:${hue(m.colorHue, 80, 75)}`}>
-                    ★
-                  </span>
-                  <span class="flex-1 font-medium text-text">{gate.data.title}</span>
-                  <span class="text-xs text-text-faint">gate</span>
+                  <span class="font-mono text-xs uppercase text-accent">Gate</span>
+                  <span class="min-w-0 font-medium text-text transition-colors group-hover:text-accent">{gate.data.title}</span>
+                  <span class="text-xs text-text-faint">Assessment</span>
                 </a>
               </li>
             )}
@@ -90,32 +103,32 @@ const linkUrl = (u: string) => (u.startsWith('http') ? u : withBase(u));
       }
     </div>
 
-    <aside>
-      <div class="card p-4">
-        <h3 class="text-sm font-semibold text-text">Related news</h3>
+    <aside class="border-t border-border pt-6 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+      <div>
+        <h3 class="eyebrow">Related News</h3>
         {
           related.length === 0 ? (
-            <p class="mt-1 text-xs text-text-faint">Daily items the curator tags to this module will appear here.</p>
+            <p class="mt-3 text-sm leading-relaxed text-text-faint">Daily items mapped to this module will appear here.</p>
           ) : (
-            <ul class="mt-3 space-y-3">
+            <ul class="mt-4 divide-y divide-border border-y border-border">
               {related.map(({ date, lesson }) => (
-                <li>
+                <li class="py-4">
                   <a
                     href={linkUrl(lesson.sourceLinks[0].url)}
-                    class="text-sm leading-snug text-text-muted no-underline hover:text-text"
+                    class="text-sm leading-snug text-text no-underline hover:text-accent"
                     rel="noopener"
                     target={lesson.sourceLinks[0].url.startsWith('http') ? '_blank' : undefined}
                   >
                     {lesson.headline}
                   </a>
-                  <span class="mt-0.5 block text-[11px] text-text-faint">{prettyDate(date)} · {lesson.sourceLinks[0].source}</span>
+                  <span class="mt-2 block text-xs text-text-faint">{prettyDate(date)} · {lesson.sourceLinks[0].source}</span>
                 </li>
               ))}
             </ul>
           )
         }
-        <a href={withBase(`/modules/${m.id}/news`)} class="mt-4 inline-block text-sm" style={`color:${hue(m.colorHue, 70, 62)}`}>
-          View all module news →
+        <a href={withBase(`/modules/${m.id}/news`)} class="mt-5 inline-block border-b border-border pb-1 text-sm text-text no-underline hover:border-accent hover:text-accent">
+          View all module news
         </a>
       </div>
     </aside>

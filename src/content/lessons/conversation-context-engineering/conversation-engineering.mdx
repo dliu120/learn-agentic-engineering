@@ -1,0 +1,116 @@
+---
+moduleId: conversation-context-engineering
+lessonId: conversation-engineering
+title: "Designing a Multi-Turn Conversation"
+order: 1
+topicNumbers: [2]
+summary: "Decide what each turn knows, what carries forward, and when a conversation should reset."
+estimatedMinutes: 12
+prerequisites:
+  - moduleId: foundations-prompts-to-harnesses
+    lessonId: prompt-engineering-basics
+    label: "One Request"
+references:
+  - title: "Conversation State"
+    url: "https://platform.openai.com/docs/guides/conversation-state"
+    source: "OpenAI Platform"
+  - title: "Context Windows"
+    url: "https://docs.anthropic.com/en/docs/build-with-claude/context-windows"
+    source: "Anthropic"
+deepDiveTopics:
+  - "System messages and role boundaries"
+  - "Conversation reset policies"
+objectives:
+  - "Separate persistent instructions from user and assistant turns"
+  - "Choose what history to retain, summarize, or discard"
+  - "Define reset and escalation behavior before the context becomes unreliable"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: mcq
+    question: "A user changes from planning a trip to debugging code. What is the safest default?"
+    options:
+      - "Start a new thread or explicitly reset irrelevant history"
+      - "Keep every earlier travel turn in the context"
+      - "Rewrite the system message as a user message"
+      - "Store both topics in long-term memory"
+    correct: 0
+    explanation: "Unrelated history creates distraction and accidental carryover. A visible reset reduces ambiguity."
+  - id: q2
+    type: ordering
+    question: "Put these context layers in a sensible stable-to-volatile order."
+    options:
+      - "System rules"
+      - "Tool definitions"
+      - "Selected reference material"
+      - "Recent conversation turns"
+      - "Current user message"
+    correct: [0, 1, 2, 3, 4]
+    explanation: "Stable content first supports predictable behavior and prefix caching. Volatile, turn-specific content belongs later."
+  - id: q3
+    type: mcq
+    question: "What is conversation history?"
+    options:
+      - "Input that your application chooses to send again on a later turn"
+      - "Knowledge permanently stored in the model weights"
+      - "A durable checkpoint that survives every deployment"
+      - "An MCP server session"
+    correct: 0
+    explanation: "The model only sees what the application supplies on the current request. History is application-managed input."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="A conversation is repeated request assembly" tag="mental model">
+
+The model does not “remember” a chat because a window stays open.
+Your application builds each new request from:
+
+- stable system rules,
+- selected earlier turns,
+- summaries or retrieved facts,
+- tool results,
+- and the current user message.
+
+</ConceptCard>
+
+<KeyInsightCallout>
+A chat is stateful only because the **application re-supplies state**. The model call itself is still a fresh inference request.
+</KeyInsightCallout>
+
+## Define what carries forward
+
+Use a simple policy instead of “send everything”:
+
+| Information | Typical treatment |
+|---|---|
+| Safety and product rules | Keep stable and first |
+| Current goal and constraints | Keep until the goal changes |
+| Recent turns | Keep while they affect the next answer |
+| Old details | Summarize or retrieve when needed |
+| Unrelated topic | Reset or isolate in another thread |
+
+## Example: support conversation
+
+The user says, “My invoice is wrong.” Later they say, “The duplicate charge is from July.”
+
+Carry forward the invoice identifier and the fact that the issue is a duplicate charge.
+Do not keep unrelated small talk or old troubleshooting steps after the issue changes.
+
+<MisconceptionFlip
+  claim={"A long conversation should always include every earlier message."}
+  correction={"Every retained turn spends tokens and can distract the model. Keep only what still changes the next decision."}
+/>
+
+<DeepDive title="System messages and role boundaries">
+
+System rules are not a security boundary by themselves, but they are the most stable instruction
+layer. Keep them separate from user content, and never paste untrusted documents into the same
+instruction channel.
+
+</DeepDive>

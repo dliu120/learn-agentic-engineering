@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { MODULE_BY_ID } from '@/content/modules';
-import { moduleHref, hue } from '@/lib/paths';
+import { moduleHref } from '@/lib/paths';
 
 const entries = (await getCollection('glossary')).sort((a, b) => a.data.term.localeCompare(b.data.term));
 const rendered = await Promise.all(
@@ -10,36 +10,46 @@ const rendered = await Promise.all(
 );
 ---
 
-<BaseLayout title="Glossary — ALLM Academy">
-  <h1 class="text-fluid-xl font-bold text-text">Glossary</h1>
-  <p class="mt-1 text-text-muted">The vocabulary of production-LLM engineering.</p>
+<BaseLayout title="Glossary — ALLM Academy" wide>
+  <header class="grid gap-6 border-b border-border pb-10 md:grid-cols-[1fr_22rem] md:items-end">
+    <div>
+      <p class="eyebrow">Reference</p>
+      <h1 class="mt-3 text-fluid-xl font-semibold tracking-[-0.04em] text-text">Glossary</h1>
+      <p class="mt-3 text-fluid text-text-muted">The vocabulary of production-LLM engineering.</p>
+    </div>
+    <label class="block">
+      <span class="text-sm font-medium text-text">Filter terms</span>
+      <input
+        id="glossary-filter"
+        name="glossary-filter"
+        type="search"
+        placeholder="Type a term…"
+        autocomplete="off"
+        class="mt-2 w-full border-b border-border bg-transparent px-0 py-2 text-text outline-none placeholder:text-text-faint focus-visible:border-accent focus-visible:ring-0"
+      />
+    </label>
+  </header>
 
-  <input
-    id="glossary-filter"
-    type="search"
-    placeholder="Filter terms…"
-    aria-label="Filter glossary terms"
-    class="mt-5 w-full max-w-sm rounded-md border border-border bg-surface px-3 py-2 text-text outline-none placeholder:text-text-faint"
-  />
-
-  <dl class="mt-6 space-y-4">
+  <dl class="mt-8 space-y-10">
     {
       rendered.map(({ data, slug, Content }) => {
         const m = data.module ? MODULE_BY_ID[data.module] : undefined;
         return (
-          <div class="card p-4" data-term id={slug} data-keywords={[data.term, ...data.aliases].join(' ').toLowerCase()}>
-            <dt class="flex flex-wrap items-baseline gap-2">
-              <span class="text-lg font-semibold text-text">{data.term}</span>
-              {data.aliases.length > 0 && <span class="text-xs text-text-faint">({data.aliases.join(', ')})</span>}
-              {m && (
-                <a href={moduleHref(m.id)} class="ml-auto text-xs no-underline" style={`color:${hue(m.colorHue, 70, 62)}`}>
-                  {m.num} →
-                </a>
-              )}
+          <div class="grid gap-3 md:grid-cols-[15rem_minmax(0,1fr)_4rem] md:gap-7" data-term id={slug} data-keywords={[data.term, ...data.aliases].join(' ').toLowerCase()}>
+            <dt>
+              <span class="text-lg font-semibold tracking-[-0.02em] text-text">{data.term}</span>
+              {data.aliases.length > 0 && <span class="mt-1 block text-xs text-text-faint">{data.aliases.join(', ')}</span>}
             </dt>
-            <dd class="prose-tight mt-2 text-sm">
+            <dd class="prose-tight text-sm leading-relaxed">
               <Content />
             </dd>
+            <div>
+              {m && (
+                <a href={moduleHref(m.id)} class="font-mono text-xs text-accent no-underline hover:text-text">
+                  {m.num}
+                </a>
+              )}
+            </div>
           </div>
         );
       })

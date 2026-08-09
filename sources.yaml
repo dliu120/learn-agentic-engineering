@@ -26,6 +26,7 @@ feeds:
   - { name: 'r/LocalLLaMA', type: rss, url: 'https://www.reddit.com/r/LocalLLaMA/.rss', weight: 0.6 }
 
 # Items must mention at least `min_relevance` of these (case-insensitive) to survive filtering.
+# A trailing `*` marks an intentional word stem.
 allowlist:
   - llm
   - gpt
@@ -36,21 +37,30 @@ allowlist:
   - rag
   - retrieval
   - embedding
-  - rerank
+  - rerank*
   - inference
   - quantization
   - quantized
   - agent
   - eval
-  - fine-tun
+  - fine-tun*
   - vllm
   - kv cache
   - context window
   - prompt
-  - distill
+  - distill*
   - speculative
   - tool call
   - function call
+  - mcp
+  - model context protocol
+  - langgraph
+  - stateful
+  - checkpoint
+  - durable agent
+  - agent memory
+  - spec-driven
+  - agent skill
   - mixture of experts
   - moe
   - transformer

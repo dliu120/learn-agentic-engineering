@@ -1,6 +1,6 @@
-// Asserts the union of topicNumbers across all lessons equals {1..22}. Used by the DoD.
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
+import { TOTAL_TOPIC_COUNT } from '../src/content/modules';
 import { readFrontmatter } from './lib/frontmatter';
 
 const ROOT = 'src/content/lessons';
@@ -16,15 +16,16 @@ for (const dir of dirs) {
     if (!f.endsWith('.mdx')) continue;
     const fm = await readFrontmatter(join(ROOT, dir.name, f));
     const nums = (fm.topicNumbers as number[] | undefined) ?? [];
-    byModule[dir.name] ??= [];
+    const moduleId = (fm.moduleId as string | undefined) ?? dir.name;
+    byModule[moduleId] ??= [];
     for (const n of nums) {
       seen.add(n);
-      byModule[dir.name].push(n);
+      byModule[moduleId].push(n);
     }
   }
 }
 
-const all = Array.from({ length: 22 }, (_, i) => i + 1);
+const all = Array.from({ length: TOTAL_TOPIC_COUNT }, (_, i) => i + 1);
 const missing = all.filter((n) => !seen.has(n));
 
 console.log('Topic coverage by module:');
@@ -36,4 +37,4 @@ if (missing.length) {
   console.error(`\n✗ MISSING topics: ${missing.join(', ')}`);
   process.exit(1);
 }
-console.log(`\n✓ All 22 topics covered (${seen.size}/22).`);
+console.log(`\n✓ All ${TOTAL_TOPIC_COUNT} topics covered (${seen.size}/${TOTAL_TOPIC_COUNT}).`);

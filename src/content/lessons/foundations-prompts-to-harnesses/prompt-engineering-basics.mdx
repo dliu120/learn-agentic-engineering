@@ -1,0 +1,123 @@
+---
+moduleId: foundations-prompts-to-harnesses
+lessonId: prompt-engineering-basics
+title: "One Request: Instructions, Examples, Constraints"
+order: 2
+topicNumbers: [1]
+summary: "Build a single model request that is clear, testable, and no more complicated than necessary."
+estimatedMinutes: 12
+prerequisites:
+  - moduleId: foundations-prompts-to-harnesses
+    lessonId: prompt-context-harness
+    label: "The Engineering Scope Ladder"
+references:
+  - title: "Prompt Engineering Guide"
+    url: "https://platform.openai.com/docs/guides/prompt-engineering"
+    source: "OpenAI Platform"
+  - title: "Prompt Engineering Overview"
+    url: "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview"
+    source: "Anthropic"
+deepDiveTopics:
+  - "Few-shot examples"
+  - "Reasoning instructions and evaluation"
+objectives:
+  - "Write instructions that define the task, boundaries, and audience"
+  - "Use examples when rules are easier to show than describe"
+  - "Turn vague quality words into observable checks"
+hasAudio: false
+visualizations: []
+quiz:
+  - id: q1
+    type: mcq
+    question: "Which instruction is easiest to evaluate?"
+    options:
+      - "Summarize this incident in 3 bullets, each under 18 words, and include the customer impact"
+      - "Write a really good incident summary"
+      - "Make this sound professional"
+      - "Be concise but comprehensive"
+    correct: 0
+    explanation: "It names the output shape, length, and required content. The other choices use quality words without observable checks."
+  - id: q2
+    type: multi
+    question: "When is a worked example especially useful?"
+    options:
+      - "When the desired style or edge-case behavior is hard to describe"
+      - "When labels have domain-specific meanings"
+      - "When you want the model to infer a hidden API key"
+      - "When a correct input-output pair demonstrates the rule"
+    correct: [0, 1, 3]
+    explanation: "Examples clarify patterns and boundary cases. They cannot provide missing secrets or permissions."
+  - id: q3
+    type: mcq
+    question: "A prompt works on 9 of 10 test cases but fails one important edge case. What should you do first?"
+    options:
+      - "Add that edge case to the evaluation set and revise the instruction or example"
+      - "Add five more adjectives such as robust and expert"
+      - "Move immediately to a multi-agent graph"
+      - "Ignore it because average accuracy is high"
+    correct: 0
+    explanation: "Prompt changes should be driven by a concrete failing example and re-tested against the full set."
+isModuleGate: false
+---
+
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="A practical prompt contract" tag="worked example">
+
+A useful request answers 5 questions:
+
+1. **Task** — What should the model do?
+2. **Input** — What material should it use?
+3. **Boundaries** — What must it avoid or refuse?
+4. **Output** — What should the response contain?
+5. **Success test** — How will you know it worked?
+
+</ConceptCard>
+
+## Replace adjectives with checks
+
+“Be accurate, helpful, and concise” sounds clear but is hard to test.
+
+Prefer:
+
+> Use only facts in the incident log. Write 3 bullets under 18 words each. Include customer
+> impact, time to recovery, and the next action. If a fact is missing, write “unknown.”
+
+Now you can check grounding, shape, length, and missing-data behavior.
+
+<KeyInsightCallout>
+If a requirement cannot be observed in the response, the model cannot reliably optimize for it and you cannot reliably evaluate it.
+</KeyInsightCallout>
+
+## Use examples to show a pattern
+
+Examples are useful when the rule has exceptions or a domain-specific style.
+
+**Input**
+
+> Service returned 503 for 7 minutes. 14% of requests failed. Cache restart restored traffic.
+
+**Output**
+
+- Checkout requests failed for 7 minutes.
+- 14% of requests returned errors.
+- Restarting the cache restored service.
+
+The example teaches structure and tone without a page of abstract instructions.
+
+<MisconceptionFlip
+  claim={"A longer prompt is automatically more precise."}
+  correction={"Long prompts often repeat or conflict. Precision comes from observable constraints and representative examples."}
+/>
+
+<DeepDive title="Reasoning instructions">
+
+Reasoning prompts can improve some multi-step tasks, but they are not a universal upgrade.
+Evaluate the final task outcome, latency, and cost. When the reasoning itself is sensitive,
+ask for a concise justification or structured evidence rather than exposing unrestricted
+internal reasoning.
+
+</DeepDive>

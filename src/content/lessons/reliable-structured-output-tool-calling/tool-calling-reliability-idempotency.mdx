@@ -7,6 +7,31 @@
   "topicNumbers": [
     9
   ],
+  "summary": "Treat the model as a planner, validate every tool request, and make side effects safe to replay.",
+  "estimatedMinutes": 15,
+  "prerequisites": [
+    {
+      "moduleId": "reliable-structured-output-tool-calling",
+      "lessonId": "guarantee-ladder-constrained-decoding",
+      "label": "The Guarantee Ladder"
+    }
+  ],
+  "references": [
+    {
+      "title": "Tool Use Overview",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
+      "source": "Anthropic"
+    },
+    {
+      "title": "Function Calling",
+      "url": "https://platform.openai.com/docs/guides/function-calling",
+      "source": "OpenAI Platform"
+    }
+  ],
+  "deepDiveTopics": [
+    "Tool retrieval",
+    "Exactly-once effects"
+  ],
   "objectives": [
     "Describe the function-calling loop and explain why the model is a planner, not an executor",
     "Enumerate function-calling failure modes (hallucinated args, accuracy decay past ~10-20 tools, missing/over-eager calls, parallel races) and their mitigations",

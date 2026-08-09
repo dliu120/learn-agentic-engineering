@@ -28,9 +28,9 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const w = s.w * (W - 80);
     const g = svgEl('g', {});
     const rect = svgEl('rect', { x: cx - w / 2, y, width: w, height: rowH, rx: 6, fill: cssColor(s.tone, 0.16), stroke: cssColor(s.tone), 'stroke-width': 1.5 });
-    const t = svgEl('text', { x: cx, y: y + 18, 'text-anchor': 'middle', fill: cssColor('--text'), 'font-size': 12, 'font-weight': 600, 'font-family': 'JetBrains Mono, monospace' });
+    const t = svgEl('text', { x: cx, y: y + 18, 'text-anchor': 'middle', fill: cssColor('--text'), 'font-size': 12, 'font-weight': 600, 'font-family': 'Geist Mono, monospace' });
     t.textContent = s.t;
-    const n = svgEl('text', { x: cx, y: y + 34, 'text-anchor': 'middle', fill: cssColor(s.tone), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+    const n = svgEl('text', { x: cx, y: y + 34, 'text-anchor': 'middle', fill: cssColor(s.tone), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
     n.textContent = s.n;
     (g.style as CSSStyleDeclaration).transition = 'opacity .4s';
     g.style.opacity = '0.25';

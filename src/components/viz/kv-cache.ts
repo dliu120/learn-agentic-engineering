@@ -15,7 +15,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'w-full', role: 'img' });
   svg.setAttribute('aria-label', 'GPU memory as a fixed bar: weights stay constant while the KV cache grows with sequence length and batch until it overflows capacity.');
 
-  const title = svgEl('text', { x: pad, y: 40, fill: cssColor('--text-muted'), 'font-size': 13, 'font-family': 'JetBrains Mono, monospace' });
+  const title = svgEl('text', { x: pad, y: 40, fill: cssColor('--text-muted'), 'font-size': 13, 'font-family': 'Geist Mono, monospace' });
   title.textContent = 'GPU HBM (fixed capacity)';
   svg.append(title);
 
@@ -30,7 +30,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const capLine = svgEl('line', { x1: pad + barW, y1: barY - 6, x2: pad + barW, y2: barY + barH + 6, stroke: cssColor('--signal-bad'), 'stroke-width': 1.5, 'stroke-dasharray': '3 3' });
   svg.append(capLine);
 
-  const legend = svgEl('text', { x: pad, y: 170, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const legend = svgEl('text', { x: pad, y: 170, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   svg.append(legend);
   legend.textContent = '■ weights (fixed)   ■ KV cache (grows with seq × batch)';
 

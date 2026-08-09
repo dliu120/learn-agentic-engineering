@@ -24,11 +24,11 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   // axes
   svg.append(svgEl('line', { x1: L, y1: T, x2: L, y2: T + plotH, stroke: cssColor('--border') }));
   svg.append(svgEl('line', { x1: L, y1: T + plotH, x2: L + plotW, y2: T + plotH, stroke: cssColor('--border') }));
-  const yl = svgEl('text', { x: 8, y: T + 10, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const yl = svgEl('text', { x: 8, y: T + 10, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   yl.textContent = 'acc';
   svg.append(yl);
   bits.forEach((b) => {
-    const t = svgEl('text', { x: x(b), y: T + plotH + 18, 'text-anchor': 'middle', fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+    const t = svgEl('text', { x: x(b), y: T + plotH + 18, 'text-anchor': 'middle', fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
     t.textContent = `${b}b`;
     svg.append(t);
   });
@@ -42,11 +42,11 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const large = poly([[16, 0.98], [8, 0.97], [4, 0.93], [3, 0.82], [2, 0.55]], cssColor('--signal-good'));
   const small = poly([[16, 0.95], [8, 0.9], [4, 0.62], [3, 0.34], [2, 0.18]], cssColor('--signal-bad'));
   const ppl = poly([[16, 0.9], [8, 0.89], [4, 0.88], [3, 0.86], [2, 0.84]], cssColor('--text-faint'), '4 4');
-  const labelLarge = svgEl('text', { x: x(2) - 4, y: y(0.55) - 6, 'text-anchor': 'end', fill: cssColor('--signal-good'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const labelLarge = svgEl('text', { x: x(2) - 4, y: y(0.55) - 6, 'text-anchor': 'end', fill: cssColor('--signal-good'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   labelLarge.textContent = 'large model';
-  const labelSmall = svgEl('text', { x: x(3), y: y(0.34) + 16, 'text-anchor': 'middle', fill: cssColor('--signal-bad'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const labelSmall = svgEl('text', { x: x(3), y: y(0.34) + 16, 'text-anchor': 'middle', fill: cssColor('--signal-bad'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   labelSmall.textContent = 'small model — cliff';
-  const labelPpl = svgEl('text', { x: x(8), y: y(0.9) - 8, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const labelPpl = svgEl('text', { x: x(8), y: y(0.9) - 8, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   labelPpl.textContent = 'perplexity (looks fine!)';
 
   for (const el of [large, small, ppl, labelLarge, labelSmall, labelPpl]) {

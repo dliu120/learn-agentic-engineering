@@ -63,7 +63,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'w-full', role: 'img' });
   svg.setAttribute('aria-label', 'A fixed context window filled by labeled segments; selecting, compressing and isolating reclaim space and raise signal density.');
 
-  const title = svgEl('text', { x: pad, y: 40, fill: cssColor('--text-muted'), 'font-size': 13, 'font-family': 'JetBrains Mono, monospace' });
+  const title = svgEl('text', { x: pad, y: 40, fill: cssColor('--text-muted'), 'font-size': 13, 'font-family': 'Geist Mono, monospace' });
   title.textContent = 'context window (fixed token budget)';
   svg.append(title);
 
@@ -73,7 +73,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   svg.append(segLayer);
 
   // signal-density meter
-  const mLabel = svgEl('text', { x: pad, y: 175, fill: cssColor('--text-faint'), 'font-size': 12, 'font-family': 'JetBrains Mono, monospace' });
+  const mLabel = svgEl('text', { x: pad, y: 175, fill: cssColor('--text-faint'), 'font-size': 12, 'font-family': 'Geist Mono, monospace' });
   mLabel.textContent = 'signal density';
   svg.append(mLabel);
   const mTrack = svgEl('rect', { x: pad, y: 185, width: barW, height: 12, rx: 6, fill: cssColor('--surface-2') });
@@ -91,7 +91,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
       const r = svgEl('rect', { x, y: barY, width: Math.max(0, w - 1.5), height: barH, fill: cssColor(s.tone, s.tone === '--surface-2' ? 0.5 : 0.85) });
       segLayer.append(r);
       if (w > 46) {
-        const t = svgEl('text', { x: x + 6, y: barY + barH / 2 + 4, fill: cssColor('--bg'), 'font-size': 10, 'font-family': 'JetBrains Mono, monospace' });
+        const t = svgEl('text', { x: x + 6, y: barY + barH / 2 + 4, fill: cssColor('--bg'), 'font-size': 10, 'font-family': 'Geist Mono, monospace' });
         t.textContent = s.label;
         if (s.tone === '--surface-2') t.setAttribute('fill', cssColor('--text-faint'));
         segLayer.append(t);

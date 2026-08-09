@@ -35,7 +35,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const [x, y] = pt(i, 1);
     svg.append(svgEl('line', { x1: cx, y1: cy, x2: x, y2: y, stroke: cssColor('--border'), 'stroke-width': 1 }));
     const [lx, ly] = pt(i, 1.18);
-    const t = svgEl('text', { x: lx, y: ly, 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+    const t = svgEl('text', { x: lx, y: ly, 'text-anchor': 'middle', dy: '0.35em', fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
     t.textContent = a;
     svg.append(t);
   });
@@ -43,7 +43,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const shape = svgEl('polygon', { points: '', fill: cssColor('--accent', 0.18), stroke: cssColor('--accent'), 'stroke-width': 2.5 });
   (shape.style as CSSStyleDeclaration).transition = 'all .5s ease';
   svg.append(shape);
-  const title = svgEl('text', { x: cx, y: 22, 'text-anchor': 'middle', fill: cssColor('--text'), 'font-size': 13, 'font-weight': 700, 'font-family': 'JetBrains Mono, monospace' });
+  const title = svgEl('text', { x: cx, y: 22, 'text-anchor': 'middle', fill: cssColor('--text'), 'font-size': 13, 'font-weight': 700, 'font-family': 'Geist Mono, monospace' });
   svg.append(title);
 
   stage.append(svg);

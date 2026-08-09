@@ -37,6 +37,18 @@ describe('filter', () => {
     const out = filterItems(items, cfg);
     expect(out).toHaveLength(1);
   });
+
+  it('uses word boundaries while preserving explicit stems', () => {
+    const items = [
+      mk({ title: 'AI rages against flaky tests', url: 'https://e.com/rages' }),
+      mk({ title: 'Fine-tuning a reranker by distillation', url: 'https://e.com/training' }),
+    ];
+    const out = filterItems(items, {
+      ...cfg,
+      allowlist: ['rag', 'fine-tun*', 'rerank*', 'distill*'],
+    });
+    expect(out.map((item) => item.url)).toEqual(['https://e.com/training']);
+  });
 });
 
 describe('rank', () => {
@@ -54,6 +66,39 @@ describe('mapModule', () => {
   });
   it('maps a prompt-injection item to the production-ops module', () => {
     expect(mapModule(mk({ title: 'A new prompt injection attack' })).module).toBe('production-ops-cost-safety-multitenancy');
+  });
+  it('maps MCP items to the capabilities module', () => {
+    expect(mapModule(mk({ title: 'MCP agent interoperability' })).module).toBe('tools-skills-plugins-mcp');
+  });
+  it('maps checkpoint items to state and durability', () => {
+    expect(mapModule(mk({ title: 'Agent checkpoint recovery' })).module).toBe('state-memory-durable-workflows');
+  });
+  it('maps LangGraph items to graph engineering', () => {
+    expect(mapModule(mk({ title: 'LangGraph parallel workers and state graph' })).module).toBe('graph-workflow-engineering');
+  });
+  it('maps spec-driven agent items to the specification module', () => {
+    expect(mapModule(mk({ title: 'Spec-driven agent engineering' })).module).toBe('spec-driven-agent-engineering');
+  });
+  it('maps agent memory items to state and durability', () => {
+    expect(mapModule(mk({ title: 'Agent memory patterns' })).module).toBe('state-memory-durable-workflows');
+  });
+  it('keeps drift and regression items in evaluation and observability', () => {
+    expect(mapModule(mk({ title: 'Context drift and regressions' })).module).toBe('eval-observability');
+  });
+  it('does not match agent spec inside speculative', () => {
+    expect(mapModule(mk({ title: 'Agent speculative decoding' })).module).toBe('model-efficiency-compression');
+  });
+  it('matches common plural keyword forms', () => {
+    expect(mapModule(mk({ title: 'Agent checkpoints improve recovery' })).module).toBe('state-memory-durable-workflows');
+    expect(mapModule(mk({ title: 'Agent memories improve continuity' })).module).toBe('state-memory-durable-workflows');
+  });
+  it('does not interpret unrelated words as plural RAG', () => {
+    expect(mapModule(mk({ title: 'AI rages against flaky tests' })).module).not.toBe('rag-retrieval');
+  });
+  it('matches y-to-ies keyword inflections', () => {
+    expect(mapModule(mk({ title: 'Retries with exponential backoff' })).module).toBe('agent-control-routing-degradation');
+    expect(mapModule(mk({ title: 'Tail latencies in production inference' })).module).toBe('inference-internals-performance');
+    expect(mapModule(mk({ title: 'Long-term memories for assistants' })).module).toBe('state-memory-durable-workflows');
   });
 });
 

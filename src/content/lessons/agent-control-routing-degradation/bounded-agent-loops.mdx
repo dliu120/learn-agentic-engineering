@@ -7,6 +7,31 @@
   "topicNumbers": [
     10
   ],
+  "summary": "Wrap every model–tool loop in external budgets, no-progress detection, and distinct terminal states.",
+  "estimatedMinutes": 14,
+  "prerequisites": [
+    {
+      "moduleId": "reliable-structured-output-tool-calling",
+      "lessonId": "tool-calling-reliability-idempotency",
+      "label": "Tool Calls & Idempotency"
+    }
+  ],
+  "references": [
+    {
+      "title": "Building Effective Agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "source": "Anthropic Engineering"
+    },
+    {
+      "title": "Agents Guide",
+      "url": "https://developers.openai.com/api/docs/guides/agents",
+      "source": "OpenAI Developers"
+    }
+  ],
+  "deepDiveTopics": [
+    "No-progress detection",
+    "Budget composition"
+  ],
   "objectives": [
     "Explain why an agent loop is unbounded by default and where the external stop authority lives",
     "Enumerate the five layered budgets (iteration, tool, token, cost, time) and match each to the failure it catches first",

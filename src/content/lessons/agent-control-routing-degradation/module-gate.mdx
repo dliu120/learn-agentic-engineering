@@ -2,7 +2,7 @@
 {
   "moduleId": "agent-control-routing-degradation",
   "lessonId": "module-gate",
-  "title": "Module Gate: Control, Routing and Degradation",
+  "title": "Gate: Loop Engineering",
   "order": 99,
   "topicNumbers": [
     10,
@@ -10,6 +10,17 @@
     12,
     13
   ],
+  "summary": "Check that you can bound, validate, route, retry, and terminate an iterative workflow.",
+  "estimatedMinutes": 10,
+  "prerequisites": [
+    {
+      "moduleId": "agent-control-routing-degradation",
+      "lessonId": "retry-fallback-degradation",
+      "label": "Retry, Fallback, and Degradation"
+    }
+  ],
+  "references": [],
+  "deepDiveTopics": [],
   "objectives": [
     "Synthesize bounded loops, guardrails, routing, and graceful degradation into a single reliability mindset",
     "Match each production failure mode to its correct control or exit"

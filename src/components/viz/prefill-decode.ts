@@ -24,7 +24,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     svg.append(r);
     toks.push(r);
   }
-  const stripLabel = svgEl('text', { x: stripX, y: 26, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const stripLabel = svgEl('text', { x: stripX, y: 26, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   svg.append(stripLabel);
 
   // meters
@@ -35,7 +35,7 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
     const track = svgEl('rect', { x, y: baseY - h, width: w, height: h, rx: 4, fill: cssColor('--surface-2') });
     const fill = svgEl('rect', { x, y: baseY, width: w, height: 0, rx: 4, fill: cssColor('--accent') });
     (fill.style as CSSStyleDeclaration).transition = 'height .6s ease, y .6s ease';
-    const cap = svgEl('text', { x: x + w / 2, y: baseY + 16, 'text-anchor': 'middle', fill: cssColor('--text-muted'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+    const cap = svgEl('text', { x: x + w / 2, y: baseY + 16, 'text-anchor': 'middle', fill: cssColor('--text-muted'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
     cap.textContent = label;
     svg.append(track, fill, cap);
     const baseYConst = baseY;
@@ -49,9 +49,9 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
   const compute = meter(440, 'compute');
   const bandwidth = meter(520, 'bandwidth');
 
-  const phaseText = svgEl('text', { x: 24, y: 200, fill: cssColor('--text'), 'font-size': 13, 'font-weight': 600, 'font-family': 'JetBrains Mono, monospace' });
+  const phaseText = svgEl('text', { x: 24, y: 200, fill: cssColor('--text'), 'font-size': 13, 'font-weight': 600, 'font-family': 'Geist Mono, monospace' });
   svg.append(phaseText);
-  const metric = svgEl('text', { x: 24, y: 220, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+  const metric = svgEl('text', { x: 24, y: 220, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
   svg.append(metric);
 
   stage.append(svg);

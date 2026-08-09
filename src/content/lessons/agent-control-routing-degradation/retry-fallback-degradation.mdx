@@ -7,6 +7,31 @@
   "topicNumbers": [
     13
   ],
+  "summary": "Separate transient retries from capability-aware fallbacks, circuit breakers, and visible degraded modes.",
+  "estimatedMinutes": 13,
+  "prerequisites": [
+    {
+      "moduleId": "agent-control-routing-degradation",
+      "lessonId": "model-routing",
+      "label": "Model Routing"
+    }
+  ],
+  "references": [
+    {
+      "title": "API Errors",
+      "url": "https://docs.anthropic.com/en/api/errors",
+      "source": "Anthropic"
+    },
+    {
+      "title": "Rate Limits",
+      "url": "https://platform.openai.com/docs/guides/rate-limits",
+      "source": "OpenAI Platform"
+    }
+  ],
+  "deepDiveTopics": [
+    "Backoff and jitter",
+    "Circuit-breaker state"
+  ],
   "objectives": [
     "Distinguish retry (same model, transient error) from fallback (different model/provider) and apply each correctly",
     "Explain why exponential backoff + jitter and a circuit breaker make retries safe during an outage",

@@ -9,8 +9,18 @@ describe('quiz schema encodings', () => {
   it('rejects mcq with array correct', () => {
     expect(quizQuestion.safeParse({ id: 'a', type: 'mcq', question: 'q', options: ['x', 'y'], correct: [0], explanation: 'e' }).success).toBe(false);
   });
+  it('rejects fractional mcq indices', () => {
+    expect(quizQuestion.safeParse({ id: 'a', type: 'mcq', question: 'q', options: ['x', 'y'], correct: 1.5, explanation: 'e' }).success).toBe(false);
+  });
   it('accepts ordering (correct = number[])', () => {
     expect(quizQuestion.safeParse({ id: 'a', type: 'ordering', question: 'q', options: ['x', 'y', 'z'], correct: [2, 0, 1], explanation: 'e' }).success).toBe(true);
+  });
+  it('rejects ordering answers that are not complete permutations', () => {
+    expect(quizQuestion.safeParse({ id: 'a', type: 'ordering', question: 'q', options: ['x', 'y', 'z'], correct: [0, 0, 3], explanation: 'e' }).success).toBe(false);
+  });
+  it('rejects incomplete and fractional ordering permutations', () => {
+    expect(quizQuestion.safeParse({ id: 'a', type: 'ordering', question: 'q', options: ['x', 'y', 'z'], correct: [0, 1], explanation: 'e' }).success).toBe(false);
+    expect(quizQuestion.safeParse({ id: 'a', type: 'ordering', question: 'q', options: ['x', 'y', 'z'], correct: [0, 1, 1.5], explanation: 'e' }).success).toBe(false);
   });
   it('accepts matching with pairs and no correct', () => {
     expect(
@@ -19,6 +29,10 @@ describe('quiz schema encodings', () => {
   });
   it('rejects matching with < 2 pairs', () => {
     expect(quizQuestion.safeParse({ id: 'a', type: 'matching', question: 'q', pairs: [{ left: 'a', right: '1' }], explanation: 'e' }).success).toBe(false);
+  });
+  it('rejects empty multi answers and matching correct fields', () => {
+    expect(quizQuestion.safeParse({ id: 'a', type: 'multi', question: 'q', options: ['x', 'y'], correct: [], explanation: 'e' }).success).toBe(false);
+    expect(quizQuestion.safeParse({ id: 'a', type: 'matching', question: 'q', pairs: [{ left: 'a', right: '1' }, { left: 'b', right: '2' }], correct: [0, 1], explanation: 'e' }).success).toBe(false);
   });
 });
 

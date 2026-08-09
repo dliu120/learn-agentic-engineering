@@ -3,25 +3,43 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Search — ALLM Academy">
-  <h1 class="text-fluid-xl font-bold text-text">Search</h1>
-  <p class="mt-1 text-text-muted">Full-text search across lessons, the glossary, and daily briefings.</p>
-  <p class="mt-1 text-xs text-text-faint">Tip: press <kbd class="kbd">⌘K</kbd> anywhere to jump to a module or lesson.</p>
+  <header class="border-b border-border pb-8">
+    <p class="eyebrow">Course Index</p>
+    <h1 class="mt-3 text-fluid-xl font-semibold tracking-[-0.04em] text-text">Search</h1>
+    <p class="mt-3 text-fluid text-text-muted">Full-text search across lessons, the glossary, and daily briefings.</p>
+    <p class="mt-3 text-xs text-text-faint">Press <kbd class="kbd">⌘&nbsp;K</kbd> anywhere to jump directly to a module or lesson.</p>
+  </header>
 
-  <div id="search" class="mt-6"></div>
+  <div id="search" class="mt-8"></div>
   <p id="search-fallback" hidden class="mt-4 text-sm text-text-faint">
-    The search index is generated at build time (<code>npm run build</code>). It isn't available in the dev server —
+    The search index is generated at build time (<code>bun run build</code>). It isn't available in the dev server —
     run a production build and preview to use it.
   </p>
 </BaseLayout>
 
+<style is:global>
+  :root {
+    --pagefind-ui-scale: 0.85;
+    --pagefind-ui-primary: rgb(var(--accent));
+    --pagefind-ui-text: rgb(var(--text));
+    --pagefind-ui-background: rgb(var(--bg));
+    --pagefind-ui-border: rgb(var(--border));
+    --pagefind-ui-tag: rgb(var(--surface-2));
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 2px;
+    --pagefind-ui-font: Geist, ui-sans-serif, system-ui, sans-serif;
+  }
+</style>
+
 <script is:inline define:vars={{ base: import.meta.env.BASE_URL }}>
+  const assetBase = base.endsWith('/') ? base : `${base}/`;
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = base + 'pagefind/pagefind-ui.css';
+  css.href = assetBase + 'pagefind/pagefind-ui.css';
   document.head.appendChild(css);
 
   const s = document.createElement('script');
-  s.src = base + 'pagefind/pagefind-ui.js';
+  s.src = assetBase + 'pagefind/pagefind-ui.js';
   s.onload = () => {
     // eslint-disable-next-line no-undef
     new PagefindUI({ element: '#search', showSubResults: true, showImages: false });

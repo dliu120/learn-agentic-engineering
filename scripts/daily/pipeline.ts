@@ -35,9 +35,33 @@ export function dedupe(items: RawItem[]): RawItem[] {
   return out;
 }
 
+const matchesKeyword = (haystack: string, keyword: string): boolean => {
+  const trimmed = keyword.trim();
+  if (trimmed.endsWith('*')) {
+    const stem = trimmed.slice(0, -1).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp(`(^|[^a-z0-9])${stem}[a-z0-9-]*`, 'i').test(haystack);
+  }
+
+  const words = trimmed.split(/\s+/);
+  const last = words.at(-1) ?? '';
+  const plural =
+    /[^aeiou]y$/i.test(last)
+      ? `${last.slice(0, -1)}ies`
+      : last.endsWith('s')
+        ? last
+        : `${last}s`;
+  const variants = [trimmed, [...words.slice(0, -1), plural].join(' ')];
+  return variants.some((variant) => {
+    const escaped = variant
+      .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      .replace(/\s+/g, '\\s+');
+    return new RegExp(`(^|[^a-z0-9])${escaped}(?=$|[^a-z0-9])`, 'i').test(haystack);
+  });
+};
+
 const relevanceHits = (i: RawItem, allow: string[]): string[] => {
-  const hay = `${i.title} ${i.text ?? ''}`.toLowerCase();
-  return allow.filter((t) => hay.includes(t.toLowerCase()));
+  const hay = `${i.title} ${i.text ?? ''}`;
+  return allow.filter((keyword) => matchesKeyword(hay, keyword));
 };
 
 export function filterItems(items: RawItem[], cfg: SourcesConfig): RawItem[] {
@@ -76,11 +100,14 @@ export function rank(items: RawItem[], cfg: SourcesConfig, weightOf: (src: strin
 
 export function mapModule(i: RawItem): { module: string; secondary: string[]; rationale: string; tags: string[] } {
   const hay = `${i.title} ${i.text ?? ''}`.toLowerCase();
-  // Score by specificity: a multi-word keyword ("prompt injection") outweighs a generic
-  // single-word one ("prompt"), so news maps to the most specific matching module.
+  const generic = new Set(['agent', 'ai', 'llm', 'prompt', 'memory']);
   const scored = MODULES.map((m) => {
-    const matched = m.keywords.filter((k) => hay.includes(k.toLowerCase()));
-    const score = matched.reduce((s, k) => s + k.trim().split(/\s+/).length, 0);
+    const matched = m.keywords.filter((keyword) => matchesKeyword(hay, keyword));
+    const score = matched.reduce((sum, keyword) => {
+      if (generic.has(keyword)) return sum + 0.25;
+      const words = keyword.trim().split(/\s+/).length;
+      return sum + words;
+    }, 0);
     return { id: m.id, name: m.name, order: m.order, matched, score };
   })
     .filter((s) => s.matched.length > 0)

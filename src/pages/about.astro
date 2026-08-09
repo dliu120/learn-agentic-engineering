@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CURRICULUM_TRACKS, MODULES, TOTAL_TOPIC_COUNT } from '@/content/modules';
 ---
 
 <BaseLayout title="About — ALLM Academy">
@@ -9,7 +10,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       <p>
         A free, open course on <strong>production-LLM engineering</strong> — the systems work around the model: harness
         design, inference internals, model efficiency, structured output, agent control, RAG, evals, observability, cost,
-        and safety. Twenty-two topics, taught with animated 2D diagrams, interactive widgets, quizzes, and optional audio.
+        and safety. {MODULES.length} modules across {CURRICULUM_TRACKS.length} learning paths and {TOTAL_TOPIC_COUNT} topics,
+        taught with accessible 2D diagrams, worked examples, quizzes, and optional audio.
       </p>
 
       <h2 class="text-lg font-semibold text-text">How the daily briefing works</h2>
@@ -17,7 +19,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         This is a fully static site, so there is no server fetching news at runtime. Instead a scheduled CI job runs a
         pipeline that <strong>fetches</strong> from public sources (Hacker News, arXiv, and several blogs via RSS),
         <strong>dedupes / filters / ranks</strong> by relevance and recency, then <strong>curates</strong> the top items
-        into short teachable lessons mapped back to the nine modules. With an LLM key it writes a polished summary + a
+        into short teachable lessons mapped back to the curriculum. With an LLM key it writes a polished summary + a
         micro-quiz; without one it falls back to a deterministic templated summary (flagged <em>auto-summary</em>). The
         result is committed and the site redeploys.
       </p>
@@ -37,13 +39,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="card mt-4 flex flex-wrap gap-3 p-4">
-      <button id="export-btn" class="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-bg">Export progress</button>
-      <label class="cursor-pointer rounded-lg border border-border px-4 py-2 text-sm text-text hover:bg-surface-2">
+    <div class="mt-8 flex flex-wrap gap-3 border-y border-border py-5">
+      <button id="export-btn" class="rounded-sm bg-accent px-4 py-2 text-sm font-medium text-bg active:translate-y-px">Export progress</button>
+      <label class="cursor-pointer rounded-sm border border-border px-4 py-2 text-sm text-text hover:border-accent hover:text-accent">
         Import progress
         <input id="import-input" type="file" accept="application/json" class="hidden" />
       </label>
-      <button id="reset-btn" class="rounded-lg border border-signal-bad/40 px-4 py-2 text-sm text-signal-bad hover:bg-signal-bad/10">
+      <button id="reset-btn" class="rounded-sm border border-signal-bad/40 px-4 py-2 text-sm text-signal-bad hover:border-signal-bad active:translate-y-px">
         Reset
       </button>
       <span id="data-status" class="self-center text-sm text-text-faint" aria-live="polite"></span>

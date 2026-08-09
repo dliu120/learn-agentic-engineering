@@ -1,0 +1,111 @@
+---
+moduleId: state-memory-durable-workflows
+lessonId: stateless-stateful
+title: "Stateless Requests, Stateful Applications"
+order: 1
+topicNumbers: [29]
+summary: "See how a stateless model or protocol can participate in a stateful product without hidden session assumptions."
+estimatedMinutes: 13
+prerequisites:
+  - moduleId: agent-control-routing-degradation
+    lessonId: bounded-agent-loops
+    label: "Bounded Agent Loops"
+references:
+  - title: "MCP Base Protocol and Statelessness"
+    url: "https://modelcontextprotocol.io/specification/2026-07-28/basic/index"
+    source: "Model Context Protocol"
+  - title: "LangGraph Persistence"
+    url: "https://docs.langchain.com/oss/python/langgraph/persistence"
+    source: "LangChain Docs"
+deepDiveTopics:
+  - "Horizontal scaling and retry safety"
+  - "Explicit state identifiers"
+objectives:
+  - "Distinguish stateless processing from a memoryless product"
+  - "Locate state in the application instead of the model or transport"
+  - "Pass explicit identifiers when work spans requests"
+hasAudio: false
+visualizations:
+  - title: "Stateless requests vs. stateful execution"
+    summary: "One lane begins each request from supplied input; the other saves a checkpoint and resumes after interruption."
+quiz:
+  - id: q1
+    type: mcq
+    question: "What makes an application stateful?"
+    options:
+      - "It explicitly stores and reloads data across requests"
+      - "It keeps one HTTP connection open"
+      - "It uses a large model"
+      - "It sends a long system prompt"
+    correct: 0
+    explanation: "Statefulness comes from persisted data and explicit reload behavior, not the connection or model."
+  - id: q2
+    type: mcq
+    question: "Why are stateless requests easier to retry?"
+    options:
+      - "The request carries what is needed, so another worker can process it"
+      - "They never call tools"
+      - "They cannot fail"
+      - "They automatically remember earlier results"
+    correct: 0
+    explanation: "A self-contained request can be routed or retried without recovering hidden server session state."
+  - id: q3
+    type: multi
+    question: "Which require explicit identifiers across requests?"
+    options:
+      - "A durable task handle"
+      - "A conversation thread ID"
+      - "A checkpoint ID or namespace"
+      - "A hidden assumption that the same server receives the next call"
+    correct: [0, 1, 2]
+    explanation: "Explicit identifiers make cross-request state visible and portable. Hidden affinity is fragile."
+isModuleGate: false
+---
+
+import VizWrapper from '@/components/viz/VizWrapper.astro';
+import ConceptCard from '@/components/ui/ConceptCard.astro';
+import KeyInsightCallout from '@/components/ui/KeyInsightCallout.astro';
+import MisconceptionFlip from '@/components/ui/MisconceptionFlip.astro';
+import DeepDive from '@/components/ui/DeepDive.astro';
+
+<ConceptCard title="Stateless does not mean forgetful" tag="mental model">
+
+A stateless request contains everything needed to process **that request**.
+A stateful application may still load a conversation, checkpoint, or user preference and include
+it explicitly.
+
+</ConceptCard>
+
+<VizWrapper
+  name="stateful-execution"
+  title="Stateless requests vs. stateful execution"
+  summary="Stateless requests begin from supplied input. Stateful execution writes a checkpoint and can reload it after an interruption."
+  height={370}
+/>
+
+<KeyInsightCallout>
+The model call is stateless. State lives in your database, checkpoint store, event log, or request payload.
+</KeyInsightCallout>
+
+## Example: a report job
+
+The user starts a report, closes the laptop, and returns tomorrow.
+
+- A **stateless endpoint** receives `taskId` and the next action.
+- A **durable task record** stores progress and ownership.
+- A **checkpoint** stores the workflow state needed to resume.
+
+The system is stateful, but each request still carries an explicit task identifier.
+
+<MisconceptionFlip
+  claim={"A long-lived connection is the same as a session."}
+  correction={"A transport channel can carry unrelated requests. Session meaning must be explicit in data and identifiers."}
+/>
+
+<DeepDive title="Horizontal scaling">
+
+Stateless request handling lets any healthy replica process the next call. Durable state belongs
+in shared storage, not one server's memory. This improves failover and makes retries easier to
+reason about.
+
+</DeepDive>

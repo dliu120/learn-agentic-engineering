@@ -11,8 +11,29 @@ const lessons = defineCollection({
     lessonId: z.string(),
     title: z.string(),
     order: z.number(),
-    topicNumbers: z.array(z.number()), // which of the 22 topics this lesson surfaces
+    topicNumbers: z.array(z.number()), // which curriculum topics this lesson surfaces
     objectives: z.array(z.string()),
+    summary: z.string().optional(),
+    estimatedMinutes: z.number().int().positive().default(12),
+    prerequisites: z
+      .array(
+        z.object({
+          moduleId: moduleEnum,
+          lessonId: z.string().optional(),
+          label: z.string(),
+        }),
+      )
+      .default([]),
+    references: z
+      .array(
+        z.object({
+          title: z.string(),
+          url: z.url(),
+          source: z.string(),
+        }),
+      )
+      .default([]),
+    deepDiveTopics: z.array(z.string()).default([]),
     hasAudio: z.boolean().default(true),
     narration: z.string().optional(), // core-concept script for edge-tts (build-time)
     visualizations: z.array(z.object({ title: z.string(), summary: z.string() })).default([]),

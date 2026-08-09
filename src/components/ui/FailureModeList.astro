@@ -6,17 +6,12 @@ interface Props {
 const { title = 'Production failure modes', items } = Astro.props;
 ---
 
-<section class="my-6 rounded-xl border border-signal-warn/30 bg-signal-warn/5 p-5">
-  <h3 class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-signal-warn">
-    <span aria-hidden="true">⚠</span>{title}
-  </h3>
-  <ul class="mt-3 space-y-2">
+<section class="my-8 border-l-2 border-signal-warn pl-5">
+  <h3 class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-signal-warn">{title}</h3>
+  <ul class="mt-4 space-y-3">
     {
       items.map((it) => (
-        <li class="flex gap-2 text-sm text-text-muted">
-          <span class="mt-1 text-signal-warn" aria-hidden="true">▹</span>
-          <span set:html={it} />
-        </li>
+        <li class="text-sm leading-relaxed text-text-muted" set:html={it} />
       ))
     }
   </ul>

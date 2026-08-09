@@ -1,7 +1,6 @@
 // DOM hydration helpers (browser-only). Reads the embedded lesson manifest + progress store
 // and fills dashboard chips, module bars, and the resume button.
-import { overall, moduleProgress, getState, type Manifest } from '@/lib/progress';
-import { withBase } from '@/lib/paths';
+import { overall, getState, type Manifest } from '@/lib/progress';
 
 function readManifest(): Manifest {
   const el = document.getElementById('lesson-manifest');
@@ -27,19 +26,24 @@ export function hydrateDashboard(): void {
     setText('[data-summary="quizzes"]', String(o.quizzesPassed));
     setText('[data-summary="streak"]', String(o.streak));
 
+    const st = getState();
     for (const m of manifest.modules) {
-      const pct = moduleProgress(m.id, m.lessonKeys);
+      const done = m.lessonKeys.filter((key) => st.lessons[key]?.completed).length;
+      const pct = m.lessonKeys.length ? Math.round((100 * done) / m.lessonKeys.length) : 0;
       const bar = document.querySelector<HTMLElement>(`[data-module-progress-bar="${m.id}"]`);
       if (bar) bar.style.width = `${pct}%`;
-      const label = document.querySelector(`[data-module-progress-label="${m.id}"]`);
-      if (label && pct > 0) label.textContent = `${pct}% complete`;
+      const label = document.querySelector<HTMLElement>(`[data-module-progress-label="${m.id}"]`);
+      if (label) label.textContent = done > 0 ? `${done}/${m.lessonKeys.length} complete` : label.dataset.defaultLabel ?? '';
     }
 
-    const st = getState();
     const resume = document.querySelector<HTMLAnchorElement>('[data-resume-target]');
     if (resume && st.lastVisited) {
-      resume.textContent = 'Resume where you left off';
-      resume.href = withBase(`/modules/${st.lastVisited.moduleId}/${st.lastVisited.lessonId}`);
+      const key = `${st.lastVisited.moduleId}/${st.lastVisited.lessonId}`;
+      const lesson = manifest.modules
+        .find((module) => module.id === st.lastVisited?.moduleId)
+        ?.lessons.find((candidate) => candidate.key === key);
+      resume.textContent = lesson ? `Resume: ${lesson.title}` : 'Resume where you left off';
+      resume.href = lesson?.href ?? resume.href;
     }
   };
 
@@ -48,13 +52,14 @@ export function hydrateDashboard(): void {
 }
 
 export function hydrateModuleCards(): void {
-  // Same bar/label fill used on the module index page.
   const manifest = readManifest();
+  const st = getState();
   for (const m of manifest.modules) {
-    const pct = moduleProgress(m.id, m.lessonKeys);
+    const done = m.lessonKeys.filter((key) => st.lessons[key]?.completed).length;
+    const pct = m.lessonKeys.length ? Math.round((100 * done) / m.lessonKeys.length) : 0;
     const bar = document.querySelector<HTMLElement>(`[data-module-progress-bar="${m.id}"]`);
     if (bar) bar.style.width = `${pct}%`;
-    const label = document.querySelector(`[data-module-progress-label="${m.id}"]`);
-    if (label && pct > 0) label.textContent = `${pct}% complete`;
+    const label = document.querySelector<HTMLElement>(`[data-module-progress-label="${m.id}"]`);
+    if (label) label.textContent = done > 0 ? `${done}/${m.lessonKeys.length} complete` : label.dataset.defaultLabel ?? '';
   }
 }

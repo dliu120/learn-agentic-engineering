@@ -29,19 +29,19 @@ export function init(root: HTMLElement, { reduced }: { reduced: boolean }): void
 
   const bars = BUDGETS.map((b, i) => {
     const y = top + i * (rowH + gap);
-    const lab = svgEl('text', { x: L - 10, y: y + rowH / 2 + 4, 'text-anchor': 'end', fill: cssColor('--text-muted'), 'font-size': 12, 'font-family': 'JetBrains Mono, monospace' });
+    const lab = svgEl('text', { x: L - 10, y: y + rowH / 2 + 4, 'text-anchor': 'end', fill: cssColor('--text-muted'), 'font-size': 12, 'font-family': 'Geist Mono, monospace' });
     lab.textContent = b;
     svg.append(lab);
     svg.append(svgEl('rect', { x: L, y, width: barW, height: rowH, rx: 4, fill: cssColor('--surface-2') }));
     const fill = svgEl('rect', { x: L, y, width: barW, height: rowH, rx: 4, fill: cssColor('--accent', 0.8) });
     (fill.style as CSSStyleDeclaration).transition = 'width .5s ease, fill .3s';
     svg.append(fill);
-    const pct = svgEl('text', { x: L + barW + 8, y: y + rowH / 2 + 4, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'JetBrains Mono, monospace' });
+    const pct = svgEl('text', { x: L + barW + 8, y: y + rowH / 2 + 4, fill: cssColor('--text-faint'), 'font-size': 11, 'font-family': 'Geist Mono, monospace' });
     svg.append(pct);
     return { fill, pct, barW };
   });
 
-  const status = svgEl('text', { x: L, y: H - 12, fill: cssColor('--text-muted'), 'font-size': 12, 'font-weight': 600, 'font-family': 'JetBrains Mono, monospace' });
+  const status = svgEl('text', { x: L, y: H - 12, fill: cssColor('--text-muted'), 'font-size': 12, 'font-weight': 600, 'font-family': 'Geist Mono, monospace' });
   svg.append(status);
   stage.append(svg);
   root.append(stage);
