@@ -12,7 +12,7 @@ const day = await latestDay();
     day ? (
       <>
         <div class="mb-8 flex items-center justify-between border-b border-border pb-4">
-          <p class="text-sm text-text-faint">Collected from AI news, papers, and engineering blogs.</p>
+          <p class="text-sm text-text-faint">Collected from AI news, papers, repositories, and engineering blogs.</p>
           <a href={withBase('/archive')} class="text-sm no-underline hover:text-text">All briefings</a>
         </div>
         <DailyDay entry={day.data} />

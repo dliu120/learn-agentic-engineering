@@ -14,7 +14,7 @@ The 15 modules start with 4 concise fundamentals lessons, then cover 32 focused 
 diagrams, worked examples, one-question-at-a-time quizzes, resume points, local progress tracking, primary
 references, and optional build-time audio narration.
 
-A daily CI job curates AI news (Hacker News, arXiv, OpenAI/HF/blog RSS) into short teachable
+A daily CI job curates AI news (Hacker News, arXiv, keyless GitHub Search, OpenAI/HF/blog RSS) into short teachable
 briefings mapped back to the curriculum, so the site stays current without a runtime backend.
 
 > Tech: Astro 7 (static) · Preact islands · Tailwind · SVG/Canvas teaching viz ·
@@ -77,7 +77,7 @@ src/
   pages/       home, grouped curriculum, lessons, today, daily/[date], archive, calendar, glossary,
                search, about, feed.xml
 scripts/
-  daily/       sources.ts (HN/arXiv/RSS) · pipeline.ts (normalize→dedupe→filter→rank→map→fallback)
+  daily/       sources.ts (HN/arXiv/GitHub/RSS) · pipeline.ts (normalize→dedupe→filter→rank→map→fallback)
                · curate.ts (guarded LLM + repair) · run.ts (orchestrator)
   gen-audio.ts · check-coverage.ts · lib/{http,llm,log,frontmatter}.ts
 sources.yaml   daily-pipeline config (feeds, weights, thresholds, voice, model)
@@ -98,6 +98,11 @@ sources.yaml   daily-pipeline config (feeds, weights, thresholds, voice, model)
 
 `bun run daily` fetches public feeds (see `sources.yaml`), dedupes/filters/ranks by relevance +
 recency, then curates the top items into lessons mapped to the curriculum:
+
+- GitHub discovery uses four cached Search API queries, one result per category, and a recent-`pushed_at` window.
+  Stars/forks are labeled discovery signals, not evidence of quality or effectiveness.
+- Generated lessons retain the exact candidate URL plus source type and available publication/activity time;
+  model-written links that do not match a fetched candidate are rejected.
 
 - **With** `ANTHROPIC_API_KEY` → LLM curation (summary + why-it-matters + micro-quiz), validated by
   Zod with a bounded repair loop. Flag: `curated`.

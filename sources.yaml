@@ -14,6 +14,18 @@ voice: en-US-AriaNeural # edge-tts voice for the daily audio digest
 feeds:
   - { name: 'Hacker News', type: hn, query: 'LLM', weight: 1.0 }
   - { name: 'Hacker News (agents)', type: hn, query: 'AI agents', weight: 0.9 }
+  # GitHub has no official trending API. Keep one result from each of four Search API queries so
+  # one popularity-heavy category cannot crowd out the others. The API query narrows by UTC date;
+  # the pipeline applies the exact hour window to `pushed_at`. Stars/forks are discovery signals,
+  # not claims of quality or effectiveness.
+  - name: 'GitHub · recently active'
+    type: github
+    weight: 0.85
+    queries:
+      - 'repo:microsoft/graphrag'
+      - '"agent memory" OR "long-term memory"'
+      - '"agent harness"'
+      - 'repo:PrimeIntellect-ai/prime-agent'
   - { name: 'arXiv cs.CL', type: arxiv, query: 'cat:cs.CL', weight: 0.85 }
   - { name: 'arXiv cs.LG', type: arxiv, query: 'cat:cs.LG', weight: 0.7 }
   # Anthropic has no stable public blog RSS; proxy company news via Google News search.
@@ -26,7 +38,8 @@ feeds:
   - { name: 'r/LocalLLaMA', type: rss, url: 'https://www.reddit.com/r/LocalLLaMA/.rss', weight: 0.6 }
 
 # Items must mention at least `min_relevance` of these (case-insensitive) to survive filtering.
-# A trailing `*` marks an intentional word stem.
+# Generic `agent`, `llm`, `memory`, or `harness` hits never qualify alone. A trailing `*` marks
+# an intentional word stem.
 allowlist:
   - llm
   - gpt
@@ -35,6 +48,8 @@ allowlist:
   - llama
   - mistral
   - rag
+  - graphrag
+  - graph rag
   - retrieval
   - embedding
   - rerank*
@@ -59,6 +74,26 @@ allowlist:
   - checkpoint
   - durable agent
   - agent memory
+  - long-term memory
+  - episodic memory
+  - semantic memory
+  - memory consolidation
+  - memory retrieval
+  - mem0
+  - letta
+  - memgpt
+  - agent harness
+  - agentic harness
+  - coding agent
+  - cli agent
+  - prime-agent
+  - prime agent
+  - claude code
+  - codex cli
+  - gemini cli
+  - opencode
+  - openclaw
+  - hermes agent
   - spec-driven
   - agent skill
   - mixture of experts

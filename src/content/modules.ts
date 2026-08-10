@@ -148,7 +148,7 @@ export const MODULES: ModuleMeta[] = [
       'Choose among chaining, routing, parallel work, and evaluator loops',
       'Return success, exhaustion, and failure as different outcomes',
     ],
-    keywords: ['agent', 'agent loop', 'workflow', 'orchestration', 'guardrails', 'model routing', 'fallback', 'circuit breaker', 'retry', 'budget', 'termination', 'degraded mode', 'tripwire'],
+    keywords: ['agent', 'agent loop', 'agent harness', 'agentic harness', 'coding agent', 'cli agent', 'prime-agent', 'prime agent', 'claude code', 'codex cli', 'gemini cli', 'opencode', 'openclaw', 'hermes agent', 'workflow', 'orchestration', 'guardrails', 'model routing', 'fallback', 'circuit breaker', 'retry', 'budget', 'termination', 'degraded mode', 'tripwire'],
   },
   {
     id: 'graph-workflow-engineering',
@@ -204,7 +204,7 @@ export const MODULES: ModuleMeta[] = [
       'Choose between thread state, checkpoints, durable tasks, and long-term memory',
       'Resume interrupted work without replaying completed side effects',
     ],
-    keywords: ['stateful', 'stateless', 'checkpoint', 'checkpointer', 'durable execution', 'durable agent', 'agent memory', 'agent memories', 'thread state', 'long-term memory', 'task handle', 'persistence', 'resume'],
+    keywords: ['stateful', 'stateless', 'checkpoint', 'checkpointer', 'durable execution', 'durable agent', 'agent memory', 'agent memories', 'thread state', 'long-term memory', 'episodic memory', 'semantic memory', 'memory consolidation', 'memory retrieval', 'mem0', 'letta', 'memgpt', 'task handle', 'persistence', 'resume'],
   },
   {
     id: 'spec-driven-agent-engineering',
