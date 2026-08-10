@@ -18,11 +18,17 @@ import { CURRICULUM_TRACKS, MODULES, TOTAL_TOPIC_COUNT } from '@/content/modules
       <h2 class="text-lg font-semibold text-text">How the daily briefing works</h2>
       <p>
         This is a fully static site, so there is no server fetching news at runtime. Instead a scheduled CI job runs a
-        pipeline that <strong>fetches</strong> from public sources (Hacker News, arXiv, and several blogs via RSS),
+        pipeline that <strong>fetches</strong> from public sources (Hacker News, arXiv, GitHub Search, and several blogs via RSS),
         <strong>dedupes / filters / ranks</strong> by relevance and recency, then <strong>curates</strong> the top items
         into short teachable lessons mapped back to the curriculum. With an LLM key it writes a polished summary + a
         micro-quiz; without one it falls back to a deterministic templated summary (flagged <em>auto-summary</em>). The
         result is committed and the site redeploys.
+      </p>
+      <p>
+        GitHub discovery is keyless and bounded to one result from each of four cached searches for recently pushed
+        GraphRAG, agent-memory, harness, and PrimeIntellect-ai/prime-agent repositories. Current stars and forks help rank discoveries; they
+        are not treated as evidence that a project is novel, correct, or effective. Every lesson retains its direct
+        source URL, source type, and available publication or repository-activity time.
       </p>
 
       <h2 class="text-lg font-semibold text-text">Honest limits</h2>

@@ -4,14 +4,16 @@ export interface RawItem {
   source: string;
   publishedAt?: string; // ISO
   text?: string;
-  signals?: { points?: number; comments?: number };
+  sourceType?: 'paper' | 'repository' | 'discussion' | 'article';
+  signals?: { points?: number; comments?: number; stars?: number; forks?: number };
 }
 
 export interface FeedConfig {
   name: string;
-  type: 'hn' | 'arxiv' | 'rss';
+  type: 'hn' | 'arxiv' | 'rss' | 'github';
   url?: string;
   query?: string;
+  queries?: string[];
   weight: number;
 }
 

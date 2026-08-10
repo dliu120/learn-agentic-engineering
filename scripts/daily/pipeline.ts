@@ -26,7 +26,16 @@ export function normalize(items: RawItem[]): RawItem[] {
 export function dedupe(items: RawItem[]): RawItem[] {
   const seen = new Set<string>();
   const out: RawItem[] = [];
-  for (const i of items) {
+  const sourcePriority: Record<NonNullable<RawItem['sourceType']>, number> = {
+    repository: 4,
+    paper: 3,
+    article: 2,
+    discussion: 1,
+  };
+  const prioritized = items
+    .map((item, index) => ({ item, index }))
+    .sort((a, b) => (sourcePriority[b.item.sourceType ?? 'article'] - sourcePriority[a.item.sourceType ?? 'article']) || a.index - b.index);
+  for (const { item: i } of prioritized) {
     const keyUrl = i.url.replace(/[#?].*$/, '').replace(/\/$/, '');
     const keyTitle = i.title.toLowerCase().slice(0, 60);
     if (seen.has(keyUrl) || seen.has(keyTitle)) continue;
@@ -66,10 +75,14 @@ const relevanceHits = (i: RawItem, allow: string[]): string[] => {
   return allow.filter((keyword) => matchesKeyword(hay, keyword));
 };
 
+const genericRelevance = new Set(['agent', 'llm', 'memory', 'harness']);
+const specificRelevanceHits = (hits: string[]): string[] => hits.filter((hit) => !genericRelevance.has(hit));
+
 export function filterItems(items: RawItem[], cfg: SourcesConfig): RawItem[] {
   return items.filter((i) => {
     if (ageHours(i.publishedAt) > cfg.window_hours) return false;
-    return relevanceHits(i, cfg.allowlist).length >= cfg.min_relevance;
+    const hits = relevanceHits(i, cfg.allowlist);
+    return hits.length >= cfg.min_relevance && specificRelevanceHits(hits).length > 0;
   });
 }
 
@@ -90,10 +103,18 @@ export function rank(items: RawItem[], cfg: SourcesConfig, weightOf: (src: strin
   return items
     .map((i) => {
       const recency = Math.pow(0.5, ageHours(i.publishedAt) / cfg.recency_half_life_hours);
-      const sig = Math.log1p((i.signals?.points ?? 0) + (i.signals?.comments ?? 0)) / 6;
+      const sig = Math.log1p(
+        (i.signals?.points ?? 0) +
+          (i.signals?.comments ?? 0) +
+          (i.signals?.stars ?? 0) +
+          (i.signals?.forks ?? 0),
+      ) / 6;
       const corroboration = (corrob.get(titleSig(i.title))!.size - 1) * 0.15;
       const hits = relevanceHits(i, cfg.allowlist);
-      const score = weightOf(i.source) * recency + Math.min(sig, 0.5) + corroboration + Math.min(hits.length, 4) * 0.05;
+      const specificHits = specificRelevanceHits(hits);
+      const genericHits = hits.length - specificHits.length;
+      const relevance = Math.min(specificHits.length, 4) * 0.05 + Math.min(genericHits, 2) * 0.01;
+      const score = weightOf(i.source) * recency + Math.min(sig, 0.5) + corroboration + relevance;
       return { ...i, score, hits };
     })
     .sort((a, b) => b.score - a.score)
@@ -102,7 +123,7 @@ export function rank(items: RawItem[], cfg: SourcesConfig, weightOf: (src: strin
 
 export function mapModule(i: RawItem): { module: string; secondary: string[]; rationale: string; tags: string[] } {
   const hay = `${i.title} ${i.text ?? ''}`.toLowerCase();
-  const generic = new Set(['agent', 'ai', 'llm', 'prompt', 'memory']);
+  const generic = new Set(['agent', 'ai', 'llm', 'prompt', 'memory', 'harness']);
   const scored = DAILY_MODULES.map((m) => {
     const matched = m.keywords.filter((keyword) => matchesKeyword(hay, keyword));
     const score = matched.reduce((sum, keyword) => {
@@ -130,7 +151,12 @@ export function mapModule(i: RawItem): { module: string; secondary: string[]; ra
 const bullets = (i: RawItem): string[] => {
   const text = (i.text ?? '').replace(/\s+/g, ' ').trim();
   const sents = text.split(/(?<=[.!?])\s+/).filter((s) => s.length > 25).slice(0, 3);
-  const out = sents.length >= 2 ? sents : [`Surfaced from ${i.source}.`, `Open the source to read the details.`];
+  const attributed = i.sourceType === 'repository' ? sents.map((sentence) => `Repository description: ${sentence}`) : sents;
+  const out = attributed.length >= 2
+    ? attributed
+    : attributed.length === 1
+      ? [attributed[0], 'Open the source to inspect the project and its documentation.']
+      : [`Surfaced from ${i.source}.`, `Open the source to read the details.`];
   return out.slice(0, 4).map((s) => (s.length > 220 ? s.slice(0, 217) + '…' : s));
 };
 
@@ -142,10 +168,12 @@ export function templatedLessons(ranked: Ranked[], cfg: SourcesConfig): DailyLes
     const signals: Record<string, number> = {};
     if (i.signals?.points != null) signals.points = i.signals.points;
     if (i.signals?.comments != null) signals.comments = i.signals.comments;
+    if (i.signals?.stars != null) signals.stars = i.signals.stars;
+    if (i.signals?.forks != null) signals.forks = i.signals.forks;
     return {
       id: `${slug(i.title)}-${idx}`,
       headline: i.title,
-      sourceLinks: [{ title: i.title, url: i.url, source: i.source }],
+      sourceLinks: [{ title: i.title, url: i.url, source: i.source, type: i.sourceType ?? 'article', publishedAt: i.publishedAt }],
       summaryBullets: bullets(i),
       whyItMatters: `Relevant to ${moduleName}. ${mm.rationale} Read it through that lens.`,
       module: mm.module as DailyLesson['module'],
@@ -168,7 +196,7 @@ export function quietDay(date: string): DailyEntry {
       {
         id: 'quiet-day-evergreen',
         headline: 'A quiet day — revisit a fundamental',
-        sourceLinks: [{ title: 'Review Agent Engineering Fundamentals', url: '/modules/agent-engineering-fundamentals', source: 'ALLM Academy' }],
+        sourceLinks: [{ title: 'Review Agent Engineering Fundamentals', url: '/modules/agent-engineering-fundamentals', source: 'ALLM Academy', type: 'article' }],
         summaryBullets: [
           'No fresh items cleared the relevance + recency bar today.',
           'Use the slack to re-derive a core idea instead of skimming news.',

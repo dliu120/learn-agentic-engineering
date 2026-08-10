@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { normalize, dedupe, filterItems, rank, mapModule, quietDay, templatedLessons } from '../scripts/daily/pipeline';
-import { normalizeDailyLessonModules } from '../scripts/daily/curate';
+import { normalizeDailyLessonModules, preserveSourceProvenance } from '../scripts/daily/curate';
 import type { RawItem, SourcesConfig } from '../scripts/daily/types';
 
 const cfg: SourcesConfig = {
@@ -30,6 +30,16 @@ describe('normalize + dedupe', () => {
     expect(out).toHaveLength(1);
     expect(out[0].url).toContain('/x');
   });
+  it('keeps direct repository provenance over a discussion linking to the same repository', () => {
+    const url = 'https://github.com/PrimeIntellect-ai/prime-agent';
+    const out = dedupe([
+      mk({ title: 'Prime Agent: A Self-Improving RLM Agent', url, source: 'Hacker News', sourceType: 'discussion' }),
+      mk({ title: 'PrimeIntellect-ai/prime-agent', url, source: 'GitHub · recently active', sourceType: 'repository' }),
+    ]);
+    expect(out).toEqual([
+      expect.objectContaining({ title: 'PrimeIntellect-ai/prime-agent', sourceType: 'repository' }),
+    ]);
+  });
 });
 
 describe('filter', () => {
@@ -37,6 +47,15 @@ describe('filter', () => {
     const items = [mk({ title: 'New KV cache trick' }), mk({ title: 'Unrelated cooking blog' })];
     const out = filterItems(items, cfg);
     expect(out).toHaveLength(1);
+  });
+
+  it('rejects generic agent and LLM mentions without an engineering-specific hit', () => {
+    const items = [
+      mk({ title: 'An LLM rewrite of a terminal effect', url: 'https://e.com/rewrite' }),
+      mk({ title: 'An agent with checkpoint recovery', url: 'https://e.com/checkpoint' }),
+    ];
+    const out = filterItems(items, { ...cfg, allowlist: ['llm', 'agent', 'checkpoint'] });
+    expect(out.map((item) => item.url)).toEqual(['https://e.com/checkpoint']);
   });
 
   it('uses word boundaries while preserving explicit stems', () => {
@@ -58,6 +77,18 @@ describe('rank', () => {
     const out = rank(items, cfg, () => 1);
     expect(out.length).toBeLessThanOrEqual(cfg.candidate_cap);
     for (let i = 1; i < out.length; i++) expect(out[i - 1].score).toBeGreaterThanOrEqual(out[i].score);
+  });
+
+  it('gives specific engineering terms more relevance weight than generic agent hits', () => {
+    const out = rank(
+      [
+        mk({ title: 'An agent release', url: 'https://e.com/generic' }),
+        mk({ title: 'A GraphRAG release', url: 'https://e.com/specific' }),
+      ],
+      { ...cfg, allowlist: ['agent', 'graphrag'] },
+      () => 1,
+    );
+    expect(out[0].url).toBe('https://e.com/specific');
   });
 });
 
@@ -82,6 +113,15 @@ describe('mapModule', () => {
   });
   it('maps agent memory items to state and durability', () => {
     expect(mapModule(mk({ title: 'Agent memory patterns' })).module).toBe('state-memory-durable-workflows');
+  });
+  it('maps named memory methods to state and durability', () => {
+    expect(mapModule(mk({ title: 'Mem0 adds episodic memory consolidation' })).module).toBe('state-memory-durable-workflows');
+  });
+  it('maps GraphRAG items to retrieval', () => {
+    expect(mapModule(mk({ title: 'Microsoft GraphRAG global search update' })).module).toBe('rag-retrieval');
+  });
+  it('maps Prime-Agent and agent harnesses to loop engineering', () => {
+    expect(mapModule(mk({ title: 'Prime-Agent updates its agent harness' })).module).toBe('agent-control-routing-degradation');
   });
   it('keeps drift and regression items in evaluation and observability', () => {
     expect(mapModule(mk({ title: 'Context drift and regressions' })).module).toBe('eval-observability');
@@ -125,5 +165,51 @@ describe('schema-valid outputs', () => {
     )[0];
     lesson.secondaryModules = ['agent-engineering-fundamentals', 'rag-retrieval'];
     expect(normalizeDailyLessonModules(lesson)?.secondaryModules).toEqual(['rag-retrieval']);
+  });
+  it('rejects invented links and restores candidate-owned provenance fields', () => {
+    const ranked = rank([
+      mk({
+        title: 'PrimeIntellect-ai/prime-agent',
+        url: 'https://github.com/PrimeIntellect-ai/prime-agent',
+        source: 'GitHub · recently active',
+        sourceType: 'repository',
+      }),
+    ], { ...cfg, allowlist: ['prime-agent'] }, () => 1);
+    const lesson = templatedLessons(ranked, cfg)[0];
+    lesson.sourceLinks[0] = {
+      title: 'Model-written title',
+      url: ranked[0].url,
+      source: 'Model-written source',
+      type: 'article',
+    };
+    expect(preserveSourceProvenance(lesson, ranked)?.sourceLinks[0]).toEqual({
+      title: 'PrimeIntellect-ai/prime-agent',
+      url: 'https://github.com/PrimeIntellect-ai/prime-agent',
+      source: 'GitHub · recently active',
+      type: 'repository',
+      publishedAt: undefined,
+    });
+    lesson.sourceLinks[0].url = 'https://example.com/invented';
+    expect(preserveSourceProvenance(lesson, ranked)).toBeNull();
+  });
+  it('attributes deterministic repository-description bullets', () => {
+    const lessons = templatedLessons(rank([
+      mk({
+        title: 'A repository about agent memory',
+        text: 'This repository claims a new memory method. It provides a reference implementation for agents.',
+        sourceType: 'repository',
+      }),
+    ], { ...cfg, allowlist: ['agent'] }, () => 1), cfg);
+    expect(lessons[0].summaryBullets.every((bullet) => bullet.startsWith('Repository description:'))).toBe(true);
+  });
+  it('keeps a single attributed repository-description sentence', () => {
+    const lessons = templatedLessons(rank([
+      mk({
+        title: 'A repository about GraphRAG',
+        text: 'This repository describes a GraphRAG implementation.',
+        sourceType: 'repository',
+      }),
+    ], { ...cfg, allowlist: ['rag'] }, () => 1), cfg);
+    expect(lessons[0].summaryBullets[0]).toBe('Repository description: This repository describes a GraphRAG implementation.');
   });
 });

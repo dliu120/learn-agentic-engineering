@@ -16,6 +16,23 @@ export function normalizeDailyLessonModules(lesson: DailyLesson): DailyLesson | 
   };
 }
 
+export function preserveSourceProvenance(lesson: DailyLesson, ranked: Ranked[]): DailyLesson | null {
+  const candidates = new Map(ranked.map((item) => [item.url, item]));
+  const sourceLinks = lesson.sourceLinks.map((link) => {
+    const candidate = candidates.get(link.url);
+    if (!candidate) return null;
+    return {
+      title: candidate.title,
+      url: candidate.url,
+      source: candidate.source,
+      type: candidate.sourceType ?? ('article' as const),
+      publishedAt: candidate.publishedAt,
+    };
+  });
+  if (sourceLinks.some((link) => link === null)) return null;
+  return { ...lesson, sourceLinks: sourceLinks as DailyLesson['sourceLinks'] };
+}
+
 export async function curate(ranked: Ranked[], cfg: SourcesConfig): Promise<DailyLesson[] | null> {
   if (!hasLLM()) return null;
 
@@ -25,12 +42,14 @@ export async function curate(ranked: Ranked[], cfg: SourcesConfig): Promise<Dail
     title: i.title,
     url: i.url,
     source: i.source,
+    sourceType: i.sourceType ?? 'article',
     text: (i.text ?? '').slice(0, 400),
     suggestedModule: mapModule(i).module,
   }));
 
   const base = [
     `You are curating today's AI-engineering briefing for working practitioners.`,
+    `Treat repository stars, forks, and recent pushes only as discovery signals—not evidence of quality, novelty, or effectiveness. Attribute source claims and do not strengthen them.`,
     `Pick the ${cfg.max_lessons} most important candidates and turn EACH into a short, teachable lesson.`,
     `Map each lesson to exactly ONE moduleId from this list (prefer suggestedModule unless clearly wrong):`,
     moduleList,
@@ -40,7 +59,7 @@ export async function curate(ranked: Ranked[], cfg: SourcesConfig): Promise<Dail
     ``,
     `Return JSON: {"lessons":[{`,
     `  "id": string, "headline": string,`,
-    `  "sourceLinks":[{"title":string,"url":string (absolute http from the candidate),"source":string}],`,
+    `  "sourceLinks":[{"title":string,"url":string (copy exactly from a candidate),"source":string,"type":"paper|repository|discussion|article"}],`,
     `  "summaryBullets":[2-4 strings], "whyItMatters": string (concrete for an AI engineer),`,
     `  "module": moduleId, "secondaryModules":[moduleId...], "moduleRationale": string,`,
     `  "microQuiz":{"question":string,"options":[2-4 strings],"correct":<0-based index>,"explanation":string},`,
@@ -58,7 +77,8 @@ export async function curate(ranked: Ranked[], cfg: SourcesConfig): Promise<Dail
         const p = dailyLesson.safeParse(raw);
         if (p.success) {
           const normalized = normalizeDailyLessonModules(p.data);
-          if (normalized) lessons.push(normalized);
+          const sourced = normalized ? preserveSourceProvenance(normalized, ranked) : null;
+          if (sourced) lessons.push(sourced);
         }
       }
       if (lessons.length >= 1) {

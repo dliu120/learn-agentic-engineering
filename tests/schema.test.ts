@@ -67,6 +67,13 @@ describe('daily entry schema', () => {
     e.lessons[0].sourceLinks[0].url = '/modules';
     expect(dailyEntrySchema.safeParse(e).success).toBe(true);
   });
+  it('preserves supported source types and rejects unknown ones', () => {
+    const e = structuredClone(base);
+    Object.assign(e.lessons[0].sourceLinks[0], { type: 'repository' });
+    expect(dailyEntrySchema.parse(e).lessons[0].sourceLinks[0].type).toBe('repository');
+    Object.assign(e.lessons[0].sourceLinks[0], { type: 'social-post' });
+    expect(dailyEntrySchema.safeParse(e).success).toBe(false);
+  });
   it('rejects a bad date', () => {
     const e = structuredClone(base);
     (e as { date: string }).date = '06-25-2026';

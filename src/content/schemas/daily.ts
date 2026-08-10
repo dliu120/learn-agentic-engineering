@@ -13,6 +13,8 @@ const sourceLink = z.object({
     .string()
     .refine((u) => /^https?:\/\//.test(u) || u.startsWith('/'), 'absolute http(s) URL or site-root-relative path'),
   source: z.string(),
+  type: z.enum(['paper', 'repository', 'discussion', 'article']).default('article'),
+  publishedAt: z.string().optional(),
 });
 
 export const microQuiz = z.object({

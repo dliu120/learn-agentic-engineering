@@ -49,7 +49,7 @@ async function main() {
   log.info(`daily ${date} ${dry ? '(dry-run)' : ''} · LLM ${hasLLM() ? 'on' : 'off'} · ${cfg.feeds.length} feeds`);
 
   const settled = await Promise.allSettled(
-    cfg.feeds.map((f) => withTimeout(f.name, fetchFeed(f, cfg.per_source_cap), 25000)),
+    cfg.feeds.map((f) => withTimeout(f.name, fetchFeed(f, cfg.per_source_cap, cfg.window_hours), 25000)),
   );
   const raws: RawItem[] = [];
   const used: string[] = [];
