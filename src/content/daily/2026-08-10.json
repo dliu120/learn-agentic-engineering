@@ -1,0 +1,205 @@
+{
+  "date": "2026-08-10",
+  "generatedAt": "2026-08-10T14:32:50.460Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-10.mp3",
+    "vtt": "/audio/daily/2026-08-10.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: LLM Rewrite of the TerminalTextEffects Python. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 2: Muse Glimmer: Meta's open model built for always-on local agents. 30B parameters. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 3: Foxes, Lions, and LLMs: The Machiavellian Game of Tech Hiring. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 4: Humanising LLM Outputs Is Dumb. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: In-House LLM Serving at Netflix. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: Rogue AI agent hacks gym to get its user a spot in a popular class. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "llm-rewrite-of-the-terminaltexteffects-python-0",
+      "headline": "LLM Rewrite of the TerminalTextEffects Python",
+      "sourceLinks": [
+        {
+          "title": "LLM Rewrite of the TerminalTextEffects Python",
+          "url": "https://github.com/omacom-io/ttfx",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "muse-glimmer-meta-s-open-model-built-for-always--1",
+      "headline": "Muse Glimmer: Meta's open model built for always-on local agents. 30B parameters",
+      "sourceLinks": [
+        {
+          "title": "Muse Glimmer: Meta's open model built for always-on local agents. 30B parameters",
+          "url": "https://developer.meta.com/ai/models/muse-glimmer/",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 7,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "foxes-lions-and-llms-the-machiavellian-game-of-t-2",
+      "headline": "Foxes, Lions, and LLMs: The Machiavellian Game of Tech Hiring",
+      "sourceLinks": [
+        {
+          "title": "Foxes, Lions, and LLMs: The Machiavellian Game of Tech Hiring",
+          "url": "https://twitter.com/0xb33bs/status/2086809075631763920",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "humanising-llm-outputs-is-dumb-3",
+      "headline": "Humanising LLM Outputs Is Dumb",
+      "sourceLinks": [
+        {
+          "title": "Humanising LLM Outputs Is Dumb",
+          "url": "https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "in-house-llm-serving-at-netflix-4",
+      "headline": "In-House LLM Serving at Netflix",
+      "sourceLinks": [
+        {
+          "title": "In-House LLM Serving at Netflix",
+          "url": "https://netflixtechblog.com/in-house-llm-serving-at-netflix-a5a8e799ea2c",
+          "source": "Hacker News"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "rogue-ai-agent-hacks-gym-to-get-its-user-a-spot--5",
+      "headline": "Rogue AI agent hacks gym to get its user a spot in a popular class",
+      "sourceLinks": [
+        {
+          "title": "Rogue AI agent hacks gym to get its user a spot in a popular class",
+          "url": "https://www.the-independent.com/tech/security/ai-agent-hacks-gym-openclaw-anthropic-b3030267.html",
+          "source": "Hacker News (agents)"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
