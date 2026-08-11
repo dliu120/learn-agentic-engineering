@@ -1,0 +1,232 @@
+{
+  "date": "2026-08-11",
+  "generatedAt": "2026-08-11T14:32:27.618Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-11.mp3",
+    "vtt": "/audio/daily/2026-08-11.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: topoteretes/cognee. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: long-term memory. Read it through that lens. Item 3: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 4: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 5: Show HN: SquadCue – local-first mission control for AI CLI agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, cli agent. Read it through that lens. Item 6: Should You Self-Host LLM Inference? Cost and Risk Guide. Relevant to Production Safety & Cost. Matched Production Safety & Cost on: cost. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-11T14:23:45Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 13753,
+          "forks": 1412
+        }
+      }
+    },
+    {
+      "id": "topoteretes-cognee-1",
+      "headline": "topoteretes/cognee",
+      "sourceLinks": [
+        {
+          "title": "topoteretes/cognee",
+          "url": "https://github.com/topoteretes/cognee",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-11T14:18:05Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Cognee is the open-source AI memory platform for agents.",
+        "Repository description: Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: long-term memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "rag-retrieval",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: long-term memory.",
+      "tags": [
+        "long-term memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 29951,
+          "forks": 2910
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-2",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-11T04:46:24Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 239384,
+          "forks": 36352
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-3",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-11T00:32:29Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 35417,
+          "forks": 3719
+        }
+      }
+    },
+    {
+      "id": "show-hn-squadcue-local-first-mission-control-for-4",
+      "headline": "Show HN: SquadCue – local-first mission control for AI CLI agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: SquadCue – local-first mission control for AI CLI agents",
+          "url": "https://github.com/hsienchuc/squadcue",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-08-11T14:31:01Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, cli agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, cli agent.",
+      "tags": [
+        "agent",
+        "cli agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "should-you-self-host-llm-inference-cost-and-risk-5",
+      "headline": "Should You Self-Host LLM Inference? Cost and Risk Guide",
+      "sourceLinks": [
+        {
+          "title": "Should You Self-Host LLM Inference? Cost and Risk Guide",
+          "url": "https://theaiengineer.substack.com/p/should-you-self-host-inference",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-08-11T13:34:25Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Production Safety & Cost. Matched Production Safety & Cost on: cost. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Production Safety & Cost on: cost.",
+      "tags": [
+        "cost"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
