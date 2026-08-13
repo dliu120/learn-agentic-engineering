@@ -10,7 +10,7 @@ import { fetchFeed } from './sources';
 import { withTimeout } from '../lib/http';
 import { hasLLM } from '../lib/llm';
 import { log } from '../lib/log';
-import { normalize, dedupe, filterItems, rank, templatedLessons, quietDay, buildEntry } from './pipeline';
+import { normalize, dedupe, filterItems, rank, templatedLessons, quietDay, historicalBackfill, buildEntry } from './pipeline';
 import { curate } from './curate';
 import type { RawItem, SourcesConfig } from './types';
 import type { DailyEntry, DailyLesson } from '../../src/content/schemas/daily';
@@ -18,6 +18,7 @@ import type { DailyEntry, DailyLesson } from '../../src/content/schemas/daily';
 const exec = promisify(execFile);
 const args = process.argv.slice(2);
 const dry = args.includes('--dry-run');
+const backfill = args.includes('--historical-backfill');
 const dateArg = (args.find((a) => a.startsWith('--date=')) ?? '').split('=')[1];
 const utcDay = () => new Date().toISOString().slice(0, 10);
 
@@ -44,6 +45,15 @@ async function digest(date: string, lessons: DailyLesson[], cfg: SourcesConfig, 
 
 async function main() {
   const date = dateArg || utcDay();
+  if (backfill) {
+    if (!dateArg) throw new Error('--historical-backfill requires an explicit --date=YYYY-MM-DD');
+    const entry = historicalBackfill(date);
+    const directory = dry ? '.tmp' : 'src/content/daily';
+    await mkdir(directory, { recursive: true });
+    await writeFile(`${directory}/${date}.json`, JSON.stringify(entry, null, 2));
+    log.ok(`${dry ? 'dry-run → ' : ''}${directory}/${date}.json · historical provenance marker`);
+    return;
+  }
   const cfg = parseYaml(await readFile('sources.yaml', 'utf8')) as SourcesConfig;
   const weightOf = (src: string) => cfg.feeds.find((f) => f.name === src)?.weight ?? 0.5;
   log.info(`daily ${date} ${dry ? '(dry-run)' : ''} · LLM ${hasLLM() ? 'on' : 'off'} · ${cfg.feeds.length} feeds`);

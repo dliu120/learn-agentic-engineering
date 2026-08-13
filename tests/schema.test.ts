@@ -62,6 +62,9 @@ describe('daily entry schema', () => {
   it('accepts a valid curated entry (microQuiz optional)', () => {
     expect(dailyEntrySchema.safeParse(base).success).toBe(true);
   });
+  it('accepts an explicit historical backfill marker', () => {
+    expect(dailyEntrySchema.safeParse({ ...base, curationFlag: 'historical-backfill' }).success).toBe(true);
+  });
   it('allows a site-root-relative url (quiet-day cards)', () => {
     const e = structuredClone(base);
     e.lessons[0].sourceLinks[0].url = '/modules';

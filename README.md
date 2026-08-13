@@ -44,6 +44,7 @@ bun run preview        # serve the production build
 | `bun run check:coverage` | assert all 32 topics are covered by lessons |
 | `bun run daily` | run the daily pipeline → writes `src/content/daily/<date>.json` |
 | `bun run daily:dry` | fetch + curate to `.tmp/` with no site changes |
+| `bun run daily -- --date=YYYY-MM-DD --historical-backfill` | write a provenance-safe marker for a missing historical day without fetching live feeds |
 | `bun run gen:audio` | edge-tts core-concept narration (no-op if edge-tts absent) |
 | `bun run test` | Vitest unit tests |
 
@@ -108,6 +109,7 @@ recency, then curates the top items into lessons mapped to the curriculum:
   Zod with a bounded repair loop. Flag: `curated`.
 - **Without** a key → deterministic templated summaries. Flag: `uncurated-fallback`.
 - **No candidates** clear the bar → a `quiet-day` evergreen card.
+- **Historical gap without a retained source snapshot** → an explicit `historical-backfill` marker; live stories are never relabeled as past news.
 
 All failure paths are graceful (a dead feed, bad LLM output, or missing edge-tts never crashes the
 run). Copy `.env.example` → `.env` to configure.

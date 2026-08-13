@@ -1,12 +1,13 @@
 ---
 interface Props {
-  flag: 'curated' | 'uncurated-fallback' | 'quiet-day';
+  flag: 'curated' | 'uncurated-fallback' | 'quiet-day' | 'historical-backfill';
 }
 const { flag } = Astro.props;
 const map = {
   curated: { label: 'curated', cls: 'text-signal-good' },
   'uncurated-fallback': { label: 'auto-summary', cls: 'text-signal-warn' },
   'quiet-day': { label: 'quiet day', cls: 'text-text-faint' },
+  'historical-backfill': { label: 'historical gap', cls: 'text-signal-warn' },
 } as const;
 const f = map[flag];
 ---
