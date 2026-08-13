@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { normalize, dedupe, filterItems, rank, mapModule, quietDay, templatedLessons } from '../scripts/daily/pipeline';
+import { normalize, dedupe, filterItems, rank, mapModule, quietDay, historicalBackfill, templatedLessons } from '../scripts/daily/pipeline';
 import { normalizeDailyLessonModules, preserveSourceProvenance } from '../scripts/daily/curate';
 import type { RawItem, SourcesConfig } from '../scripts/daily/types';
 
@@ -151,6 +151,15 @@ describe('schema-valid outputs', () => {
     const e = quietDay('2026-06-25');
     expect(e.curationFlag).toBe('quiet-day');
     expect(e.lessons.length).toBeGreaterThanOrEqual(1);
+  });
+  it('historicalBackfill is explicit and deterministic', () => {
+    const generatedAt = '2026-08-13T00:00:00.000Z';
+    const entry = historicalBackfill('2026-06-26', generatedAt);
+    expect(entry.date).toBe('2026-06-26');
+    expect(entry.generatedAt).toBe(generatedAt);
+    expect(entry.curationFlag).toBe('historical-backfill');
+    expect(entry.sourcesUsed).toEqual([]);
+    expect(entry.lessons[0].summaryBullets.join(' ')).toContain('not relabeled');
   });
   it('templatedLessons produce >=2 bullets and a valid module', () => {
     const ranked = rank([mk({ title: 'agent rag retrieval reranking', text: 'A. B sentence here that is long enough. C is another long sentence.' })], cfg, () => 1);

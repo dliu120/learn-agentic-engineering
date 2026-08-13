@@ -212,6 +212,40 @@ export function quietDay(date: string): DailyEntry {
   });
 }
 
+export function historicalBackfill(date: string, generatedAt = new Date().toISOString()): DailyEntry {
+  return dailyEntrySchema.parse({
+    date,
+    generatedAt,
+    curationFlag: 'historical-backfill',
+    sourcesUsed: [],
+    audio: { available: false },
+    lessons: [
+      {
+        id: 'historical-backfill-notice',
+        headline: 'Historical briefing unavailable',
+        sourceLinks: [
+          {
+            title: 'About the daily briefings',
+            url: '/about',
+            source: 'Learn Agentic Engineering',
+            type: 'article',
+          },
+        ],
+        summaryBullets: [
+          'This archive date predates the first successful automated daily pipeline run.',
+          'No historical source snapshot was retained, so current stories were not relabeled as past news.',
+        ],
+        whyItMatters: 'Explicit missing-data markers preserve provenance and keep archive continuity honest.',
+        module: 'eval-observability',
+        secondaryModules: [],
+        moduleRationale: 'A transparent data-lineage and observability lesson.',
+        tags: ['historical-backfill', 'data-provenance'],
+        meta: { difficulty: 'beginner', readingTimeMin: 1 },
+      },
+    ],
+  });
+}
+
 export function buildEntry(opts: {
   date: string;
   lessons: DailyLesson[];

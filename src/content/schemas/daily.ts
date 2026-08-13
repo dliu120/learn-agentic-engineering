@@ -45,7 +45,7 @@ export const dailyLesson = z.object({
 export const dailyEntrySchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   generatedAt: z.string(),
-  curationFlag: z.enum(['curated', 'uncurated-fallback', 'quiet-day']),
+  curationFlag: z.enum(['curated', 'uncurated-fallback', 'quiet-day', 'historical-backfill']),
   sourcesUsed: z.array(z.string()),
   audio: z.object({
     mp3: z.string().optional(),
