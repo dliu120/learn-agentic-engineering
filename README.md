@@ -42,6 +42,7 @@ bun run preview        # serve the production build
 | `bun run preview` | serve `dist/` |
 | `bun run check` | `astro check` (typecheck) |
 | `bun run check:coverage` | assert all 32 topics are covered by lessons |
+| `bun run check:daily-continuity` | validate every daily entry and fail on date gaps |
 | `bun run daily` | run the daily pipeline → writes `src/content/daily/<date>.json` |
 | `bun run daily:dry` | fetch + curate to `.tmp/` with no site changes |
 | `bun run daily -- --date=YYYY-MM-DD --historical-backfill` | write a provenance-safe marker for a missing historical day without fetching live feeds |

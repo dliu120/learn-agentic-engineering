@@ -19,6 +19,7 @@ jobs:
       - uses: jdx/mise-action@v4
       - run: bun install --frozen-lockfile
       - run: bun run check:coverage
+      - run: bun run check:daily-continuity
       - run: bun run check
       - run: bun run test
       - name: Build and verify Pages paths
