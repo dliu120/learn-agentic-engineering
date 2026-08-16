@@ -6,6 +6,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: daily-lessons
@@ -15,6 +17,8 @@ jobs:
   curate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      commit-sha: ${{ steps.commit.outputs.sha }}
     steps:
       - uses: actions/checkout@v7
       - uses: jdx/mise-action@v4
@@ -36,10 +40,21 @@ jobs:
       - name: Generate daily audio (best-effort)
         run: bun run gen:audio || true
       - name: Commit new briefing
+        id: commit
         run: |
           git config user.name "dliu120"
           git config user.email "2090090+dliu120@users.noreply.github.com"
           git add src/content/daily public/audio/daily public/audio/core scripts/.audio-manifest.json 2>/dev/null || true
           git commit -m "daily: $(date -u +%F)" || echo "no changes to commit"
           git push
-      # Pushing to main triggers deploy.yml, which rebuilds and publishes.
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: curate
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: ${{ needs.curate.outputs.commit-sha }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write

@@ -71,17 +71,33 @@ export interface FeedItem {
   summary?: string;
 }
 
-const strip = (s: string) =>
-  s
-    .replace(/<!\[CDATA\[(.*?)\]\]>/gs, '$1')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .replace(/&#39;/g, "'")
-    .replace(/&quot;/g, '"')
+const decodeEntities = (s: string): string =>
+  s.replace(/&(#(?:x[\da-f]+|\d+)|amp|apos|gt|lt|nbsp|quot);/gi, (entity, value: string) => {
+    if (value.startsWith('#')) {
+      const codePoint = Number.parseInt(value.slice(value[1]?.toLowerCase() === 'x' ? 2 : 1), value[1]?.toLowerCase() === 'x' ? 16 : 10);
+      if (Number.isInteger(codePoint) && codePoint >= 0 && codePoint <= 0x10ffff) {
+        return String.fromCodePoint(codePoint);
+      }
+      return entity;
+    }
+    return {
+      amp: '&',
+      apos: "'",
+      gt: '>',
+      lt: '<',
+      nbsp: ' ',
+      quot: '"',
+    }[value.toLowerCase()] ?? entity;
+  });
+
+const strip = (s: string) => {
+  const withoutCdata = s.replace(/<!\[CDATA\[(.*?)\]\]>/gs, '$1');
+  const decoded = decodeEntities(decodeEntities(withoutCdata));
+  return decodeEntities(decoded.replace(/<[^>]*(?:>|$)/g, ' '))
     .replace(/\s+/g, ' ')
+    .replace(/\s+([,.;:!?])/g, '$1')
     .trim();
+};
 
 const tag = (block: string, name: string): string | undefined => {
   const m = block.match(new RegExp(`<${name}[^>]*>([\\s\\S]*?)</${name}>`, 'i'));
