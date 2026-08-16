@@ -176,8 +176,8 @@
         }
       ],
       "summaryBullets": [
-        "<p><strong>Tool:</strong> <a href=\"https://tools.simonwillison.net/cors-chat\">CORS Chat</a></p> <p>I built this today (<a href=\"https://gist.github.com/simonw/92a1d97773744b45bf259e003013cf36\">with GPT-5.6-Sol xhigh</…",
-        "I've tried it against LM Studio with the <code>--cors</code> option and OpenRouter, and both work fine.</p> <p>Conversations are persisted in the browser and can be exported as copy-pasted JSO"
+        "CORS Chat is a browser-based tool for chatting with CORS-enabled language model APIs.",
+        "The author tested it with LM Studio and OpenRouter; conversations persist in the browser and can be exported."
       ],
       "whyItMatters": "Relevant to Conversation Engineering. Matched Conversation Engineering on: conversation, chat. Read it through that lens.",
       "module": "conversation-context-engineering",
@@ -205,7 +205,7 @@
         }
       ],
       "summaryBullets": [
-        "<table> <tr><td> <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1vpiyj9/qwen3827b_vs_qwen3627b_writing_raytracers_in_basic/\"> <img src=\"https://preview.redd.it/cjjqj9n7smjh1.png?width=140&amp;height=105&amp;aut…",
+        "The post compares Qwen3.8-27B and Qwen3.6-27B while generating BASIC ray tracers.",
         "i slopped together an agentic harness and a basic-to-j"
       ],
       "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agentic harness. Read it through that lens.",
