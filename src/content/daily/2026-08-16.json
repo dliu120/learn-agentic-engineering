@@ -1,0 +1,224 @@
+{
+  "date": "2026-08-16",
+  "generatedAt": "2026-08-16T13:47:05.535Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-16.mp3",
+    "vtt": "/audio/daily/2026-08-16.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 3: topoteretes/cognee. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: long-term memory. Read it through that lens. Item 4: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 5: CORS Chat. Relevant to Conversation Engineering. Matched Conversation Engineering on: conversation, chat. Read it through that lens. Item 6: Qwen3.8-27B vs Qwen3.6-27B writing ray-tracers in BASIC. Relevant to Loop Engineering. Matched Loop Engineering on: agentic harness. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-16T13:43:15Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 16447,
+          "forks": 1769
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-1",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-16T06:22:24Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 240382,
+          "forks": 36474
+        }
+      }
+    },
+    {
+      "id": "topoteretes-cognee-2",
+      "headline": "topoteretes/cognee",
+      "sourceLinks": [
+        {
+          "title": "topoteretes/cognee",
+          "url": "https://github.com/topoteretes/cognee",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-16T10:48:53Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Cognee is the open-source AI memory platform for agents.",
+        "Repository description: Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: long-term memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "rag-retrieval",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: long-term memory.",
+      "tags": [
+        "long-term memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 30060,
+          "forks": 2925
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-3",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-14T18:16:11Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 35521,
+          "forks": 3734
+        }
+      }
+    },
+    {
+      "id": "cors-chat-4",
+      "headline": "CORS Chat",
+      "sourceLinks": [
+        {
+          "title": "CORS Chat",
+          "url": "https://simonwillison.net/2026/Aug/15/cors-chat/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-08-15T14:49:54+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "<p><strong>Tool:</strong> <a href=\"https://tools.simonwillison.net/cors-chat\">CORS Chat</a></p> <p>I built this today (<a href=\"https://gist.github.com/simonw/92a1d97773744b45bf259e003013cf36\">with GPT-5.6-Sol xhigh</…",
+        "I've tried it against LM Studio with the <code>--cors</code> option and OpenRouter, and both work fine.</p> <p>Conversations are persisted in the browser and can be exported as copy-pasted JSO"
+      ],
+      "whyItMatters": "Relevant to Conversation Engineering. Matched Conversation Engineering on: conversation, chat. Read it through that lens.",
+      "module": "conversation-context-engineering",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Conversation Engineering on: conversation, chat.",
+      "tags": [
+        "conversation",
+        "chat"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "qwen3-8-27b-vs-qwen3-6-27b-writing-ray-tracers-i-5",
+      "headline": "Qwen3.8-27B vs Qwen3.6-27B writing ray-tracers in BASIC",
+      "sourceLinks": [
+        {
+          "title": "Qwen3.8-27B vs Qwen3.6-27B writing ray-tracers in BASIC",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1vpiyj9/qwen3827b_vs_qwen3627b_writing_raytracers_in_basic/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-08-16T00:45:04+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "<table> <tr><td> <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1vpiyj9/qwen3827b_vs_qwen3627b_writing_raytracers_in_basic/\"> <img src=\"https://preview.redd.it/cjjqj9n7smjh1.png?width=140&amp;height=105&amp;aut…",
+        "i slopped together an agentic harness and a basic-to-j"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agentic harness. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agentic harness.",
+      "tags": [
+        "agentic harness"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
