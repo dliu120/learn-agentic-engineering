@@ -3,6 +3,13 @@ on:
   push:
     branches: [main]
   workflow_dispatch: {}
+  workflow_call:
+    inputs:
+      ref:
+        description: Exact commit to deploy
+        required: false
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -18,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref || github.sha }}
       - uses: jdx/mise-action@v4
       - name: Configure Pages
         id: pages
