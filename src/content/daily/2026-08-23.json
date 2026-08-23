@@ -1,0 +1,226 @@
+{
+  "date": "2026-08-23",
+  "generatedAt": "2026-08-23T13:48:06.118Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-23.mp3",
+    "vtt": "/audio/daily/2026-08-23.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Prism Reviewer – Multi-agent AI code reviewer built with LangGraph and LiteLLM. Relevant to Graph Engineering. Matched Graph Engineering on: langgraph, multi-agent. Read it through that lens. Item 2: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 4: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 5: I hosted Kimi K3 (2.8T parameters) using 8 B300s. 92 tok/s, $190 per million tokens. Relevant to Inference & Serving. Matched Inference & Serving on: vllm, decode, ttft. Read it through that lens. Item 6: Qwen 3.8 27B is a game changer.. Relevant to Production Safety & Cost. Matched Production Safety & Cost on: cost. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "prism-reviewer-multi-agent-ai-code-reviewer-buil-0",
+      "headline": "Prism Reviewer – Multi-agent AI code reviewer built with LangGraph and LiteLLM",
+      "sourceLinks": [
+        {
+          "title": "Prism Reviewer – Multi-agent AI code reviewer built with LangGraph and LiteLLM",
+          "url": "https://github.com/marketplace/actions/prism-reviewer-ai",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-08-23T12:22:24Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Graph Engineering. Matched Graph Engineering on: langgraph, multi-agent. Read it through that lens.",
+      "module": "graph-workflow-engineering",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Graph Engineering on: langgraph, multi-agent.",
+      "tags": [
+        "langgraph",
+        "multi-agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "volcengine-openviking-1",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-22T09:44:23Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 32318,
+          "forks": 2470
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-2",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-21T15:23:30Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 35637,
+          "forks": 3741
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-3",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-21T23:34:46Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 17966,
+          "forks": 1942
+        }
+      }
+    },
+    {
+      "id": "i-hosted-kimi-k3-2-8t-parameters-using-8-b300s-9-4",
+      "headline": "I hosted Kimi K3 (2.8T parameters) using 8 B300s. 92 tok/s, $190 per million tokens",
+      "sourceLinks": [
+        {
+          "title": "I hosted Kimi K3 (2.8T parameters) using 8 B300s. 92 tok/s, $190 per million tokens",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1vw1j2p/i_hosted_kimi_k3_28t_parameters_using_8_b300s_92/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-08-23T08:25:35+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "What I ran: 8x B300 on Modal, $56.79 per hour, vLLM, tensor parallel 8, native MXFP4 Cold boot ~27 min (1.56 TB load, JIT, 51 CUDA graph captures) TTFT 0.92 to 1.02 s, decode 92 tok/s steady, 83 tok/s average over 4 p…",
+        "One clean run is about $36 of GPU time.",
+        "Left warm, it is $1,363 a day."
+      ],
+      "whyItMatters": "Relevant to Inference & Serving. Matched Inference & Serving on: vllm, decode, ttft. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [
+        "model-efficiency-compression"
+      ],
+      "moduleRationale": "Matched Inference & Serving on: vllm, decode, ttft.",
+      "tags": [
+        "vllm",
+        "decode",
+        "ttft"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "qwen-3-8-27b-is-a-game-changer-5",
+      "headline": "Qwen 3.8 27B is a game changer.",
+      "sourceLinks": [
+        {
+          "title": "Qwen 3.8 27B is a game changer.",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1vvyacg/qwen_38_27b_is_a_game_changer/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-08-23T05:19:48+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Our devs got their hands on it a few days ago.",
+        "One wired it into Codex to compare with GPT Luna, our usual workhorse right now for its cost effectiveness.",
+        "Another tried it out on one of our OCR pipelines."
+      ],
+      "whyItMatters": "Relevant to Production Safety & Cost. Matched Production Safety & Cost on: cost. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Production Safety & Cost on: cost.",
+      "tags": [
+        "cost"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
