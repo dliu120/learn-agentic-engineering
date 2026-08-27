@@ -1,0 +1,236 @@
+{
+  "date": "2026-08-27",
+  "generatedAt": "2026-08-27T22:59:11.664Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-27.mp3",
+    "vtt": "/audio/daily/2026-08-27.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 2: Show HN: Beating GPT5.5-xhigh for Coding agent security with SLMs and IRM. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 3: AI Engineer Notebooks – free, framework-free RAG/agents/evals on Colab. Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval, evals. Read it through that lens. Item 4: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 5: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 6: Four reproducible vLLM parser failures that return 200 with the wrong tool call. Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "affaan-m-ecc-0",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-27T21:29:02Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 243745,
+          "forks": 36859
+        }
+      }
+    },
+    {
+      "id": "show-hn-beating-gpt5-5-xhigh-for-coding-agent-se-1",
+      "headline": "Show HN: Beating GPT5.5-xhigh for Coding agent security with SLMs and IRM",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Beating GPT5.5-xhigh for Coding agent security with SLMs and IRM",
+          "url": "https://harden.run/blog/aif-research-and-evidence",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-08-27T22:33:19Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "ai-engineer-notebooks-free-framework-free-rag-ag-2",
+      "headline": "AI Engineer Notebooks – free, framework-free RAG/agents/evals on Colab",
+      "sourceLinks": [
+        {
+          "title": "AI Engineer Notebooks – free, framework-free RAG/agents/evals on Colab",
+          "url": "https://github.com/calmrocks/ai-engineer-notebooks",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-08-27T21:46:39Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval, evals. Read it through that lens.",
+      "module": "eval-observability",
+      "secondaryModules": [
+        "rag-retrieval",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Evaluation & Observability on: eval, evals.",
+      "tags": [
+        "eval",
+        "evals"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 8,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "volcengine-openviking-3",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-27T15:29:28Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 33881,
+          "forks": 2569
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-4",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-27T17:40:19Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 18810,
+          "forks": 2025
+        }
+      }
+    },
+    {
+      "id": "four-reproducible-vllm-parser-failures-that-retu-5",
+      "headline": "Four reproducible vLLM parser failures that return 200 with the wrong tool call",
+      "sourceLinks": [
+        {
+          "title": "Four reproducible vLLM parser failures that return 200 with the wrong tool call",
+          "url": "https://ingot.tools/reports/parser-silent-failure",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-08-27T21:41:59Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Inference & Serving on: vllm.",
+      "tags": [
+        "vllm"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
