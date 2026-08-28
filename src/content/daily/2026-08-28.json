@@ -1,0 +1,234 @@
+{
+  "date": "2026-08-28",
+  "generatedAt": "2026-08-28T23:04:53.381Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-08-28.mp3",
+    "vtt": "/audio/daily/2026-08-28.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: Grith is live – security proxy for AI coding agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 5: Show HN: URML – safety-eval harness for AI agents on lab and factory hardware. Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval. Read it through that lens. Item 6: Breaking Claude Code Opus 5 Auto Mode. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent, claude code. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "affaan-m-ecc-0",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-28T22:59:00Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 243958,
+          "forks": 36900
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-28T21:34:48Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 18947,
+          "forks": 2042
+        }
+      }
+    },
+    {
+      "id": "volcengine-openviking-2",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-08-28T17:26:29Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 34139,
+          "forks": 2594
+        }
+      }
+    },
+    {
+      "id": "grith-is-live-security-proxy-for-ai-coding-agent-3",
+      "headline": "Grith is live – security proxy for AI coding agents",
+      "sourceLinks": [
+        {
+          "title": "Grith is live – security proxy for AI coding agents",
+          "url": "https://grith.ai/blog/grith-is-live",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-08-28T14:47:56Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-urml-safety-eval-harness-for-ai-agents-o-4",
+      "headline": "Show HN: URML – safety-eval harness for AI agents on lab and factory hardware",
+      "sourceLinks": [
+        {
+          "title": "Show HN: URML – safety-eval harness for AI agents on lab and factory hardware",
+          "url": "https://github.com/URML-MARS/URML/tree/main/examples/physical-ai-safety-eval",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-08-28T16:28:06Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval. Read it through that lens.",
+      "module": "eval-observability",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Evaluation & Observability on: eval.",
+      "tags": [
+        "eval"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "breaking-claude-code-opus-5-auto-mode-5",
+      "headline": "Breaking Claude Code Opus 5 Auto Mode",
+      "sourceLinks": [
+        {
+          "title": "Breaking Claude Code Opus 5 Auto Mode",
+          "url": "https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-08-27T22:50:25+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Breaking Claude Code Opus 5 Auto Mode Anthropic are putting a great deal of faith in Claude Code's auto mode for protecting their coding agent users against prompt injection attacks.",
+        "They recently made that the default and have made bold claims about its effectiveness.",
+        "Johann Rehberger is one of the most credible prompt injection researchers active today."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent, claude code. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent, claude code.",
+      "tags": [
+        "agent",
+        "coding agent",
+        "claude code"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
