@@ -1,0 +1,234 @@
+{
+  "date": "2026-09-03",
+  "generatedAt": "2026-09-03T17:04:13.526Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-03.mp3",
+    "vtt": "/audio/daily/2026-09-03.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: Show HN: A Context Registry for AI coding agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 4: I hate benchmarks: Moving a production workflow from GPT to GLM-5.3 Flash. Relevant to Loop Engineering. Matched Loop Engineering on: workflow. Read it through that lens. Item 5: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 6: Show HN: Engram – Shared procedural runbook memory for AI coding agents via MCP. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "volcengine-openviking-0",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-03T16:26:13Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 35323,
+          "forks": 2706
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-03T16:50:37Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 19743,
+          "forks": 2156
+        }
+      }
+    },
+    {
+      "id": "show-hn-a-context-registry-for-ai-coding-agents-2",
+      "headline": "Show HN: A Context Registry for AI coding agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: A Context Registry for AI coding agents",
+          "url": "https://context.apimatic.io/",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-09-03T16:00:26Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 6,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "i-hate-benchmarks-moving-a-production-workflow-f-3",
+      "headline": "I hate benchmarks: Moving a production workflow from GPT to GLM-5.3 Flash",
+      "sourceLinks": [
+        {
+          "title": "I hate benchmarks: Moving a production workflow from GPT to GLM-5.3 Flash",
+          "url": "https://polyform.ai/news/why-i-hate-benchmarks/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-03T16:49:52Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: workflow.",
+      "tags": [
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-4",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-03T00:48:58Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 246891,
+          "forks": 37207
+        }
+      }
+    },
+    {
+      "id": "show-hn-engram-shared-procedural-runbook-memory--5",
+      "headline": "Show HN: Engram – Shared procedural runbook memory for AI coding agents via MCP",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Engram – Shared procedural runbook memory for AI coding agents via MCP",
+          "url": "https://github.com/aiengram/engram",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-09-03T16:39:45Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
