@@ -1,0 +1,216 @@
+{
+  "date": "2026-09-09",
+  "generatedAt": "2026-09-09T17:11:12.670Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-09.mp3",
+    "vtt": "/audio/daily/2026-09-09.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Google: Attackers are using prompt injection against coding agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 2: A Git Config Key Ran Code in Seven Coding Agents. The 2022 Fix Does Not Stop It. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 3: Four Kinds of Agent Memory. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: GPT-6 Astra, Looped Transformers, and Hidden Reasoning. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: GLM 5.3 Flash Q4 @ 60tps / 550tps on M3 Ultra. Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens. Item 6: Why the hell is LM Studio making LM Studio so difficult to download?. Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "google-attackers-are-using-prompt-injection-agai-0",
+      "headline": "Google: Attackers are using prompt injection against coding agents",
+      "sourceLinks": [
+        {
+          "title": "Google: Attackers are using prompt injection against coding agents",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-09-09T15:19:57Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 11,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "a-git-config-key-ran-code-in-seven-coding-agents-1",
+      "headline": "A Git Config Key Ran Code in Seven Coding Agents. The 2022 Fix Does Not Stop It",
+      "sourceLinks": [
+        {
+          "title": "A Git Config Key Ran Code in Seven Coding Agents. The 2022 Fix Does Not Stop It",
+          "url": "https://grith.ai/blog/git-config-key-2022-fix-coding-agents",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-09-09T14:53:17Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 4,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "four-kinds-of-agent-memory-2",
+      "headline": "Four Kinds of Agent Memory",
+      "sourceLinks": [
+        {
+          "title": "Four Kinds of Agent Memory",
+          "url": "https://memanto.ai/blog/four-kinds-of-agent-memory",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-09-09T16:09:01Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "gpt-6-astra-looped-transformers-and-hidden-reaso-3",
+      "headline": "GPT-6 Astra, Looped Transformers, and Hidden Reasoning",
+      "sourceLinks": [
+        {
+          "title": "GPT-6 Astra, Looped Transformers, and Hidden Reasoning",
+          "url": "https://magazine.sebastianraschka.com/p/gpt-6-astra-looped-transformers-and",
+          "source": "Sebastian Raschka",
+          "type": "article",
+          "publishedAt": "Wed, 09 Sep 2026 11:14:25 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "A Look at Recurrent Depth, Hidden Chains of Thought, and Recent Research on Looping Transformer Blocks",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "glm-5-3-flash-q4-60tps-550tps-on-m3-ultra-4",
+      "headline": "GLM 5.3 Flash Q4 @ 60tps / 550tps on M3 Ultra",
+      "sourceLinks": [
+        {
+          "title": "GLM 5.3 Flash Q4 @ 60tps / 550tps on M3 Ultra",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wbkpnw/glm_53_flash_q4_60tps_550tps_on_m3_ultra/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-09-09T12:51:21+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "I have been a dwarfstar fan for awhile and I really liked glm 5.3 flash but needed it to be materially faster to feel good using it.",
+        "In the screenshot you can see the outcome of using the model with a claude code harness at ~200k depth, with many tool calls and averaging over 38tps output.",
+        "Yes, I put 60tps in the headline and you will get that if you ask it to write SQL."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: claude code.",
+      "tags": [
+        "claude code"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "why-the-hell-is-lm-studio-making-lm-studio-so-di-5",
+      "headline": "Why the hell is LM Studio making LM Studio so difficult to download?",
+      "sourceLinks": [
+        {
+          "title": "Why the hell is LM Studio making LM Studio so difficult to download?",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wble79/why_the_hell_is_lm_studio_making_lm_studio_so/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-09-09T13:19:39+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Who is the marketing genius at LM Studio that decided that going ALL IN on pushing their new Bionic Agent product meant they are going to make it a giant pain in the ass to find and download actual LM Studio.",
+        "This is the dumbest marketing decision I’ve ever seen.",
+        "I used to love LM Studio, it was the middle stepping stone in the logical progression of inference."
+      ],
+      "whyItMatters": "Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Inference & Serving on: vllm.",
+      "tags": [
+        "vllm"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
