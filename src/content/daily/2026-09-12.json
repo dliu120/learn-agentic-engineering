@@ -1,0 +1,226 @@
+{
+  "date": "2026-09-12",
+  "generatedAt": "2026-09-12T16:22:05.273Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-12.mp3",
+    "vtt": "/audio/daily/2026-09-12.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Perplexity trusts GPT-6 Astra with end-to-end systems. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 2: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 3: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 5: Show HN: Java MCP Runtime for virtual threads. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens. Item 6: Ask HN: For Enterprise coding agents, what's your company doing to control cost?. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "perplexity-trusts-gpt-6-astra-with-end-to-end-sy-0",
+      "headline": "Perplexity trusts GPT-6 Astra with end-to-end systems",
+      "sourceLinks": [
+        {
+          "title": "Perplexity trusts GPT-6 Astra with end-to-end systems",
+          "url": "https://openai.com/index/perplexity-improving-accuracy-with-astra",
+          "source": "OpenAI",
+          "type": "article",
+          "publishedAt": "Mon, 14 Sep 2026 00:00:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "affaan-m-ecc-1",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-12T11:45:41Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 256897,
+          "forks": 38442
+        }
+      }
+    },
+    {
+      "id": "volcengine-openviking-2",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-12T14:39:07Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36800,
+          "forks": 2816
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-3",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-12T13:07:08Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 20592,
+          "forks": 2249
+        }
+      }
+    },
+    {
+      "id": "show-hn-java-mcp-runtime-for-virtual-threads-4",
+      "headline": "Show HN: Java MCP Runtime for virtual threads",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Java MCP Runtime for virtual threads",
+          "url": "https://tachyonmcp.dev",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-12T13:35:09Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp.",
+      "tags": [
+        "mcp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "ask-hn-for-enterprise-coding-agents-what-s-your--5",
+      "headline": "Ask HN: For Enterprise coding agents, what's your company doing to control cost?",
+      "sourceLinks": [
+        {
+          "title": "Ask HN: For Enterprise coding agents, what's your company doing to control cost?",
+          "url": "https://news.ycombinator.com/item?id=49673825",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-12T16:08:08Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
