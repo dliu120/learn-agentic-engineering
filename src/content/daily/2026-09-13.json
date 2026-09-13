@@ -1,0 +1,219 @@
+{
+  "date": "2026-09-13",
+  "generatedAt": "2026-09-13T16:59:03.902Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-13.mp3",
+    "vtt": "/audio/daily/2026-09-13.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: Perplexity trusts GPT-6 Astra with end-to-end systems. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 4: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 5: 5 Reasons Why Users Ditch Claude - bgr.com. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: The Local LLM community feels like the golden era of the internet all over again. Relevant to Inference & Serving. Matched Inference & Serving on: prefill, decode. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "volcengine-openviking-0",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-13T15:04:09Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36981,
+          "forks": 2836
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-13T16:50:07Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 20648,
+          "forks": 2255
+        }
+      }
+    },
+    {
+      "id": "perplexity-trusts-gpt-6-astra-with-end-to-end-sy-2",
+      "headline": "Perplexity trusts GPT-6 Astra with end-to-end systems",
+      "sourceLinks": [
+        {
+          "title": "Perplexity trusts GPT-6 Astra with end-to-end systems",
+          "url": "https://openai.com/index/perplexity-improving-accuracy-with-astra",
+          "source": "OpenAI",
+          "type": "article",
+          "publishedAt": "Mon, 14 Sep 2026 00:00:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "affaan-m-ecc-3",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-12T11:45:41Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 257560,
+          "forks": 38524
+        }
+      }
+    },
+    {
+      "id": "5-reasons-why-users-ditch-claude-bgr-com-4",
+      "headline": "5 Reasons Why Users Ditch Claude - bgr.com",
+      "sourceLinks": [
+        {
+          "title": "5 Reasons Why Users Ditch Claude - bgr.com",
+          "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1iMjh3N0phdFZUZTcyM1JwY1d6YjR1ODg3WDVOc1pTWHVBYU5lOFJGTEEtX1RSQWE0OXRKTTE0Q2VEbFlyM1JXaE40WEg4Szkzd29hRlZSaEotWVc1M01MS1NyM1pCVFdQdFE?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Sun, 13 Sep 2026 12:17:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "5 Reasons Why Users Ditch Claude bgr.com",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "the-local-llm-community-feels-like-the-golden-er-5",
+      "headline": "The Local LLM community feels like the golden era of the internet all over again",
+      "sourceLinks": [
+        {
+          "title": "The Local LLM community feels like the golden era of the internet all over again",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wf3i1m/the_local_llm_community_feels_like_the_golden_era/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-09-13T09:56:52+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Lately because of the current hardware shortage, unfortunately or fortunately, we can’t just throw infinite cloud compute at our problems, but we’re forced to actually care about what’s happening under the hood.",
+        "We’re tweaking inference engines, learning quantization math, and optimizing architecture just to squeeze as much performance as possible for the lowest possible setups.",
+        "Fact: Just recently, the forked llama.cpp(s) and halogen-flash-server of Strix Halo pushed the performance through the roof, achieving double performance in decode (52tok/s), 5-6x performance in prefill (1300tok/s) for"
+      ],
+      "whyItMatters": "Relevant to Inference & Serving. Matched Inference & Serving on: prefill, decode. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [
+        "model-efficiency-compression"
+      ],
+      "moduleRationale": "Matched Inference & Serving on: prefill, decode.",
+      "tags": [
+        "prefill",
+        "decode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
