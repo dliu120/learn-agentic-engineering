@@ -1,0 +1,225 @@
+{
+  "date": "2026-09-15",
+  "generatedAt": "2026-09-15T17:41:29.606Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-15.mp3",
+    "vtt": "/audio/daily/2026-09-15.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 4: Show HN: Self-adjusting vLLM at production scale. Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens. Item 5: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 6: Anthropic's Claude for Financial Advisors Sparks Industry Debate - Wealth Management. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "volcengine-openviking-0",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-15T16:08:34Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 37475,
+          "forks": 2888
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-15T17:41:06Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 20847,
+          "forks": 2280
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-2",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-15T05:42:28Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 259052,
+          "forks": 38745
+        }
+      }
+    },
+    {
+      "id": "show-hn-self-adjusting-vllm-at-production-scale-3",
+      "headline": "Show HN: Self-adjusting vLLM at production scale",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Self-adjusting vLLM at production scale",
+          "url": "https://twitter.com/yevr19/status/2099877116892307744",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-15T17:32:40Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Inference & Serving on: vllm.",
+      "tags": [
+        "vllm"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-4",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-14T07:35:41Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 35983,
+          "forks": 3789
+        }
+      }
+    },
+    {
+      "id": "anthropic-s-claude-for-financial-advisors-sparks-5",
+      "headline": "Anthropic's Claude for Financial Advisors Sparks Industry Debate - Wealth Management",
+      "sourceLinks": [
+        {
+          "title": "Anthropic's Claude for Financial Advisors Sparks Industry Debate - Wealth Management",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNMXE3RG54blFlVXN4T3dxT0I1UmJSZzlLckVUMmpvTVR4WnVnb1FxMEh4TUNuU05paTdxNE02ZTFDVEhBWmU5Xy1iSU9Ocm1hQ1BEN0lnb0laWm4wRXhZYlE2MnlVT0NzWTB5T2oyNkZyOF9uazFnQTI4bHVJRkdFTWloVFdXZVhiRUtKdzdGbHpUZF9jcHhtUVpWcWFGY2g1N0pn?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Tue, 15 Sep 2026 14:33:49 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic's Claude for Financial Advisors Sparks Industry Debate Wealth Management",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
