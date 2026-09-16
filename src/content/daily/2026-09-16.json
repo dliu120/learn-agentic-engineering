@@ -1,0 +1,235 @@
+{
+  "date": "2026-09-16",
+  "generatedAt": "2026-09-16T17:38:58.829Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-16.mp3",
+    "vtt": "/audio/daily/2026-09-16.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 2: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 4: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 5: Show HN: A Coding Agent from Scratch. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 6: Show HN: An MCP server that lets AI agents create, send and analyze surveys. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp, mcp server. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "microsoft-graphrag-0",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-16T17:15:35Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 35994,
+          "forks": 3790
+        }
+      }
+    },
+    {
+      "id": "volcengine-openviking-1",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-16T16:34:27Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 37731,
+          "forks": 2914
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-2",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-16T17:34:58Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 20909,
+          "forks": 2288
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-3",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-15T19:33:00Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 259948,
+          "forks": 38909
+        }
+      }
+    },
+    {
+      "id": "show-hn-a-coding-agent-from-scratch-4",
+      "headline": "Show HN: A Coding Agent from Scratch",
+      "sourceLinks": [
+        {
+          "title": "Show HN: A Coding Agent from Scratch",
+          "url": "https://blog.softwarewrighter.com/2026/09/16/ai-tools-coding-agent-in-mlpl/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-16T16:30:10Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-an-mcp-server-that-lets-ai-agents-create-5",
+      "headline": "Show HN: An MCP server that lets AI agents create, send and analyze surveys",
+      "sourceLinks": [
+        {
+          "title": "Show HN: An MCP server that lets AI agents create, send and analyze surveys",
+          "url": "https://www.zigpoll.com",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-09-16T15:40:13Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp, mcp server. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp, mcp server.",
+      "tags": [
+        "mcp",
+        "mcp server"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
