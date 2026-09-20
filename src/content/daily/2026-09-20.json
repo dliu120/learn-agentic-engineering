@@ -1,0 +1,230 @@
+{
+  "date": "2026-09-20",
+  "generatedAt": "2026-09-20T16:51:56.965Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-20.mp3",
+    "vtt": "/audio/daily/2026-09-20.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 2: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 3: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 4: Enjambre – a durable kernel for swarms of AI agents (Python, MCP). Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens. Item 5: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 6: I tested 9 LLMs on the exact same web-dev prompt for ~8 hours — RTX 3060 12GB results (Rate the best!). Relevant to Model Efficiency. Matched Model Efficiency on: llama.cpp. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "volcengine-openviking-0",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-20T13:30:05Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 38171,
+          "forks": 2962
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-1",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-20T00:01:14Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 263473,
+          "forks": 39428
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-2",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-20T08:13:23Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21091,
+          "forks": 2306
+        }
+      }
+    },
+    {
+      "id": "enjambre-a-durable-kernel-for-swarms-of-ai-agent-3",
+      "headline": "Enjambre – a durable kernel for swarms of AI agents (Python, MCP)",
+      "sourceLinks": [
+        {
+          "title": "Enjambre – a durable kernel for swarms of AI agents (Python, MCP)",
+          "url": "https://github.com/santibccc-sudo/enjambre-os",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-09-20T08:55:30Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp.",
+      "tags": [
+        "mcp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-4",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-19T09:30:33Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36044,
+          "forks": 3796
+        }
+      }
+    },
+    {
+      "id": "i-tested-9-llms-on-the-exact-same-web-dev-prompt-5",
+      "headline": "I tested 9 LLMs on the exact same web-dev prompt for ~8 hours — RTX 3060 12GB results (Rate the best!)",
+      "sourceLinks": [
+        {
+          "title": "I tested 9 LLMs on the exact same web-dev prompt for ~8 hours — RTX 3060 12GB results (Rate the best!)",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wljzix/i_tested_9_llms_on_the_exact_same_webdev_prompt/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-09-20T15:26:49+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "I’ve spent basically the last 8 hours testing different models on the exact same web-development prompt, and I finally finished.",
+        "The whole point of this nine-hour test was that which local model matches the frontier-level intelligence at size and could fit easily in an RTX 3060-like consumer card.",
+        "My setup: GPU: RTX 3060 12GB RAM: 16GB DDR4, single-channel OS: CachyOS (Arch Linux) Local models were run through my local llama.cpp setup."
+      ],
+      "whyItMatters": "Relevant to Model Efficiency. Matched Model Efficiency on: llama.cpp. Read it through that lens.",
+      "module": "model-efficiency-compression",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Model Efficiency on: llama.cpp.",
+      "tags": [
+        "llama.cpp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
