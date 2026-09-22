@@ -1,0 +1,225 @@
+{
+  "date": "2026-09-22",
+  "generatedAt": "2026-09-22T17:39:38.019Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-09-22.mp3",
+    "vtt": "/audio/daily/2026-09-22.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 2: Show HN: AI·rete·RAG – a Rete rule engine decides, RAG explains why. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag. Read it through that lens. Item 3: volcengine/OpenViking. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 5: Show HN: What's Next – end a Claude Code turn with a choice, not prose. Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens. Item 6: Show HN: Nomoreda – Browser EDA, MCP-Friendly, KiCad/Altium-Compatible. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "microsoft-graphrag-0",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-22T17:37:55Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36070,
+          "forks": 3798
+        }
+      }
+    },
+    {
+      "id": "show-hn-ai-rete-rag-a-rete-rule-engine-decides-r-1",
+      "headline": "Show HN: AI·rete·RAG – a Rete rule engine decides, RAG explains why",
+      "sourceLinks": [
+        {
+          "title": "Show HN: AI·rete·RAG – a Rete rule engine decides, RAG explains why",
+          "url": "https://ai-rete-rag.com/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-22T16:15:06Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag.",
+      "tags": [
+        "rag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 14,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "volcengine-openviking-2",
+      "headline": "volcengine/OpenViking",
+      "sourceLinks": [
+        {
+          "title": "volcengine/OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-22T15:46:53Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Self-evolving Context Database for AI Agents.",
+        "Repository description: Unify Agent Memory, Knowledge RAG and Skills."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 38440,
+          "forks": 2991
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-3",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-22T17:31:59Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21169,
+          "forks": 2313
+        }
+      }
+    },
+    {
+      "id": "show-hn-what-s-next-end-a-claude-code-turn-with--4",
+      "headline": "Show HN: What's Next – end a Claude Code turn with a choice, not prose",
+      "sourceLinks": [
+        {
+          "title": "Show HN: What's Next – end a Claude Code turn with a choice, not prose",
+          "url": "https://github.com/kvitapp/kvit-plugins",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-22T16:35:49Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: claude code.",
+      "tags": [
+        "claude code"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "show-hn-nomoreda-browser-eda-mcp-friendly-kicad--5",
+      "headline": "Show HN: Nomoreda – Browser EDA, MCP-Friendly, KiCad/Altium-Compatible",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Nomoreda – Browser EDA, MCP-Friendly, KiCad/Altium-Compatible",
+          "url": "https://nomoreda.com/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-09-22T17:24:57Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp.",
+      "tags": [
+        "mcp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
