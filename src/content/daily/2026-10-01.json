@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-01",
+  "generatedAt": "2026-10-01T18:56:12.234Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-01.mp3",
+    "vtt": "/audio/daily/2026-10-01.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 4: Barclays Accelerates AI Rollout With Anthropic’s Claude Code - PYMNTS.com. Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens. Item 5: Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: We benchmarked 18 RAG pipelines against an agent loop on Google's FRAMES. The best pipeline hit 78.9%. The agent loop hit 92.7%.. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, embeddings, reranking. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-01T18:50:55Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21453,
+          "forks": 2367
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-1",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-01T16:06:06Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 44239,
+          "forks": 5856
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-2",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-09-30T18:45:04Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 270585,
+          "forks": 40452
+        }
+      }
+    },
+    {
+      "id": "barclays-accelerates-ai-rollout-with-anthropic-s-3",
+      "headline": "Barclays Accelerates AI Rollout With Anthropic’s Claude Code - PYMNTS.com",
+      "sourceLinks": [
+        {
+          "title": "Barclays Accelerates AI Rollout With Anthropic’s Claude Code - PYMNTS.com",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOXzF4ZEFaN2JQZEhmd09Md2RpeWRLMjMwM1diaFBfVW9FZzFYX2ZCXzNodVRMeVRkak5mZjg0aXBrSEhodG5KaEhXdDFLSG9xTVZvVVpTVW9IejVfa0d4NFpoWWZzaW12TmlvQlI0MUxkS3dCbUc1VnRxYlM2ZDRGMDd1Yk9ZSHplNjRVYnNJblhuZ0kxN2dkSC1NY3VKZW5sWDRpVDdqZS04aVFfWmhaRnhmdUdQLWM?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Thu, 01 Oct 2026 14:44:07 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Barclays Accelerates AI Rollout With Anthropic’s Claude Code PYMNTS.com",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: claude code.",
+      "tags": [
+        "claude code"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "introducing-olmo-core-3-open-scalable-training-i-4",
+      "headline": "Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs",
+      "sourceLinks": [
+        {
+          "title": "Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs",
+          "url": "https://huggingface.co/blog/allenai/olmocore3",
+          "source": "Hugging Face",
+          "type": "article",
+          "publishedAt": "Thu, 01 Oct 2026 15:01:43 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hugging Face.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "we-benchmarked-18-rag-pipelines-against-an-agent-5",
+      "headline": "We benchmarked 18 RAG pipelines against an agent loop on Google's FRAMES. The best pipeline hit 78.9%. The agent loop hit 92.7%.",
+      "sourceLinks": [
+        {
+          "title": "We benchmarked 18 RAG pipelines against an agent loop on Google's FRAMES. The best pipeline hit 78.9%. The agent loop hit 92.7%.",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wv0lww/we_benchmarked_18_rag_pipelines_against_an_agent/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-10-01T14:16:31+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Hybrid search, reranking, query decomposition, and query expansion are often treated as must-haves for good RAG.",
+        "We wanted to see how much each actually helped, so we tested them.",
+        "Same model, same embeddings, same documents, across all 824 multi-hop questions in FRAMES."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, embeddings, reranking. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, embeddings, reranking.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "embeddings",
+        "reranking",
+        "hybrid search"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
