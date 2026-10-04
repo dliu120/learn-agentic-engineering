@@ -1,0 +1,220 @@
+{
+  "date": "2026-10-04",
+  "generatedAt": "2026-10-04T17:38:14.257Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-04.mp3",
+    "vtt": "/audio/daily/2026-10-04.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: Gemini app limiting what models free and AI Plus users can access. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 3: Show HN: Stateful Linux microVMs for coding agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 4: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 5: I trained a 3.87B MoE (1.45B active) from scratch on only 86.5B tokens. Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens. Item 6: Qwen3.5 arch implementation in FPGA fabric for 9B/27B INT4 models on relatively cheap eBay mining hardware. Relevant to Model Efficiency. Matched Model Efficiency on: int4. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-04T11:40:28Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21526,
+          "forks": 2375
+        }
+      }
+    },
+    {
+      "id": "gemini-app-limiting-what-models-free-and-ai-plus-1",
+      "headline": "Gemini app limiting what models free and AI Plus users can access",
+      "sourceLinks": [
+        {
+          "title": "Gemini app limiting what models free and AI Plus users can access",
+          "url": "https://9to5google.com/2026/10/03/gemini-model-limits-oct-26/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-04T16:32:21Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-stateful-linux-microvms-for-coding-agent-2",
+      "headline": "Show HN: Stateful Linux microVMs for coding agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Stateful Linux microVMs for coding agents",
+          "url": "https://github.com/mariobm/agent-house",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-04T17:17:14Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "state-memory-durable-workflows"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-3",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-02T17:43:57Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 45407,
+          "forks": 5907
+        }
+      }
+    },
+    {
+      "id": "i-trained-a-3-87b-moe-1-45b-active-from-scratch--4",
+      "headline": "I trained a 3.87B MoE (1.45B active) from scratch on only 86.5B tokens",
+      "sourceLinks": [
+        {
+          "title": "I trained a 3.87B MoE (1.45B active) from scratch on only 86.5B tokens",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wxiy8y/i_trained_a_387b_moe_145b_active_from_scratch_on/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-10-04T15:50:54+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "First of all, thank you for reading.",
+        "I trained a small MoE model completely from scratch (no external base weights) and wanted to share the results + a couple of lessons.",
+        "Apex-2 - Architecture: Decoder-only MoE, every layer is MoE (no dense layers) - Size: 3.87B total parameters, 1.45B active per token - 32 layers, d_model 2048, GQA 16Q/4KV, 16 experts, top-4 - Context: 4096 - Tokenize…"
+      ],
+      "whyItMatters": "Relevant to Inference & Serving. Matched Inference & Serving on: vllm. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Inference & Serving on: vllm.",
+      "tags": [
+        "vllm"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "qwen3-5-arch-implementation-in-fpga-fabric-for-9-5",
+      "headline": "Qwen3.5 arch implementation in FPGA fabric for 9B/27B INT4 models on relatively cheap eBay mining hardware",
+      "sourceLinks": [
+        {
+          "title": "Qwen3.5 arch implementation in FPGA fabric for 9B/27B INT4 models on relatively cheap eBay mining hardware",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wxken1/qwen35_arch_implementation_in_fpga_fabric_for/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-10-04T16:51:07+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "I've been wanting to test out LLM inference on FPGAs for a while now, but didn't have a big reason too since there were no frontier class models at 9B-27B scale (3.6 27B was great still but it didn't motivate me enough).",
+        "When 3.8 was released I was pretty impressed by what it could at that size.",
+        "So I began looking for cheap FPGAs that could hold the model."
+      ],
+      "whyItMatters": "Relevant to Model Efficiency. Matched Model Efficiency on: int4. Read it through that lens.",
+      "module": "model-efficiency-compression",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Model Efficiency on: int4.",
+      "tags": [
+        "int4"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
