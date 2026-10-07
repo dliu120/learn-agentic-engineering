@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-07",
+  "generatedAt": "2026-10-07T19:23:04.199Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-07.mp3",
+    "vtt": "/audio/daily/2026-10-07.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Meta and Microsoft Limit Employee Use of Claude AI Tools. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 2: I'm not paying $20 for ChatGPT or Claude because a free local LLM does. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 3: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 4: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 5: Anthropic launches third Claude 5.5 model, expanding AI lineup before planned IPO - Reuters. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: One Model Family, Two Gold-Level Results: Fine-Tuning Nemotron for IOI and IMO. Relevant to Strategy & Tradeoffs. Matched Strategy & Tradeoffs on: fine-tuning. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "meta-and-microsoft-limit-employee-use-of-claude--0",
+      "headline": "Meta and Microsoft Limit Employee Use of Claude AI Tools",
+      "sourceLinks": [
+        {
+          "title": "Meta and Microsoft Limit Employee Use of Claude AI Tools",
+          "url": "https://www.rswebsols.com/news/meta-and-microsoft-take-steps-to-reduce-employee-usage-of-claude-ai/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-07T18:49:40Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 22,
+          "comments": 12
+        }
+      }
+    },
+    {
+      "id": "i-m-not-paying-20-for-chatgpt-or-claude-because--1",
+      "headline": "I'm not paying $20 for ChatGPT or Claude because a free local LLM does",
+      "sourceLinks": [
+        {
+          "title": "I'm not paying $20 for ChatGPT or Claude because a free local LLM does",
+          "url": "https://www.xda-developers.com/im-not-paying-20-for-chatgpt-claude-or-gemini-because-a-free-local-llm-does-everything-i-need/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-07T18:19:03Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 21,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-2",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-07T19:08:13Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21596,
+          "forks": 2380
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-3",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-07T17:03:46Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 46740,
+          "forks": 5955
+        }
+      }
+    },
+    {
+      "id": "anthropic-launches-third-claude-5-5-model-expand-4",
+      "headline": "Anthropic launches third Claude 5.5 model, expanding AI lineup before planned IPO - Reuters",
+      "sourceLinks": [
+        {
+          "title": "Anthropic launches third Claude 5.5 model, expanding AI lineup before planned IPO - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPbENadk1Lcm1iLUZOd0hYSmRZLWJHLTd0YjAwTExuMVozWW9McllnVWJuTHdPY3ZfRWJwVGdzMmpVaHhvODVVMkFMd0U0ejdyRjQxcEJMVzRqcTJqbWVaLXI5QnM1ckRSYmZVYjlBR2NqRTZaaW42QjFZMC00ZmxKOF9Fal9EODV2dEZnb1BPUDBlSFJrRDVtWkNLTWhacE04b3dyemlvckZTR3JmR0xONmxGb19hNU1tWFJMcVlJajNYUQ?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Wed, 07 Oct 2026 18:07:44 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic launches third Claude 5.5 model, expanding AI lineup before planned IPO Reuters",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "one-model-family-two-gold-level-results-fine-tun-5",
+      "headline": "One Model Family, Two Gold-Level Results: Fine-Tuning Nemotron for IOI and IMO",
+      "sourceLinks": [
+        {
+          "title": "One Model Family, Two Gold-Level Results: Fine-Tuning Nemotron for IOI and IMO",
+          "url": "https://huggingface.co/blog/nvidia/nemotron-ioi-and-imo-2026",
+          "source": "Hugging Face",
+          "type": "article",
+          "publishedAt": "Wed, 07 Oct 2026 12:45:31 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hugging Face.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Strategy & Tradeoffs. Matched Strategy & Tradeoffs on: fine-tuning. Read it through that lens.",
+      "module": "capstone-strategy-tradeoffs-failure-modes",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Strategy & Tradeoffs on: fine-tuning.",
+      "tags": [
+        "fine-tuning"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
