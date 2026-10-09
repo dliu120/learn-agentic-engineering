@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-09",
+  "generatedAt": "2026-10-09T18:51:44.436Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-09.mp3",
+    "vtt": "/audio/daily/2026-10-09.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: ruvnet/ruflo. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 4: Kisoku 1.6B: LLM trained solo from scratch on a TPU grant, matches Llama 3.2 1B. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: Show HN: This hotel is hella AI-ready. Book directly from AI without MCPs. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens. Item 6: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "ruvnet-ruflo-0",
+      "headline": "ruvnet/ruflo",
+      "sourceLinks": [
+        {
+          "title": "ruvnet/ruflo",
+          "url": "https://github.com/ruvnet/ruflo",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-09T18:28:41Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: 🌊 The original agent harness.",
+        "Repository description: Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems.",
+        "Repository description: Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "rag-retrieval",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, workflow.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 74192,
+          "forks": 8816
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-1",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-09T18:39:34Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 47657,
+          "forks": 5976
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-2",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-09T15:55:23Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21638,
+          "forks": 2388
+        }
+      }
+    },
+    {
+      "id": "kisoku-1-6b-llm-trained-solo-from-scratch-on-a-t-3",
+      "headline": "Kisoku 1.6B: LLM trained solo from scratch on a TPU grant, matches Llama 3.2 1B",
+      "sourceLinks": [
+        {
+          "title": "Kisoku 1.6B: LLM trained solo from scratch on a TPU grant, matches Llama 3.2 1B",
+          "url": "https://github.com/0arch-io/kisoku",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-09T18:48:18Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-this-hotel-is-hella-ai-ready-book-direct-4",
+      "headline": "Show HN: This hotel is hella AI-ready. Book directly from AI without MCPs",
+      "sourceLinks": [
+        {
+          "title": "Show HN: This hotel is hella AI-ready. Book directly from AI without MCPs",
+          "url": "https://cadent.studio/",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-09T16:27:25Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp.",
+      "tags": [
+        "mcp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-5",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-08T18:30:29Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36275,
+          "forks": 3840
+        }
+      }
+    }
+  ]
+}
