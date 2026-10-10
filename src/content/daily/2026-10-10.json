@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-10",
+  "generatedAt": "2026-10-10T17:53:46.762Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-10.mp3",
+    "vtt": "/audio/daily/2026-10-10.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 2: Show HN: Tessary – Find the AI agent failures your sampled evals miss. Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval, evals. Read it through that lens. Item 3: Prompt Injection Detection and Defense Tools for Enterprise AI Agents. Relevant to Production Safety & Cost. Matched Production Safety & Cost on: prompt injection. Read it through that lens. Item 4: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 5: Anthropic's Claude AI submits a false tip on a Philadelphia unsolved homicide case - 6abc Philadelphia. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: Qwen3.8-27B on a single 3090: 140 tok/s on code with a custom megakernel. Relevant to Inference & Serving. Matched Inference & Serving on: prefill. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "vectorize-io-hindsight-0",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-10T14:24:49Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 48012,
+          "forks": 5991
+        }
+      }
+    },
+    {
+      "id": "show-hn-tessary-find-the-ai-agent-failures-your--1",
+      "headline": "Show HN: Tessary – Find the AI agent failures your sampled evals miss",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Tessary – Find the AI agent failures your sampled evals miss",
+          "url": "https://github.com/tessaryai/tessary",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-10T14:09:36Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval, evals. Read it through that lens.",
+      "module": "eval-observability",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Evaluation & Observability on: eval, evals.",
+      "tags": [
+        "eval",
+        "evals"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "prompt-injection-detection-and-defense-tools-for-2",
+      "headline": "Prompt Injection Detection and Defense Tools for Enterprise AI Agents",
+      "sourceLinks": [
+        {
+          "title": "Prompt Injection Detection and Defense Tools for Enterprise AI Agents",
+          "url": "https://www.arcade.dev/blog/prompt-injection-detection-tools/",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-10T12:30:32Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Production Safety & Cost. Matched Production Safety & Cost on: prompt injection. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Production Safety & Cost on: prompt injection.",
+      "tags": [
+        "prompt injection"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-3",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-08T18:30:29Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36286,
+          "forks": 3841
+        }
+      }
+    },
+    {
+      "id": "anthropic-s-claude-ai-submits-a-false-tip-on-a-p-4",
+      "headline": "Anthropic's Claude AI submits a false tip on a Philadelphia unsolved homicide case - 6abc Philadelphia",
+      "sourceLinks": [
+        {
+          "title": "Anthropic's Claude AI submits a false tip on a Philadelphia unsolved homicide case - 6abc Philadelphia",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPaFV2M0dmWVdEeE0xWUhudFNmOEo2bFZoVWxCQW41bmswSy1pOFBSRXZjSGtETkl0cm80a191Rm1HNFp5N0JSZFFnRV85OFpreDZLTVZ1S2tYcUV3X1F6dk0zaTVIZVF1UFY4Zml3UGtnOHFCRE55Rnp2X0dpMjFTSmZUOFBXU2tpVmp1RXp3UVlLY0dTWHV5M2VDSFRWSW03OW5EUEVmekNyR05NT1pn0gGvAUFVX3lxTE9oVXYzR2ZZV0R4TTFZSG50U2Y4SjZsVmhVbEJBbjVuazBLLWk4UFJFdmNIa0ROSXRybzRrX3VGbUc0Wnk3QlJkUWdFXzk4Wmt4NktNVnVLa1hxRXdfUXp2TTNpNUhlUXVQVjhmaXdQa2c4cUJETnlGenZfR2kyMVNKZlQ4UFdTa2lWanVFendRWUtjR1NYdXkzZUNIVFZJbTc5bkRQRWZ6Q3JHTk1PWmc?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Sat, 10 Oct 2026 16:46:26 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic's Claude AI submits a false tip on a Philadelphia unsolved homicide case 6abc Philadelphia",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "qwen3-8-27b-on-a-single-3090-140-tok-s-on-code-w-5",
+      "headline": "Qwen3.8-27B on a single 3090: 140 tok/s on code with a custom megakernel",
+      "sourceLinks": [
+        {
+          "title": "Qwen3.8-27B on a single 3090: 140 tok/s on code with a custom megakernel",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x2erdj/qwen3827b_on_a_single_3090_140_toks_on_code_with/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-10-10T13:01:23+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "I've been using Claude Opus 5.5 to speed up Qwen3.8-27B on my PC (rtx 3090), it wrote a CUDA megakernel that is 1.4-1.9x faster than llama.cpp depending on the task/context length.",
+        "The results and code are below: Results (same hardware, my megakernel vs llama.cpp with MTP): - Writing code: 140 tok/s vs 73 (1.9x faster) - Coding with a 4K-token file in context: 95 tok/s vs 56 (1.7x faster) - Prom…"
+      ],
+      "whyItMatters": "Relevant to Inference & Serving. Matched Inference & Serving on: prefill. Read it through that lens.",
+      "module": "inference-internals-performance",
+      "secondaryModules": [
+        "model-efficiency-compression",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Inference & Serving on: prefill.",
+      "tags": [
+        "prefill"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
