@@ -1,0 +1,235 @@
+{
+  "date": "2026-10-11",
+  "generatedAt": "2026-10-11T18:08:49.716Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-11.mp3",
+    "vtt": "/audio/daily/2026-10-11.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: Self-hosting an AI agent environment with OpenCode and shared memory. Relevant to Loop Engineering. Matched Loop Engineering on: agent, opencode. Read it through that lens. Item 4: Show HN: An MCP server where AI agents confess, in their own name. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp, mcp server. Read it through that lens. Item 5: Artex AI, Claude agents used in cyberattacks on South Korean banks. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 6: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "affaan-m-ecc-0",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-11T17:50:06Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 277021,
+          "forks": 41319
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-11T11:23:30Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21897,
+          "forks": 2411
+        }
+      }
+    },
+    {
+      "id": "self-hosting-an-ai-agent-environment-with-openco-2",
+      "headline": "Self-hosting an AI agent environment with OpenCode and shared memory",
+      "sourceLinks": [
+        {
+          "title": "Self-hosting an AI agent environment with OpenCode and shared memory",
+          "url": "https://smalldata.tech/blog/2026/10/11/self-hosting-an-ai-agent-environment-with-opencode-and-shared-memory",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-11T16:25:46Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, opencode.",
+      "tags": [
+        "agent",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-an-mcp-server-where-ai-agents-confess-in-3",
+      "headline": "Show HN: An MCP server where AI agents confess, in their own name",
+      "sourceLinks": [
+        {
+          "title": "Show HN: An MCP server where AI agents confess, in their own name",
+          "url": "https://ai.confess.online",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-11T13:35:17Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp, mcp server. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp, mcp server.",
+      "tags": [
+        "mcp",
+        "mcp server"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "artex-ai-claude-agents-used-in-cyberattacks-on-s-4",
+      "headline": "Artex AI, Claude agents used in cyberattacks on South Korean banks",
+      "sourceLinks": [
+        {
+          "title": "Artex AI, Claude agents used in cyberattacks on South Korean banks",
+          "url": "https://www.bleepingcomputer.com/news/security/hacker-used-artex-ai-and-claude-agents-to-target-south-korean-banks/",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-11T13:31:44Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-5",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-10T14:24:49Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 48349,
+          "forks": 5998
+        }
+      }
+    }
+  ]
+}
