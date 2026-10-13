@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-13",
+  "generatedAt": "2026-10-13T19:53:25.313Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-13.mp3",
+    "vtt": "/audio/daily/2026-10-13.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 4: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 5: Higgsfield takes AI video from 1 minute to over 10. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: Anthropic's Claude AI Sends Fake Murder Tip To Philadelphia Police, Sparks Outrage Over Two-Month Reporting Delay - BroBible. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-13T19:50:03Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 21990,
+          "forks": 2431
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-1",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-13T14:55:14Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 49194,
+          "forks": 6030
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-2",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-12T22:32:27Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36324,
+          "forks": 3847
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-3",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-12T14:45:46Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 278479,
+          "forks": 41483
+        }
+      }
+    },
+    {
+      "id": "higgsfield-takes-ai-video-from-1-minute-to-over--4",
+      "headline": "Higgsfield takes AI video from 1 minute to over 10",
+      "sourceLinks": [
+        {
+          "title": "Higgsfield takes AI video from 1 minute to over 10",
+          "url": "https://openai.com/index/higgsfield-longer-videos-voice",
+          "source": "OpenAI",
+          "type": "article",
+          "publishedAt": "Tue, 13 Oct 2026 12:00:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Higgsfield brings creators longer videos with GPT-6 Astra, precise visuals with GPT-Image-2.5, and a path to voice filmmaking with GPT-Live.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "anthropic-s-claude-ai-sends-fake-murder-tip-to-p-5",
+      "headline": "Anthropic's Claude AI Sends Fake Murder Tip To Philadelphia Police, Sparks Outrage Over Two-Month Reporting Delay - BroBible",
+      "sourceLinks": [
+        {
+          "title": "Anthropic's Claude AI Sends Fake Murder Tip To Philadelphia Police, Sparks Outrage Over Two-Month Reporting Delay - BroBible",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxObFNJd2V3RUJkS1B4Tl84YkxtTHZGdmpKQ0o2aDM2QWdjeldUMEdUMVFuZ2E1cjd4UjZxeDIyRjVnaDltcTR1aXdRSzE0REU1SG1EQkdoTXBLT2V5QWFxMWFYU3c2aHFvYURJWXJ1bmdVQlZKM1RJdDAxNTRUMU5sdTZ0X3JMUlQ5OUFvdDFWZ3Q?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Tue, 13 Oct 2026 16:38:22 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic's Claude AI Sends Fake Murder Tip To Philadelphia Police, Sparks Outrage Over Two-Month Reporting Delay BroBible",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
