@@ -1,0 +1,217 @@
+{
+  "date": "2026-10-20",
+  "generatedAt": "2026-10-20T18:01:05.729Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-20.mp3",
+    "vtt": "/audio/daily/2026-10-20.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 2: My coding agent deleted a project without asking. The audit log says I did it. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 3: GPT-6.1 Terra is in a Microsoft PR. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 4: Qwen3.8-Flash-Next vs Opus 5.5: Six-way benchmark on a real Rust feature with Claude Code and Pi. Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens. Item 5: How Claude designed protein binders against scorpion neurotoxins - Anthropic. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: Anthropic | History, Controversies, & Claude AI - Britannica. Relevant to Conversation Engineering. Matched Conversation Engineering on: history. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "affaan-m-ecc-0",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-20T14:51:29Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 284693,
+          "forks": 42261
+        }
+      }
+    },
+    {
+      "id": "my-coding-agent-deleted-a-project-without-asking-1",
+      "headline": "My coding agent deleted a project without asking. The audit log says I did it",
+      "sourceLinks": [
+        {
+          "title": "My coding agent deleted a project without asking. The audit log says I did it",
+          "url": "https://zabta.ai/blog/my-coding-agent-deleted-a-project",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-10-20T17:24:03Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "gpt-6-1-terra-is-in-a-microsoft-pr-2",
+      "headline": "GPT-6.1 Terra is in a Microsoft PR",
+      "sourceLinks": [
+        {
+          "title": "GPT-6.1 Terra is in a Microsoft PR",
+          "url": "https://twitter.com/LuminaBench/status/2112189697388613850",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-20T17:15:33Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "qwen3-8-flash-next-vs-opus-5-5-six-way-benchmark-3",
+      "headline": "Qwen3.8-Flash-Next vs Opus 5.5: Six-way benchmark on a real Rust feature with Claude Code and Pi",
+      "sourceLinks": [
+        {
+          "title": "Qwen3.8-Flash-Next vs Opus 5.5: Six-way benchmark on a real Rust feature with Claude Code and Pi",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xatxqk/qwen38flashnext_vs_opus_55_sixway_benchmark_on_a/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-10-20T14:40:52+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "A few of you pointed out in my last post that comparing Flash-Next and Opus with different harnesses and effort levels wasn't fair.",
+        "So here is a more controlled comparison.",
+        "Same task for every run: a real feature from the LlamaStash roadmap (save llama-server's KV cache before an unload and restore it when the model comes back)."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "inference-internals-performance",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: claude code.",
+      "tags": [
+        "claude code"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "how-claude-designed-protein-binders-against-scor-4",
+      "headline": "How Claude designed protein binders against scorpion neurotoxins - Anthropic",
+      "sourceLinks": [
+        {
+          "title": "How Claude designed protein binders against scorpion neurotoxins - Anthropic",
+          "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9VNkRtQVc2UUZVVmgyWUJOQU5RSjdCMjQ0V1JuczVKVmxoME1pQ295LWZ5a3J1M21SWk1yWUtGQ01pbTN3bFVldVVmc01QLXNYYlBqRi04UnZ4VWR5NzU1dTZuYzFxRVA5enZObVVFeE1sVURIVFp1NGVn?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Tue, 20 Oct 2026 13:01:21 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "How Claude designed protein binders against scorpion neurotoxins Anthropic",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "anthropic-history-controversies-claude-ai-britan-5",
+      "headline": "Anthropic | History, Controversies, & Claude AI - Britannica",
+      "sourceLinks": [
+        {
+          "title": "Anthropic | History, Controversies, & Claude AI - Britannica",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41Q1h2QkF0SGRpMFZSMVN5al9RNkhQLTR4MDc0cHJNbndmdndTbHE5cGswRFk4SS1JbVhmXzdWNm5KRDlJa3FiUkt6T01MZUNiTjhON2R6cFJtQQ?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Tue, 20 Oct 2026 10:20:40 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic | History, Controversies, & Claude AI Britannica",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Conversation Engineering. Matched Conversation Engineering on: history. Read it through that lens.",
+      "module": "conversation-context-engineering",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Conversation Engineering on: history.",
+      "tags": [
+        "history"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
