@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-23",
+  "generatedAt": "2026-10-23T17:53:42.895Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-23.mp3",
+    "vtt": "/audio/daily/2026-10-23.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: ruvnet/ruflo. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: Ask HN: Claude gets over my 5h limit today in 10 minutes?. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: Unstructured's New Models Outparse GPT-6, Claude and Gemini. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: Private LLM Inference with Homomorphic Encryption [pdf]. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "ruvnet-ruflo-0",
+      "headline": "ruvnet/ruflo",
+      "sourceLinks": [
+        {
+          "title": "ruvnet/ruflo",
+          "url": "https://github.com/ruvnet/ruflo",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-23T17:45:57Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: 🌊 The original agent harness.",
+        "Repository description: Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems.",
+        "Repository description: Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "rag-retrieval",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, workflow.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 78700,
+          "forks": 9246
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-23T17:49:47Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22285,
+          "forks": 2469
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-2",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-23T17:01:29Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 53083,
+          "forks": 6227
+        }
+      }
+    },
+    {
+      "id": "ask-hn-claude-gets-over-my-5h-limit-today-in-10--3",
+      "headline": "Ask HN: Claude gets over my 5h limit today in 10 minutes?",
+      "sourceLinks": [
+        {
+          "title": "Ask HN: Claude gets over my 5h limit today in 10 minutes?",
+          "url": "https://news.ycombinator.com/item?id=50211479",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-23T16:22:07Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 2
+        }
+      }
+    },
+    {
+      "id": "unstructured-s-new-models-outparse-gpt-6-claude--4",
+      "headline": "Unstructured's New Models Outparse GPT-6, Claude and Gemini",
+      "sourceLinks": [
+        {
+          "title": "Unstructured's New Models Outparse GPT-6, Claude and Gemini",
+          "url": "https://unstructured.io/blog/unstructured-transform-faster-more-accurate-for-your-hardest-documents",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-23T16:06:03Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "private-llm-inference-with-homomorphic-encryptio-5",
+      "headline": "Private LLM Inference with Homomorphic Encryption [pdf]",
+      "sourceLinks": [
+        {
+          "title": "Private LLM Inference with Homomorphic Encryption [pdf]",
+          "url": "https://www.vldb.org/pvldb/vol19/p4927-lim.pdf",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-10-23T17:47:45Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
