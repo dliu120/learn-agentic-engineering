@@ -1,0 +1,228 @@
+{
+  "date": "2026-10-29",
+  "generatedAt": "2026-10-29T18:59:36.310Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-10-29.mp3",
+    "vtt": "/audio/daily/2026-10-29.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: ruvnet/ruflo. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens. Item 2: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 3: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 5: Building a multiplayer game world with autonomous Fable-class models. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 6: Quoting Ben Hylak. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "ruvnet-ruflo-0",
+      "headline": "ruvnet/ruflo",
+      "sourceLinks": [
+        {
+          "title": "ruvnet/ruflo",
+          "url": "https://github.com/ruvnet/ruflo",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-29T14:25:18Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: 🌊 The original agent harness.",
+        "Repository description: Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems.",
+        "Repository description: Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "rag-retrieval",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, workflow.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 80104,
+          "forks": 9399
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-1",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-29T16:25:42Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36490,
+          "forks": 3867
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-2",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-29T18:52:58Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 56149,
+          "forks": 6727
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-3",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-10-29T17:33:07Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22443,
+          "forks": 2481
+        }
+      }
+    },
+    {
+      "id": "building-a-multiplayer-game-world-with-autonomou-4",
+      "headline": "Building a multiplayer game world with autonomous Fable-class models",
+      "sourceLinks": [
+        {
+          "title": "Building a multiplayer game world with autonomous Fable-class models",
+          "url": "https://simonwillison.net/2026/Oct/29/how-i-built-the-most-ai-pilled-company-in-the-world/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-10-29T17:00:26+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "How I Built the Most AI-Pilled Company in the World Don't be put off by the clickbait headline, this piece by Jacob Sansbury describing how they are building Spawn is a fascinating exploration of the bleeding edge of …",
+        "Spawn is a massively multiplayer gaming environment where players can use prompts (to the in-game agent, Savi) to modify the game world.",
+        "I fired it up on my phone for a few minutes and was able to prompt a castle into existence, then a dragon, then ride the dragon to fly around that castle."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "quoting-ben-hylak-5",
+      "headline": "Quoting Ben Hylak",
+      "sourceLinks": [
+        {
+          "title": "Quoting Ben Hylak",
+          "url": "https://simonwillison.net/2026/Oct/29/ben-hylak/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-10-29T14:06:27+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "every product i use should just be a headless mcp, that feeds into an agent, where i never have to think about anything underneath.",
+        "except for our product, of course.",
+        "in our product, customers love the ui and love us very much."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp.",
+      "tags": [
+        "mcp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
