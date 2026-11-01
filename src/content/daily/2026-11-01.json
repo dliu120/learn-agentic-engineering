@@ -1,0 +1,207 @@
+{
+  "date": "2026-11-01",
+  "generatedAt": "2026-11-01T18:27:04.671Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-01.mp3",
+    "vtt": "/audio/daily/2026-11-01.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Vibe Coding an Autonomous Agent Harness in Go: Self-Healing AI Workflows. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, workflow. Read it through that lens. Item 2: Anthropic orders AI tool Claude to stop remaking video games - Game Developer. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 3: Coding is solved* (exclusions apply). Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 4: Don't people pay attention anymore when buying hardware for AI?. Relevant to Production Safety & Cost. Matched Production Safety & Cost on: cost. Read it through that lens. Item 5: Heretic 2.0 released: Model modification for everyone. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: datasette-llm 0.1a9. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: plugin. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "vibe-coding-an-autonomous-agent-harness-in-go-se-0",
+      "headline": "Vibe Coding an Autonomous Agent Harness in Go: Self-Healing AI Workflows",
+      "sourceLinks": [
+        {
+          "title": "Vibe Coding an Autonomous Agent Harness in Go: Self-Healing AI Workflows",
+          "url": "https://medium.com/@vishwanathanraman/vibe-coding-an-autonomous-agent-harness-in-go-from-zero-to-self-healing-ai-workflows-785d82f981b6",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-01T13:37:38Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, workflow.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "anthropic-orders-ai-tool-claude-to-stop-remaking-1",
+      "headline": "Anthropic orders AI tool Claude to stop remaking video games - Game Developer",
+      "sourceLinks": [
+        {
+          "title": "Anthropic orders AI tool Claude to stop remaking video games - Game Developer",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPbkRTbnBaVVk2ZEkzamZJZXpfMWlpWDJuRXJLa3RnUEI2SGJvYVJrd3dhUWhsRUh0Qi1NS0x1ZnJDTUNsY0FpUkVOaGpraTRzXy1ZV2g1bFhMemdEeWUwZzI1QkxRNExMSmxKUzYyeEEtUzJqTG1nS1NrcGRrWTRuMHhrcHJQQ1B6OFlwbXVjVXoxQjYzUTdJb0NCRFF4Q0lfUmRrd2ZMSXdtS25YR25HVjN2OU52SEp3Sncw?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Sun, 01 Nov 2026 16:30:21 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic orders AI tool Claude to stop remaking video games Game Developer",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "coding-is-solved-exclusions-apply-2",
+      "headline": "Coding is solved* (exclusions apply)",
+      "sourceLinks": [
+        {
+          "title": "Coding is solved* (exclusions apply)",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xl90rr/coding_is_solved_exclusions_apply/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-11-01T17:31:32+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Having been inspired to revolutionize the field of computer science, I can now report that coding is solved!",
+        "Sure, only if you care about x86 Linux binaries that print and exit, but \"big journeys\" and \"small steps\" and what not.",
+        "CRAP (Compiler Replacement for Assembling Programs) is a Gemma 4 E2B fine tune that takes prompts like generate a Linux x86_64 binary that prints 'boop' and emits a working ELF binary (as hex, most of the time, every …"
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "don-t-people-pay-attention-anymore-when-buying-h-3",
+      "headline": "Don't people pay attention anymore when buying hardware for AI?",
+      "sourceLinks": [
+        {
+          "title": "Don't people pay attention anymore when buying hardware for AI?",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xl4ckr/dont_people_pay_attention_anymore_when_buying/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-11-01T14:24:50+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "I was trying to sell my old AM4 system, X470 / Ryzen 5 5600 / 64GB / RX580 / 1TB NVME and it didn't sell.",
+        "Granted it was a bit pricey at 750€, because I took into account the current local RAM and NVME pricing.",
+        "(Buying the same RAM and SSD new costs 775€ if you go to the cheapest sellers in my country) I decided to try and sell it as an AI system: removed the RX580, put in 2 of my 4 R9700."
+      ],
+      "whyItMatters": "Relevant to Production Safety & Cost. Matched Production Safety & Cost on: cost. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Production Safety & Cost on: cost.",
+      "tags": [
+        "cost"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "heretic-2-0-released-model-modification-for-ever-4",
+      "headline": "Heretic 2.0 released: Model modification for everyone",
+      "sourceLinks": [
+        {
+          "title": "Heretic 2.0 released: Model modification for everyone",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xl2tcm/heretic_20_released_model_modification_for/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-11-01T13:16:24+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Dear fellow Llamas, after almost 5 months of development, I finally have the pleasure of announcing to you the immediate availability of the biggest Heretic release ever, Heretic 2.0: https://github.com/p-e-w/heretic …",
+        "It now boasts 37k GitHub stars and more than 8,500 models on Hugging Face, with 88 million(!!!) total model downloads.",
+        "With Heretic 2.0, the project is entering a new era."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "datasette-llm-0-1a9-5",
+      "headline": "datasette-llm 0.1a9",
+      "sourceLinks": [
+        {
+          "title": "datasette-llm 0.1a9",
+          "url": "https://simonwillison.net/2026/Oct/31/datasette-llm/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-10-31T22:10:01+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Release: datasette-llm 0.1a9 I have some big upgrades to Datasette Agent in the pipeline, but in the meantime here's a tiny user experience improvement to the underlying datasette-llm plugin.",
+        "It now picks up the default model used by LLM, which means you can start using Datasette Agent without needing to explicitly configure a default model: uvx --with datasette-agent datasette content.db --internal intern…",
+        "Tags: datasette, llm, datasette-agent"
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: plugin. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: plugin.",
+      "tags": [
+        "plugin"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
