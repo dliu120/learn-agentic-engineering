@@ -1,0 +1,226 @@
+{
+  "date": "2026-11-03",
+  "generatedAt": "2026-11-03T20:08:51.850Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-03.mp3",
+    "vtt": "/audio/daily/2026-11-03.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: Show HN: SIE Serverless – managed inference powered by self-hostable stack. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 4: The Inference Stack Behind OCRia. Relevant to Strategy & Tradeoffs. Matched Strategy & Tradeoffs on: inference stack. Read it through that lens. Item 5: Show HN: FinZot – financial planning Claude connector for US taxpayers. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: fine tuned decision model for agent memory. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-03T19:08:08Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22553,
+          "forks": 2493
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-1",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-03T16:05:57Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 58475,
+          "forks": 7200
+        }
+      }
+    },
+    {
+      "id": "show-hn-sie-serverless-managed-inference-powered-2",
+      "headline": "Show HN: SIE Serverless – managed inference powered by self-hostable stack",
+      "sourceLinks": [
+        {
+          "title": "Show HN: SIE Serverless – managed inference powered by self-hostable stack",
+          "url": "https://superlinked.com/",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-03T17:11:53Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 8,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "the-inference-stack-behind-ocria-3",
+      "headline": "The Inference Stack Behind OCRia",
+      "sourceLinks": [
+        {
+          "title": "The Inference Stack Behind OCRia",
+          "url": "https://www.llamaindex.ai/blog/the-inference-stack-behind-ocria",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-03T18:14:26Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Strategy & Tradeoffs. Matched Strategy & Tradeoffs on: inference stack. Read it through that lens.",
+      "module": "capstone-strategy-tradeoffs-failure-modes",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Strategy & Tradeoffs on: inference stack.",
+      "tags": [
+        "inference stack"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-finzot-financial-planning-claude-connect-4",
+      "headline": "Show HN: FinZot – financial planning Claude connector for US taxpayers",
+      "sourceLinks": [
+        {
+          "title": "Show HN: FinZot – financial planning Claude connector for US taxpayers",
+          "url": "https://claude.ai/directory/finzot/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-03T18:04:04Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "fine-tuned-decision-model-for-agent-memory-5",
+      "headline": "fine tuned decision model for agent memory",
+      "sourceLinks": [
+        {
+          "title": "fine tuned decision model for agent memory",
+          "url": "https://hindsight.vectorize.io/blog/2026/11/03/hindsight-models",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-03T16:47:17Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
