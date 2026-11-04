@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-04",
+  "generatedAt": "2026-11-04T20:27:11.074Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-04.mp3",
+    "vtt": "/audio/daily/2026-11-04.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: Accenture Contractor Linked Personal Claude AI Agent to Pentagon System. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 4: Daybreak Red is now available in AWS GovCloud (US-East). Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: Aligning Language Models with General Preferences: An Empirical Study of Direct Nash Optimization. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: I removed 85% of gemma's weights (and it is mostly fine). Relevant to Conversation Engineering. Matched Conversation Engineering on: memory. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-04T18:30:32Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22572,
+          "forks": 2494
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-1",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-04T17:51:05Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 58817,
+          "forks": 7252
+        }
+      }
+    },
+    {
+      "id": "accenture-contractor-linked-personal-claude-ai-a-2",
+      "headline": "Accenture Contractor Linked Personal Claude AI Agent to Pentagon System",
+      "sourceLinks": [
+        {
+          "title": "Accenture Contractor Linked Personal Claude AI Agent to Pentagon System",
+          "url": "https://www.ibtimes.co.uk/claude-code-agent-pentagon-niprnet-access-allegations-1829425",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-04T18:11:21Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 8,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "daybreak-red-is-now-available-in-aws-govcloud-us-3",
+      "headline": "Daybreak Red is now available in AWS GovCloud (US-East)",
+      "sourceLinks": [
+        {
+          "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
+          "url": "https://openai.com/index/daybreak-red-aws-govcloud",
+          "source": "OpenAI",
+          "type": "article",
+          "publishedAt": "Wed, 04 Nov 2026 07:00:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Daybreak Red brings GPT-5.6 Cyber to approved customers in AWS GovCloud (US-East) through Amazon Bedrock for authorized cybersecurity work.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "aligning-language-models-with-general-preference-4",
+      "headline": "Aligning Language Models with General Preferences: An Empirical Study of Direct Nash Optimization",
+      "sourceLinks": [
+        {
+          "title": "Aligning Language Models with General Preferences: An Empirical Study of Direct Nash Optimization",
+          "url": "https://arxiv.org/abs/2611.05373v1",
+          "source": "arXiv cs.CL",
+          "type": "paper",
+          "publishedAt": "2026-11-03T18:59:15Z"
+        }
+      ],
+      "summaryBullets": [
+        "Direct Nash Optimization (DNO) aligns a language model to a general preference function by approximating the Nash equilibrium of a two-player preference game.",
+        "Its practical variant, DNO-Prct, iterates on-policy sampling, LLM-based rating of the samples together with a teacher's gold response, large-margin preference-pair selection and a DPO-style contrastive update.",
+        "We re-implement DNO-Prct independently and study it on two open-weight instruct models, Llama 3.1 8B Instruct and Mistral 7B Instruct v0.1, with GPT-4o or a larger open-weight model of the same family as the annotator."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "i-removed-85-of-gemma-s-weights-and-it-is-mostly-5",
+      "headline": "I removed 85% of gemma's weights (and it is mostly fine)",
+      "sourceLinks": [
+        {
+          "title": "I removed 85% of gemma's weights (and it is mostly fine)",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xnoqyy/i_removed_85_of_gemmas_weights_and_it_is_mostly/",
+          "source": "r/LocalLLaMA",
+          "type": "article",
+          "publishedAt": "2026-11-04T13:53:30+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "I pruned Gemma 4 26B-A4B, an MoE model, down to 15% of its original size, and the model still does great on one narrow task.",
+        "It gets 92% agreement with the original on a classification task.",
+        "That’s close to how often the 12B agrees with the 26B on the same ticks, which is 90%."
+      ],
+      "whyItMatters": "Relevant to Conversation Engineering. Matched Conversation Engineering on: memory. Read it through that lens.",
+      "module": "conversation-context-engineering",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Conversation Engineering on: memory.",
+      "tags": [
+        "memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
