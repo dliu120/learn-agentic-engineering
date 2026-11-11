@@ -1,0 +1,228 @@
+{
+  "date": "2026-11-11",
+  "generatedAt": "2026-11-11T20:13:58.177Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-11.mp3",
+    "vtt": "/audio/daily/2026-11-11.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: Token Economy – Claude Code/Codex usage, limits and token savings. Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens. Item 4: Show HN: Anathem – local memory for coding agents, no LLM and no daemon. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 5: Inside Llama.cpp: How Local LLMs Run on Your Hardware [video]. Relevant to Model Efficiency. Matched Model Efficiency on: llama.cpp. Read it through that lens. Item 6: Prompt Injection, Esq.: pwning AI agent guardrails with lawyerspeak. Relevant to Production Safety & Cost. Matched Production Safety & Cost on: prompt injection. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-11T19:59:42Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22664,
+          "forks": 2506
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-1",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-11T17:59:38Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 60490,
+          "forks": 7362
+        }
+      }
+    },
+    {
+      "id": "token-economy-claude-code-codex-usage-limits-and-2",
+      "headline": "Token Economy – Claude Code/Codex usage, limits and token savings",
+      "sourceLinks": [
+        {
+          "title": "Token Economy – Claude Code/Codex usage, limits and token savings",
+          "url": "https://github.com/Baeta78/token-economy",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-11T20:07:45Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: claude code.",
+      "tags": [
+        "claude code"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-anathem-local-memory-for-coding-agents-n-3",
+      "headline": "Show HN: Anathem – local memory for coding agents, no LLM and no daemon",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Anathem – local memory for coding agents, no LLM and no daemon",
+          "url": "https://gitlab.com/__alexander__/anathem",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-11T18:10:46Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "inside-llama-cpp-how-local-llms-run-on-your-hard-4",
+      "headline": "Inside Llama.cpp: How Local LLMs Run on Your Hardware [video]",
+      "sourceLinks": [
+        {
+          "title": "Inside Llama.cpp: How Local LLMs Run on Your Hardware [video]",
+          "url": "https://www.youtube.com/watch?v=saXrLnzWTD0",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-11T18:22:09Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Model Efficiency. Matched Model Efficiency on: llama.cpp. Read it through that lens.",
+      "module": "model-efficiency-compression",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Model Efficiency on: llama.cpp.",
+      "tags": [
+        "llama.cpp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "prompt-injection-esq-pwning-ai-agent-guardrails--5",
+      "headline": "Prompt Injection, Esq.: pwning AI agent guardrails with lawyerspeak",
+      "sourceLinks": [
+        {
+          "title": "Prompt Injection, Esq.: pwning AI agent guardrails with lawyerspeak",
+          "url": "https://www.mrnice.dev/posts/heavyweight-guardrails/",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-11T18:41:14Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Production Safety & Cost. Matched Production Safety & Cost on: prompt injection. Read it through that lens.",
+      "module": "production-ops-cost-safety-multitenancy",
+      "secondaryModules": [
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Production Safety & Cost on: prompt injection.",
+      "tags": [
+        "prompt injection"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 3,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
