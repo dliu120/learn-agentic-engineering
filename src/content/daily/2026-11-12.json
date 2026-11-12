@@ -1,0 +1,227 @@
+{
+  "date": "2026-11-12",
+  "generatedAt": "2026-11-12T20:54:13.574Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-12.mp3",
+    "vtt": "/audio/daily/2026-11-12.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: ruvnet/ruflo. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: Grow your Llama army, win the territory. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: Air-LLM: Broadcasting AI Weights for Edge LLM Inference via RF Computing. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: How Amplitude ships product improvements in 1–2 days with OpenAI. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "ruvnet-ruflo-0",
+      "headline": "ruvnet/ruflo",
+      "sourceLinks": [
+        {
+          "title": "ruvnet/ruflo",
+          "url": "https://github.com/ruvnet/ruflo",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-12T20:49:53Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: 🌊 The original agent harness.",
+        "Repository description: Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems.",
+        "Repository description: Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "rag-retrieval",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, workflow.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 81561,
+          "forks": 9605
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-12T20:44:47Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22671,
+          "forks": 2510
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-2",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-12T19:42:59Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 60686,
+          "forks": 7354
+        }
+      }
+    },
+    {
+      "id": "grow-your-llama-army-win-the-territory-3",
+      "headline": "Grow your Llama army, win the territory",
+      "sourceLinks": [
+        {
+          "title": "Grow your Llama army, win the territory",
+          "url": "https://warlama.com/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-12T19:50:42Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "air-llm-broadcasting-ai-weights-for-edge-llm-inf-4",
+      "headline": "Air-LLM: Broadcasting AI Weights for Edge LLM Inference via RF Computing",
+      "sourceLinks": [
+        {
+          "title": "Air-LLM: Broadcasting AI Weights for Edge LLM Inference via RF Computing",
+          "url": "https://arxiv.org/abs/2610.00465",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-12T18:16:13Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "how-amplitude-ships-product-improvements-in-1-2--5",
+      "headline": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "sourceLinks": [
+        {
+          "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+          "url": "https://openai.com/index/amplitude",
+          "source": "OpenAI",
+          "type": "article",
+          "publishedAt": "Thu, 12 Nov 2026 20:00:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
