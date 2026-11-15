@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-15",
+  "generatedAt": "2026-11-15T19:23:57.042Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka",
+    "r/LocalLLaMA"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-15.mp3",
+    "vtt": "/audio/daily/2026-11-15.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Skillroll – pure Markdown evals for any skill using a Dungeon Master. Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval, evals. Read it through that lens. Item 2: Uncensored DeepSeek and GLM APIs with 1M context and no prompt logging. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 3: GitSeed – Self-hosted control plane for AI coding agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 4: Understanding Positional Embeddings in Modern LLMs. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: embeddings. Read it through that lens. Item 5: datasette-llm 0.1a11. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: plugin. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-skillroll-pure-markdown-evals-for-any-sk-0",
+      "headline": "Show HN: Skillroll – pure Markdown evals for any skill using a Dungeon Master",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Skillroll – pure Markdown evals for any skill using a Dungeon Master",
+          "url": "https://github.com/hagaiw/skillroll",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-15T17:01:21Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Evaluation & Observability. Matched Evaluation & Observability on: eval, evals. Read it through that lens.",
+      "module": "eval-observability",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Evaluation & Observability on: eval, evals.",
+      "tags": [
+        "eval",
+        "evals"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "uncensored-deepseek-and-glm-apis-with-1m-context-1",
+      "headline": "Uncensored DeepSeek and GLM APIs with 1M context and no prompt logging",
+      "sourceLinks": [
+        {
+          "title": "Uncensored DeepSeek and GLM APIs with 1M context and no prompt logging",
+          "url": "https://bf16.ai/",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-15T18:55:21Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "gitseed-self-hosted-control-plane-for-ai-coding--2",
+      "headline": "GitSeed – Self-hosted control plane for AI coding agents",
+      "sourceLinks": [
+        {
+          "title": "GitSeed – Self-hosted control plane for AI coding agents",
+          "url": "https://github.com/gitseed-dev/gitseed",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-15T17:12:48Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "understanding-positional-embeddings-in-modern-ll-3",
+      "headline": "Understanding Positional Embeddings in Modern LLMs",
+      "sourceLinks": [
+        {
+          "title": "Understanding Positional Embeddings in Modern LLMs",
+          "url": "https://magazine.sebastianraschka.com/p/understanding-positional-embeddings",
+          "source": "Sebastian Raschka",
+          "type": "article",
+          "publishedAt": "Sun, 15 Nov 2026 12:10:37 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "The Methods Behind How LLMs Represent Token Positions",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: embeddings. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: embeddings.",
+      "tags": [
+        "embeddings"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "datasette-llm-0-1a11-4",
+      "headline": "datasette-llm 0.1a11",
+      "sourceLinks": [
+        {
+          "title": "datasette-llm 0.1a11",
+          "url": "https://simonwillison.net/2026/Nov/14/datasette-llm/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-11-14T23:59:28+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Release: datasette-llm 0.1a11 datasette-llm is the intermediate plugin for Datasette that supports configuring LLMs for use with other Datasette plugins.",
+        "This release adds support for OpenAI-compatible endpoints, so you can configure Datasette to use an LLM hosted anywhere that talks the OpenAI pseudo-standard web protocol.",
+        "This means that if you're running local models with LM Studio or Ollama or llama.cpp (which just hit v1.0.0 ) you can run Datasette via uvx like this: wget https://datasette.io/content.db uvx --with datasette-agent da…"
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: plugin. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "model-efficiency-compression",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: plugin.",
+      "tags": [
+        "plugin"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
