@@ -1,0 +1,234 @@
+{
+  "date": "2026-11-20",
+  "generatedAt": "2026-11-20T21:14:53.761Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-20.mp3",
+    "vtt": "/audio/daily/2026-11-20.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 4: Keeping AI Coding Agent Memory Relevant as Code Changes. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens. Item 5: Show HN: AI Inference for Beginners: 6 hours of video and 85 pages of notes [pdf]. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 6: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-20T21:01:38Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22860,
+          "forks": 2531
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-1",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-20T20:18:52Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 62254,
+          "forks": 7395
+        }
+      }
+    },
+    {
+      "id": "affaan-m-ecc-2",
+      "headline": "affaan-m/ECC",
+      "sourceLinks": [
+        {
+          "title": "affaan-m/ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-20T01:13:45Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: The agent harness performance optimization system.",
+        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "tools-skills-plugins-mcp",
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "opencode"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 307784,
+          "forks": 45312
+        }
+      }
+    },
+    {
+      "id": "keeping-ai-coding-agent-memory-relevant-as-code--3",
+      "headline": "Keeping AI Coding Agent Memory Relevant as Code Changes",
+      "sourceLinks": [
+        {
+          "title": "Keeping AI Coding Agent Memory Relevant as Code Changes",
+          "url": "https://enola.tech/blog/agent-memory-needs-a-code-reference",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-20T18:18:13Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "state-memory-durable-workflows",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-ai-inference-for-beginners-6-hours-of-vi-4",
+      "headline": "Show HN: AI Inference for Beginners: 6 hours of video and 85 pages of notes [pdf]",
+      "sourceLinks": [
+        {
+          "title": "Show HN: AI Inference for Beginners: 6 hours of video and 85 pages of notes [pdf]",
+          "url": "https://github.com/samir-sarwar/samir-vllm/blob/main/InferenceFromScratch.pdf",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-20T14:39:15Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-5",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-19T18:39:15Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36701,
+          "forks": 3887
+        }
+      }
+    }
+  ]
+}
