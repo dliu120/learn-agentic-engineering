@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-21",
+  "generatedAt": "2026-11-21T20:09:02.056Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-21.mp3",
+    "vtt": "/audio/daily/2026-11-21.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: Show HN: Gemini-Based Agent for Households. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 2: Quoting Levent Alpöge. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 3: Combatting adversarial distillation. Relevant to Model Efficiency. Matched Model Efficiency on: distillation. Read it through that lens. Item 4: Hebbia sees improvements in financial research with GPT-6 Astra. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: citation. Read it through that lens. Item 5: llm-gemini 0.38.1. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: plugin. Read it through that lens. Item 6: Token fraud is here and it’s BAD (YouTube). Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "show-hn-gemini-based-agent-for-households-0",
+      "headline": "Show HN: Gemini-Based Agent for Households",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Gemini-Based Agent for Households",
+          "url": "https://getcinnamon.ai/",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-21T16:29:53Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 1
+        }
+      }
+    },
+    {
+      "id": "quoting-levent-alp-ge-1",
+      "headline": "Quoting Levent Alpöge",
+      "sourceLinks": [
+        {
+          "title": "Quoting Levent Alpöge",
+          "url": "https://simonwillison.net/2026/Nov/20/levent-alpoge/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-11-20T16:30:48+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "I believe I have, working with Claude, discovered a proof of the Riemann Hypothesis.",
+        "In fact, the method easily extends much further, resolving the so-called Generalized Riemann Hypothesis, and I expect, with more time, the Extended Riemann Hypothesis too.",
+        "Claude and I have also formalized the arguments without assumptions."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "combatting-adversarial-distillation-2",
+      "headline": "Combatting adversarial distillation",
+      "sourceLinks": [
+        {
+          "title": "Combatting adversarial distillation",
+          "url": "https://openai.com/index/combatting-adversarial-distillation",
+          "source": "OpenAI",
+          "type": "article",
+          "publishedAt": "Fri, 20 Nov 2026 10:00:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to protect against capability extraction.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Model Efficiency. Matched Model Efficiency on: distillation. Read it through that lens.",
+      "module": "model-efficiency-compression",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Model Efficiency on: distillation.",
+      "tags": [
+        "distillation"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "hebbia-sees-improvements-in-financial-research-w-3",
+      "headline": "Hebbia sees improvements in financial research with GPT-6 Astra",
+      "sourceLinks": [
+        {
+          "title": "Hebbia sees improvements in financial research with GPT-6 Astra",
+          "url": "https://openai.com/business/customer-stories/hebbia",
+          "source": "OpenAI",
+          "type": "article",
+          "publishedAt": "Fri, 20 Nov 2026 00:00:00 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Hebbia tested GPT-6 Astra for financial research.",
+        "Its prerelease evaluations found gains in source coverage, citation relevance, and presentation quality."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: citation. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: citation.",
+      "tags": [
+        "citation"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "llm-gemini-0-38-1-4",
+      "headline": "llm-gemini 0.38.1",
+      "sourceLinks": [
+        {
+          "title": "llm-gemini 0.38.1",
+          "url": "https://simonwillison.net/2026/Nov/20/llm-gemini/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-11-20T03:01:57+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Release: llm-gemini 0.38.1 Gemini 4 Carbon only supports low, medium and high reasoning levels - but Gemini 4 Hydrogen and Gemini 4 Neon both have an extra xhigh level.",
+        "I missed that when I added those models to the llm-gemini plugin, which is now fixed in this dot release.",
+        "The xhigh setting for Hydrogen makes a significant difference."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: plugin. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [
+        "production-ops-cost-safety-multitenancy"
+      ],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: plugin.",
+      "tags": [
+        "plugin"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "token-fraud-is-here-and-it-s-bad-youtube-5",
+      "headline": "Token fraud is here and it’s BAD (YouTube)",
+      "sourceLinks": [
+        {
+          "title": "Token fraud is here and it’s BAD (YouTube)",
+          "url": "https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/",
+          "source": "Simon Willison",
+          "type": "article",
+          "publishedAt": "2026-11-20T02:49:57+00:00"
+        }
+      ],
+      "summaryBullets": [
+        "Token fraud is here and it’s BAD (YouTube) Claire Vo runs ChatPRD, an AI platform that helps product managers \"turn an idea into a spec\".",
+        "The product has been live since the GPT-4 era, and Claire has been building it in public for much of that time.",
+        "In this YouTube video (see also the accompanying Twitter post ) Claire describes the flood of token fraud she has seen from groups abusing the product's free trial, sometimes just to get free AI usage but often to res…"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent.",
+      "tags": [
+        "agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
