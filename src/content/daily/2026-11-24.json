@@ -1,6 +1,6 @@
 {
   "date": "2026-11-24",
-  "generatedAt": "2026-11-24T00:59:35.439Z",
+  "generatedAt": "2026-11-24T23:03:53.660Z",
   "curationFlag": "uncurated-fallback",
   "sourcesUsed": [
     "Hacker News",
@@ -17,12 +17,44 @@
   "audio": {
     "mp3": "/audio/daily/2026-11-24.mp3",
     "vtt": "/audio/daily/2026-11-24.vtt",
-    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 3: Anthropic launches Claude Ship, agents review, fix, & approve code changes now. Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens. Item 4: affaan-m/ECC. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens. Item 5: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 6: Internal Changelogs unlock autonomous coding agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+    "transcript": "Today's AI engineering briefing. Item 1: Launch HN: Versine (YC F26) – MCP to send and receive money. Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: Show HN: Cerulion – Harness for Robotics, Gemini 3.8 Flash Matches GPT-6 Astra. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: Show HN: Wakeshift – Open-Source MCP Events for Claude Code, Codex and More. Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens. Item 6: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
     "available": true
   },
   "lessons": [
     {
-      "id": "primeintellect-ai-prime-agent-0",
+      "id": "launch-hn-versine-yc-f26-mcp-to-send-and-receive-0",
+      "headline": "Launch HN: Versine (YC F26) – MCP to send and receive money",
+      "sourceLinks": [
+        {
+          "title": "Launch HN: Versine (YC F26) – MCP to send and receive money",
+          "url": "https://news.ycombinator.com/item?id=50634426",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-24T20:44:15Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Skills, Plugins & MCP. Matched Skills, Plugins & MCP on: mcp. Read it through that lens.",
+      "module": "tools-skills-plugins-mcp",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Skills, Plugins & MCP on: mcp.",
+      "tags": [
+        "mcp"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 45,
+          "comments": 24
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
       "headline": "PrimeIntellect-ai/prime-agent",
       "sourceLinks": [
         {
@@ -30,7 +62,7 @@
           "url": "https://github.com/PrimeIntellect-ai/prime-agent",
           "source": "GitHub · recently active",
           "type": "repository",
-          "publishedAt": "2026-11-24T00:52:32Z"
+          "publishedAt": "2026-11-24T22:37:20Z"
         }
       ],
       "summaryBullets": [
@@ -50,13 +82,13 @@
         "difficulty": "intermediate",
         "readingTimeMin": 2,
         "signals": {
-          "stars": 22894,
-          "forks": 2531
+          "stars": 22902,
+          "forks": 2532
         }
       }
     },
     {
-      "id": "vectorize-io-hindsight-1",
+      "id": "vectorize-io-hindsight-2",
       "headline": "vectorize-io/hindsight",
       "sourceLinks": [
         {
@@ -64,7 +96,7 @@
           "url": "https://github.com/vectorize-io/hindsight",
           "source": "GitHub · recently active",
           "type": "repository",
-          "publishedAt": "2026-11-24T00:45:10Z"
+          "publishedAt": "2026-11-24T16:29:52Z"
         }
       ],
       "summaryBullets": [
@@ -85,83 +117,79 @@
         "difficulty": "intermediate",
         "readingTimeMin": 2,
         "signals": {
-          "stars": 62906,
-          "forks": 7400
+          "stars": 63172,
+          "forks": 7402
         }
       }
     },
     {
-      "id": "anthropic-launches-claude-ship-agents-review-fix-2",
-      "headline": "Anthropic launches Claude Ship, agents review, fix, & approve code changes now",
+      "id": "show-hn-cerulion-harness-for-robotics-gemini-3-8-3",
+      "headline": "Show HN: Cerulion – Harness for Robotics, Gemini 3.8 Flash Matches GPT-6 Astra",
       "sourceLinks": [
         {
-          "title": "Anthropic launches Claude Ship, agents review, fix, & approve code changes now",
-          "url": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+          "title": "Show HN: Cerulion – Harness for Robotics, Gemini 3.8 Flash Matches GPT-6 Astra",
+          "url": "https://github.com/cerulion-inc/cerulion#harness-results",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-24T21:33:44Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 2,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-wakeshift-open-source-mcp-events-for-cla-4",
+      "headline": "Show HN: Wakeshift – Open-Source MCP Events for Claude Code, Codex and More",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Wakeshift – Open-Source MCP Events for Claude Code, Codex and More",
+          "url": "https://github.com/wakeshift/server",
           "source": "Hacker News (agents)",
           "type": "discussion",
-          "publishedAt": "2026-11-23T23:39:44Z"
+          "publishedAt": "2026-11-24T20:27:48Z"
         }
       ],
       "summaryBullets": [
         "Surfaced from Hacker News (agents).",
         "Open the source to read the details."
       ],
-      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent. Read it through that lens.",
-      "module": "agent-control-routing-degradation",
-      "secondaryModules": [],
-      "moduleRationale": "Matched Loop Engineering on: agent.",
-      "tags": [
-        "agent"
-      ],
-      "meta": {
-        "difficulty": "intermediate",
-        "readingTimeMin": 2,
-        "signals": {
-          "points": 4,
-          "comments": 2
-        }
-      }
-    },
-    {
-      "id": "affaan-m-ecc-3",
-      "headline": "affaan-m/ECC",
-      "sourceLinks": [
-        {
-          "title": "affaan-m/ECC",
-          "url": "https://github.com/affaan-m/ECC",
-          "source": "GitHub · recently active",
-          "type": "repository",
-          "publishedAt": "2026-11-23T04:55:48Z"
-        }
-      ],
-      "summaryBullets": [
-        "Repository description: The agent harness performance optimization system.",
-        "Repository description: Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
-      ],
-      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, opencode. Read it through that lens.",
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: claude code. Read it through that lens.",
       "module": "agent-control-routing-degradation",
       "secondaryModules": [
-        "tools-skills-plugins-mcp",
-        "production-ops-cost-safety-multitenancy"
+        "tools-skills-plugins-mcp"
       ],
-      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, opencode.",
+      "moduleRationale": "Matched Loop Engineering on: claude code.",
       "tags": [
-        "agent",
-        "agent harness",
-        "claude code",
-        "opencode"
+        "claude code"
       ],
       "meta": {
         "difficulty": "intermediate",
         "readingTimeMin": 2,
         "signals": {
-          "stars": 309586,
-          "forks": 45541
+          "points": 3,
+          "comments": 0
         }
       }
     },
     {
-      "id": "microsoft-graphrag-4",
+      "id": "microsoft-graphrag-5",
       "headline": "microsoft/graphrag",
       "sourceLinks": [
         {
@@ -169,7 +197,7 @@
           "url": "https://github.com/microsoft/graphrag",
           "source": "GitHub · recently active",
           "type": "repository",
-          "publishedAt": "2026-11-23T07:33:04Z"
+          "publishedAt": "2026-11-24T06:31:44Z"
         }
       ],
       "summaryBullets": [
@@ -189,41 +217,8 @@
         "difficulty": "intermediate",
         "readingTimeMin": 2,
         "signals": {
-          "stars": 36728,
-          "forks": 3886
-        }
-      }
-    },
-    {
-      "id": "internal-changelogs-unlock-autonomous-coding-age-5",
-      "headline": "Internal Changelogs unlock autonomous coding agents",
-      "sourceLinks": [
-        {
-          "title": "Internal Changelogs unlock autonomous coding agents",
-          "url": "https://rallywith.ai/blog/internal-changelogs/",
-          "source": "Hacker News (agents)",
-          "type": "discussion",
-          "publishedAt": "2026-11-23T22:04:51Z"
-        }
-      ],
-      "summaryBullets": [
-        "Surfaced from Hacker News (agents).",
-        "Open the source to read the details."
-      ],
-      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
-      "module": "agent-control-routing-degradation",
-      "secondaryModules": [],
-      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
-      "tags": [
-        "agent",
-        "coding agent"
-      ],
-      "meta": {
-        "difficulty": "intermediate",
-        "readingTimeMin": 2,
-        "signals": {
-          "points": 2,
-          "comments": 0
+          "stars": 36744,
+          "forks": 3890
         }
       }
     }
