@@ -1,0 +1,216 @@
+{
+  "date": "2026-11-25",
+  "generatedAt": "2026-11-25T22:36:26.539Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-25.mp3",
+    "vtt": "/audio/daily/2026-11-25.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 2: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 3: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: Why is LLM inference challenging?. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens. Item 5: Anthropic's Claude Can Now Turn Your Workflows Into Desktop Apps. Here’s How to Get Started - Inc.com. Relevant to Loop Engineering. Matched Loop Engineering on: workflow. Read it through that lens. Item 6: Anthropic lets you install Claude ‘artifacts’ as Mac apps - Computerworld. Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "microsoft-graphrag-0",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-25T20:55:24Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36755,
+          "forks": 3890
+        }
+      }
+    },
+    {
+      "id": "primeintellect-ai-prime-agent-1",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-25T22:35:27Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22918,
+          "forks": 2536
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-2",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-25T21:00:17Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 63394,
+          "forks": 7401
+        }
+      }
+    },
+    {
+      "id": "why-is-llm-inference-challenging-3",
+      "headline": "Why is LLM inference challenging?",
+      "sourceLinks": [
+        {
+          "title": "Why is LLM inference challenging?",
+          "url": "https://mehrdadmahabadi.com/blog/why-is-llm-inference-hard.html",
+          "source": "Hacker News",
+          "type": "discussion",
+          "publishedAt": "2026-11-25T20:24:05Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News.",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "anthropic-s-claude-can-now-turn-your-workflows-i-4",
+      "headline": "Anthropic's Claude Can Now Turn Your Workflows Into Desktop Apps. Here’s How to Get Started - Inc.com",
+      "sourceLinks": [
+        {
+          "title": "Anthropic's Claude Can Now Turn Your Workflows Into Desktop Apps. Here’s How to Get Started - Inc.com",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxONWprSmNQa2c3ckpWZTA3eU50VklIMnRaaDFWeHA4N2RlVlo3WjhVYkt0dXJ2aGllSDFSVUxfeG1kd2VlS0Iwel9VZTNLYkdaSGZVc2VTaWxXbDBFS3NpNHd5RnlQMDRqckxOTHlpYUllcFpLWExnb0ZzUXJGYTZ2OHlwSnZ1M2p3VEo1RlUybFdPQQ?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Wed, 25 Nov 2026 18:54:50 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic's Claude Can Now Turn Your Workflows Into Desktop Apps.",
+        "Here’s How to Get Started Inc.com"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: workflow.",
+      "tags": [
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    },
+    {
+      "id": "anthropic-lets-you-install-claude-artifacts-as-m-5",
+      "headline": "Anthropic lets you install Claude ‘artifacts’ as Mac apps - Computerworld",
+      "sourceLinks": [
+        {
+          "title": "Anthropic lets you install Claude ‘artifacts’ as Mac apps - Computerworld",
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQNTluN3NCeXBFdnNtdk9RUE0zN0xScVY3enlWaUl6ZFViRENLTWptMEFXblpoT2REdDZjUF9kQlgwdzJ0RDczTlBDYWQtS1ZHa3AxZkRnMk8zYkdOcTlwcVlHWHZQTmtHT1NBM0h0YmU2SEJna3pSNm41X3g5am4wSVhKWUo0TVgtRDBjdGFuaVk3bmJnMGdpSzRERzJkWUpzUHZJOFpFMnlQdw?oc=5",
+          "source": "Anthropic (news)",
+          "type": "article",
+          "publishedAt": "Wed, 25 Nov 2026 16:25:36 GMT"
+        }
+      ],
+      "summaryBullets": [
+        "Anthropic lets you install Claude ‘artifacts’ as Mac apps Computerworld",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Prompt Engineering. No strong keyword match; defaulted to prompt engineering. Read it through that lens.",
+      "module": "foundations-prompts-to-harnesses",
+      "secondaryModules": [],
+      "moduleRationale": "No strong keyword match; defaulted to prompt engineering.",
+      "tags": [
+        "ai"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2
+      }
+    }
+  ]
+}
