@@ -1,0 +1,235 @@
+{
+  "date": "2026-11-26",
+  "generatedAt": "2026-11-26T22:24:38.136Z",
+  "curationFlag": "uncurated-fallback",
+  "sourcesUsed": [
+    "Hacker News",
+    "Hacker News (agents)",
+    "GitHub · recently active",
+    "arXiv cs.CL",
+    "arXiv cs.LG",
+    "Anthropic (news)",
+    "OpenAI",
+    "Hugging Face",
+    "Simon Willison",
+    "Sebastian Raschka"
+  ],
+  "audio": {
+    "mp3": "/audio/daily/2026-11-26.mp3",
+    "vtt": "/audio/daily/2026-11-26.vtt",
+    "transcript": "Today's AI engineering briefing. Item 1: PrimeIntellect-ai/prime-agent. Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens. Item 2: ruvnet/ruflo. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens. Item 3: vectorize-io/hindsight. Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens. Item 4: microsoft/graphrag. Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens. Item 5: Agent Harness. Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness. Read it through that lens. Item 6: Show HN: Dev-Mem – Local-first SQLite knowledge graph for AI coding agents. Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+    "available": true
+  },
+  "lessons": [
+    {
+      "id": "primeintellect-ai-prime-agent-0",
+      "headline": "PrimeIntellect-ai/prime-agent",
+      "sourceLinks": [
+        {
+          "title": "PrimeIntellect-ai/prime-agent",
+          "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-26T21:53:04Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, prime-agent, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, prime-agent, workflow.",
+      "tags": [
+        "agent",
+        "prime-agent",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 22933,
+          "forks": 2537
+        }
+      }
+    },
+    {
+      "id": "ruvnet-ruflo-1",
+      "headline": "ruvnet/ruflo",
+      "sourceLinks": [
+        {
+          "title": "ruvnet/ruflo",
+          "url": "https://github.com/ruvnet/ruflo",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-26T14:25:45Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: 🌊 The original agent harness.",
+        "Repository description: Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems.",
+        "Repository description: Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated"
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness, claude code, workflow. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "rag-retrieval",
+        "conversation-context-engineering"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness, claude code, workflow.",
+      "tags": [
+        "agent",
+        "agent harness",
+        "claude code",
+        "workflow"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 82501,
+          "forks": 9714
+        }
+      }
+    },
+    {
+      "id": "vectorize-io-hindsight-2",
+      "headline": "vectorize-io/hindsight",
+      "sourceLinks": [
+        {
+          "title": "vectorize-io/hindsight",
+          "url": "https://github.com/vectorize-io/hindsight",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-26T20:56:45Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: Hindsight: Agent Memory That Learns",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to State, Memory & Durability. Matched State, Memory & Durability on: agent memory. Read it through that lens.",
+      "module": "state-memory-durable-workflows",
+      "secondaryModules": [
+        "conversation-context-engineering",
+        "agent-control-routing-degradation"
+      ],
+      "moduleRationale": "Matched State, Memory & Durability on: agent memory.",
+      "tags": [
+        "agent memory"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 63692,
+          "forks": 7407
+        }
+      }
+    },
+    {
+      "id": "microsoft-graphrag-3",
+      "headline": "microsoft/graphrag",
+      "sourceLinks": [
+        {
+          "title": "microsoft/graphrag",
+          "url": "https://github.com/microsoft/graphrag",
+          "source": "GitHub · recently active",
+          "type": "repository",
+          "publishedAt": "2026-11-25T20:55:24Z"
+        }
+      ],
+      "summaryBullets": [
+        "Repository description: A modular graph-based Retrieval-Augmented Generation (RAG) system",
+        "Open the source to inspect the project and its documentation."
+      ],
+      "whyItMatters": "Relevant to Retrieval & RAG. Matched Retrieval & RAG on: rag, retrieval, graphrag. Read it through that lens.",
+      "module": "rag-retrieval",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Retrieval & RAG on: rag, retrieval, graphrag.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "graphrag"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "stars": 36762,
+          "forks": 3893
+        }
+      }
+    },
+    {
+      "id": "agent-harness-4",
+      "headline": "Agent Harness",
+      "sourceLinks": [
+        {
+          "title": "Agent Harness",
+          "url": "https://github.com/gnosh-ai/gnosh",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-26T21:39:00Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, agent harness. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [],
+      "moduleRationale": "Matched Loop Engineering on: agent, agent harness.",
+      "tags": [
+        "agent",
+        "agent harness"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    },
+    {
+      "id": "show-hn-dev-mem-local-first-sqlite-knowledge-gra-5",
+      "headline": "Show HN: Dev-Mem – Local-first SQLite knowledge graph for AI coding agents",
+      "sourceLinks": [
+        {
+          "title": "Show HN: Dev-Mem – Local-first SQLite knowledge graph for AI coding agents",
+          "url": "https://github.com/HarsH-1877/Dev-Mem",
+          "source": "Hacker News (agents)",
+          "type": "discussion",
+          "publishedAt": "2026-11-26T16:59:24Z"
+        }
+      ],
+      "summaryBullets": [
+        "Surfaced from Hacker News (agents).",
+        "Open the source to read the details."
+      ],
+      "whyItMatters": "Relevant to Loop Engineering. Matched Loop Engineering on: agent, coding agent. Read it through that lens.",
+      "module": "agent-control-routing-degradation",
+      "secondaryModules": [
+        "rag-retrieval"
+      ],
+      "moduleRationale": "Matched Loop Engineering on: agent, coding agent.",
+      "tags": [
+        "agent",
+        "coding agent"
+      ],
+      "meta": {
+        "difficulty": "intermediate",
+        "readingTimeMin": 2,
+        "signals": {
+          "points": 1,
+          "comments": 0
+        }
+      }
+    }
+  ]
+}
